@@ -92,7 +92,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com','static.cdnlogo.com','img.icons8.com','astro.build','redaxo.org','typo3.com'],
   },
 
   markdown: {
