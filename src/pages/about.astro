@@ -74,80 +74,108 @@ const metadata = {
     ]}
   />
 
-  <!-- Features3 Widget ************** -->
+  <!-- Content Widget **************** -->
 
-  <Features3
-    columns={3}
-    isAfterContent={true}
+  <Steps
+    id="resume"
+    title="Lebenslauf"
     items={[
       {
-        title: 'E-commerce',
-        description:
-          'Rutrum non odio at vehicula. Proin ipsum justo, dignissim in vehicula sit amet, dignissim id quam. Sed ac tincidunt sapien.',
-        icon: 'tabler:template',
+        title:
+          'ion2s GmbH <br /> <span class="font-normal">Projektmanager Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - Heute</span>',
+        description: `Verantwortlich für IT-Management und Scrum-Prozesse. <br /> Sicherstellung effizienter Projektabläufe und Kommunikation im Team. <br /> Einführung und Betreuung agiler Methoden und Tools.`,
+        icon: 'tabler:briefcase',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 125828.jpg',
+          alt: 'ion2s GmbH Logo',
+        },
       },
       {
-        title: 'Blog',
-        description:
-          'Nullam efficitur volutpat sem sed fringilla. Suspendisse et enim eu orci volutpat laoreet ac vitae libero.',
-        icon: 'tabler:template',
+        title:
+          'ion2s GmbH <br /> <span class="font-normal">Front-End-Entwickler</span> <br /> <span class="text-sm font-normal">2012 - 2016</span>',
+        description: `Umsetzung moderner Benutzeroberflächen mit CSS und Typo3. <br /> Optimierung von Webseiten für Performance und Benutzerfreundlichkeit. <br /> Zusammenarbeit mit Design- und Back-End-Teams.`,
+        icon: 'tabler:briefcase',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 125828.jpg',
+          alt: 'ion2s GmbH Logo',
+        },
       },
       {
-        title: 'Business',
-        description:
-          'Morbi et elit finibus, facilisis justo ut, pharetra ipsum. Donec efficitur, ipsum quis congue luctus, mauris magna.',
-        icon: 'tabler:template',
+        title:
+          'Intercontact Werbegesellschaft mbH i.L. <br /> <span class="font-normal">Web-Entwickler</span> <br /> <span class="text-sm font-normal">2010 - 2012</span>',
+        description: `Entwicklung von Webseiten und Online-Anwendungen. <br /> Einsatz von CSS und Adobe Illustrator für die Gestaltung und Umsetzung. <br /> Unterstützung bei digitalen Marketingkampagnen.`,
+        icon: 'tabler:briefcase',
+        logo: {
+          src: '/images/werbeagentur_frankfurt.png',
+          alt: 'Intercontact Logo',
+        },
       },
       {
-        title: 'Branding',
-        description:
-          'Suspendisse vitae nisi eget tortor luctus maximus sed non lectus. Cras malesuada pretium placerat. Nullam venenatis dolor a ante rhoncus.',
-        icon: 'tabler:template',
+        title:
+          'PREUSS MEDIENSERVICE e.K. <br /> <span class="font-normal">Mediengestalter</span> <br /> <span class="text-sm font-normal">2003 - 2009</span>',
+        description: `Gestaltung und Druckvorbereitung von Printmedien. <br /> Entwicklung kreativer Konzepte für Werbematerialien. <br /> Betreuung des gesamten Druckvorstufenprozesses.`,
+        icon: 'tabler:briefcase',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 125602.jpg',
+          alt: 'PREUSS MEDIENSERVICE Logo',
+        },
       },
       {
-        title: 'Medical',
-        description:
-          'Vestibulum malesuada lacus id nibh posuere feugiat. Nam volutpat nulla a felis ultrices, id suscipit mauris congue. In hac habitasse platea dictumst.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Fashion Design',
-        description:
-          'Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus.',
-        icon: 'tabler:template',
+        title:
+          'PREUSS MEDIENSERVICE e.K. <br /> <span class="font-normal">Auszubildender im Bereich Drucktechnik</span> <br /> <span class="text-sm font-normal">1999 - 2003</span>',
+        description: `Ausbildung in Drucktechnik mit Schwerpunkt Printmedien. <br /> Erlernen der Grundlagen von Design und Druckvorstufe. <br /> Praktische Erfahrung in der Produktion und Qualitätskontrolle.`,
+        icon: 'tabler:briefcase',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 125602.jpg',
+          alt: 'PREUSS MEDIENSERVICE Logo',
+        },
       },
     ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'Colorful Image',
-    }}
+    classes={{ container: 'max-w-3xl' }}
   />
 
-  <!-- Steps2 Widget ****************** -->
-
-  <Steps2
-    title="Our values"
-    subtitle="Maecenas eu tellus eget est scelerisque lacinia et a diam. Aliquam velit lorem, vehicula id fermentum et, rhoncus et purus. Nulla facilisi. Vestibulum malesuada lacus."
+  <Steps
+    id="resume"
+    title="Ausbildung"
     items={[
       {
-        title: 'Customer-centric approach',
-        description:
-          'Donec id nibh neque. Quisque et fermentum tortor. Fusce vitae dolor a mauris dignissim commodo. Ut eleifend luctus condimentum.',
+        title: `Ausbildung, Mediengestalter für Digital- und Printmedien <br /> <span class="font-normal">Peter-Behrens-Schule Darmstadt</span> <br /> <span class="text-sm font-normal">Aug. 1999 - Juli 2002</span>`,
+        description: `Abschlussnote: 1`,
+        icon: 'tabler:school',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 151415.jpg',
+          alt: 'PREUSS MEDIENSERVICE Logo',
+        },
       },
       {
-        title: 'Constant Improvement',
-        description:
-          'Phasellus laoreet fermentum venenatis. Vivamus dapibus pulvinar arcu eget mattis. Fusce eget mauris leo.',
+        title: `Realschulabschluss, Drucktechnik <br /> <span class="font-normal">Peter-Behrens-Schule Darmstadt</span> <br /> <span class="text-sm font-normal">Mai 1996 - Mai 1999</span>`,
+        description: `Abschlussnote: 1`,
+        icon: 'tabler:school',
+        logo: {
+          src: '/images/Screenshot 2024-12-05 151415.jpg',
+          alt: 'PREUSS MEDIENSERVICE Logo',
       },
-      {
-        title: 'Ethical Practices',
-        description:
-          'Vestibulum imperdiet libero et lectus molestie, et maximus augue porta. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.',
       },
     ]}
+    classes={{ container: 'max-w-3xl' }}
   />
 
-  <!-- Steps2 Widget ****************** -->
+  <Steps
+    id="resume"
+    title="Zertifikate"
+    items={[
+      {
+        title: `Certified ScrumMaster® <br /> <span class="font-normal">Scrum Alliance</span> <br /> <span class="text-sm font-normal">Ausgestellt: Apr. 2021 · Gültig bis: Apr. 2025</span>`,
+        description: `Zertifikats-ID: 001189726`,
+        icon: 'tabler:certificate',
+        logo: {
+          src: '/images/scrum_alliance_logo.jpg',
+          alt: 'Firmen Logo',
+        },
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
 
   <Steps2
     title="Achievements"
