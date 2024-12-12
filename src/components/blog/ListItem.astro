@@ -22,7 +22,7 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
 ---
 
 <article
-  class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 intersect-once intersect-quarter motion-safe:md:opacity-0 motion-safe:md:intersect:animate-fade ${image ? 'md:grid-cols-2' : ''}`}
+  class={`max-w-md mx-auto md:max-w-none grid gap-6 md:gap-8 ${image ? 'md:grid-cols-2' : ''}`}
 >
   {
     image &&
@@ -94,7 +94,7 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
         {
           link ? (
             <a
-              class="inline-block hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
+              class="inline-block hover:text-primary dark:hover:text-primary transition ease-in duration-200"
               href={link}
             >
               {post.title}
