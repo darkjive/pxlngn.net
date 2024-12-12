@@ -1,10 +1,11 @@
 ---
-import Features2 from '~/components/widgets/Features2.astro';
-import Features3 from '~/components/widgets/Features3.astro';
-import Hero from '~/components/widgets/Hero.astro';
-import Stats from '~/components/widgets/Stats.astro';
-import Steps2 from '~/components/widgets/Steps2.astro';
 import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Brands from '~/components/widgets/Brands.astro';
+import Features from '~/components/widgets/Features.astro';
 
 const metadata = {
   title: 'About us',
@@ -12,67 +13,74 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
   <Hero
-    tagline="About us"
-    image={{
-      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Caos Image',
-    }}
+    id="hero"
+    title="Über mich"
+    tagline="Profil"
+    actions={[
+      { text: 'Vita', href: '/about#resume' },
+      { text: 'skills', href: '/about#skills' },
+    ]}
   >
-    <Fragment slot="title">
-      Elevate your online presence with our <br />
-      <span class="text-accent dark:text-white highlight"> Beautiful Website Templates</span>
-    </Fragment>
-
     <Fragment slot="subtitle">
-      Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec
-      quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus.
-      Suspendisse vitae nisi eget tortor luctus maximus sed non lectus.
+      <span
+        >ich heiße <span class="font-bold">Alain</span> – Entwickler, Designer und Projektmanager. <br />
+        Hier kannst du dir ein Bild von meiner Person und meinen Fähigkeiten machen.
+      </span>
+    </Fragment>
+    <Fragment slot="bg">
+      <img
+        src="https://images.unsplash.com/photo-1732115677397-a6613cdba188?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden"
+        alt="Alain Ritter"
+      />
     </Fragment>
   </Hero>
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    title="Statistics about us"
-    stats={[
-      { title: 'Offices', amount: '4' },
-      { title: 'Employees', amount: '248' },
-      { title: 'Templates', amount: '12' },
-      { title: 'Awards', amount: '24' },
-    ]}
-  />
-
-  <!-- Features3 Widget ************** -->
-
-  <Features3
-    title="Our templates"
-    subtitle="Etiam scelerisque, enim eget vestibulum luctus, nibh mauris blandit nulla, nec vestibulum risus justo ut enim. Praesent lacinia diam et ante imperdiet euismod."
+  <Content
+    id="about"
     columns={3}
-    isBeforeContent={true}
     items={[
       {
-        title: 'Educational',
-        description:
-          'Morbi faucibus luctus quam, sit amet aliquet felis tempor id. Cras augue massa, ornare quis dignissim a, molestie vel nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Interior Design',
-        description:
-          'Vivamus porttitor, tortor convallis aliquam pretium, turpis enim consectetur elit, vitae egestas purus erat ac nunc nulla.',
-        icon: 'tabler:template',
-      },
-      {
-        title: 'Photography',
-        description:
-          'Duis sed lectus in nisl vehicula porttitor eget quis odio. Aliquam erat volutpat. Nulla eleifend nulla id sem fermentum.',
-        icon: 'tabler:template',
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'Linkedin',
+          href: 'https://www.linkedin.com/in/alain-ritter-b49ba8233/',
+        },
       },
     ]}
-  />
+    image={{
+      src: '~/assets/images/normal.jpg',
+      alt: 'Colorful Image',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
+      <p>
+        Als ausgebildeter <span class="font-bold text-muted"> Designer</span> und erfahrener <span
+          class="font-bold text-muted">Frontend-Entwickler</span
+        > bringe ich technische Expertise und kreatives Denken in Einklang. Zusätzlich zu meinem Fokus auf Webdesign und
+        Entwicklung habe ich umfangreiche Erfahrung in agiler <span class="font-bold text-muted">Projektleitung</span> (Scrum)
+        sowie in der <span class="font-bold text-muted">Qualitätssicherung</span> (QA). Ob es darum geht, reibungslose Arbeitsabläufe
+        zu gewährleisten oder fehlerfreie, benutzerfreundliche Anwendungen zu entwickeln – ich lege Wert auf Lösungen, die
+        in allen Bereichen überzeugen und höchsten Ansprüchen gerecht werden.
+      </p>
+      <br />
+      <p>
+        Nach <span class="font-bold text-muted">20 Jahren in der IT</span> habe ich an einer Vielzahl von Projekten mitgewirkt: von kleinen Websites für den
+        privaten Gebrauch über große E-Commerce-Systeme bis hin zu Apps. Für mich zählen vor allem die Details. Eine
+        fließende Animation, eine benutzerfreundliche Navigation oder ein sorgfältig gestaltetes Design – ich bin
+        überzeugt, dass es die Feinheiten sind, die ein Projekt erfolgreich machen.
+      </p>
+      <br />
+      <p>Wenn du magst kannst du mich auf Linkedin kontaktieren:</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class=""></div>
+    </Fragment>
+  </Content>
 
   <!-- Content Widget **************** -->
 
@@ -154,7 +162,7 @@ const metadata = {
         logo: {
           src: '/images/Screenshot 2024-12-05 151415.jpg',
           alt: 'PREUSS MEDIENSERVICE Logo',
-      },
+        },
       },
     ]}
     classes={{ container: 'max-w-3xl' }}
@@ -177,80 +185,154 @@ const metadata = {
     classes={{ container: 'max-w-3xl' }}
   />
 
-  <Steps2
-    title="Achievements"
-    subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sagittis, quam nec venenatis lobortis, mi risus tempus nulla, sed porttitor est nibh at nulla."
-    isReversed={true}
-    callToAction={{
-      text: 'See more',
-      href: '/',
-    }}
+  <Features3
+    id="skills"
+    title="Fähigkeiten"
+    classes={{ container: 'bg-white dark:bg-transparent' }}
+    subtitle="Eine Übersicht meiner Tätigkeiten und Fähigkeiten in den Bereichen Web-Entwicklung, Projektleitung, Scrum Master und QA-Softwaretesting."
+    columns={3}
+    defaultIcon="tabler:point-filled"
     items={[
       {
-        title: 'Global reach',
-        description: 'Nam malesuada urna in enim imperdiet tincidunt. Phasellus non tincidunt nisi, at elementum mi.',
-        icon: 'tabler:globe',
+        title: 'Web-Entwicklung',
+        description: `Kundenanforderungen analysieren, Web-Applikationen erstellen (HTML, CSS, JavaScript) und Codereviews durchführen. Betreuung bestehender Projekte und Deployment über CI/CD (Jenkins) verwalten. Systemleistung durch Monitoring-Tools überwachen.`,
+        icon: 'tabler:code',
       },
       {
-        title: 'Positive customer feedback and reviews',
-        description:
-          'Cras semper nulla leo, eget laoreet erat cursus sed. Praesent faucibus massa in purus iaculis dictum.',
-        icon: 'tabler:message-star',
+        title: 'Scrum Master',
+        description: `Scrum Teams betreuen und in Scrum-Fragen coachen, Prozessoptimierung und Hindernisbeseitigung. Beratung zu Atlassian Produkten (JIRA, Confluence) und Planung von Scrum-Implementierungen.`,
+        icon: 'tabler:progress',
       },
       {
-        title: 'Awards and recognition as industry experts',
-        description:
-          'Phasellus lacinia cursus velit, eu malesuada magna pretium eu. Etiam aliquet tellus purus, blandit lobortis ex rhoncus vitae.',
-        icon: 'tabler:award',
+        title: 'Teamleitung',
+        description: `Mitarbeitergespräche führen und Perspektiven zur Weiterentwicklung erarbeiten. Kommunikation im Team sicherstellen, Ressourcenplanung sowie Release- und Incident-Management.`,
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Projektleitung',
+        description: `Kundenprojekte planen, Roadmaps und Meilensteine erstellen. Kontrolle von Projektfortschritten und Budgets, Kommunikation und Reporting an Stakeholder. Pflege von Projektboards in Jira und Dokumentation in Confluence.`,
+        icon: 'tabler:cap-projecting',
+      },
+      {
+        title: 'QA-Softwaretesting',
+        description: `Anforderungen prüfen und Testszenarien durchführen. Fehlerdokumentation in Jira und Fehlernachtests. Deployment in Testumgebungen und tägliche Status-Berichte in Daily Stand-Ups.`,
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'Engagement',
+        description: `Proaktive und leidenschaftliche Herangehensweise an Herausforderungen. Starke Motivation, Ziele zu erreichen und kontinuierlich Neues zu lernen. Bereitschaft, über das Erwartete hinaus einen Mehrwert zu schaffen.`,
+        icon: 'tabler:heart',
       },
     ]}
   />
+  <!-- Brands Widget ****************** -->
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Our locations"
-    tagline="Find us"
-    columns={4}
-    items={[
+  <Brands
+    id="techniken"
+    title="Technologien"
+    subtitle="Diese Technologien setze ich aktuell am liebsten ein."
+    icons={[]}
+    images={[
+      { src: '~/assets/images/html5-logo.png', alt: 'HTML5' },
+      { src: 'https://img.icons8.com/color/96/css3.png', alt: 'CSS3' },
+      { src: 'https://img.icons8.com/fluency/96/tailwind_css.png', alt: 'Tailwind CSS' },
+      { src: '~/assets/images/bem-css-logo.png', alt: 'BEM CSS' },
+      { src: 'https://img.icons8.com/fluency/96/javascript.png', alt: 'JavaScript' },
+      { src: 'https://img.icons8.com/color/240/nodejs.png', alt: 'Node.js' },
+      { src: '~/assets/images/astro.png', alt: 'Astro' },
+      { src: 'https://img.icons8.com/color/96/npm.png', alt: 'npm' },
+      { src: '~/assets/images/github-logo.png', alt: 'GitHub' },
+    ]}
+  />
+  <Brands
+    title="Tools"
+    subtitle="Mit diesen Tools arbeite ich gerne, oder habe Erfahrung in ihrer Anwendung."
+    icons={[]}
+    images={[
+      { src: '~/assets/images/vscode-logo.png', alt: 'Visual Studio Code' },
+      { src: 'https://img.icons8.com/fluency/96/microsoft-copilot.png', alt: 'Microsoft Copilot' },
+      { src: 'https://img.icons8.com/ios/150/chatgpt.png', alt: 'ChatGPT' },
+      { src: 'https://img.icons8.com/color/96/figma--v1.png', alt: 'Figma' },
+      { src: 'https://img.icons8.com/color/96/inkscape--v1.png', alt: 'Inkscape' },
+      { src: 'https://img.icons8.com/color/96/gimp.png', alt: 'GIMP' },
+      { src: 'https://img.icons8.com/color/96/adobe-photoshop--v1.png', alt: 'Adobe Photoshop' },
+      { src: 'https://img.icons8.com/color/96/adobe-illustrator--v1.png', alt: 'Adobe Illustrator' },
+      { src: 'https://img.icons8.com/color/96/jenkins.png', alt: 'Jenkins' },
+      { src: 'https://img.icons8.com/color/96/jira.png', alt: 'Jira' },
+      { src: 'https://img.icons8.com/fluency/96/confluence.png', alt: 'Confluence' },
+    ]}
+    classes={{ container: 'bg-white max-w-7xl dark:bg-transparent' }}
+  />
+  <Brands
+    title="CMS"
+    subtitle="Mit diesen und anderen Content Management Systemen habe Erfahrung."
+    icons={[]}
+    images={[
+      { src: 'https://img.icons8.com/color/96/wordpress.png', alt: 'WordPress' },
       {
-        title: 'EE.UU',
-        description: '1234 Lorem Ipsum St, 12345, Miami',
+        src: 'https://img.icons8.com/external-tal-revivo-color-tal-revivo/96/external-elementor-the-wordpress-page-builder-a-simple-intuitive-drag-and-drop-interface-logo-color-tal-revivo.png',
+        alt: 'Elementor',
       },
-      {
-        title: 'Spain',
-        description: '5678 Lorem Ipsum St, 56789, Madrid',
-      },
-      {
-        title: 'Australia',
-        description: '9012 Lorem Ipsum St, 90123, Sydney',
-      },
-      {
-        title: 'Brazil',
-        description: '3456 Lorem Ipsum St, 34567, São Paulo',
-      },
+      { src: '~/assets/images/typo3-logo.png', alt: 'TYPO3' },
+      { src: '~/assets/images/redaxo-logo.png', alt: 'Redaxo' },
     ]}
   />
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Technical Support"
-    tagline="Contact us"
-    columns={2}
-    items={[
-      {
-        title: 'Chat with us',
-        description:
-          'Integer luctus laoreet libero, auctor varius purus rutrum sit amet. Ut nec molestie nisi, quis eleifend mi.',
-        icon: 'tabler:messages',
-      },
-      {
-        title: 'Call us',
-        description:
-          'Mauris faucibus finibus orci, in posuere elit viverra non. In hac habitasse platea dictumst. Cras lobortis metus a hendrerit congue.',
-        icon: 'tabler:headset',
-      },
-    ]}
-  />
+  <Features
+  id="features"
+  classes={{ container: 'bg-white dark:bg-transparent shadow-xl dark:shadow-none ' }}
+  tagline="Features"
+  title="Was ich dir bieten kann"
+  subtitle="Ich nutze modernste Tools und Techniken, um effiziente, performante und durchdachte Projekte zu entwickeln. Mein Fokus liegt auf wiederverwendbaren Komponenten, gründlichem Testing und einem ganzheitlichen Marketingansatz. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt perfekt funktioniert und beeindruckt."
+  items={[
+    {
+      title: 'Projektleitung und Servant Leadership',
+      description:
+        'Mit meiner Erfahrung in der Projektleitung und einem servant leadership Ansatz sorge ich dafür, dass Projekte reibungslos laufen und das Team motiviert bleibt.',
+      icon: 'tabler:users',
+    },
+    {
+      title: 'Betreuung und Erweiterung von Legacy-Systemen',
+      description:
+        'Ich bin nicht nur darauf spezialisiert, moderne Lösungen zu entwickeln, sondern kümmere mich auch gerne um bestehende Legacy-Systeme. Ob Wartung, Optimierung oder Erweiterung – ich sorge dafür, dass auch ältere Systeme reibungslos funktionieren und den aktuellen Anforderungen gerecht werden.',
+      icon: 'tabler:layers-linked',
+    },
+    {
+      title: 'Mit Herz und Engagement',
+      description:
+        'Jedes Projekt gehe ich mit Herzblut und vollem Engagement an. Meine Arbeit ist erst dann beendet, wenn alles funktioniert und toll aussieht.',
+      icon: 'tabler:heart',
+    },
+    {
+      title: 'Hohe Performance',
+      description:
+        'Performance ist mir besonders wichtig. Jedes Projekt, das ich betreue, wird mit Adleraugen geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
+      icon: 'tabler:rocket',
+    },
+    {
+      title: 'Perfektion und Liebe zum Detail',
+      description:
+        'Ich strebe nach Perfektion und achte auf die kleinen Details, die den Unterschied machen. Meine Arbeit zeigt sich in der Qualität und Präzision.',
+      icon: 'tabler:diamond',
+    },
+    {
+      title: 'Umfassendes Software Testing',
+      description:
+        'Gründliches Software Testing ist mir wichtig und macht mir großen Spaß. So stelle ich sicher, dass alles stabil und fehlerfrei läuft.',
+      icon: 'tabler:checkup-list',
+    },
+    {
+      title: 'Ganzheitliches Marketing',
+      description:
+        'Ich unterstütze dich dabei, deine Online-Präsenz durch SEO, SEA, Social Media und andere Strategien zu maximieren, damit du genau die richtigen Leute erreichst.',
+      icon: 'tabler:chart-pie',
+    },
+    {
+      title: 'Gemeinsam etwas Neues schaffen',
+      description:
+        'Ich liebe es, wenn Projekte wachsen und neue Ideen einfließen. Offenheit und Zusammenarbeit sind für mich das A und O, um das Beste aus einem Projekt herauszuholen.',
+      icon: 'tabler:bulb',
+    },
+  ]}
+/>
 </Layout>
