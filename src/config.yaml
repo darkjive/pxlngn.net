@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: PIXEL ENGINE	
+  site: 'https://pxlngn.net'
   base: '/'
   trailingSlash: false
 
@@ -9,26 +9,26 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
+    default: P X L N G N
     template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+  description: "Frontend-Entwickler und Designer für Webmedien. Ich kombiniere modernes Design und sauberen Code, um benutzerfreundliche Webanwendungen zu schaffen. Schau dir meine Projekte an oder erfahre mehr über mich!"
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: P X L N G N
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@pxlngn'
+    site: '@pxlngn'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: de
   textDirection: ltr
 
 apps:
@@ -66,7 +66,7 @@ apps:
 analytics:
   vendors:
     googleAnalytics:
-      id: null # or "G-XXXXXXXXXX"
+      id: G-HWV3Y9PWKJ # or "null"
 
 ui:
   theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"
