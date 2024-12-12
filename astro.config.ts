@@ -5,6 +5,7 @@ import { defineConfig } from 'astro/config';
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
+// import swup from '@swup/astro';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
 import icon from 'astro-icon';
@@ -29,6 +30,25 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap(),
+    // swup({
+    //   animationClass: 'transition-',
+    //   containers: ['main'],
+    //   cache: true,
+    //   preload: true,
+    //   accessibility: true,
+    //   forms: false,
+    //   morph: false,
+    //   parallel: false,
+    //   progress: false,
+    //   routes: false,
+    //   smoothScrolling: true,
+    //   updateBodyClass: false,
+    //   updateHead: true,
+    //   reloadScripts: true,
+    //   debug: false,
+    //   loadOnIdle: true,
+    //   globalInstance: false,
+    // }),
     mdx(),
     icon({
       include: {
