@@ -136,6 +136,11 @@ export interface Item {
   title?: string;
   description?: string;
   icon?: string;
+  logo?: {
+    src: string;
+    alt?: string;
+    classes?: string;
+  };
   classes?: Record<string, string>;
   callToAction?: CallToAction;
   image?: Image;
@@ -267,6 +272,11 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     description?: string;
     icon?: string;
     classes?: Record<string, string>;
+    logo?: {
+      src: string;
+      alt?: string;
+      classes?: string;
+    };
   }>;
   callToAction?: string | CallToAction;
   image?: string | Image;
@@ -283,4 +293,4 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+export interface Contact extends Omit<Headline, 'classes'>, Form, Widget { }
