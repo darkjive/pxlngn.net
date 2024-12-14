@@ -130,7 +130,7 @@ Google, Irland und USA. Wir haben zudem mit Google eine Vereinbarung zur Auftrag
 ## 7. Widerspruchs- und Beseitigungsmöglichkeiten („Opt-Out“)
 
 - Das Speichern von Cookies auf Ihrer Festplatte können Sie allgemein verhindern, indem Sie in Ihren Browser-Einstellungen „keine Cookies akzeptieren“ wählen. Dies kann aber eine Funktionseinschränkung unserer Angebote zur Folge haben. Sie können darüber hinaus die Erfassung der, durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen, Daten an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: [http://tools.google.com/dlpage/gaoptout?hl=de](http://tools.google.com/dlpage/gaoptout?hl=de)
-- Als Alternative zum obigen Browser-Plugin können Sie die Erfassung durch Google Analytics unterbinden, indem Sie [__hier bitte__ den Analytics Opt-Out Link Ihrer Webseite einfügen] klicken. Durch den Klick wird ein „Opt-out“-Cookie gesetzt, das die Erfassung Ihrer Daten beim Besuch dieser Webseite zukünftig verhindert. Dieses Cookie gilt nur für unsere Webseite und Ihren aktuellen Browser und hat nur solange Bestand bis Sie Ihre Cookies löschen. In dem Falle müssten Sie das Cookie erneut setzen.
+<!-- - Als Alternative zum obigen Browser-Plugin können Sie die Erfassung durch Google Analytics unterbinden, indem Sie [__hier bitte__ den Analytics Opt-Out Link Ihrer Webseite einfügen] klicken. Durch den Klick wird ein „Opt-out“-Cookie gesetzt, das die Erfassung Ihrer Daten beim Besuch dieser Webseite zukünftig verhindert. Dieses Cookie gilt nur für unsere Webseite und Ihren aktuellen Browser und hat nur solange Bestand bis Sie Ihre Cookies löschen. In dem Falle müssten Sie das Cookie erneut setzen. -->
 - Die geräteübergreifende Nutzeranalyse können Sie in Ihrem Google-Account unter „Meine Daten > persönliche Daten“ deaktivieren.
 
 ## YouTube-Videos
@@ -156,11 +156,8 @@ Google, Irland und USA. Wir haben zudem mit Google eine Vereinbarung zur Auftrag
 1. **Widerspruch oder Widerruf gegen die Verarbeitung Ihrer Daten**  
     Soweit die Verarbeitung auf Ihrer Einwilligung gemäß Art. 6 Abs. 1 S. 1 lit. a), Art. 7 DS-GVO beruht, haben Sie das Recht, die Einwilligung jederzeit zu widerrufen. Die Rechtmäßigkeit der aufgrund der Einwilligung bis zum Widerruf erfolgten Verarbeitung wird dadurch nicht berührt.  
     Soweit wir die Verarbeitung Ihrer personenbezogenen Daten auf die Interessenabwägung gemäß Art. 6 Abs. 1 S. 1 lit. f) DS-GVO stützen, können Sie Widerspruch gegen die Verarbeitung einlegen. Dies ist der Fall, wenn die Verarbeitung insbesondere nicht zur Erfüllung eines Vertrags mit Ihnen erforderlich ist, was von uns jeweils bei der nachfolgenden Beschreibung der Funktionen dargestellt wird. Bei Ausübung eines solchen Widerspruchs bitten wir um Darlegung der Gründe, weshalb wir Ihre personenbezogenen Daten nicht wie von uns durchgeführt verarbeiten sollten. Im Falle Ihres begründeten Widerspruchs prüfen wir die Sachlage und werden entweder die Datenverarbeitung einstellen bzw. anpassen oder Ihnen unsere zwingenden schutzwürdigen Gründe aufzeigen, aufgrund derer wir die Verarbeitung fortführen.  
-    Sie können der Verarbeitung Ihrer personenbezogenen Daten für Zwecke der Werbung und Datenanalyse jederzeit widersprechen. Das Widerspruchsrecht können Sie kostenfrei ausüben. Über Ihren Werbewiderspruch können Sie uns unter folgenden Kontaktdaten informieren:
-   Alain Ritter 
-   64295, Darmstadt  
-   Amselweg 33  
-   E-Mail:  
+    Sie können der Verarbeitung Ihrer personenbezogenen Daten für Zwecke der Werbung und Datenanalyse jederzeit widersprechen. Das Widerspruchsrecht können Sie kostenfrei ausüben. Über Ihren Werbewiderspruch können Sie uns unter folgenden Kontaktdaten informieren:  
+
    hi@pxlngn.net
 
 2. **Recht auf Auskunft**  

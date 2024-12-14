@@ -4,7 +4,7 @@ author: Alain Ritter
 title: 'Tailwind-Klassen aus Figma exportieren'
 excerpt: So exportierst du Tailwind-Klassen aus Figma mit dem Plugin "Figma to Code"
 image: ~/assets/images/preview.jpg
-category: Tutorials
+category: Blog
 tags:
   - how-to
   - front-end
@@ -67,3 +67,5 @@ Nachdem ich die Option **Tailwind CSS** ausgewählt habe, analysiert das Plugin 
 ```html
 <div class="bg-blue-500 text-white p-4 rounded shadow-md">Button Text</div>
 ```
+
+[[Top]](#top)

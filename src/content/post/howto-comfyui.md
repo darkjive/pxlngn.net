@@ -4,7 +4,7 @@ author: Alain Ritter
 title: Schritt-für-Schritt-Anleitung zur Installation von ComfyUI (NVIDIA)
 excerpt: In diesem Blog-Beitrag erfährst du, wie du ComfyUI auf deinem System installierst. Folgen Sie unserer detaillierten Anleitung, um die Installation mühelos abzuschließen und sofort mit der Erstellung beeindruckender UI-Komponenten zu beginnen.
 image: https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
-category: Tutorials
+category: Blog
 tags:
   - ai
   - howto
