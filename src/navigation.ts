@@ -1,11 +1,15 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
     {
-      text: 'START',
+      text: 'INTRO',
       href: getPermalink(),
       links: [
+        {
+          text: 'Portfolio',
+          href: getPermalink('portfolio', 'category'),
+        },
         {
           text: 'FAQ´s',
           href: getPermalink('/#faq'),
@@ -21,7 +25,7 @@ export const headerData = {
           href: getPermalink('/about#about'),
         },
         {
-          text: 'Ausbildung',
+          text: 'Lebenslauf',
           href: getPermalink('/about#resume'),
         },
         {
@@ -36,17 +40,7 @@ export const headerData = {
     },
     {
       text: 'BLOG',
-      href: getBlogPermalink(),
-      links: [
-        {
-          text: 'Nach Kategorie',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Nach Tags',
-          href: getPermalink('ai', 'tag'),
-        },
-      ],
+      href: getPermalink('blog', 'category'),
     },
   ],
   actions: [{ text: 'KONTAKT', icon: 'tabler:mail', href: 'mailto:alain-ritter@protonmail.com' }],
@@ -54,11 +48,17 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'Start',
+      title: 'INTRO',
       href: getPermalink(),
       links: [
-        { text: 'Portfolio', href: getPermalink('/#portfolio') },
-        { text: 'FAQ´s', href: getPermalink('/#faq') },
+        {
+          text: 'Portfolio',
+          href: getPermalink('portfolio', 'category'),
+        },
+        {
+          text: 'FAQ´s',
+          href: getPermalink('/#faq'),
+        },
       ],
     },
     {
@@ -71,7 +71,7 @@ export const footerData = {
           href: getPermalink('/about#about'),
         },
         {
-          text: 'Ausbildung',
+          text: 'Lebenslauf',
           href: getPermalink('/about#resume'),
         },
         {
@@ -86,20 +86,12 @@ export const footerData = {
     },
     {
       title: 'Blog',
-      links: [
-        {
-          text: 'Nach Kategorie',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Nach Tags',
-          href: getPermalink('ai', 'tag'),
-        },
-      ],
+      href: getPermalink('blog', 'category'),
+      links: []
     },
     {
       title: 'Kontakt',
-      href: getPermalink('/contact'),
+      href: 'mailto:alain-ritter@protonmail.com',
       links: []
     },
     {
@@ -113,12 +105,8 @@ export const footerData = {
       links: []
   },
   ],
-  secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
-  ],
   socialLinks: [
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive' },
   ],
 };
