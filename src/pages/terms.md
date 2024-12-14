@@ -9,8 +9,7 @@ Amselweg 33
 E-Mail:  
 hi@pxlngn.net
 
-## Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV):
-
+## Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV): 
 Alain Ritter
 
 ## Disclaimer – rechtliche Hinweise
@@ -28,16 +27,20 @@ Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheb
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
 
 
-## Bildnachweise
-Foto von [Quino Al](https://unsplash.com/de/@quinoal?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) auf [Unsplash](https://unsplash.com/de/fotos/gruppe-von-menschen-auf-der-wiese-2sY3wSdRSj4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+### Bildnachweise
+[Foto](https://unsplash.com/de/fotos/gruppe-von-menschen-auf-der-wiese-2sY3wSdRSj4) von [Quino Al](https://unsplash.com/de/@quinoal) auf [Unsplash](https://unsplash.com)  
+[Foto](https://unsplash.com/de/fotos/weisse-wolken-am-blauen-himmel-UiiHVEyxtyA) von [Milad Fakurian](https://unsplash.com/de/@fakurian) auf [Unsplash](https://unsplash.com)
 
+### Framework
+[Astro 5.0](https://astro.build/)
 
-## Template:
-![onWidget logo](https://onwidget.com/favicon/favicon-32x32.png)
+### Theme
+[AstroWind](https://github.com/onwidget/astrowind/) - Initially created by onWidget and maintained by a community of contributors.
 
-Made by [onWidget](https://onwidget.com/) · All rights reserved.
+### Fonts
+<span class="Anklepants text-4xl">Anklepants</span>  
+by Ray Larabie | [typodermicfonts](https://typodermicfonts.com/)  
 
-## Framework
-![astro.build logo](https://onwidget.com/favicon/favicon-32x32.png){width=20 height=20 style="border-radius: 0.25rem; margin-right: 0.375rem; float: left;" loading="lazy"}
+<span class="Baloo Bhaijaan 2 text-4xl">Baloo Bhaijaan 2</span>  
+by Ek Type | [Ek Type](https://ektype.in/)
 
-Powered by [astro.build](https://astro.build/) · All rights reserved.

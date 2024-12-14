@@ -13,24 +13,28 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+
   <Hero
     id="hero"
-    title="Über mich"
+    title="über<br/>mich"
     tagline="Profil"
+    
     actions={[
-      { text: 'Vita', href: '/about#resume' },
-      { text: 'skills', href: '/about#skills' },
+      { variant: 'primary', text: 'Vita', href: '/about#resume' },
+      { variant: 'primary', text: 'Skills', href: '/about#skills' },
     ]}
   >
     <Fragment slot="subtitle">
-      <span
-        >ich heiße <span class="font-bold">Alain</span> – Entwickler, Designer und Projektmanager. <br />
-        Hier kannst du dir ein Bild von meiner Person und meinen Fähigkeiten machen.
+      <span>
+      Ich heiße <span class="font-bold">
+        Alain </span>[alɛ̃] – ein Generalist, der die Schnittstellen <br/> zwischen 
+        Design und Projektmanagement liebt. <br/>
+        Hier kannst du mehr über meine<br/> Herangehensweise und mein Wissen erfahren.
       </span>
     </Fragment>
     <Fragment slot="bg">
       <img
-        src="https://images.unsplash.com/photo-1732115677397-a6613cdba188?q=80&w=1476&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2703&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
         class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden"
         alt="Alain Ritter"
       />
@@ -48,6 +52,14 @@ const metadata = {
           href: 'https://www.linkedin.com/in/alain-ritter-b49ba8233/',
         },
       },
+      {
+        icon: 'tabler:mail',
+        callToAction: {
+          target: '_blank',
+          text: 'E-Mail',
+          href: 'mailto:alain-ritter@protonmail.com',
+        },
+      },
     ]}
     image={{
       src: '~/assets/images/normal.jpg',
@@ -56,7 +68,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
+      <h2 class="Anklepants text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
       <p>
         Als ausgebildeter <span class="font-bold text-muted"> Designer</span> und erfahrener <span
           class="font-bold text-muted">Frontend-Entwickler</span
@@ -68,10 +80,10 @@ const metadata = {
       </p>
       <br />
       <p>
-        Nach <span class="font-bold text-muted">20 Jahren in der IT</span> habe ich an einer Vielzahl von Projekten mitgewirkt: von kleinen Websites für den
-        privaten Gebrauch über große E-Commerce-Systeme bis hin zu Apps. Für mich zählen vor allem die Details. Eine
-        fließende Animation, eine benutzerfreundliche Navigation oder ein sorgfältig gestaltetes Design – ich bin
-        überzeugt, dass es die Feinheiten sind, die ein Projekt erfolgreich machen.
+        Nach <span class="font-bold text-muted">20 Jahren in der IT</span> habe ich an einer Vielzahl von Projekten mitgewirkt:
+        von kleinen Websites für den privaten Gebrauch über große E-Commerce-Systeme bis hin zu Apps. Für mich zählen vor
+        allem die Details. Eine fließende Animation, eine benutzerfreundliche Navigation oder ein sorgfältig gestaltetes
+        Design – ich bin überzeugt, dass es die Feinheiten sind, die ein Projekt erfolgreich machen.
       </p>
       <br />
       <p>Wenn du magst kannst du mich auf Linkedin kontaktieren:</p>
@@ -90,11 +102,11 @@ const metadata = {
     items={[
       {
         title:
-          'ion2s GmbH <br /> <span class="font-normal">Projektmanager Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - Heute</span>',
+          'ion2s GmbH <br /> <span class="font-normal">Projektmanager / Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - Heute</span>',
         description: `Verantwortlich für IT-Management und Scrum-Prozesse. <br /> Sicherstellung effizienter Projektabläufe und Kommunikation im Team. <br /> Einführung und Betreuung agiler Methoden und Tools.`,
         icon: 'tabler:briefcase',
         logo: {
-          src: '/images/Screenshot 2024-12-05 125828.jpg',
+          src: '/images/Screenshot-2024-12-05-125828.jpg',
           alt: 'ion2s GmbH Logo',
         },
       },
@@ -104,7 +116,7 @@ const metadata = {
         description: `Umsetzung moderner Benutzeroberflächen mit CSS und Typo3. <br /> Optimierung von Webseiten für Performance und Benutzerfreundlichkeit. <br /> Zusammenarbeit mit Design- und Back-End-Teams.`,
         icon: 'tabler:briefcase',
         logo: {
-          src: '/images/Screenshot 2024-12-05 125828.jpg',
+          src: '/images/Screenshot-2024-12-05-125828.jpg',
           alt: 'ion2s GmbH Logo',
         },
       },
@@ -124,7 +136,7 @@ const metadata = {
         description: `Gestaltung und Druckvorbereitung von Printmedien. <br /> Entwicklung kreativer Konzepte für Werbematerialien. <br /> Betreuung des gesamten Druckvorstufenprozesses.`,
         icon: 'tabler:briefcase',
         logo: {
-          src: '/images/Screenshot 2024-12-05 125602.jpg',
+          src: '/images/Screenshot-2024-12-05-125602.jpg',
           alt: 'PREUSS MEDIENSERVICE Logo',
         },
       },
@@ -134,7 +146,7 @@ const metadata = {
         description: `Ausbildung in Drucktechnik mit Schwerpunkt Printmedien. <br /> Erlernen der Grundlagen von Design und Druckvorstufe. <br /> Praktische Erfahrung in der Produktion und Qualitätskontrolle.`,
         icon: 'tabler:briefcase',
         logo: {
-          src: '/images/Screenshot 2024-12-05 125602.jpg',
+          src: '/images/Screenshot-2024-12-05-125602.jpg',
           alt: 'PREUSS MEDIENSERVICE Logo',
         },
       },
@@ -151,7 +163,7 @@ const metadata = {
         description: `Abschlussnote: 1`,
         icon: 'tabler:school',
         logo: {
-          src: '/images/Screenshot 2024-12-05 151415.jpg',
+          src: '/images/Screenshot-2024-12-05-151415.jpg',
           alt: 'PREUSS MEDIENSERVICE Logo',
         },
       },
@@ -160,7 +172,7 @@ const metadata = {
         description: `Abschlussnote: 1`,
         icon: 'tabler:school',
         logo: {
-          src: '/images/Screenshot 2024-12-05 151415.jpg',
+          src: '/images/Screenshot-2024-12-05-151415.jpg',
           alt: 'PREUSS MEDIENSERVICE Logo',
         },
       },
@@ -229,19 +241,35 @@ const metadata = {
 
   <Brands
     id="techniken"
-    title="Technologien"
-    subtitle="Diese Technologien setze ich aktuell am liebsten ein."
+    title="Software stack"
+    subtitle="Diese Technologien beherrsche ich."
     icons={[]}
     images={[
       { src: '~/assets/images/html5-logo.png', alt: 'HTML5' },
       { src: 'https://img.icons8.com/color/96/css3.png', alt: 'CSS3' },
       { src: 'https://img.icons8.com/fluency/96/tailwind_css.png', alt: 'Tailwind CSS' },
       { src: '~/assets/images/bem-css-logo.png', alt: 'BEM CSS' },
-      { src: 'https://img.icons8.com/fluency/96/javascript.png', alt: 'JavaScript' },
       { src: 'https://img.icons8.com/color/240/nodejs.png', alt: 'Node.js' },
       { src: '~/assets/images/astro.png', alt: 'Astro' },
       { src: 'https://img.icons8.com/color/96/npm.png', alt: 'npm' },
       { src: '~/assets/images/github-logo.png', alt: 'GitHub' },
+      { src: 'https://git-scm.com/images/logo@2x.png', alt: 'Git' },
+    ]}
+    classes={{ container: 'lg:pb-0' }}
+  />
+  <Brands
+    id=""
+    title=""
+    subtitle="Diese Technologien lerne ich aktuell."
+    icons={[]}
+    images={[
+      { src: 'https://img.icons8.com/fluency/96/javascript.png', alt: 'JavaScript' },
+      { src: 'https://img.icons8.com/color/96/react-native.png', alt: 'React' },
+      {
+        src: 'https://img.icons8.com/external-tal-revivo-bold-tal-revivo/96/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
+        alt: 'React',
+      },
+      { src: 'https://img.icons8.com/color/96/python--v1.png', alt: 'Python' },
     ]}
   />
   <Brands
@@ -252,6 +280,10 @@ const metadata = {
       { src: '~/assets/images/vscode-logo.png', alt: 'Visual Studio Code' },
       { src: 'https://img.icons8.com/fluency/96/microsoft-copilot.png', alt: 'Microsoft Copilot' },
       { src: 'https://img.icons8.com/ios/150/chatgpt.png', alt: 'ChatGPT' },
+      {
+        src: 'https://mistral.ai/images/logo_hubc88c4ece131b91c7cb753f40e9e1cc5_2589_256x0_resize_q97_h2_lanczos_3.webp',
+        alt: 'Mistral',
+      },
       { src: 'https://img.icons8.com/color/96/figma--v1.png', alt: 'Figma' },
       { src: 'https://img.icons8.com/color/96/inkscape--v1.png', alt: 'Inkscape' },
       { src: 'https://img.icons8.com/color/96/gimp.png', alt: 'GIMP' },
@@ -265,7 +297,7 @@ const metadata = {
   />
   <Brands
     title="CMS"
-    subtitle="Mit diesen und anderen Content Management Systemen habe Erfahrung."
+    subtitle="Mit diesen und anderen Content Management Systemen habe ich Erfahrung."
     icons={[]}
     images={[
       { src: 'https://img.icons8.com/color/96/wordpress.png', alt: 'WordPress' },
@@ -279,60 +311,60 @@ const metadata = {
   />
 
   <Features
-  id="features"
-  classes={{ container: 'bg-white dark:bg-transparent shadow-xl dark:shadow-none ' }}
-  tagline="Features"
-  title="Was ich dir bieten kann"
-  subtitle="Ich nutze modernste Tools und Techniken, um effiziente, performante und durchdachte Projekte zu entwickeln. Mein Fokus liegt auf wiederverwendbaren Komponenten, gründlichem Testing und einem ganzheitlichen Marketingansatz. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt perfekt funktioniert und beeindruckt."
-  items={[
-    {
-      title: 'Projektleitung und Servant Leadership',
-      description:
-        'Mit meiner Erfahrung in der Projektleitung und einem servant leadership Ansatz sorge ich dafür, dass Projekte reibungslos laufen und das Team motiviert bleibt.',
-      icon: 'tabler:users',
-    },
-    {
-      title: 'Betreuung und Erweiterung von Legacy-Systemen',
-      description:
-        'Ich bin nicht nur darauf spezialisiert, moderne Lösungen zu entwickeln, sondern kümmere mich auch gerne um bestehende Legacy-Systeme. Ob Wartung, Optimierung oder Erweiterung – ich sorge dafür, dass auch ältere Systeme reibungslos funktionieren und den aktuellen Anforderungen gerecht werden.',
-      icon: 'tabler:layers-linked',
-    },
-    {
-      title: 'Mit Herz und Engagement',
-      description:
-        'Jedes Projekt gehe ich mit Herzblut und vollem Engagement an. Meine Arbeit ist erst dann beendet, wenn alles funktioniert und toll aussieht.',
-      icon: 'tabler:heart',
-    },
-    {
-      title: 'Hohe Performance',
-      description:
-        'Performance ist mir besonders wichtig. Jedes Projekt, das ich betreue, wird mit Adleraugen geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
-      icon: 'tabler:rocket',
-    },
-    {
-      title: 'Perfektion und Liebe zum Detail',
-      description:
-        'Ich strebe nach Perfektion und achte auf die kleinen Details, die den Unterschied machen. Meine Arbeit zeigt sich in der Qualität und Präzision.',
-      icon: 'tabler:diamond',
-    },
-    {
-      title: 'Umfassendes Software Testing',
-      description:
-        'Gründliches Software Testing ist mir wichtig und macht mir großen Spaß. So stelle ich sicher, dass alles stabil und fehlerfrei läuft.',
-      icon: 'tabler:checkup-list',
-    },
-    {
-      title: 'Ganzheitliches Marketing',
-      description:
-        'Ich unterstütze dich dabei, deine Online-Präsenz durch SEO, SEA, Social Media und andere Strategien zu maximieren, damit du genau die richtigen Leute erreichst.',
-      icon: 'tabler:chart-pie',
-    },
-    {
-      title: 'Gemeinsam etwas Neues schaffen',
-      description:
-        'Ich liebe es, wenn Projekte wachsen und neue Ideen einfließen. Offenheit und Zusammenarbeit sind für mich das A und O, um das Beste aus einem Projekt herauszuholen.',
-      icon: 'tabler:bulb',
-    },
-  ]}
-/>
+    id="features"
+    classes={{ container: 'bg-white dark:bg-transparent shadow-xl dark:shadow-none ' }}
+    tagline="Abstract"
+    title="Was ich dir<br /> bieten kann"
+    subtitle="Als Generalist bringe ich eine breite Palette an Fähigkeiten und Erfahrungen mit, die ich in jedes Projekt einfließen lasse. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt perfekt funktioniert und beeindruckt."
+    items={[
+      {
+        title: 'Projektleitung und Servant Leadership',
+        description:
+          'Mit meiner Erfahrung in der Projektleitung und einem servant leadership Ansatz sorge ich dafür, dass Projekte reibungslos laufen und das Team motiviert bleibt.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Betreuung und Erweiterung von Legacy-Systemen',
+        description:
+          'Ich kümmere mich nicht nur um moderne Lösungen, sondern auch um bestehende Legacy-Systeme. Egal ob Wartung, Optimierung oder Erweiterung – ich sorge dafür, dass ältere Systeme reibungslos funktionieren und aktuellen Anforderungen gerecht werden.',
+        icon: 'tabler:layers-linked',
+      },
+      {
+        title: 'Mit Herz und Engagement',
+        description:
+          'Jedes Projekt gehe ich mit Herzblut und vollem Engagement an. Meine Arbeit ist erst dann beendet, wenn alles funktioniert und toll aussieht.',
+        icon: 'tabler:heart',
+      },
+      {
+        title: 'Hohe Performance',
+        description:
+          'Performance ist mir besonders wichtig. Jedes Projekt, das ich betreue, wird mit Adleraugen geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Perfektion und Liebe zum Detail',
+        description:
+          'Ich strebe nach Perfektion und achte auf die kleinen Details, die den Unterschied machen. Meine Arbeit zeigt sich in der Qualität und Präzision.',
+        icon: 'tabler:diamond',
+      },
+      {
+        title: 'Umfassendes Software Testing',
+        description:
+          'Gründliches Software Testing ist mir wichtig und macht mir großen Spaß. So stelle ich sicher, dass alles stabil und fehlerfrei läuft.',
+        icon: 'tabler:checkup-list',
+      },
+      {
+        title: 'Ganzheitliches Marketing',
+        description:
+          'Ich unterstütze dich dabei, deine Online-Präsenz durch SEO, SEA, Social Media und andere Strategien zu maximieren, damit du genau die richtigen Leute erreichst.',
+        icon: 'tabler:chart-pie',
+      },
+      {
+        title: 'Gemeinsam etwas Neues schaffen',
+        description:
+          'Ich liebe es, wenn Projekte wachsen und neue Ideen einfließen. Offenheit und Zusammenarbeit sind für mich das A und O, um das Beste aus einem Projekt herauszuholen.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
 </Layout>

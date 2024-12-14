@@ -15,37 +15,36 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="Willkommen,"
-    tagline="start"
+    title="Hi, Ich<br/> bin der<br/>Alain"
+    tagline="intro"
     actions={[
-      { text: 'Über mich', href: '/about' },
-      { text: 'FAQ´s', href: '/#faq' },
+      { variant: 'primary', text: 'Über mich', href: '/about' },
+      { variant: 'secondary', text: 'FAQ´s', href: '/#faq' },
     ]}
   >
-    <Fragment slot="title"> Willkommen, </Fragment>
+    <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span
-        >auf meiner persönlichen Homepage. <br />Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
-        Webentwicklung, Design, Projektmanagement und anderen Themen die mich begeistern.
+        >Willkommen auf meinem persönlichen, digitalen Raum der Entfaltung. <br />Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
+        Webentwicklung, Design, Projektmanagement und anderen Themen, die mich begeistern.
       </span>
     </Fragment>
     <Fragment slot="bg">
       <img
-        src="https://images.unsplash.com/photo-1731926851260-de4f4763dc40?q=80&w=1469&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        class="absolute inset-0 object-cover w-full h-full dark:hidden"
+        src="/images/photo-1428908728789-d2de25dbd4e2.jpg"
+        class="absolute inset-0 object-top w-full h-full dark:hidden"
         alt="Alain Ritter"
       />
     </Fragment>
   </Hero>
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
+  title="Von Ideen zu Projekten: Einblicke in meine Gedanken und Werke!"
+  information={`In diesem Blog nehme ich dich mit in meine Welt, die sich rund um Webentwicklung, Design, Projektmanagement und Testing dreht. Hier findest du keine perfekte Anleitung oder universelle Wahrheiten, sondern ehrliche Einblicke in meine Interessen, meine Projekte und die Herausforderungen, die mich beschäftigen.
+              `}
+/>
+
 
   <!-- FAQs Widget ******************* -->
 
@@ -54,7 +53,7 @@ const metadata = {
     title="Häufig gestellte Fragen"
     subtitle="Hier findest du Antworten auf die häufigsten Fragen zu dieser kleinen Ecke des Internets. Ich hoffe, du findest hier, was du suchst. Wenn nicht, schreib mir einfach – ich helfe gerne weiter!"
     tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
+    classes={{ container: 'max-w-5xl' }}
     items={[
       {
         title: 'Was soll das Logo bedeuten?',
