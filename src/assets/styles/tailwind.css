@@ -26,19 +26,19 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-xl border bg-transparent text-center py-1.5 px-4 ease-in duration-200 focus:ring-2 focus:ring-offset-2 cursor-pointer uppercase;
+    @apply Anklepants tracking-wider uppercase inline-flex items-center justify-center rounded-lg text-base px-5 py-2.5 text-center me-2 mb-2;
   }
 
   .btn-primary {
-    @apply btn font-semibold bg-primary text-white dark:text-white border-primary hover:bg-secondary hover:border-secondary dark:bg-primary dark:border-primary dark:hover:border-secondary dark:hover:bg-secondary;
+    @apply btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
   }
 
   .btn-secondary {
-    @apply btn font-semibold bg-secondary text-white border-secondary hover:bg-primary hover:border-primary dark:bg-secondary dark:border-secondary dark:hover:border-primary dark:hover:bg-primary;
+    @apply btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
   }
-
+  
   .btn-tertiary {
-    @apply btn font-semibold bg-secondary text-white border-secondary hover:bg-primary hover:border-primary dark:bg-secondary dark:border-secondary dark:hover:border-primary dark:hover:bg-primary;
+    @apply btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
   }
 }
 
@@ -98,3 +98,13 @@
   margin-top: 0;
 }
 
+@font-face {
+  font-family: 'Anklepants';
+  src: url('/fonts/Anklepants.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.Anklepants {
+  font-family: 'Anklepants';
+}
