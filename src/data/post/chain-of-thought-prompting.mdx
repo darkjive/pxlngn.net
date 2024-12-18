@@ -27,8 +27,9 @@ Diese Methode wird verwendet, um die Transparenz und Nachvollziehbarkeit von KI-
 1. **Prompt-Design**: Anstatt eine direkte Frage zu stellen, wird der Prompt so gestaltet, dass das Modell zur Erklärung seiner Schritte angeregt wird. Das bedeutet, dass der Prompt das Modell auffordert, eine Reihe von Zwischenüberlegungen oder Schritten zu generieren, bevor es zur endgültigen Antwort kommt.
 
    **Beispiel**:
-   - Anstatt nur zu fragen: *„Wie viel ist 19 mal 7?“*
-   - Wird das Modell gefragt: *„Erkläre Schritt für Schritt, wie du 19 mal 7 berechnen würdest.“*
+
+   - Anstatt nur zu fragen: _„Wie viel ist 19 mal 7?“_
+   - Wird das Modell gefragt: _„Erkläre Schritt für Schritt, wie du 19 mal 7 berechnen würdest.“_
 
 2. **Zwischenüberlegungen**: Das Modell wird dazu aufgefordert, nach und nach seine Gedanken zu äußern. Bei mathematischen Aufgaben könnte dies das Aufteilen der Zahl in kleinere Schritte oder das Aufschreiben von Rechenoperationen beinhalten.
 
@@ -37,17 +38,19 @@ Diese Methode wird verwendet, um die Transparenz und Nachvollziehbarkeit von KI-
 ## Anwendungsbeispiele für Chain-of-Thought (CoT)
 
 1. **Mathematische Berechnungen**: Bei komplexen Berechnungen ist CoT besonders nützlich, um sicherzustellen, dass das Modell den richtigen Rechenweg geht.
-   
+
    **Beispiel**:
+
    - Frage: „Wie viele Minuten sind in 5 Stunden und 35 Minuten?“
-   - CoT-Antwort: 
+   - CoT-Antwort:
      - „Zuerst rechnen wir die Minuten in Stunden um: 5 Stunden sind 5 mal 60 Minuten, also 300 Minuten.“
      - „Nun addieren wir 300 Minuten zu den 35 Minuten.“
      - „Die Gesamtsumme ergibt 335 Minuten.“
-   
+
 2. **Logische Schlussfolgerungen**: CoT kann bei Aufgaben helfen, bei denen das Modell mehrere Schritte durchführen muss, um zu einer Schlussfolgerung zu kommen.
 
    **Beispiel**:
+
    - Frage: „Welcher Tag war 100 Tage nach dem 1. Januar?“
    - CoT-Antwort:
      - „100 Tage nach dem 1. Januar entspricht ungefähr 3 Monaten und 10 Tagen.“
@@ -56,6 +59,7 @@ Diese Methode wird verwendet, um die Transparenz und Nachvollziehbarkeit von KI-
 3. **Textverständnis**: Beim Verstehen von Texten und beim Beantworten von Fragen zu Texten kann CoT helfen, die Schlüsselideen und Details zu extrahieren und zu einem klaren Verständnis zu kommen.
 
    **Beispiel**:
+
    - Frage: „Was ist das Hauptthema des folgenden Textes?“
    - CoT-Antwort:
      - „Zuerst lese ich den Text und identifiziere die Hauptpunkte.“
@@ -65,7 +69,6 @@ Diese Methode wird verwendet, um die Transparenz und Nachvollziehbarkeit von KI-
 ## Vorteile von Chain-of-Thought (CoT)
 
 1. **Verbesserte Genauigkeit**: CoT kann dazu beitragen, dass das Modell weniger Fehler macht, indem es den Prozess explizit beschreibt und so sicherstellt, dass alle relevanten Schritte berücksichtigt werden.
-   
 2. **Transparenz und Nachvollziehbarkeit**: Durch die Auflistung von Schritten und Gedankenprozessen wird das Modell für den Benutzer transparenter. Man kann nachvollziehen, wie das Modell zu einer bestimmten Antwort gelangt ist.
 
 3. **Bessere Leistung bei komplexen Aufgaben**: Insbesondere bei Aufgaben, die mehrere Schritte oder logisches Schlussfolgern erfordern, zeigt CoT eine verbesserte Leistung im Vergleich zu traditionellen Methoden, die nur die Antwort liefern.

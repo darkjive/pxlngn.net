@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -34,13 +34,13 @@ export const headerData = {
         },
         {
           text: 'Technik',
-          href: getPermalink('/about#techniken'),
+          href: getPermalink('/about#tech'),
         },
       ],
     },
     {
       text: 'BLOG',
-      href: getPermalink('blog', 'category'),
+      href: getBlogPermalink(),
     },
   ],
   actions: [{ text: 'KONTAKT', icon: 'tabler:mail', href: 'mailto:alain-ritter@protonmail.com' }],
@@ -53,7 +53,7 @@ export const footerData = {
       links: [
         {
           text: 'Portfolio',
-          href: getPermalink('portfolio', 'category'),
+          href: getPermalink(),
         },
         {
           text: 'FAQ´s',
@@ -80,30 +80,30 @@ export const footerData = {
         },
         {
           text: 'Technik',
-          href: getPermalink('/about#techniken'),
+          href: getPermalink('/about#tech'),
         },
       ],
     },
     {
       title: 'Blog',
-      href: getPermalink('blog', 'category'),
-      links: []
+      href: getBlogPermalink(),
+      links: [],
     },
     {
       title: 'Kontakt',
       href: 'mailto:alain-ritter@protonmail.com',
-      links: []
+      links: [],
     },
     {
       title: 'Impressum',
       href: getPermalink('/terms'),
-      links: []
-  },
+      links: [],
+    },
     {
       title: 'Datenschutz',
       href: getPermalink('/privacy'),
-      links: []
-  },
+      links: [],
+    },
   ],
   socialLinks: [
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },

@@ -1,12 +1,20 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+
 import Hero from '~/components/widgets/Hero.astro';
+// import Note from '~/components/widgets/Note.astro';
+// import Features from '~/components/widgets/Features.astro';
+// import Features2 from '~/components/widgets/Features2.astro';
+// import Steps from '~/components/widgets/Steps.astro';
 // import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+// import Stats from '~/components/widgets/Stats.astro';
+// import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'P X L N G N ~ pixel engineer [Alain Ritter]',
+  ignoreTitleTemplate: true,
 };
 ---
 
@@ -15,36 +23,30 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="Hi, Ich<br/> bin der<br/>Alain"
+    title="Hallo,"
     tagline="intro"
     actions={[
       { variant: 'primary', text: 'Über mich', href: '/about' },
-      { variant: 'secondary', text: 'FAQ´s', href: '/#faq' },
+      { variant: 'primary', text: 'FAQs', href: '#faq' },
     ]}
+    bg='<img class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden" src="/images/photo-1428908728789-d2de25dbd4e2.jpg">'
   >
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span
-        >Willkommen auf meinem persönlichen, digitalen Raum der Entfaltung. <br />Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
-        Webentwicklung, Design, Projektmanagement und anderen Themen, die mich begeistern.
+        >und willkommen auf meinem Blog. <br />Auf den folgenden Seiten teile ich
+        meine Erfahrungen<br /> und Gedanken zu Webentwicklung, Design, Projektmanagement<br /> und anderen Themen, die mich
+        begeistern.
       </span>
-    </Fragment>
-    <Fragment slot="bg">
-      <img
-        src="/images/photo-1428908728789-d2de25dbd4e2.jpg"
-        class="absolute inset-0 object-top w-full h-full dark:hidden"
-        alt="Alain Ritter"
-      />
     </Fragment>
   </Hero>
 
   <BlogLatestPosts
-  title="Von Ideen zu Projekten: Einblicke in meine Gedanken und Werke!"
-  information={`In diesem Blog nehme ich dich mit in meine Welt, die sich rund um Webentwicklung, Design, Projektmanagement und Testing dreht. Hier findest du keine perfekte Anleitung oder universelle Wahrheiten, sondern ehrliche Einblicke in meine Interessen, meine Projekte und die Herausforderungen, die mich beschäftigen.
+    title="Von Ideen zu Projekten: Einblicke in meine Gedanken und Werke!"
+    information={`In diesem Blog nehme ich dich mit in meine Welt, die sich rund um Webentwicklung, Design, Projektmanagement und Testing dreht. Hier findest du keine perfekte Anleitung oder universelle Wahrheiten, sondern ehrliche Einblicke in meine Interessen, meine Projekte und die Herausforderungen, die mich beschäftigen.
               `}
-/>
-
+  />
 
   <!-- FAQs Widget ******************* -->
 

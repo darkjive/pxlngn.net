@@ -43,10 +43,7 @@ const posts = APP_BLOG.isEnabled ? await findPostsByIds(postIds) : [];
               set:html={title}
             />
             {APP_BLOG.list.isEnabled && linkText && linkUrl && (
-              <a
-                class="text-muted dark:text-slate-400 hover:text-primary block mb-6 lg:mb-0"
-                href={linkUrl}
-              >
+              <a class="text-muted dark:text-slate-400 hover:text-primary block mb-6 lg:mb-0" href={linkUrl}>
                 {linkText} »
               </a>
             )}

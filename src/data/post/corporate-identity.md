@@ -22,8 +22,7 @@ Ein gutes Logo ist das Herzstück jeder Corporate Identity. Für Amea wollte ich
 
 Das Logo besteht aus einem stilisierten "A" und "M", die ineinander verschlungen sind, um Harmonie und Balance zu symbolisieren. Die Farben sind ein sanftes Blau und Grün, die für Vertrauen und Natur stehen. Das Ergebnis ist ein Logo, das sowohl modern als auch beruhigend wirkt.
 
-![Original](/src/assets/images/Screenshot-2024-12-11-174000.jpg "Opa")
-
+![Original](/src/assets/images/Screenshot-2024-12-11-174000.jpg 'Opa')
 
 ## 2. Visitenkarten: Der persönliche Touch
 
@@ -31,8 +30,7 @@ Visitenkarten sind ein wichtiger Bestandteil der Corporate Identity, da sie oft 
 
 Ich habe mich für ein hochwertiges Papier und eine edle Veredelung entschieden, um den professionellen Eindruck zu verstärken. Die Rückseite der Visitenkarte ziert ein dezentes Muster, das die sanften Farben des Logos aufgreift und so für ein einheitliches Erscheinungsbild sorgt.
 
-![Original](/src/assets/images/Screenshot-2024-12-11-173938.jpg "Opa")
-
+![Original](/src/assets/images/Screenshot-2024-12-11-173938.jpg 'Opa')
 
 ## 3. Gutscheine: Ein Geschenk, das Freude bereitet
 
@@ -40,8 +38,7 @@ Gutscheine sind eine großartige Möglichkeit, neue Kunden zu gewinnen und beste
 
 Die Gutscheine sind in den gleichen Farben wie das Logo gehalten und enthalten ein elegantes Design, das die Wertigkeit der angebotenen Dienstleistungen unterstreicht. Ein kleiner Hinweis auf die Vorteile der Massagen und Körperarbeit rundet das Design ab und macht den Gutschein zu einem echten Hingucker.
 
-![Original](/src/assets/images/Screenshot-2024-12-11-173912.jpg "Opa")
-
+![Original](/src/assets/images/Screenshot-2024-12-11-173912.jpg 'Opa')
 
 ## 4. Fahrzeugbeschriftung: Mobil werben
 
@@ -49,13 +46,12 @@ Eine Fahrzeugbeschriftung ist eine effektive Möglichkeit, die Marke Amea auch u
 
 Die Folierung ist in den gleichen Farben wie das Logo gehalten und fügt sich harmonisch in das Design des Fahrzeugs ein. So wird Amea nicht nur auf der Straße, sondern auch auf Parkplätzen und bei Hausbesuchen wahrgenommen – eine mobile Werbefläche, die immer im Einsatz ist.
 
-![Original](/src/assets/images/Screenshot-2024-12-11-181651.jpg "Opa")
+![Original](/src/assets/images/Screenshot-2024-12-11-181651.jpg 'Opa')
 
 ## Fazit
 
 Die Entwicklung der Corporate Identity für Amea - Massagen und Körperarbeit war ein spannendes Projekt, das mir viel Freude bereitet hat. Von der Logo-Erstellung über die Gestaltung von Visitenkarten und Gutscheinen bis hin zur Fahrzeugbeschriftung – jedes Element trägt dazu bei, Amea einen professionellen und einprägsamen Auftritt zu verleihen.
 
 Ich hoffe, dir hat dieser Einblick in meine Arbeit gefallen! Wenn du Fragen hast oder selbst an einer neuen Corporate Identity interessiert bist, lass es mich wissen. Ich freue mich darauf, von dir zu hören!
-
 
 [[Top]](#top)

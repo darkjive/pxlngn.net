@@ -13,31 +13,22 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-
   <Hero
     id="hero"
-    title="über<br/>mich"
+    title="Über<br/>mich"
     tagline="Profil"
-    
     actions={[
-      { variant: 'primary', text: 'Vita', href: '/about#resume' },
-      { variant: 'primary', text: 'Skills', href: '/about#skills' },
+      { variant: 'primary', text: 'Vita', href: '#resume' },
+      { variant: 'primary', text: 'Skills', href: '#skills' },
     ]}
+    bg='<img class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden" src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2703&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">'
   >
     <Fragment slot="subtitle">
       <span>
-      Ich heiße <span class="font-bold">
-        Alain </span>[alɛ̃] – ein Generalist, der die Schnittstellen <br/> zwischen 
-        Design und Projektmanagement liebt. <br/>
-        Hier kannst du mehr über meine<br/> Herangehensweise und mein Wissen erfahren.
+        Ich heiße <span class="font-bold"> Alain Ritter</span><br class="md:hidden"/> - ein Generalist, der die Schnittstellen <br /> zwischen Design
+        und Projektmanagement liebt. <br />
+        Hier kannst du mehr über meine<br /> Herangehensweise und mein Wissen erfahren.
       </span>
-    </Fragment>
-    <Fragment slot="bg">
-      <img
-        src="https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2703&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden"
-        alt="Alain Ritter"
-      />
     </Fragment>
   </Hero>
   <Content
@@ -122,7 +113,7 @@ const metadata = {
       },
       {
         title:
-          'Intercontact Werbegesellschaft mbH i.L. <br /> <span class="font-normal">Web-Entwickler</span> <br /> <span class="text-sm font-normal">2010 - 2012</span>',
+          'Intercontact Werbegesellschaft mbH <br /> <span class="font-normal">Web-Entwickler</span> <br /> <span class="text-sm font-normal">2010 - 2012</span>',
         description: `Entwicklung von Webseiten und Online-Anwendungen. <br /> Einsatz von CSS und Adobe Illustrator für die Gestaltung und Umsetzung. <br /> Unterstützung bei digitalen Marketingkampagnen.`,
         icon: 'tabler:briefcase',
         logo: {
@@ -240,7 +231,7 @@ const metadata = {
   <!-- Brands Widget ****************** -->
 
   <Brands
-    id="techniken"
+    id="tech"
     title="Software stack"
     subtitle="Diese Technologien beherrsche ich."
     icons={[]}

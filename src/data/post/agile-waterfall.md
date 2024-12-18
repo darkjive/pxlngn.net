@@ -18,7 +18,6 @@ Agile Methoden wie Scrum oder Kanban sind heutzutage der Goldstandard für moder
 
 ---
 
-
 ## Was zeichnet agile Projekte aus?
 
 Agile Projekte basieren auf flexiblen, iterativen Prozessen. Die zentralen Prinzipien sind:

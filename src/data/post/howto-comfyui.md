@@ -22,19 +22,19 @@ Bevor du mit der Installation von ComfyUI beginnst, stelle sicher, dass die folg
 
 1. **Python 3.8 oder höher**: ComfyUI benötigt Python 3.8 oder höher. Du kannst die Version von Python überprüfen, indem du den folgenden Befehl in deinem Terminal ausführst:
 
-    ```bash
-    python --version
-    ```
+   ```bash
+   python --version
+   ```
 
-    Falls Python nicht installiert ist oder du eine ältere Version hast, kannst du die neueste Version von der [offiziellen Python-Website](https://www.python.org/downloads/) herunterladen und installieren.
+   Falls Python nicht installiert ist oder du eine ältere Version hast, kannst du die neueste Version von der [offiziellen Python-Website](https://www.python.org/downloads/) herunterladen und installieren.
 
 2. **Git**: Stelle sicher, dass Git installiert ist, um das Repository zu klonen. Überprüfe dies mit:
 
-    ```bash
-    git --version
-    ```
+   ```bash
+   git --version
+   ```
 
-    Falls Git nicht installiert ist, lade es von der [offiziellen Git-Website](https://git-scm.com/) herunter und installiere es.
+   Falls Git nicht installiert ist, lade es von der [offiziellen Git-Website](https://git-scm.com/) herunter und installiere es.
 
 ## ComfyUI installieren
 
@@ -42,21 +42,21 @@ Befolge diese Schritte, um ComfyUI zu installieren:
 
 1. **Repository klonen**: Klone das ComfyUI-Repository von GitHub in ein Verzeichnis deiner Wahl:
 
-    ```bash
-    git clone https://github.com/comfyanonymous/ComfyUI.git
-    ```
+   ```bash
+   git clone https://github.com/comfyanonymous/ComfyUI.git
+   ```
 
 2. **In das Verzeichnis wechseln**: Wechsle in das Verzeichnis des geklonten Repositories:
 
-    ```bash
-    cd ComfyUI
-    ```
+   ```bash
+   cd ComfyUI
+   ```
 
 3. **Abhängigkeiten installieren**: Installiere die benötigten Abhängigkeiten mit pip:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## ComfyUI starten
 
@@ -67,3 +67,4 @@ python main.py
 
 
 
+```
