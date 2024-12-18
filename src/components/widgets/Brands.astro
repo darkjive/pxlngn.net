@@ -30,7 +30,7 @@ const {
           (image) =>
             image.src && (
               <div class="flex justify-center col-span-1 my-2 lg:my-4 py-1 px-3 rounded-md dark:bg-gray-200">
-                <Image src={image.src} alt={image.alt || ''} class="max-full" width={75} height={75} layout="fixed" />
+                <Image src={image.src} alt={image.alt || ''} class="max-full" width={75} height={75} layout="fixed" title={image.alt || ''} />
               </div>
             )
         )
