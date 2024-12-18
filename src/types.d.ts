@@ -44,10 +44,10 @@ export interface Post {
   readingTime?: number;
 }
 
-export interface Taxonomy {
-  slug: string;
-  title: string;
-}
+// export interface Taxonomy {
+//   slug: string;
+//   title: string;
+// }
 
 export interface MetaData {
   title?: string;
@@ -112,25 +112,25 @@ export interface Headline {
   classes?: Record<string, string>;
 }
 
-interface TeamMember {
-  name?: string;
-  job?: string;
-  image?: Image;
-  socials?: Array<Social>;
-  description?: string;
-  classes?: Record<string, string>;
-}
+// interface TeamMember {
+//   name?: string;
+//   job?: string;
+//   image?: Image;
+//   socials?: Array<Social>;
+//   description?: string;
+//   classes?: Record<string, string>;
+// }
 
 interface Social {
   icon?: string;
   href?: string;
 }
 
-export interface Stat {
-  amount?: number | string;
-  title?: string;
-  icon?: string;
-}
+// export interface Stat {
+//   amount?: number | string;
+//   title?: string;
+//   icon?: string;
+// }
 
 export interface Item {
   title?: string;
@@ -228,13 +228,13 @@ export interface Team extends Omit<Headline, 'classes'>, Widget {
   team?: Array<TeamMember>;
 }
 
-export interface Stats extends Omit<Headline, 'classes'>, Widget {
-  stats?: Array<Stat>;
-}
+// export interface Stats extends Omit<Headline, 'classes'>, Widget {
+//   stats?: Array<Stat>;
+// }
 
-export interface Pricing extends Omit<Headline, 'classes'>, Widget {
-  prices?: Array<Price>;
-}
+// export interface Pricing extends Omit<Headline, 'classes'>, Widget {
+//   prices?: Array<Price>;
+// }
 
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
   testimonials?: Array<Testimonial>;
