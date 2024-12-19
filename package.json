@@ -29,7 +29,7 @@
     "@fontsource-variable/baloo-bhaijaan-2": "^5.1.0",
     "@fontsource-variable/inter": "^5.1.0",
     "@swup/astro": "^1.5.0",
-    "astro": "^5.0.5",
+    "astro": "^5.0.9",
     "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",
     "astro-tooltips": "^0.6.2",
