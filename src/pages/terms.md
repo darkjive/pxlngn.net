@@ -3,7 +3,7 @@ title: 'Impressum'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
-Alain Ritter   
+Alain Ritter  
 64295, Darmstadt  
 Amselweg 33  
 E-Mail:  
