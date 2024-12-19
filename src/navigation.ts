@@ -25,10 +25,6 @@ export const headerData = {
           href: getPermalink('/about#about'),
         },
         {
-          text: 'Lebenslauf',
-          href: getPermalink('/about#resume'),
-        },
-        {
           text: 'Skills',
           href: getPermalink('/about#skills'),
         },
@@ -53,7 +49,7 @@ export const footerData = {
       links: [
         {
           text: 'Portfolio',
-          href: getPermalink(),
+          href: getPermalink('portfolio', 'category'),
         },
         {
           text: 'FAQ´s',
@@ -69,10 +65,6 @@ export const footerData = {
         {
           text: 'Über mich',
           href: getPermalink('/about#about'),
-        },
-        {
-          text: 'Lebenslauf',
-          href: getPermalink('/about#resume'),
         },
         {
           text: 'Skills',
