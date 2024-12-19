@@ -1,5 +1,5 @@
 ---
-publishDate: 2024-12-05T00:00:00Z
+publishDate: 2024-01-05T00:00:00Z
 author: Alain Ritter
 title: Wenn agile Projekte doch Wasserfall sind
 excerpt: In diesem Beitrag beleuchte ich, warum sich agile Projekte oft in Wasserfall-ähnliche Strukturen zurückentwickeln und wie man diesen Fallstricken entkommt. Agilität bedeutet mehr als nur Methoden wie Scrum oder Kanban – sie erfordert eine kulturelle Veränderung, Flexibilität und Empowerment der Teams.

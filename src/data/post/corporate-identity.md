@@ -1,5 +1,5 @@
 ---
-publishDate: 2023-07-15T00:00:00Z
+publishDate: 2010-02-15T00:00:00Z
 author: Alain Ritter
 title: 'Corporate Identity Design - Amea'
 excerpt: Die Entwicklung der Corporate Identity für Amea - Massagen und Körperarbeit"
