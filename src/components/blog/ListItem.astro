@@ -55,6 +55,7 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
               aspectRatio="16:9"
               loading="lazy"
               decoding="async"
+              title={post.title}
             />
           )}
         </div>
