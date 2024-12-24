@@ -12,8 +12,6 @@ metadata:
   canonical: https://pxlngn.net/figma-nach-tailwind
 ---
 
-# So exportierst du Tailwind-Klassen aus Figma mit dem Plugin "Figma to Code"
-
 Wenn ich ein Figma-Design in Code umsetzen möchte, nutze ich oft das Plugin **"Figma to Code (HTML, Tailwind, Flutter, SwiftUI)"**. Damit kann ich schnell und einfach **Tailwind CSS**-Klassen für mein Design generieren. Das spart Zeit und erleichtert die Umsetzung erheblich. In diesem Guide erkläre ich dir Schritt für Schritt, wie du das machen kannst.
 
 ---

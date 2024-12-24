@@ -12,9 +12,7 @@ metadata:
   canonical: https://pxlngn.net/corporate-identity
 ---
 
-# Die Entwicklung der Corporate Identity für Amea - Massagen und Körperarbeit
-
-Hey, willkommen zu einem neuen Blogbeitrag! Heute zeige ich dir, wie ich für "Amea - Massagen und Körperarbeit" eine einheitliche und ansprechende Corporate Identity entwickelt habe. Von der Logo-Erstellung über die Gestaltung von Visitenkarten und Gutscheinen bis hin zur Fahrzeugbeschriftung – ich habe alles abgedeckt, um Amea einen professionellen und einprägsamen Auftritt zu verleihen.
+Hier zeige ich dir, wie ich für "Amea - Massagen und Körperarbeit" eine einheitliche und ansprechende Corporate Identity entwickelt habe. Von der Logo-Erstellung über die Gestaltung von Visitenkarten und Gutscheinen bis hin zur Fahrzeugbeschriftung – ich habe alles abgedeckt, um Amea einen professionellen und einprägsamen Auftritt zu verleihen.
 
 ## 1. Das Logo: Der erste Eindruck zählt
 

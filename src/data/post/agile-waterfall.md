@@ -12,8 +12,6 @@ metadata:
   canonical: https://pxlngn.net/agile-waterfall
 ---
 
-# Wenn agile Projekte doch Wasserfall sind
-
 Agile Methoden wie Scrum oder Kanban sind heutzutage der Goldstandard für moderne Softwareentwicklung. Doch nicht selten erlebt man Projekte, die sich zwar auf die Fahne schreiben, agil zu sein, am Ende jedoch die Charakteristika eines klassischen Wasserfall-Modells aufweisen. Warum passiert das? Und wie kann man die „Agile-in-Name-Only“-Falle vermeiden?
 
 ---
