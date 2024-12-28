@@ -145,7 +145,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           {
             showRssFeed && (
               <a
-                class="text-muted hover:text-primary dark:hover:text-primary rounded-lg text-sm p-2 inline-flex items-center"
+                class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:bg-transparent rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
                 aria-label="RSS Feed"
                 href={getAsset('/rss.xml')}
               >
@@ -157,7 +157,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         {
           actions?.length ? (
             <a
-              class="text-muted hover:text-primary dark:hover:text-primary rounded-lg text-sm p-2 inline-flex items-center"
+              class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-900 dark:bg-transparent rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
               href={actions?.[0].href}
             >
               <Icon name="tabler:mail" class="w-5 h-5" />
