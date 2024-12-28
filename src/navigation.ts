@@ -3,12 +3,16 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'INTRO',
+      text: 'Intro',
       href: getPermalink(),
       links: [
         {
           text: 'Portfolio',
-          href: getPermalink('portfolio', 'category'),
+          href: getPermalink('/portfolio'),
+        },
+        {
+          text: 'Blog',
+          href: getPermalink('/#blog'),
         },
         {
           text: 'FAQ´s',
@@ -17,7 +21,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'PROFIL',
+      text: 'Profil',
       href: getPermalink('/about'),
       links: [
         {
@@ -25,17 +29,21 @@ export const headerData = {
           href: getPermalink('/about#about'),
         },
         {
-          text: 'Skills',
+          text: 'Lebenslauf',
+          href: getPermalink('/about#resume'),
+        },
+        {
+          text: 'Fähigkeiten',
           href: getPermalink('/about#skills'),
         },
         {
-          text: 'Technik',
-          href: getPermalink('/about#tech'),
+          text: 'Abstrakt',
+          href: getPermalink('/about#abstract'),
         },
       ],
     },
     {
-      text: 'BLOG',
+      text: 'Blog',
       href: getBlogPermalink(),
     },
   ],
@@ -44,12 +52,16 @@ export const headerData = {
 export const footerData = {
   links: [
     {
-      title: 'INTRO',
+      title: 'Intro',
       href: getPermalink(),
       links: [
         {
           text: 'Portfolio',
-          href: getPermalink('portfolio', 'category'),
+          href: getPermalink('/portfolio'),
+        },
+        {
+          text: 'Blog',
+          href: getPermalink('/#blog'),
         },
         {
           text: 'FAQ´s',
@@ -67,23 +79,22 @@ export const footerData = {
           href: getPermalink('/about#about'),
         },
         {
-          text: 'Skills',
+          text: 'Lebenslauf',
           href: getPermalink('/about#skills'),
         },
         {
-          text: 'Technik',
-          href: getPermalink('/about#tech'),
+          text: 'Fähigkeiten',
+          href: getPermalink('/about#skills'),
+        },
+        {
+          text: 'Abstrakt',
+          href: getPermalink('/about#abstract'),
         },
       ],
     },
     {
       title: 'Blog',
       href: getBlogPermalink(),
-      links: [],
-    },
-    {
-      title: 'Kontakt',
-      href: 'mailto:alain-ritter@protonmail.com',
       links: [],
     },
     {
@@ -99,6 +110,6 @@ export const footerData = {
   ],
   socialLinks: [
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
   ],
 };
