@@ -2,15 +2,9 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
-// import Note from '~/components/widgets/Note.astro';
-// import Features from '~/components/widgets/Features.astro';
-// import Features2 from '~/components/widgets/Features2.astro';
-// import Steps from '~/components/widgets/Steps.astro';
-// import Content from '~/components/widgets/Content.astro';
+import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-// import Stats from '~/components/widgets/Stats.astro';
-// import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
   title: 'pxlngn | Intro',
@@ -29,7 +23,7 @@ const metadata = {
       { variant: 'primary', text: 'Über mich', href: '/about' },
       { variant: 'primary', text: 'FAQs', href: '#faq' },
     ]}
-    bg='<img class="absolute -my-2 inset-0 object-cover w-full h-full dark:hidden" src="/images/photo-1428908728789-d2de25dbd4e2.jpg">'
+    bg='<img class="absolute -my-2 inset-0 object-fill w-full h-full dark:hidden" src="/images/photo-1428908728789-d2de25dbd4e2.jpg" />'
   >
     <Fragment slot="title"></Fragment>
 
@@ -41,7 +35,165 @@ const metadata = {
     </Fragment>
   </Hero>
 
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="portfolio"
+    title="Mein Portfolio"
+    subtitle="Vergangenes und Aktuelles: Projekte, die mich geprägt haben."
+    isReversed
+    items={[
+      {
+        title: 'Beschreibung:',
+        description:
+          'Entwickelte ein responsives Dashboard für ein Technologie-Startup, das Echtzeit-Datenanalyse bietet. Der Fokus lag auf einer benutzerfreundlichen Oberfläche, die sowohl für Einsteiger als auch für erfahrene Nutzer zugänglich ist.',
+      },
+      {
+        title: 'Rolle:',
+        description:
+          'Konzipierte und implementierte das Frontend mit modernen Technologien wie React und Tailwind CSS. Optimierte die Performance durch Lazy Loading und State-Management mit Redux.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1658248165252-71e116af1b34?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=928&q=80',
+      alt: 'Tech Dashboard Image',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Projekt ansehen',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Projekt 1: <br /><span class="text-2xl">Interaktives Dashboard für Tech-Innovatoren</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute bg-slate-100"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Weiteres Projekt -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Beschreibung:',
+        description:
+          'Entwickelte eine Landingpage für ein Kunst- und Musikfestival mit Fokus auf einer immersiven Benutzererfahrung. Die Seite enthält animierte Übergänge und interaktive Elemente.',
+      },
+      {
+        title: 'Rolle:',
+        description:
+          'Erstellte die Benutzeroberfläche mit Astro und Tailwind CSS. Integrierte dynamische Inhalte und Animationen mit JavaScript und sorgte für eine reibungslose Performance.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1619983081563-430f63602796?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
+      alt: 'Art and Music Landing Page Image',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Projekt ansehen',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Projekt 2: <br /><span class="text-2xl">Landingpage für Kunst- und Musikfestival</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute bg-slate-100"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Weiteres Projekt -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Beschreibung:',
+        description:
+          'Überarbeitete die Benutzeroberfläche eines E-Commerce-Shops, um die Konversionsrate zu erhöhen und die Benutzerfreundlichkeit zu verbessern.',
+      },
+      {
+        title: 'Rolle:',
+        description:
+          'Entwickelte ein neues Frontend mit React und integrierte ein modernes Design. Implementierte Filter- und Suchfunktionen, um die Navigation im Shop zu vereinfachen.',
+      },
+    ]}
+    image={{
+      src: 'https://plus.unsplash.com/premium_photo-1683288295841-782fa47e4770?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      alt: 'E-Commerce Shop Image',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Projekt ansehen',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Projekt 3: <br /><span class="text-2xl">Redesign eines E-Commerce-Shops</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute bg-slate-100"></div>
+    </Fragment>
+  </Content>
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Beschreibung:',
+        description:
+          'Erstellt ein interaktives Webdesign für eine Fitness-App-Website, um potenzielle Nutzer anzusprechen und die Benutzerfreundlichkeit zu maximieren.',
+      },
+      {
+        title: 'Rolle:',
+        description:
+          'Entwickelte das UI mit Figma und implementierte das Frontend mit HTML, CSS und JavaScript. Integrierte Benutzerinteraktionen wie animierte Übergänge, Tooltips und responsive Layouts.',
+      },
+    ]}
+    image={{
+      src: 'https://picsum.photos/seed/picsum/200/300',
+      alt: 'Fitness App Webdesign',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Projekt ansehen',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Projekt 4: <br /><span class="text-2xl">UI/UX-Design für Fitness-App-Website</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute bg-slate-100"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Blog Latest Posts ******************* -->
+
   <BlogLatestPosts
+    id="blog"
     title="Von Ideen zu Projekten: Einblicke in meine Gedanken und Werke!"
     information={`In diesem Blog nehme ich dich mit in meine Welt, die sich rund um Webentwicklung, Design, Projektmanagement und Testing dreht. Hier findest du keine perfekte Anleitung oder universelle Wahrheiten, sondern ehrliche Einblicke in meine Interessen, meine Projekte und die Herausforderungen, die mich beschäftigen.
               `}
@@ -59,33 +211,32 @@ const metadata = {
       {
         title: 'Was soll das Logo bedeuten?',
         description:
-          'Mein Logo steht für Pixel Engine { p x l n g n }. Es zeigt meine Leidenschaft für kreatives Design und technische Perfektion – jedes Pixel sitzt genau richtig.',
+          'Mein Logo, welches mich seit Jahren begleitet, bedeutet ausgeschrieben "Pixel Engine", nur ohne Konsonanten. Die Wörter Pixel und Engine, sind Synonyme für Design und Logik.',
       },
       {
-        title: 'Warum benutzt du das Astrowind Theme?',
+        title: 'Warum benutzt du Astro als SSG?',
         description:
-          'Astrowind von onWidget ist nicht nur schick, sondern auch technisch stark. Es ist leicht, flexibel und super dokumentiert, was das Entwickeln und Anpassen viel einfacher macht. Außerdem passt es perfekt zu meinen Ansprüchen an Performance und Design.',
+          'Astro ist ein JavaScript Framework, welches die Entwicklung von schnellen und auf Content spezialisierte Websites unterstützt. Und weil ich schnelle Ergebnisse liebe ist Astro für meinen Zweck genau richtig.',
       },
       {
         title: 'Wo hostest du deine Seiten?',
         description:
-          'Ich hoste meine privaten Seiten, traditionell schon immer bei <a href="https://www.ionos.de/" target="_blank">IONOS</a>. Ich habe viele Erfahrungen mit verschiedenen Hosting-Anbietern gemacht. Und kann IONOS uneingeschränkt empfehlen.',
+          'Ich hoste meine privaten Seiten, traditionell schon immer bei <a href="https://www.ionos.de/" target="_blank">IONOS</a>. Ich habe viele Erfahrungen mit verschiedenen Hosting-Anbietern oder gemacht. Und kann IONOS uneingeschränkt empfehlen.',
       },
       {
         title: 'Du schreibst du bist Entwickler, Designer, Projektleiter und QA, was denn jetzt?',
         description:
-          'Ich bin ein typischer Generalist und decke alle diese Bereiche ab. Mein Herz schlägt aktuell jedoch für Design und Entwicklung.',
+          'Ich bin ein Generalist und decke alle diese Bereiche ab. Mein Herz schlägt aktuell jedoch für Design und Entwicklung.',
       },
       {
-        title: 'Kann ich dich persönlich kennenlernen?',
-        description:
-          'Klar doch! Ich bin immer offen für ein persönliches Treffen. Lass uns einfach einen Termin vereinbaren.',
+        title: 'Wie kann ich dich kennenlernen?',
+        description: 'Schreibe mir am besten eine E-Mail, oder kontaktiere mich über LinkedIn.',
       },
       {
         title: 'Bist du für Projekte zu haben?',
-        description: 'Im Moment bin ich nicht direkt für Projekte zu haben, weil ich gerade auf der Jobsuche bin.',
+        description: 'Im Moment bin ich für Projekte zu haben, schreibe mir gerne für mehr Details.',
       },
     ]}
-    bg='<div class="absolute bg-slate-100"></div>'
+    classes={{ container: 'bg-gray-100 dark:bg-transparent' }}
   />
 </Layout>
