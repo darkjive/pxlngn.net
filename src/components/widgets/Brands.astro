@@ -39,7 +39,9 @@ const {
                   layout="fixed"
                   title={image.alt}
                 />
-                {image.title && <span class="mt-2 tracking-wider text-xs text-muted dark:text-gray-900">{image.title}</span>}
+                {image.title && (
+                  <span class="mt-2 tracking-wider text-xs text-muted dark:text-gray-900">{image.title}</span>
+                )}
               </div>
             )
         )
