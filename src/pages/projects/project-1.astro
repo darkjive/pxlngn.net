@@ -1,0 +1,48 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Content from '~/components/widgets/Content.astro';
+const metadata = {
+  title: 'pxlngn | Projekt | 1',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Beschreibung:',
+        description:
+          'Erstellt ein interaktives Webdesign für eine Fitness-App-Website, um potenzielle Nutzer anzusprechen und die Benutzerfreundlichkeit zu maximieren.',
+      },
+      {
+        title: 'Rolle:',
+        description:
+          'Entwickelte das UI mit Figma und implementierte das Frontend mit HTML, CSS und JavaScript. Integrierte Benutzerinteraktionen wie animierte Übergänge, Tooltips und responsive Layouts.',
+      },
+    ]}
+    image={{
+      src: 'https://picsum.photos/seed/picsum/200/300',
+      alt: 'Fitness App Webdesign',
+    }}
+    callToAction={{
+      target: '_blank',
+      text: 'Projekt ansehen',
+      icon: 'tabler:chevron-right',
+      href: '#',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Projekt 4: <br /><span class="text-2xl">UI/UX-Design für Fitness-App-Website</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute bg-slate-100"></div>
+    </Fragment>
+  </Content>
+</Layout>

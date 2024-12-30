@@ -5,11 +5,12 @@ export const headerData = {
     {
       text: 'Intro',
       href: getPermalink(),
+      icon: 'tabler:chevron-down',
       links: [
-        {
-          text: 'Portfolio',
-          href: getPermalink('/portfolio'),
-        },
+        // {
+        //   text: 'Portfolio',
+        //   href: getPermalink('/portfolio'),
+        // },
         {
           text: 'Blog',
           href: getPermalink('/#blog'),
@@ -23,6 +24,7 @@ export const headerData = {
     {
       text: 'Profil',
       href: getPermalink('/about'),
+      icon: 'tabler:chevron-down',
       links: [
         {
           text: 'Über mich',
@@ -47,7 +49,7 @@ export const headerData = {
       href: getBlogPermalink(),
     },
   ],
-  actions: [{ text: 'KONTAKT', icon: 'tabler:mail', href: 'mailto:alain-ritter@protonmail.com' }],
+  actions: [{ text: 'KONTAKT', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' }],
 };
 export const footerData = {
   links: [
@@ -55,10 +57,10 @@ export const footerData = {
       title: 'Intro',
       href: getPermalink(),
       links: [
-        {
-          text: 'Portfolio',
-          href: getPermalink('/portfolio'),
-        },
+        // {
+        //   text: 'Portfolio',
+        //   href: getPermalink('/portfolio'),
+        // },
         {
           text: 'Blog',
           href: getPermalink('/#blog'),
@@ -72,7 +74,6 @@ export const footerData = {
     {
       title: 'Profil',
       href: getPermalink('/about'),
-
       links: [
         {
           text: 'Über mich',
@@ -111,5 +112,6 @@ export const footerData = {
   socialLinks: [
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
+    { ariaLabel: 'E-Mail', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' },
   ],
 };

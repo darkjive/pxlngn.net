@@ -22,6 +22,10 @@
   .text-muted {
     color: var(--aw-color-text-muted);
   }
+
+  .text-link {
+    color: var(--aw-color-text-link);
+  }
 }
 
 @layer components {
@@ -42,6 +46,20 @@
   }
 }
 
+/* Custom Font */
+@font-face {
+  font-family: 'Anklepants';
+  src: url('/fonts/Anklepants.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.Anklepants {
+  font-family: 'Anklepants';
+}
+
+/* Header/Nav */
 #header.scroll > div:first-child {
   @apply bg-page md:bg-white/90 md:backdrop-blur-md;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
@@ -49,7 +67,7 @@
 
 .dark #header.scroll > div:first-child,
 #header.scroll.dark > div:first-child {
-  @apply bg-page md:bg-[#030621e6] border-b border-gray-500/20;
+  @apply bg-page border-b border-gray-500/20;
   box-shadow: none;
 }
 
@@ -93,18 +111,17 @@
 }
 
 /* To deprecated */
-
 .dd *:first-child {
   margin-top: 0;
 }
 
-@font-face {
-  font-family: 'Anklepants';
-  src: url('/fonts/Anklepants.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+/* Custom Gradient */
+.gradient {
+  background: rgb(240, 254, 255);
+  background: linear-gradient(0deg, rgba(240, 254, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 248, 240, 1) 100%);
 }
-.Anklepants {
-  font-family: 'Anklepants';
+/* Custom Gradient */
+.dark .gradient {
+  background: transparent;
+  background: linear-gradient(0deg, rgba(240, 254, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 248, 240, 0) 100%);
 }

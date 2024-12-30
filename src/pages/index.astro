@@ -1,8 +1,7 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
-import Content from '~/components/widgets/Content.astro';
+// import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 
@@ -17,27 +16,27 @@ const metadata = {
 
   <Hero
     id="hero"
-    title="Hallo,"
+    title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
+    class:list={['border-b border-slate-200 dark:border-slate-800']}
     actions={[
-      { variant: 'primary', text: 'Über mich', href: '/about' },
-      { variant: 'primary', text: 'FAQs', href: '#faq' },
+      { variant: 'secondary', text: 'Über mich', href: '/about', icon: 'tabler:user' },
+      { variant: 'primary', text: 'FAQs', href: '#faq', icon: 'tabler:zoom-question' },
     ]}
-    bg='<img class="absolute -my-2 inset-0 object-fill w-full h-full dark:hidden" src="/images/photo-1428908728789-d2de25dbd4e2.jpg" />'
+    bg='<img class="border-b border-slate-200 dark:border-slate-800 absolute -my-2 inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.jpg" />'
   >
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span
-        >und willkommen auf meinem Blog. Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
+        >Willkommen in meiner digitalen Welt! Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
         Webentwicklung, Design, Projektmanagement und anderen Themen, die mich begeistern.
       </span>
     </Fragment>
   </Hero>
-
   <!-- Content Widget **************** -->
 
-  <Content
+  <!-- <Content
     id="portfolio"
     title="Mein Portfolio"
     subtitle="Vergangenes und Aktuelles: Projekte, die mich geprägt haben."
@@ -74,11 +73,11 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute bg-slate-100"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Weiteres Projekt -->
 
-  <Content
+  <!-- <Content
     isReversed
     isAfterContent={true}
     items={[
@@ -113,11 +112,11 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute bg-slate-100"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Weiteres Projekt -->
 
-  <Content
+  <!-- <Content
     isReversed
     isAfterContent={true}
     items={[
@@ -188,40 +187,30 @@ const metadata = {
     <Fragment slot="bg">
       <div class="absolute bg-slate-100"></div>
     </Fragment>
-  </Content>
+  </Content> -->
 
   <!-- Blog Latest Posts ******************* -->
 
   <BlogLatestPosts
     id="blog"
-    title="Von Ideen zu Projekten: Einblicke in meine Gedanken und Werke!"
-    information={`In diesem Blog nehme ich dich mit in meine Welt, die sich rund um Webentwicklung, Design, Projektmanagement und Testing dreht. Hier findest du keine perfekte Anleitung oder universelle Wahrheiten, sondern ehrliche Einblicke in meine Interessen, meine Projekte und die Herausforderungen, die mich beschäftigen.
-              `}
+    title="Lernen, Scheitern, Wachsen: Meine digitale Reise"
+    information={`Von Webentwicklung bis Design: Hier gibt es ehrliche Geschichten über Herausforderungen und Erfolgsmomente. Lass dich inspirieren und entdecke neue Perspektiven.`}
   />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     id="faq"
+    classes={{ container: 'border-t border-b border-slate-200 dark:border-slate-800 dark:bg-transparent max-w-4xl' }}
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/O6DXV30.jpg" />'
     title="Häufig gestellte Fragen"
     subtitle="Hier findest du Antworten auf die häufigsten Fragen zu dieser kleinen Ecke des Internets. Ich hoffe, du findest hier, was du suchst. Wenn nicht, schreib mir einfach – ich helfe gerne weiter!"
     tagline="FAQs"
-    classes={{ container: 'max-w-5xl' }}
     items={[
       {
         title: 'Was soll das Logo bedeuten?',
         description:
           'Mein Logo, welches mich seit Jahren begleitet, bedeutet ausgeschrieben "Pixel Engine", nur ohne Konsonanten. Die Wörter Pixel und Engine, sind Synonyme für Design und Logik.',
-      },
-      {
-        title: 'Warum benutzt du Astro als SSG?',
-        description:
-          'Astro ist ein JavaScript Framework, welches die Entwicklung von schnellen und auf Content spezialisierte Websites unterstützt. Und weil ich schnelle Ergebnisse liebe ist Astro für meinen Zweck genau richtig.',
-      },
-      {
-        title: 'Wo hostest du deine Seiten?',
-        description:
-          'Ich hoste meine privaten Seiten, traditionell schon immer bei <a href="https://www.ionos.de/" target="_blank">IONOS</a>. Ich habe viele Erfahrungen mit verschiedenen Hosting-Anbietern oder gemacht. Und kann IONOS uneingeschränkt empfehlen.',
       },
       {
         title: 'Du schreibst du bist Entwickler, Designer, Projektleiter und QA, was denn jetzt?',
@@ -234,9 +223,8 @@ const metadata = {
       },
       {
         title: 'Bist du für Projekte zu haben?',
-        description: 'Im Moment bin ich für Projekte zu haben, schreibe mir gerne für mehr Details.',
+        description: 'Ja, im Moment bin ich für Projekte zu haben, schreibe mir gerne für mehr Details.',
       },
     ]}
-    classes={{ container: 'bg-gray-100 dark:bg-transparent' }}
   />
 </Layout>

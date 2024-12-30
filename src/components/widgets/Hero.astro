@@ -17,7 +17,7 @@ const {
 } = Astro.props;
 ---
 
-<section class="relative md:-mt-[76px] not-prose" {...id ? { id } : {}}>
+<section class="relative md:-mt-[80px] not-prose" {...id ? { id } : {}}>
   <div class="absolute inset-0 pointer-events-none" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
@@ -31,7 +31,7 @@ const {
         {
           title && (
             <h1
-              class="Anklepants text-5xl md:text-8xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="Anklepants text-shadow-[1px_1px_0px_0px_#fff] text-4xl md:text-8xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
               set:html={title}
             />
           )

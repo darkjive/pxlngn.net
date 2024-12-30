@@ -29,7 +29,7 @@ const {
         images.map(
           (image) =>
             image.src && (
-              <div class="flex justify-center col-span-1 my-2 lg:my-4 py-1 px-3 rounded-md dark:bg-gray-200">
+              <div class="flex flex-col items-center col-span-1 my-2 lg:my-4 py-3 px-3 rounded-md dark:bg-white">
                 <Image
                   src={image.src}
                   alt={image.alt || ''}
@@ -39,6 +39,7 @@ const {
                   layout="fixed"
                   title={image.alt}
                 />
+                {image.title && <span class="mt-2 tracking-wider text-xs text-muted dark:text-gray-900">{image.title}</span>}
               </div>
             )
         )
