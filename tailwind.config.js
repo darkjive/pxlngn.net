@@ -13,6 +13,7 @@ export default {
         default: 'var(--aw-color-text-default)',
         muted: 'var(--aw-color-text-muted)',
       },
+
       fontFamily: {
         sans: ['var(--aw-font-sans, ui-sans-serif)', ...defaultTheme.fontFamily.sans],
         serif: ['var(--aw-font-serif, ui-serif)', ...defaultTheme.fontFamily.serif],
