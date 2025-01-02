@@ -90,7 +90,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               {links?.length ? (
                 <>
                   <a
-                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+                    class="hover:text-primary dark:hover:text-primary px-4 py-3 flex items-center whitespace-nowrap"
                     href={href}
                     role="button"
                     aria-haspopup="true"
@@ -104,7 +104,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                       <li>
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b md:hover:bg-primary hover:bg-primary hover:text-white dark:hover:bg-primary py-2 px-5 block whitespace-no-wrap border-b md:border-0 border-slate-200 dark:border-slate-800',
+                            'first:rounded-t last:rounded-b hover:text-primary dark:hover:bg-primary py-2 px-5 block whitespace-no-wrap border-b md:border-0 border-slate-200 dark:border-slate-800',
                             { 'aw-link-active': href2 === currentPath },
                           ]}
                           href={href2}
@@ -119,7 +119,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'first:rounded-t last:rounded-b md:hover:bg-primary hover:bg-primary hover:text-white dark:hover:bg-primary px-4 py-3 flex items-center whitespace-nowrap',
+                    'first:rounded-t last:rounded-b hover:text-primary px-4 py-3 flex items-center whitespace-nowrap',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
@@ -159,6 +159,18 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               <a
                 class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
                 href={actions?.[0].href}
+              >
+                <Icon name="tabler:brand-github" class="w-5 h-5" />
+              </a>
+            ) : (
+              ''
+            )
+          }
+          {
+            actions?.length ? (
+              <a
+                class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
+                href={actions?.[1].href}
               >
                 <Icon name="tabler:mail" class="w-5 h-5" />
               </a>

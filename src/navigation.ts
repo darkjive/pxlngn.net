@@ -49,7 +49,10 @@ export const headerData = {
       href: getBlogPermalink(),
     },
   ],
-  actions: [{ text: 'KONTAKT', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' }],
+  actions: [
+    { href: 'https://github.com/darkjive/pxlngn.net' },
+    { href: 'mailto:hi@pxlngn.net' }
+  ],
 };
 export const footerData = {
   links: [
@@ -96,7 +99,16 @@ export const footerData = {
     {
       title: 'Blog',
       href: getBlogPermalink(),
-      links: [],
+      links: [
+        {
+          text: 'Nach Kategorie',
+          href: getPermalink('web-entwicklung','category' ),
+        },
+        {
+          text: 'Nach Tag´s',
+          href: getPermalink('front-end','tag' ),
+        },
+      ],
     },
     {
       title: 'Impressum',
