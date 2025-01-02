@@ -5,20 +5,20 @@ export const headerData = {
     {
       text: 'Intro',
       href: getPermalink(),
-      icon: 'tabler:chevron-down',
+      icon: '',
       links: [
         // {
         //   text: 'Portfolio',
         //   href: getPermalink('/portfolio'),
         // },
-        {
-          text: 'Blog',
-          href: getPermalink('/#blog'),
-        },
-        {
-          text: 'FAQ´s',
-          href: getPermalink('/#faq'),
-        },
+        // {
+        //   text: 'Blog',
+        //   href: getPermalink('/#blog'),
+        // },
+        // {
+        //   text: 'FAQ´s',
+        //   href: getPermalink('/#faq'),
+        // },
       ],
     },
     {
@@ -64,14 +64,14 @@ export const footerData = {
         //   text: 'Portfolio',
         //   href: getPermalink('/portfolio'),
         // },
-        {
-          text: 'Blog',
-          href: getPermalink('/#blog'),
-        },
-        {
-          text: 'FAQ´s',
-          href: getPermalink('/#faq'),
-        },
+        // {
+        //   text: 'Blog',
+        //   href: getPermalink('/#blog'),
+        // },
+        // {
+        //   text: 'FAQ´s',
+        //   href: getPermalink('/#faq'),
+        // },
       ],
     },
     {

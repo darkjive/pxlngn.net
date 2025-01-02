@@ -10,7 +10,7 @@ site:
 metadata:
   title:
     default: P X L N G N
-    template: '%s — AstroWind'
+    template: '%s'
   description: 'Frontend-Entwickler und Designer für Webmedien. Ich kombiniere modernes Design und sauberen Code, um benutzerfreundliche Webanwendungen zu schaffen. Schau dir meine Projekte an oder erfahre mehr über mich!'
   robots:
     index: true

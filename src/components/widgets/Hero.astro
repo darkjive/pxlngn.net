@@ -31,7 +31,7 @@ const {
         {
           title && (
             <h1
-              class="Anklepants text-shadow-[1px_1px_0px_0px_#fff] text-4xl md:text-8xl font-bold leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
+              class="Anklepants text-shadow-[1px_1px_0px_0px_#fff] text-4xl md:text-7xl leading-tighter tracking-tighter mb-4 font-heading dark:text-gray-200"
               set:html={title}
             />
           )
@@ -43,8 +43,8 @@ const {
               <div class="max-w-xs sm:max-w-md m-auto flex flex-nowrap flex-col sm:flex-row sm:justify-center gap-4">
                 {Array.isArray(actions) ? (
                   actions.map((action) => (
-                    <div class="flex w-full sm:w-auto">
-                      <Button {...(action || {})} class="w-full sm:mb-0" />
+                    <div class="flex w-full sm:w-auto justify-center">
+                      <Button {...(action || {})} class="w-50 sm:mb-0" />
                     </div>
                   ))
                 ) : (

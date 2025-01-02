@@ -6,9 +6,10 @@ import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
+import Features4 from '~/components/widgets/Features4.astro';
 
 const metadata = {
-  title: 'pxlngn | Über mich',
+  title: 'pxlngn | Profil',
 };
 ---
 
@@ -19,14 +20,14 @@ const metadata = {
     tagline="Profil"
     actions={[
       { variant: 'secondary', text: 'Vita', href: '#resume', icon: 'tabler:file-cv' },
-      { variant: 'secondary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments-horizontal' },
+      { variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments-horizontal' },
     ]}
     bg='<img class="border-b border-slate-200 dark:border-slate-800 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
   >
     <Fragment slot="subtitle">
       <span>
         Ich heiße <span class="font-bold"> Alain Ritter</span><br class="md:hidden" /> - ein Generalist, der die Schnittstellen
-        zwischen <br class="hidden" />Design und Logik liebt.<br class="md:hidden" /> Hier kannst du mehr über meine<br
+        zwischen <br class="hidden" /> Design und Logik liebt.<br class="md:hidden" /> Hier kannst du mehr über meine<br
           class="hidden"
         /> Person und meinen Hintergrund erfahren.
       </span>
@@ -60,7 +61,7 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h2 class="text-2xl font-bold font-heading tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
+      <h2 class="Anklepants text-2xl tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
       <p>
         Ich bin Designer und Frontend-Entwickler. Mir macht es Spaß, digitale Erlebnisse zu schaffen, die gut aussehen
         und einfach funktionieren. Egal, ob Design oder Code – ich arbeite gerne an Lösungen, die auf den Punkt sind.
@@ -80,11 +81,11 @@ const metadata = {
     id="resume"
     title="Lebenslauf"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.jpg" />'
-    classes={{ container: 'max-w-3xl border-b border-t border-slate-200 dark:border-slate-800' }}
+    classes={{ container: 'max-w-3xl' }}
     items={[
       {
         title:
-          'ion2s GmbH <br /> <span class="font-normal">Projektmanager / Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - Heute</span>',
+          'ion2s GmbH <br /> <span class="font-normal">Projektmanager / Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - 2024</span>',
         description: `Verantwortlich für IT-Management und Scrum-Prozesse. <br /> Sicherstellung effizienter Projektabläufe und Kommunikation im Team. <br /> Einführung und Betreuung agiler Methoden und Tools.`,
         icon: 'tabler:briefcase',
         logo: {
@@ -138,7 +139,7 @@ const metadata = {
   <Steps
     id="resume"
     title="Ausbildung"
-    classes={{ container: 'max-w-3xl border-b border-slate-200 dark:border-slate-800' }}
+    classes={{ container: 'max-w-3xl' }}
     items={[
       {
         title: `Ausbildung,<br class="sm:hidden" /> Mediengestalter für Digital- und Printmedien <br /> <span class="font-normal">Peter-Behrens-Schule Darmstadt</span> <br /> <span class="text-sm font-normal">Aug. 1999 - Juli 2002</span>`,
@@ -174,6 +175,41 @@ const metadata = {
           src: '/images/scrum_alliance_logo.jpg',
           alt: 'Firmen Logo',
         },
+      },
+    ]}
+  />
+
+  <Features4
+    id="languages"
+    tagline=""
+    bg=''
+    title="Sonstiges"
+    subtitle=""
+    classes={{ container: 'max-w-3xl' }}
+    items={[
+      {
+        title: 'Deutsch',
+        description:
+          'Muttersprache',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'Englisch',
+        description:
+          'Verhandlungssicher',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'Französisch',
+        description:
+          'Grundkenntnisse',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'Führerscheinklassen',
+        description:
+          'A, A2, A1, B, BE',
+        icon: 'tabler:car',
       },
     ]}
   />
@@ -228,7 +264,7 @@ const metadata = {
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
     }}
     title="Software Stack"
-    subtitle="In den folgenden Technologien habe ich die meiste Erfahrung aufgebaut."
+    subtitle="In den folgenden Technologien habe ich die meisten Erfahrungen aufgebaut."
     icons={[]}
     images={[
       {
@@ -312,7 +348,7 @@ const metadata = {
   <Brands
     id=""
     title=""
-    subtitle="Als KI-Enthusiast arbeite ich gerne mit folgenden Tools,<br/> sie sind meine Begleiter beim lernen und experimentieren."
+    subtitle="Als KI-Enthusiast arbeite ich gerne mit folgenden Tools,<br/> sie sind meine Begleiter beim Lernen und Experimentieren."
     icons={[]}
     classes={{
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
@@ -475,6 +511,8 @@ const metadata = {
     ]}
   />
 
+
+
   <Features
     id="abstract"
     tagline="Abstrakt"
@@ -486,13 +524,13 @@ const metadata = {
       {
         title: 'Projektleitung und Servant Leadership',
         description:
-          'Mit meiner Erfahrung in der Projektleitung und einem servant leadership Ansatz sorge ich dafür, dass Projekte Spaß machen und das Team motiviert bleibt.',
+          'Mit meiner Erfahrung in der Projektleitung und einem Servant Leadership Ansatz sorge ich dafür, dass Projekte Spaß machen und das Team motiviert bleibt.',
         icon: 'tabler:users',
       },
       {
         title: 'Betreuung und Erweiterung von Legacy-Systemen',
         description:
-          'Ich arbeite nicht nur an neuen Projekten, sondern helfe auch dabei, das Beste aus bestehenden Legacy-Systemen herauszuholen. Egal ob Wartung, Optimierung oder Erweiterung – ich sorge dafür, dass alte Systeme genauso gut laufen wie neue.',
+          'Ich arbeite nicht nur an neuen Projekten, sondern helfe auch dabei das Beste aus bestehenden Legacy-Systemen herauszuholen. Egal ob Wartung, Optimierung oder Erweiterung – ich sorge dafür, dass alte Systeme genauso gut laufen wie neue.',
         icon: 'tabler:layers-linked',
       },
       {
@@ -504,7 +542,7 @@ const metadata = {
       {
         title: 'Hohe Performance',
         description:
-          'Performance ist mir besonders wichtig. Jedes Projekt, das ich betreue, wird mit Adleraugen geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
+          'Performance ist mir persönlich besonders wichtig. Jedes Projekt, das ich betreue, wird genaustens geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
         icon: 'tabler:rocket',
       },
       {
