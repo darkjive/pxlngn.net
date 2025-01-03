@@ -38,7 +38,6 @@ jobs:
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm run install
-          npm run fix
           npm run build
 
 # Please do not touch the following action
