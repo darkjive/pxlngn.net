@@ -4,7 +4,7 @@ const { title = await Astro.slots.render('default'), subtitle = await Astro.slot
 
 <header class="mb-8 md:mb-16 text-center max-w-3xl mx-auto">
   <h1
-    class="Anklepants text-4xl md:text-6xl font-bold leading-tighter tracking-tighter font-heading"
+    class="Anklepants text-4xl md:text-6xl leading-tighter tracking-tighter font-heading"
     set:html={title}
   />
   {
