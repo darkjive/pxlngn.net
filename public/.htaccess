@@ -1,6 +1,0 @@
-# Auth
-AuthType Basic
-AuthName "Bitte Zugang eingeben:"
-AuthUserFile /kunden/homepages/6/d4298644164/htdocs/5kSl10vmnEiazgh548yMd0561mZhLpWSD2/.htpasswd
-Require valid-user
-
