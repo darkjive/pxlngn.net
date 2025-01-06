@@ -99,7 +99,7 @@ export const footerData = {
       links: [
         {
           text: 'Nach Kategorie',
-          href: getPermalink('web-entwicklung', 'category'),
+          href: getPermalink('entwicklung', 'category'),
         },
         {
           text: 'Nach Tag´s',
