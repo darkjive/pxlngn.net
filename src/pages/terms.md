@@ -31,11 +31,6 @@ Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheb
 
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
 
-### Bildnachweise
-
-[Foto](https://unsplash.com/de/fotos/gruppe-von-menschen-auf-der-wiese-2sY3wSdRSj4) von [Quino Al](https://unsplash.com/de/@quinoal) auf [Unsplash](https://unsplash.com)  
-[Foto](https://unsplash.com/de/fotos/weisse-wolken-am-blauen-himmel-UiiHVEyxtyA) von [Milad Fakurian](https://unsplash.com/de/@fakurian) auf [Unsplash](https://unsplash.com)
-
 ### Framework
 
 [Astro 5.0](https://astro.build/)
