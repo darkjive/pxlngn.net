@@ -13,7 +13,7 @@ hi@pxlngn.net
 
 Alain Ritter
 
-## Disclaimer – rechtliche Hinweise
+## Disclaimer
 
 ### Inhalte
 
@@ -27,17 +27,13 @@ Ich prüfe externe Links bei ihrer Verknüpfung sorgfältig. Zum Zeitpunkt der V
 
 Die Inhalte auf dieser Webseite unterliegen dem deutschen Urheberrecht. Jede nicht gesetzlich erlaubte Nutzung, wie Vervielfältigung oder Bearbeitung, erfordert meine schriftliche Zustimmung oder die des jeweiligen Rechteinhabers. Inhalte Dritter kennzeichne ich entsprechend. Downloads und Kopien sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
 
-### § 4 Besondere Nutzungsbedingungen
+### Besondere Nutzungsbedingungen
 
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
 
 ### Framework
 
 [Astro 5.0](https://astro.build/)
-
-### Theme
-
-[AstroWind](https://github.com/onwidget/astrowind/) - Initially created by onWidget and maintained by a community of contributors.
 
 ### Fonts
 
@@ -46,3 +42,5 @@ by Ray Larabie | [typodermicfonts](https://typodermicfonts.com/)
 
 <span class="Baloo Bhaijaan 2 text-4xl">Baloo Bhaijaan 2</span>  
 by Ek Type | [Ek Type](https://ektype.in/)
+
+_Stand: 09.01.2025_
