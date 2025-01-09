@@ -16,6 +16,7 @@ Ich verarbeite Nutzungsdaten (z.B. Zugriffszeiten), Bestandsdaten (z.B. Name, Ad
 ## Rechtsgrundlagen
 
 Die Datenverarbeitung erfolgt auf Basis von:
+
 - Einwilligung (Art. 6 Abs. 1 lit. a) DS-GVO)
 - Vertragserfüllung (Art. 6 Abs. 1 lit. b) DS-GVO)
 - Berechtigte Interessen (Art. 6 Abs. 1 lit. f) DS-GVO)
@@ -43,6 +44,7 @@ Beim Besuch der Website werden IP-Adresse, Browsertyp, Datum und Uhrzeit erfasst
 ## Cookies
 
 Ich verwende Cookies zur Optimierung und Sicherheit der Website:
+
 - **Essentielle Cookies**: Unverzichtbar für grundlegende Funktionen.
 - **Session-Cookies**: Werden beim Schließen des Browsers gelöscht.
 - **Persistente Cookies**: Bleiben für eine festgelegte Zeit gespeichert.
@@ -59,12 +61,14 @@ _Stand: 05.12.2024_
 1. **Dienstanbieter**: Google Ireland Limited, Dublin, Irland.
 
 2. **Datenverarbeitung**:
+
    - **Daten**: User-ID, anonymisierte IP-Adresse.
    - **Zweck**: Analyse und Verbesserung der Website, Erstellung von Berichten.
    - **IP-Anonymisierung**: IP-Adresse wird innerhalb der EU gekürzt.
    - **Geräteübergreifende Analyse**: Aktiviert via User-ID.
 
 3. **Rechtsgrundlagen**:
+
    - Einwilligung (Art. 6 Abs. 1 lit. a) DS-GVO).
    - Berechtigtes Interesse (Art. 6 Abs. 1 lit. f) DS-GVO).
 
@@ -79,12 +83,14 @@ _Stand: 05.12.2024_
 1. **Dienstanbieter**: Google Ireland Limited, Dublin, Irland.
 
 2. **Datenverarbeitung**:
+
    - **Daten**: Nutzungsdaten (z. B. aufgerufene Inhalte).
    - **Zweck**: Verbesserung und Personalisierung der Website.
    - **Erweiterter Datenschutzmodus**: Keine Cookies zur Personalisierung.
    - **Verarbeitung** bei Videoaufruf: Nutzung zu Werbezwecken.
 
 3. **Rechtsgrundlagen**:
+
    - Einwilligung (Art. 6 Abs. 1 lit. a) DS-GVO).
    - Berechtigtes Interesse (Art. 6 Abs. 1 lit. f) DS-GVO).
 
