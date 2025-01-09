@@ -15,17 +15,17 @@ Alain Ritter
 
 ## Disclaimer – rechtliche Hinweise
 
-### § 1 Warnhinweis zu Inhalten
+### Inhalte
 
-Die kostenlosen und frei zugänglichen Inhalte dieser Webseite wurden mit größtmöglicher Sorgfalt erstellt. Ich übernehme jedoch keine Gewähr für die Richtigkeit und Aktualität der bereitgestellten kostenlosen und frei zugänglichen journalistischen Ratgeber und Nachrichten. Namentlich gekennzeichnete Beiträge geben die Meinung des jeweiligen Autors und nicht immer meine Meinung wieder. Allein durch den Aufruf der kostenlosen und frei zugänglichen Inhalte kommt keinerlei Vertragsverhältnis zwischen dir und mir zustande, insoweit fehlt es am Rechtsbindungswillen meinerseits.
+Ich habe die Inhalte dieser Webseite mit größtmöglicher Sorgfalt erstellt, übernehme jedoch keine Gewähr für ihre Richtigkeit und Aktualität. Namentlich gekennzeichnete Beiträge geben die Meinung des jeweiligen Autors wieder, nicht immer meine eigene. Der Aufruf dieser Inhalte begründet kein Vertragsverhältnis zwischen dir und mir.
 
-### § 2 Externe Links
+### Externe Links
 
-Diese Website enthält Verknüpfungen zu Websites Dritter ("externe Links"). Diese Websites unterliegen der Haftung der jeweiligen Betreiber. Ich habe bei der erstmaligen Verknüpfung der externen Links die fremden Inhalte daraufhin überprüft, ob etwaige Rechtsverstöße bestehen. Zu dem Zeitpunkt waren keine Rechtsverstöße ersichtlich. Ich habe keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung und auf die Inhalte der verknüpften Seiten. Das Setzen von externen Links bedeutet nicht, dass ich mir die hinter dem Verweis oder Link liegenden Inhalte zu Eigen mache. Eine ständige Kontrolle der externen Links ist für mich ohne konkrete Hinweise auf Rechtsverstöße nicht zumutbar. Bei Kenntnis von Rechtsverstößen werde ich jedoch derartige externe Links unverzüglich löschen.
+Ich prüfe externe Links bei ihrer Verknüpfung sorgfältig. Zum Zeitpunkt der Verlinkung waren keine Rechtsverstöße erkennbar. Da ich auf die Inhalte externer Seiten keinen Einfluss habe, übernehme ich keine Haftung für deren zukünftige Inhalte. Hinweise auf Rechtsverstöße nehme ich ernst und entferne betroffene Links unverzüglich.
 
-### § 3 Urheber- und Leistungsschutzrechte
+### Urheberrecht
 
-Die auf dieser Website veröffentlichten Inhalte unterliegen dem deutschen Urheber- und Leistungsschutzrecht. Jede vom deutschen Urheber- und Leistungsschutzrecht nicht zugelassene Verwertung bedarf der vorherigen schriftlichen Zustimmung von mir oder dem jeweiligen Rechteinhaber. Dies gilt insbesondere für Vervielfältigung, Bearbeitung, Übersetzung, Einspeicherung, Verarbeitung bzw. Wiedergabe von Inhalten in Datenbanken oder anderen elektronischen Medien und Systemen. Inhalte und Rechte Dritter sind dabei als solche gekennzeichnet. Die unerlaubte Vervielfältigung oder Weitergabe einzelner Inhalte oder kompletter Seiten ist nicht gestattet und strafbar. Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt. Die Darstellung dieser Website in fremden Frames ist nur mit schriftlicher Erlaubnis zulässig.
+Die Inhalte auf dieser Webseite unterliegen dem deutschen Urheberrecht. Jede nicht gesetzlich erlaubte Nutzung, wie Vervielfältigung oder Bearbeitung, erfordert meine schriftliche Zustimmung oder die des jeweiligen Rechteinhabers. Inhalte Dritter kennzeichne ich entsprechend. Downloads und Kopien sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
 
 ### § 4 Besondere Nutzungsbedingungen
 
