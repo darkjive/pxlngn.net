@@ -35,7 +35,7 @@ export const headerData = {
           href: getPermalink('/#resume'),
         },
         {
-          text: 'Fähigkeiten',
+          text: 'Skills',
           href: getPermalink('/#skills'),
         },
         {
@@ -84,7 +84,7 @@ export const footerData = {
           href: getPermalink('/#resume'),
         },
         {
-          text: 'Fähigkeiten',
+          text: 'Skills',
           href: getPermalink('/#skills'),
         },
         {

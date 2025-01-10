@@ -28,8 +28,9 @@ const {
         subtitle={subtitle}
         tagline={tagline}
         classes={{
-          container: 'text-left rtl:text-right',
+          container: 'rtl:text-right',
           title: 'text-4xl lg:text-5xl text-center',
+          tagline: 'text-center',
           ...((classes?.headline as object) ?? {}),
         }}
       />
