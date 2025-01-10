@@ -28,19 +28,19 @@ export const headerData = {
       links: [
         {
           text: 'Über mich',
-          href: getPermalink('/about#about'),
+          href: getPermalink('/about/#about'),
         },
         {
           text: 'Lebenslauf',
-          href: getPermalink('/about#resume'),
+          href: getPermalink('/about/#resume'),
         },
         {
           text: 'Fähigkeiten',
-          href: getPermalink('/about#skills'),
+          href: getPermalink('/about/#skills'),
         },
         {
           text: 'Abstrakt',
-          href: getPermalink('/about#abstract'),
+          href: getPermalink('/about/#abstract'),
         },
       ],
     },
@@ -57,14 +57,14 @@ export const footerData = {
       title: 'Intro',
       href: getPermalink(),
       links: [
-        // {
-        //   text: 'Portfolio',
-        //   href: getPermalink('/portfolio'),
-        // },
-        // {
-        //   text: 'Blog',
-        //   href: getPermalink('/#blog'),
-        // },
+        {
+          text: 'Portfolio',
+          href: getPermalink('/#projects'),
+        },
+        {
+          text: 'Blog',
+          href: getPermalink('/#blog'),
+        },
         // {
         //   text: 'FAQ´s',
         //   href: getPermalink('/#faq'),
@@ -77,19 +77,19 @@ export const footerData = {
       links: [
         {
           text: 'Über mich',
-          href: getPermalink('/about#about'),
+          href: getPermalink('/about/#about'),
         },
         {
           text: 'Lebenslauf',
-          href: getPermalink('/about#skills'),
+          href: getPermalink('/about/#skills'),
         },
         {
           text: 'Fähigkeiten',
-          href: getPermalink('/about#skills'),
+          href: getPermalink('/about/#skills'),
         },
         {
           text: 'Abstrakt',
-          href: getPermalink('/about#abstract'),
+          href: getPermalink('/about/#abstract'),
         },
       ],
     },
