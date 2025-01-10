@@ -28,19 +28,19 @@ export const headerData = {
       links: [
         {
           text: 'Über mich',
-          href: getPermalink('/about/#about'),
+          href: '/about#about',
         },
         {
           text: 'Lebenslauf',
-          href: getPermalink('/about/#resume'),
+          href: '/about#resume',
         },
         {
           text: 'Fähigkeiten',
-          href: getPermalink('/about/#skills'),
+          href: '/about#skills',
         },
         {
           text: 'Abstrakt',
-          href: getPermalink('/about/#abstract'),
+          href: '/about#abstract',
         },
       ],
     },
@@ -57,10 +57,10 @@ export const footerData = {
       title: 'Intro',
       href: getPermalink(),
       links: [
-        {
-          text: 'Portfolio',
-          href: getPermalink('/#projects'),
-        },
+        // {
+        //   text: 'Portfolio',
+        //   href: getPermalink('/#projects'),
+        // },
         {
           text: 'Blog',
           href: getPermalink('/#blog'),
@@ -77,19 +77,19 @@ export const footerData = {
       links: [
         {
           text: 'Über mich',
-          href: getPermalink('/about/#about'),
+          href: '/about#about',
         },
         {
           text: 'Lebenslauf',
-          href: getPermalink('/about/#skills'),
+          href: '/about#resume',
         },
         {
           text: 'Fähigkeiten',
-          href: getPermalink('/about/#skills'),
+          href: '/about#skills',
         },
         {
           text: 'Abstrakt',
-          href: getPermalink('/about/#abstract'),
+          href: '/about#abstract',
         },
       ],
     },
