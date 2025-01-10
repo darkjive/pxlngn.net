@@ -31,6 +31,17 @@ Die Inhalte auf dieser Webseite unterliegen dem deutschen Urheberrecht. Jede nic
 
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
 
+
+### Bildnachweise
+
+https://unsplash.com/de/fotos/gelbe-blutenblattblume-auf-klarer-glasvase-gXQCELcnI2U
+
+https://unsplash.com/de/fotos/person-mit-lila-weisser-karte-OXmym9cuaEY
+
+https://unsplash.com/de/fotos/schwarzer-rollsessel-unter-weissem-tisch-wxWulfjN-G0
+
+https://unsplash.com/de/fotos/skogafoss-wasserfalle-8ZAxI5FwjFo
+
 ### Framework
 
 [Astro 5.0](https://astro.build/)
