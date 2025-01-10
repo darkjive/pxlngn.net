@@ -15,6 +15,10 @@ export const headerData = {
           text: 'Blog',
           href: getPermalink('/#blog'),
         },
+        {
+          text: 'Über mich',
+          href: getPermalink('/#about'),
+        },
         // {
         //   text: 'FAQ´s',
         //   href: getPermalink('/#faq'),
@@ -26,10 +30,6 @@ export const headerData = {
       href: getPermalink('/#profile'),
       icon: 'tabler:chevron-down',
       links: [
-        {
-          text: 'Über mich',
-          href: getPermalink('/#about'),
-        },
         {
           text: 'Lebenslauf',
           href: getPermalink('/#resume'),
@@ -47,6 +47,17 @@ export const headerData = {
     {
       text: 'Blog',
       href: getBlogPermalink(),
+      icon: 'tabler:chevron-down',
+      links: [
+        {
+          text: 'Nach Kategorie',
+          href: getPermalink('entwicklung', 'category'),
+        },
+        {
+          text: 'Nach Tag´s',
+          href: getPermalink('front-end', 'tag'),
+        },
+      ],
     },
   ],
   actions: [{ href: 'https://github.com/darkjive/pxlngn.net' }, { href: 'mailto:hi@pxlngn.net' }],
@@ -63,7 +74,21 @@ export const footerData = {
         },
         {
           text: 'Blog',
-          href: getPermalink('/#blog'),
+          href: getBlogPermalink(),
+          links: [
+            {
+              text: 'Nach Kategorie',
+              href: getPermalink('entwicklung', 'category'),
+            },
+            {
+              text: 'Nach Tag´s',
+              href: getPermalink('front-end', 'tag'),
+            },
+          ],
+        },
+        {
+          text: 'Über mich',
+          href: getPermalink('/#about'),
         },
         // {
         //   text: 'FAQ´s',
@@ -75,10 +100,6 @@ export const footerData = {
       title: 'Profil',
       href: getPermalink('/#profile'),
       links: [
-        {
-          text: 'Über mich',
-          href: getPermalink('/#about'),
-        },
         {
           text: 'Lebenslauf',
           href: getPermalink('/#resume'),
