@@ -159,16 +159,13 @@ import { UI } from 'astrowind:config';
     onLoad();
     onPageShow();
   });
-</script>
-
-<!-- Typewriter -->
-<script is:inline>
+  // <!-- Typewriter /pages/index.astro -->
+  function initTypingEffect() {
   const a = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
   const ref = document.getElementById('text');
-  let ind = 0,
-    cInd = 0;
+  let ind = 0, cInd = 0;
   let remove = false;
-  
+
   function typing() {
     if (ind < a.length) {
       const currentText = a[ind];
@@ -189,10 +186,17 @@ import { UI } from 'astrowind:config';
       }
     }
   }
-  
+
   typing();
-  </script>
-  
+}
+
+// Initialisierung
+window.onload = initTypingEffect;
+
+// Sicherstellen, dass der Effekt bei Seitenwechsel funktioniert
+document.addEventListener('astro:after-swap', initTypingEffect);
+</script>
+
 <!-- <script is:inline>
   /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
   const Observer = {
