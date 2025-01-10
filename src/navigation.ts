@@ -5,16 +5,16 @@ export const headerData = {
     {
       text: 'Intro',
       href: getPermalink(),
-      icon: '',
+      icon: 'tabler:chevron-down',
       links: [
-        // {
-        //   text: 'Portfolio',
-        //   href: getPermalink('/portfolio'),
-        // },
-        // {
-        //   text: 'Blog',
-        //   href: getPermalink('/#blog'),
-        // },
+        {
+          text: 'Portfolio',
+          href: getPermalink('/#projects'),
+        },
+        {
+          text: 'Blog',
+          href: getPermalink('/#blog'),
+        },
         // {
         //   text: 'FAQ´s',
         //   href: getPermalink('/#faq'),
@@ -23,24 +23,24 @@ export const headerData = {
     },
     {
       text: 'Profil',
-      href: getPermalink('/about'),
+      href: getPermalink('/#profile'),
       icon: 'tabler:chevron-down',
       links: [
         {
           text: 'Über mich',
-          href: '/about#about',
+          href: getPermalink('/#about'),
         },
         {
           text: 'Lebenslauf',
-          href: '/about#resume',
+          href: getPermalink('/#resume'),
         },
         {
           text: 'Fähigkeiten',
-          href: '/about#skills',
+          href: getPermalink('/#skills'),
         },
         {
           text: 'Abstrakt',
-          href: '/about#abstract',
+          href: getPermalink('/#abstract'),
         },
       ],
     },
@@ -57,10 +57,10 @@ export const footerData = {
       title: 'Intro',
       href: getPermalink(),
       links: [
-        // {
-        //   text: 'Portfolio',
-        //   href: getPermalink('/#projects'),
-        // },
+        {
+          text: 'Portfolio',
+          href: getPermalink('/#projects'),
+        },
         {
           text: 'Blog',
           href: getPermalink('/#blog'),
@@ -73,23 +73,23 @@ export const footerData = {
     },
     {
       title: 'Profil',
-      href: getPermalink('/about'),
+      href: getPermalink('/#profile'),
       links: [
         {
           text: 'Über mich',
-          href: '/about#about',
+          href: getPermalink('/#about'),
         },
         {
           text: 'Lebenslauf',
-          href: '/about#resume',
+          href: getPermalink('/#resume'),
         },
         {
           text: 'Fähigkeiten',
-          href: '/about#skills',
+          href: getPermalink('/#skills'),
         },
         {
           text: 'Abstrakt',
-          href: '/about#abstract',
+          href: getPermalink('/#abstract'),
         },
       ],
     },
