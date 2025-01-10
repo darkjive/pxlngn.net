@@ -162,8 +162,37 @@ import { UI } from 'astrowind:config';
 </script>
 
 <!-- Typewriter -->
-<script src="/src/assets/type-writer.js" is:inline></script>
-
+<script is:inline>
+  const a = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
+  const ref = document.getElementById('text');
+  let ind = 0,
+    cInd = 0;
+  let remove = false;
+  
+  function typing() {
+    if (ind < a.length) {
+      const currentText = a[ind];
+      if (!remove && cInd < currentText.length) {
+        ref.textContent += currentText.charAt(cInd);
+        cInd++;
+        setTimeout(typing, 100);
+      } else if (remove && cInd >= 0) {
+        ref.textContent = currentText.substring(0, cInd);
+        cInd--;
+        setTimeout(typing, 100);
+      } else {
+        remove = !remove;
+        if (!remove) {
+          ind = (ind + 1) % a.length;
+        }
+        setTimeout(typing, 1000);
+      }
+    }
+  }
+  
+  typing();
+  </script>
+  
 <!-- <script is:inline>
   /* Inspired by: https://github.com/heidkaemper/tailwindcss-intersect */
   const Observer = {
