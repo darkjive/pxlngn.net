@@ -31,7 +31,6 @@ Die Inhalte auf dieser Webseite unterliegen dem deutschen Urheberrecht. Jede nic
 
 Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorgenannten Paragraphen abweichen, wird an entsprechender Stelle ausdrücklich darauf hingewiesen. In diesem Falle gelten im jeweiligen Einzelfall die besonderen Nutzungsbedingungen.
 
-
 ### Bildnachweise
 
 https://unsplash.com/de/fotos/gelbe-blutenblattblume-auf-klarer-glasvase-gXQCELcnI2U
