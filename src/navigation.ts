@@ -8,7 +8,7 @@ export const headerData = {
       icon: 'tabler:chevron-down',
       links: [
         {
-          text: 'Portfolio',
+          text: 'Projekte',
           href: getPermalink('/#projects'),
         },
         {
@@ -58,7 +58,7 @@ export const footerData = {
       href: getPermalink(),
       links: [
         {
-          text: 'Portfolio',
+          text: 'Projekte',
           href: getPermalink('/#projects'),
         },
         {
