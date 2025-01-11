@@ -23,12 +23,12 @@ const metadata = {
     id="hero"
     title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
-    class:list={['border-b border-gray-50/100 dark:border-gray-500/20']}
+    class:list={['border-b border-gray-200/100 dark:border-gray-500/20']}
     actions={[
       { variant: 'secondary', text: 'Über mich', href: '#about', icon: 'tabler:user' },
       // { variant: 'primary', text: 'FAQs', href: '#faq', icon: 'tabler:zoom-question' },
     ]}
-    bg='<img class="border-b border-gray-50/100 dark:border-gray-500/20 absolute -my-2 inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.jpg" />'
+    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute -my-2 inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.jpg" />'
   >
     <Fragment slot="title"></Fragment>
 
@@ -226,7 +226,7 @@ const metadata = {
   <!-- FAQs Widget ******************* -->
   <!-- <FAQs
     id="faq"
-    classes={{ container: 'border-t border-b border-gray-50/100 dark:border-gray-500/20 dark:bg-transparent max-w-4xl' }}
+    classes={{ container: 'border-t border-b border-gray-200/100 dark:border-gray-500/20 dark:bg-transparent max-w-4xl' }}
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/O6DXV30.jpg" />'
     title="Häufig gestellte Fragen"
     subtitle="Hier findest du Antworten auf die häufigsten Fragen zu dieser kleinen Ecke des Internets. Ich hoffe, du findest hier, was du suchst. Wenn nicht, schreib mir einfach – ich helfe gerne weiter!"
@@ -253,7 +253,7 @@ const metadata = {
     id="profile"
     title="<span class='lg:text-7xl'>Generalist<br/>aus<br/> Überzeugung.</span>"
     tagline="Profil"
-    bg='<img class="border-b border-gray-50/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
+    bg='<img class="border-b border-t border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
   >
     <Fragment slot="subtitle">
       <span>
@@ -265,6 +265,7 @@ const metadata = {
   </Features>
 
   <Content
+    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
     id="about"
     columns={3}
     items={[
@@ -320,7 +321,7 @@ const metadata = {
     tagline="Lebenslauf"
     title="Meine<br/>Laufbahn"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.jpg" />'
-    classes={{ container: 'max-w-3xl' }}
+    classes={{ container: 'border-b border-gray-200/100 dark:border-gray-500/20 max-w-3xl' }}
     items={[
       {
         title:
@@ -376,7 +377,7 @@ const metadata = {
   />
 
   <Steps
-    id='education'
+    id="education"
     title="Ausbildung"
     classes={{ container: 'max-w-3xl' }}
     items={[
@@ -455,7 +456,7 @@ const metadata = {
     title="Meine<br/>Fähigkeiten"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.jpg" />'
     classes={{
-      container: 'max-w-6xl border-b border-t border-gray-50/100 dark:border-gray-500/20 dark:bg-transparent',
+      container: 'max-w-6xl border-b border-t border-gray-200/100 dark:border-gray-500/20 dark:bg-transparent',
     }}
     subtitle="Eine Übersicht meiner Tätigkeiten und Fähigkeiten in den Bereichen Web-Entwicklung, Projektleitung, Scrum Master und QA-Softwaretesting."
     columns={3}
@@ -754,7 +755,7 @@ const metadata = {
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/5461913.jpg" />'
     title="Was ich dir<br /> bieten kann"
     subtitle="Als Generalist bringe ich eine breite Palette an Fähigkeiten und Erfahrungen mit, die ich in jedes Projekt einfließen lasse. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt perfekt funktioniert und beeindruckt."
-    classes={{ container: 'max-w-6xl border-t border-gray-50/100 dark:border-gray-500/20' }}
+    classes={{ container: 'max-w-6xl border-t border-gray-200/100 dark:border-gray-500/20' }}
     items={[
       {
         title: 'Projektleitung und Servant Leadership',
