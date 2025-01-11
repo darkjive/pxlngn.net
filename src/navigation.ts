@@ -51,11 +51,11 @@ export const headerData = {
       links: [
         {
           text: 'Nach Kategorie',
-          href: getPermalink('entwicklung', 'category'),
+          href: getPermalink('projektleitung', 'category'),
         },
         {
           text: 'Nach Tag´s',
-          href: getPermalink('front-end', 'tag'),
+          href: getPermalink('tutorial', 'tag'),
         },
       ],
     },
@@ -75,16 +75,6 @@ export const footerData = {
         {
           text: 'Blog',
           href: getBlogPermalink(),
-          links: [
-            {
-              text: 'Nach Kategorie',
-              href: getPermalink('entwicklung', 'category'),
-            },
-            {
-              text: 'Nach Tag´s',
-              href: getPermalink('front-end', 'tag'),
-            },
-          ],
         },
         {
           text: 'Über mich',
@@ -120,11 +110,11 @@ export const footerData = {
       links: [
         {
           text: 'Nach Kategorie',
-          href: getPermalink('entwicklung', 'category'),
+          href: getPermalink('projektleitung', 'category'),
         },
         {
           text: 'Nach Tag´s',
-          href: getPermalink('front-end', 'tag'),
+          href: getPermalink('tutorial', 'tag'),
         },
       ],
     },
