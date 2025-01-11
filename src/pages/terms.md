@@ -41,6 +41,7 @@ https://unsplash.com/de/fotos/schwarzer-rollsessel-unter-weissem-tisch-wxWulfjN-
 
 https://unsplash.com/de/fotos/skogafoss-wasserfalle-8ZAxI5FwjFo
 
+https://unsplash.com/de/fotos/rote-und-weisse-blume-in-klarer-glasvase-IFbXfJbhp0w
 ### Framework
 
 [Astro 5.0](https://astro.build/)
