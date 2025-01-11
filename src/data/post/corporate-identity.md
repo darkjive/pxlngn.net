@@ -4,7 +4,7 @@ author: Alain Ritter
 title: 'Corporate Identity Design - Amea'
 excerpt: Die Entwicklung der Corporate Identity für Amea - Massagen und Körperarbeit"
 image: ~/assets/images/Screenshot-2024-12-11-181651.jpg
-category: Print
+category: Design
 tags:
   - design
   - print
