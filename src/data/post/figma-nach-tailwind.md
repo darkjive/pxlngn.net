@@ -1,5 +1,5 @@
 ---
-publishDate: 2024-12-15T00:00:00Z
+publishDate: 2024-10-15T00:00:00Z
 author: Alain Ritter
 title: 'Tailwind-Klassen aus Figma exportieren'
 excerpt: So exportierst du Tailwind-Klassen aus Figma mit dem Plugin "Figma to Code"
@@ -7,7 +7,7 @@ image: ~/assets/images/preview.jpg
 category: Design
 tags:
   - tutorial
-  - front-end
+  - tailwind
   - design
 metadata:
   canonical: https://pxlngn.net/figma-nach-tailwind
