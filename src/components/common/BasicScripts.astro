@@ -99,7 +99,6 @@ import { UI } from 'astrowind:config';
     typing();
   }
 
-  // Darkmode und Toggle-Menu Initialisierung
   function initDarkModeAndMenu() {
     // Darkmode Toggle
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
@@ -112,17 +111,29 @@ import { UI } from 'astrowind:config';
 
     // Menu Toggle
     attachEvent('[data-aw-toggle-menu]', 'click', function (_, elem) {
-      elem.classList.toggle('expanded');
-      document.body.classList.toggle('overflow-hidden');
+      toggleMenu(elem);
+    });
+
+    // Links im Menü schließen das Menü (nur in mobiler Ansicht)
+    attachEvent('#header nav a', 'click', function () {
       const header = document.getElementById('header');
-      if (header) {
-        header.classList.toggle('h-screen');
-        header.classList.toggle('expanded');
-        header.classList.toggle('bg-page');
-        document.querySelector('#header nav')?.classList.toggle('hidden');
-        document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+      if (header && header.classList.contains('expanded')) {
+        toggleMenu(document.querySelector('[data-aw-toggle-menu]'));
       }
     });
+  }
+
+  function toggleMenu(elem) {
+    elem.classList.toggle('expanded');
+    document.body.classList.toggle('overflow-hidden');
+    const header = document.getElementById('header');
+    if (header) {
+      header.classList.toggle('h-screen');
+      header.classList.toggle('expanded');
+      header.classList.toggle('bg-page');
+      document.querySelector('#header nav')?.classList.toggle('hidden');
+      document.querySelector('#header > div > div:last-child')?.classList.toggle('hidden');
+    }
   }
 
   // Seiteninitialisierung
