@@ -8,6 +8,7 @@ import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Features4 from '~/components/widgets/Features4.astro';
 import Steps from '~/components/widgets/Steps.astro';
+import Gallery from '~/components/widgets/Gallery.astro';
 // import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
@@ -40,6 +41,8 @@ const metadata = {
     </Fragment>
   </Hero>
   <!-- Content Widget **************** -->
+
+  <Gallery/>
 
   <Content
     id="projects"
@@ -416,7 +419,7 @@ const metadata = {
     ]}
   />
 
-  <Features4
+  <!-- <Features4
     id="languages"
     tagline=""
     bg=""
@@ -445,7 +448,7 @@ const metadata = {
         icon: 'tabler:car',
       },
     ]}
-  />
+  /> -->
 
   <Features3
     id="skills"
