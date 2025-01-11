@@ -1,4 +1,5 @@
-import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+// import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -39,7 +40,7 @@ export const headerData = {
           href: getPermalink('/#skills'),
         },
         {
-          text: 'Abstrakt',
+          text: 'Resume',
           href: getPermalink('/#abstract'),
         },
       ],
@@ -74,7 +75,7 @@ export const footerData = {
         },
         {
           text: 'Blog',
-          href: getBlogPermalink(),
+          href: getPermalink('/#blog'),
         },
         {
           text: 'Über mich',
@@ -99,7 +100,7 @@ export const footerData = {
           href: getPermalink('/#skills'),
         },
         {
-          text: 'Abstrakt',
+          text: 'Resume',
           href: getPermalink('/#abstract'),
         },
       ],
@@ -130,7 +131,7 @@ export const footerData = {
     },
   ],
   socialLinks: [
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+    // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
     { ariaLabel: 'E-Mail', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' },
   ],
