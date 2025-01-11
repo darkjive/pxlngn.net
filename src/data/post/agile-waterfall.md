@@ -8,6 +8,7 @@ image: https://images.unsplash.com/photo-1488711500009-f9111944b1ab?q=80&w=1172&
 tags:
   - agile
   - projektmanagement
+  - waterfall
 metadata:
   canonical: https://pxlngn.net/agile-waterfall
 ---
