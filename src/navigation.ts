@@ -17,7 +17,7 @@ export const headerData = {
     },
 
     {
-      text: 'Gallery',
+      text: 'Gallerie',
       href: getPermalink('/gallery'),
       icon: '',
       links: [],
