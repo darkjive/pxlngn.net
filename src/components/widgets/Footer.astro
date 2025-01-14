@@ -2,6 +2,8 @@
 import { Icon } from 'astro-icon/components';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 
+import { trimSlash } from '~/utils/permalinks';
+
 interface Link {
   text?: string;
   href?: string;
@@ -22,6 +24,7 @@ export interface Props {
 }
 
 const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
+const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
 <footer
@@ -38,7 +41,10 @@ const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
             {href ? (
               <a
                 href={href}
-                class="dark:text-gray-300 font-medium mb-2 block hover:text-primary dark:hover:text-primary"
+                class:list={[
+                  'dark:text-gray-300 font-medium mb-2 block hover:text-primary dark:hover:text-primary',
+                  { 'aw-link-active': href === currentPath },
+                ]}
               >
                 {title}
               </a>
@@ -50,7 +56,10 @@ const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
                 {links.map(({ text, href, ariaLabel }) => (
                   <li class="mb-2">
                     <a
-                      class="text-muted hover:text-primary dark:hover:text-primary dark:text-gray-400 transition duration-150 ease-in-out"
+                      class:list={[
+                        'text-muted hover:text-primary dark:hover:text-primary dark:text-gray-400 transition duration-150 ease-in-out',
+                        { 'aw-link-active': href === currentPath },
+                      ]}
                       href={href}
                       aria-label={ariaLabel}
                     >

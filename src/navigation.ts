@@ -13,13 +13,30 @@ export const headerData = {
           href: getPermalink('/#projects'),
         },
         {
-          text: 'Blog',
-          href: getPermalink('/#blog'),
+          text: 'Profil',
+          href: getPermalink('/#profile'),
         },
         {
-          text: 'Über mich',
-          href: getPermalink('/#about'),
+          text: 'Lebenslauf',
+          href: getPermalink('/#resume'),
         },
+        {
+          text: 'Dienstleistungen',
+          href: getPermalink('/#abstract'),
+        },
+
+        // {
+        //   text: 'Blog',
+        //   href: getPermalink('/#blog'),
+        // },
+        // {
+        //   text: 'Über mich',
+        //   href: getPermalink('/#about'),
+        // },
+        // {
+        //   text: 'Resume',
+        //   href: getPermalink('/#abstract'),
+        // },
         // {
         //   text: 'FAQ´s',
         //   href: getPermalink('/#faq'),
@@ -27,38 +44,10 @@ export const headerData = {
       ],
     },
     {
-      text: 'Profil',
-      href: getPermalink('/#profile'),
-      icon: 'tabler:chevron-down',
-      links: [
-        {
-          text: 'Lebenslauf',
-          href: getPermalink('/#resume'),
-        },
-        {
-          text: 'Skills',
-          href: getPermalink('/#skills'),
-        },
-        {
-          text: 'Resume',
-          href: getPermalink('/#abstract'),
-        },
-      ],
-    },
-    {
       text: 'Blog',
       href: getBlogPermalink(),
       icon: 'tabler:chevron-down',
-      links: [
-        {
-          text: 'Nach Kategorie',
-          href: getPermalink('projektleitung', 'category'),
-        },
-        {
-          text: 'Nach Tag´s',
-          href: getPermalink('tutorial', 'tag'),
-        },
-      ],
+      links: [],
     },
   ],
   actions: [{ href: 'https://github.com/darkjive/pxlngn.net' }, { href: 'mailto:hi@pxlngn.net' }],
@@ -74,33 +63,15 @@ export const footerData = {
           href: getPermalink('/#projects'),
         },
         {
-          text: 'Blog',
-          href: getPermalink('/#blog'),
+          text: 'Profil',
+          href: getPermalink('/#profile'),
         },
-        {
-          text: 'Über mich',
-          href: getPermalink('/#about'),
-        },
-        // {
-        //   text: 'FAQ´s',
-        //   href: getPermalink('/#faq'),
-        // },
-      ],
-    },
-    {
-      title: 'Profil',
-      href: getPermalink('/#profile'),
-      links: [
         {
           text: 'Lebenslauf',
           href: getPermalink('/#resume'),
         },
         {
-          text: 'Skills',
-          href: getPermalink('/#skills'),
-        },
-        {
-          text: 'Resume',
+          text: 'Dienstleistungen',
           href: getPermalink('/#abstract'),
         },
       ],
@@ -108,16 +79,7 @@ export const footerData = {
     {
       title: 'Blog',
       href: getBlogPermalink(),
-      links: [
-        {
-          text: 'Nach Kategorie',
-          href: getPermalink('projektleitung', 'category'),
-        },
-        {
-          text: 'Nach Tag´s',
-          href: getPermalink('tutorial', 'tag'),
-        },
-      ],
+      links: [],
     },
     {
       title: 'Impressum',
