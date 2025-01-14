@@ -6,47 +6,26 @@ export const headerData = {
     {
       text: 'Intro',
       href: getPermalink(),
-      icon: 'tabler:chevron-down',
-      links: [
-        {
-          text: 'Projekte',
-          href: getPermalink('/#projects'),
-        },
-        {
-          text: 'Profil',
-          href: getPermalink('/#profile'),
-        },
-        {
-          text: 'Lebenslauf',
-          href: getPermalink('/#resume'),
-        },
-        {
-          text: 'Dienstleistungen',
-          href: getPermalink('/#abstract'),
-        },
+      icon: '',
+      links: [],
+    },
+    {
+      text: 'Profil',
+      href: getPermalink('/profile'),
+      icon: '',
+      links: [],
+    },
 
-        // {
-        //   text: 'Blog',
-        //   href: getPermalink('/#blog'),
-        // },
-        // {
-        //   text: 'Über mich',
-        //   href: getPermalink('/#about'),
-        // },
-        // {
-        //   text: 'Resume',
-        //   href: getPermalink('/#abstract'),
-        // },
-        // {
-        //   text: 'FAQ´s',
-        //   href: getPermalink('/#faq'),
-        // },
-      ],
+    {
+      text: 'Gallery',
+      href: getPermalink('/gallery'),
+      icon: '',
+      links: [],
     },
     {
       text: 'Blog',
       href: getBlogPermalink(),
-      icon: 'tabler:chevron-down',
+      icon: '',
       links: [],
     },
   ],
@@ -57,28 +36,26 @@ export const footerData = {
     {
       title: 'Intro',
       href: getPermalink(),
-      links: [
-        {
-          text: 'Projekte',
-          href: getPermalink('/#projects'),
-        },
-        {
-          text: 'Profil',
-          href: getPermalink('/#profile'),
-        },
-        {
-          text: 'Lebenslauf',
-          href: getPermalink('/#resume'),
-        },
-        {
-          text: 'Dienstleistungen',
-          href: getPermalink('/#abstract'),
-        },
-      ],
+      icon: '',
+      links: [],
+    },
+    {
+      title: 'Profil',
+      href: getPermalink('/profile'),
+      icon: '',
+      links: [],
+    },
+
+    {
+      title: 'Gallery',
+      href: getPermalink('/gallery'),
+      icon: '',
+      links: [],
     },
     {
       title: 'Blog',
       href: getBlogPermalink(),
+      icon: '',
       links: [],
     },
     {

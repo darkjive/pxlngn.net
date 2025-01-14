@@ -1,16 +1,11 @@
 ---
-import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { ImageGallery as Props } from '~/types';
 import Image from '~/components/common/Image.astro';
 
 const {
-  title = await Astro.slots.render('title'),
-  subtitle = await Astro.slots.render('subtitle'),
-  tagline = await Astro.slots.render('tagline'),
   id,
   isDark = false,
-  classes = {},
   images = [],
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
@@ -21,10 +16,9 @@ const columnedImages = Array.from({ length: columns }, (_, i) => images.filter((
 ---
 
 <WidgetWrapper id={id} isDark={isDark} bg={bg}>
-  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
 
   <section class="relative min-h-screen flex flex-col justify-center">
-    <div class="w-full max-w-5xl mx-auto px-4 md:px-6 py-24">
+    <div class="w-full max-w-5xl mx-auto px-4 md:px-6 py-0">
       <div class="space-y-20">
         <div>
           <div class="columns-3 gap-4 space-y-4">
