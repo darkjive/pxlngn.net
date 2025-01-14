@@ -87,13 +87,14 @@ export interface MetaDataTwitter {
   site?: string;
   cardType?: string;
 }
-
 export interface Image {
   src: string;
   alt?: string;
   title?: string;
+  width?: number;
+  height?: number;
+  caption?: string;
 }
-
 export interface Video {
   src: string;
   type?: string;
@@ -260,6 +261,10 @@ export interface Features extends Omit<Headline, 'classes'>, Widget {
   isAfterContent?: boolean;
 }
 
+export interface ImageGallery extends Omit<Headline, 'classes'>, Widget {
+  images: Image[];
+}
+
 export interface Faqs extends Omit<Headline, 'classes'>, Widget {
   iconUp?: string;
   iconDown?: string;
@@ -294,4 +299,4 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
   callToAction?: CallToAction;
 }
 
-export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+export interface Contact extends Omit<Headline, 'classes'>, Form, Widget { }

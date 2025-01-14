@@ -6,9 +6,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
-import Features4 from '~/components/widgets/Features4.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Gallery from '~/components/widgets/Gallery.astro';
+import ImageGallery from '~/components/widgets/ImageGallery.astro';
 // import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
@@ -40,9 +39,6 @@ const metadata = {
       </span>
     </Fragment>
   </Hero>
-  <!-- Content Widget **************** -->
-
-  <Gallery/>
 
   <Content
     id="projects"
@@ -139,6 +135,7 @@ const metadata = {
       </Fragment>
     </Fragment>
   </Content>
+
   <!-- Weiteres Projekt -->
 
   <!-- <Content
@@ -221,6 +218,231 @@ const metadata = {
     information={`Von Webentwicklung bis Design: Hier gibt es ehrliche Geschichten über Herausforderungen und Erfolgsmomente. Lass dich inspirieren und entdecke neue Perspektiven.`}
     classes={{ container: 'py-12 md:py-16' }}
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.jpg" />'
+  />
+
+  <ImageGallery
+    id="gallery"
+    title="Ein paar<br/> zufällige Werke"
+    tagline="Artworks"
+    subtitle="Diese Werke reichen bis in das Jahr 2009 zurück und zeigen meine Entwicklung als Designer."
+    images={[
+      {
+        src: '/gallery/1659611149561.png',
+        alt: 'Glitch',
+        title: 'Glitch',
+        caption: 'Glitch | 03.01.2025',
+      },
+      {
+        src: '/gallery/Designer.jpg',
+        alt: 'Chain of Thought',
+        title: 'Chain of Thought',
+        caption: 'Chain of Thought | 03.01.2025',
+      },
+      {
+        src: '/gallery/preview.jpg',
+        alt: 'Design (ai)',
+        title: 'Design (ai)',
+        caption: 'Design (ai) | 03.01.2025',
+      },
+      {
+        src: '/gallery/pxlngn-detail-01.png',
+        alt: 'pxlngn',
+        title: 'pxlngn',
+        caption: 'pxlngn | 03.01.2025',
+      },
+      {
+        src: '/gallery/failed.jpg',
+        alt: 'Failed Experiment',
+        title: 'Failed Experiment',
+        caption: 'Failed Experiment | 03.01.2025',
+      },
+      {
+        src: '/gallery/IMG_0592.jpg',
+        alt: 'Can on',
+        title: 'Can on',
+        caption: 'Can on | 03.01.2025',
+      },
+      {
+        src: '/gallery/Screenshot-2024-12-11-174643.jpg',
+        alt: 'Screenshot',
+        title: 'Screenshot',
+        caption: 'Screenshot | 03.01.2025',
+      },
+      {
+        src: '/gallery/Screenshot-2024-12-11-180351.jpg',
+        alt: 'Bohemica 2009',
+        title: 'Bohemica 2009',
+        caption: 'Bohemica 2009 | 03.01.2025',
+      },
+      {
+        src: '/gallery/Screenshot-2024-12-11-175022.jpg',
+        alt: 'Facetune',
+        title: 'Facetune',
+        caption: 'Facetune | 03.01.2025',
+      },
+      {
+        src: '/gallery/Screenshot-2024-12-11-180550.jpg',
+        alt: 'Love',
+        title: 'Love',
+        caption: 'Love | 03.01.2025',
+      },
+      {
+        src: '/gallery/moonelve.jpg',
+        alt: 'Moonelve',
+        title: 'Moonelve',
+        caption: 'Moonelve | 26.04.2009',
+      },
+      {
+        src: '/gallery/skinclear_v.1.4.JPG',
+        alt: 'Skinclear',
+        title: 'Skinclear',
+        caption: 'Skinclear | 10.10.2009',
+      },
+      {
+        src: '/gallery/20100319bohemica.jpg',
+        alt: 'Bohemica 2010',
+        title: 'Bohemica 2010',
+        caption: 'Bohemica 2010 | 13.03.2010',
+      },
+      {
+        src: '/gallery/21.jpg',
+        alt: 'Untitled 21',
+        title: 'Untitled 21',
+        caption: 'Untitled 21 | 07.04.2010',
+      },
+      {
+        src: '/gallery/future-city5.3.jpg',
+        alt: 'Future City',
+        title: 'Future City',
+        caption: 'Future City | 25.10.2013',
+      },
+      {
+        src: '/gallery/1863982.d0ddb431.jpg',
+        alt: 'Abstract Vision',
+        title: 'Abstract Vision',
+        caption: 'Abstract Vision | 06.09.2008',
+      },
+      {
+        src: '/gallery/digitallove.jpg',
+        alt: 'Digital Love',
+        title: 'Digital Love',
+        caption: 'Digital Love | 04.09.2008',
+      },
+      {
+        src: '/gallery/toxic.jpg',
+        alt: 'Toxic',
+        title: 'Toxic',
+        caption: 'Toxic | 24.09.2008',
+      },
+      {
+        src: '/gallery/look_at_me_2.jpg',
+        alt: 'Look at Me',
+        title: 'Look at Me',
+        caption: 'Look at Me | 15.09.2008',
+      },
+      {
+        src: '/gallery/shit.jpg',
+        alt: 'Shit',
+        title: 'Shit',
+        caption: 'Shit | 01.08.2008',
+      },
+      {
+        src: '/gallery/universe.shrine_v1.4.jpg',
+        alt: 'Universe Shrine',
+        title: 'Universe Shrine',
+        caption: 'Universe Shrine | 03.02.2008',
+      },
+      {
+        src: '/gallery/cosmic_vision.jpg',
+        alt: 'Cosmic Vision',
+        title: 'Cosmic Vision',
+        caption: 'Cosmic Vision | 20.02.2007',
+      },
+      {
+        src: '/gallery/speed.jpg',
+        alt: 'Speed',
+        title: 'Speed',
+        caption: 'Speed | 07.05.2007',
+      },
+      {
+        src: '/gallery/objects_0.4_ar.jpg',
+        alt: 'Objects',
+        title: 'Objects',
+        caption: 'Objects | 17.10.2007',
+      },
+      {
+        src: '/gallery/bioskin.jpg',
+        alt: 'BioSkin',
+        title: 'BioSkin',
+        caption: 'BioSkin | 21.03.2005',
+      },
+      {
+        src: '/gallery/ds.png',
+        alt: 'Digital Surface',
+        title: 'Digital Surface',
+        caption: 'Digital Surface | 29.12.2005',
+      },
+      {
+        src: '/gallery/psyquilizer.jpg',
+        alt: 'Psyquilizer',
+        title: 'Psyquilizer',
+        caption: 'Psyquilizer | 03.07.2004',
+      },
+      {
+        src: '/gallery/plasmat.jpg',
+        alt: 'Plasma',
+        title: 'Plasma',
+        caption: 'Plasma | 29.05.2004',
+      },
+      {
+        src: '/gallery/jivecode.jpg',
+        alt: 'Jivecode',
+        title: 'Jivecode',
+        caption: 'Jivecode | 03.03.2003',
+      },
+      {
+        src: '/gallery/microgasmen.jpg',
+        alt: 'Macroview',
+        title: 'Macroview',
+        caption: 'Macroview | 20.04.2003',
+      },
+      {
+        src: '/gallery/l_o_v_e.jpg',
+        alt: 'Love',
+        title: 'Love',
+        caption: 'Love | 09.03.2003',
+      },
+      {
+        src: '/gallery/holeview.jpg',
+        alt: 'Holeview',
+        title: 'Holeview',
+        caption: 'Holeview | 17.03.2003',
+      },
+      {
+        src: '/gallery/astral.flow.jpg',
+        alt: 'Astral Flow',
+        title: 'Astral Flow',
+        caption: 'Astral Flow | 28.09.2003',
+      },
+      {
+        src: '/gallery/red.in.jpg',
+        alt: 'Red In',
+        title: 'Red In',
+        caption: 'Red In | 28.09.2003',
+      },
+      {
+        src: '/gallery/style.pistol.jpg',
+        alt: 'Style Pistol',
+        title: 'Style Pistol',
+        caption: 'Style Pistol | 28.09.2003',
+      },
+      {
+        src: '/gallery/ch23.jpg',
+        alt: 'ch ~ 23',
+        title: 'ch ~ 23',
+        caption: 'ch ~ 23 | 12.01.2002',
+      },
+    ]}
   />
 
   <!-- FAQs Widget ******************* -->
