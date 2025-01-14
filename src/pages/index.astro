@@ -7,6 +7,7 @@ import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
+import ImageGallery from '~/components/widgets/ImageGallery.astro';
 // import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
@@ -135,6 +136,7 @@ const metadata = {
       </Fragment>
     </Fragment>
   </Content>
+
   <!-- Weiteres Projekt -->
 
   <!-- <Content
@@ -209,6 +211,184 @@ const metadata = {
       <div class="absolute bg-slate-100"></div>
     </Fragment>
   </Content> -->
+
+  <!-- Blog Latest Posts ******************* -->
+  <BlogLatestPosts
+    id="blog"
+    title="Lernen, Scheitern, Wachsen: Meine digitale Reise"
+    information={`Von Webentwicklung bis Design: Hier gibt es ehrliche Geschichten über Herausforderungen und Erfolgsmomente. Lass dich inspirieren und entdecke neue Perspektiven.`}
+    classes={{ container: 'py-12 md:py-16' }}
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.jpg" />'
+  />
+
+  <ImageGallery
+  id="gallery"
+  title="Ein paar<br/> zufällige Werke"
+  tagline="Artworks"
+  subtitle="Diese Werke reichen bis in das Jahr 1997 zurück und zeigen meine Entwicklung als Designer."
+  images={[
+    {
+      src: '/gallery/marie_karte.jpg',
+      alt: 'Marie Karte',
+      caption: 'Marie Karte | 31.05.2015',
+    },
+    {
+      src: '/gallery/ilse-strickt-banner-980x200px.jpg',
+      alt: 'Ilse Strickt Banner',
+      caption: 'Ilse Strickt Banner | 22.02.2014',
+    },
+    {
+      src: '/gallery/future-city5-3.jpg',
+      alt: 'Future City',
+      caption: 'Future City | 25.10.2013',
+    },
+    {
+      src: '/gallery/universe-shrine.jpg',
+      alt: 'Universe Shrine',
+      caption: 'Universe Shrine | 14.05.2010',
+    },
+    {
+      src: '/gallery/earth.jpg',
+      alt: 'Earth',
+      caption: 'Earth | 07.04.2010',
+    },
+    {
+      src: '/gallery/desk4.jpg',
+      alt: 'Desk',
+      caption: 'Desk | 31.03.2010',
+    },
+    {
+      src: '/gallery/20100319bohemica.jpg',
+      alt: 'Bohemica 2010',
+      caption: 'Bohemica 2010 | 13.03.2010',
+    },
+    {
+      src: '/gallery/cosmic_godess.jpg',
+      alt: 'Cosmic Godess',
+      caption: 'Cosmic Godess | 06.11.2009',
+    },
+    {
+      src: '/gallery/birth.jpg',
+      alt: 'Birth',
+      caption: 'Birth | 29.07.2009',
+    },
+    {
+      src: '/gallery/Gasmaske_Elena23.jpg',
+      alt: 'Gasmaske Elena',
+      caption: 'Gasmaske Elena | 29.05.2009',
+    },
+    {
+      src: '/gallery/world.jpg',
+      alt: 'World',
+      caption: 'World | 30.04.2009',
+    },
+    {
+      src: '/gallery/gamegrrl.jpg',
+      alt: 'Gamegrrl',
+      caption: 'Gamegrrl | 29.04.2009',
+    },
+    {
+      src: '/gallery/Icke_1.jpg',
+      alt: 'Icke',
+      caption: 'Icke | 26.04.2009',
+    },
+    {
+      src: '/gallery/poster09bohemica.jpg',
+      alt: 'Poster Bohemica 2009',
+      caption: 'Poster Bohemica 2009 | 27.02.2009',
+    },
+    {
+      src: '/gallery/1863982d0ddb431.jpg',
+      alt: 'Abstract Vision',
+      caption: 'Abstract Vision | 06.09.2008',
+    },
+    {
+      src: '/gallery/sirius-b-colorized.jpg',
+      alt: 'Sirius B Colorized',
+      caption: 'Sirius B Colorized | 06.09.2008',
+    },
+    {
+      src: '/gallery/look-at-me.jpg',
+      alt: 'Look at Me',
+      caption: 'Look at Me | 06.09.2008',
+    },
+    {
+      src: '/gallery/toxic.jpg',
+      alt: 'Toxic',
+      caption: 'Toxic | 06.09.2008',
+    },
+    {
+      src: '/gallery/digitallove.jpg',
+      alt: 'Digital Love',
+      caption: 'Digital Love | 04.09.2008',
+    },
+    {
+      src: '/gallery/objects_0-4_ar.jpg',
+      alt: 'Objects',
+      caption: 'Objects | 17.10.2007',
+    },
+    {
+      src: '/gallery/cosmic_vision.jpg',
+      alt: 'Cosmic Vision',
+      caption: 'Cosmic Vision | 20.02.2007',
+    },
+    {
+      src: '/gallery/ds.png',
+      alt: 'Digital Surface',
+      caption: 'Digital Surface | 29.12.2005',
+    },
+    {
+      src: '/gallery/bioskin.jpg',
+      alt: 'BioSkin',
+      caption: 'BioSkin | 21.03.2005',
+    },
+    {
+      src: '/gallery/psyquilizer.jpg',
+      alt: 'Psyquilizer',
+      caption: 'Psyquilizer | 03.07.2004',
+    },
+    {
+      src: '/gallery/plasmat.jpg',
+      alt: 'Plasma',
+      caption: 'Plasma | 29.05.2004',
+    },
+    {
+      src: '/gallery/red-in.jpg',
+      alt: 'Red In',
+      caption: 'Red In | 28.09.2003',
+    },
+    {
+      src: '/gallery/style-pistol.jpg',
+      alt: 'Style Pistol',
+      caption: 'Style Pistol | 28.09.2003',
+    },
+    {
+      src: '/gallery/astral-flow.jpg',
+      alt: 'Astral Flow',
+      caption: 'Astral Flow | 28.09.2003',
+    },
+    {
+      src: '/gallery/microgasmen.jpg',
+      alt: 'Microgasmen',
+      caption: 'Microgasmen | 20.04.2003',
+    },
+    {
+      src: '/gallery/holeview.jpg',
+      alt: 'Holeview',
+      caption: 'Holeview | 17.03.2003',
+    },
+    {
+      src: '/gallery/l-o-v-e.jpg',
+      alt: 'Love',
+      caption: 'Love | 09.03.2003',
+    },
+    {
+      src: '/gallery/ch23.jpg',
+      alt: 'Ch ~ 23',
+      caption: 'Ch ~ 23 | 12.01.2002',
+    },
+  ]}
+/>
 
   <!-- FAQs Widget ******************* -->
   <!-- <FAQs
