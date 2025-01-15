@@ -16,12 +16,12 @@ export const headerData = {
       links: [],
     },
 
-    {
-      text: 'Gallerie',
-      href: getPermalink('/gallery'),
-      icon: '',
-      links: [],
-    },
+    //{
+      //text: 'Gallerie',
+     // href: getPermalink('/gallery'),
+    //  icon: '',
+    //  links: [],
+  //  },
     {
       text: 'Blog',
       href: getBlogPermalink(),
@@ -46,12 +46,12 @@ export const footerData = {
       links: [],
     },
 
-    {
-      title: 'Gallery',
-      href: getPermalink('/gallery'),
-      icon: '',
-      links: [],
-    },
+ //   {
+  //    title: 'Gallery',
+   //   href: getPermalink('/gallery'),
+   //   icon: '',
+  //    links: [],
+ //   },
     {
       title: 'Blog',
       href: getBlogPermalink(),
