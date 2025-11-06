@@ -22,12 +22,12 @@ export const headerData = {
     //  icon: '',
     //  links: [],
     //  },
-    {
-      text: 'Blog',
-      href: getBlogPermalink(),
-      icon: '',
-      links: [],
-    },
+    //{
+    //  text: 'Blog',
+    //  href: getBlogPermalink(),
+    //  icon: '',
+    //  links: [],
+    //},
   ],
   actions: [{ href: 'https://github.com/darkjive/pxlngn.net' }, { href: 'mailto:hi@pxlngn.net' }],
 };
@@ -52,12 +52,12 @@ export const footerData = {
     //   icon: '',
     //    links: [],
     //   },
-    {
-      title: 'Blog',
-      href: getBlogPermalink(),
-      icon: '',
-      links: [],
-    },
+    //{
+    //  title: 'Blog',
+    //  href: getBlogPermalink(),
+    //  icon: '',
+    //  links: [],
+    //},
     {
       title: 'Impressum',
       href: getPermalink('/terms'),
