@@ -68,7 +68,7 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+    domains: ['cdn.pixabay.com', 'img.icons8.com', 'git-scm.com'],
   },
 
   markdown: {
