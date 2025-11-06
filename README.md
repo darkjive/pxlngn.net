@@ -266,6 +266,36 @@ Clone this repository on your own GitHub account and deploy to Vercel:
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fonwidget%2Fastrowind)
 
+#### Deploy to IONOS
+
+For IONOS hosting, you can use FTP/SFTP deployment or IONOS Deploy Now:
+
+**Automated FTP/SFTP Deployment:**
+
+1. Copy the deployment configuration:
+   ```bash
+   cp .env.deploy.example .env.deploy
+   ```
+
+2. Edit `.env.deploy` and add your IONOS credentials
+
+3. Run the deployment script:
+   ```bash
+   ./deploy-ionos.sh
+   ```
+
+**IONOS Deploy Now:**
+
+Connect your GitHub repository to [IONOS Deploy Now](https://www.ionos.de/hosting/deploy-now) for automatic deployments.
+
+**Detailed Guide:**
+
+See [IONOS-DEPLOY.md](./IONOS-DEPLOY.md) for comprehensive deployment instructions including:
+- FTP/SFTP deployment setup
+- IONOS Deploy Now configuration
+- SSH deployment for advanced users
+- Troubleshooting and performance optimization
+
 <br>
 
 ## Frequently Asked Questions
