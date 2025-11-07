@@ -5,9 +5,6 @@ import { UI } from 'astrowind:config';
 <!-- AOS CSS -->
 <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-<!-- AOS JavaScript - MUSS VOR der Initialisierung geladen werden -->
-<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
   if (window.basic_script) {
     return;
@@ -196,20 +193,6 @@ import { UI } from 'astrowind:config';
     document.querySelector('#header nav')?.classList.add('hidden');
   }
 
-  // AOS initialisieren - Ruhige, raumschiffartige Animationen
-  function initAOS() {
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        duration: 1200, // Längere Duration für ruhigere Bewegungen
-        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)', // Sanftes, weltraumartiges Easing
-        once: true,
-        offset: 80,
-        delay: 0,
-        anchorPlacement: 'top-bottom',
-      });
-    }
-  }
-
   // Hauptinitialisierung
   function initPage() {
     initTheme(); // Theme setzen
@@ -217,16 +200,34 @@ import { UI } from 'astrowind:config';
     initTypingEffect(); // Typewriter starten
     initDarkModeAndMenu(); // Darkmode und Menu initialisieren
     onPageShow(); // Weitere Initialisierungen nach dem Laden
-    initAOS(); // AOS initialisieren
   }
 
   // Initiale Ausführung beim Laden der Seite
   window.onload = initPage;
 
   // Re-Initialisierung bei Seitenwechsel in Astro
-  document.addEventListener('astro:after-swap', () => {
-    initPage();
-    // AOS refresh bei Seitenwechsel
+  document.addEventListener('astro:after-swap', initPage);
+</script>
+
+<!-- AOS JavaScript laden und initialisieren -->
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script is:inline>
+  // AOS initialisieren sobald das Script geladen ist
+  document.addEventListener('DOMContentLoaded', function() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 1200,
+        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        once: true,
+        offset: 80,
+        delay: 0,
+        anchorPlacement: 'top-bottom',
+      });
+    }
+  });
+
+  // AOS refresh bei Astro-Seitenwechsel
+  document.addEventListener('astro:after-swap', function() {
     if (typeof AOS !== 'undefined') {
       AOS.refresh();
     }
