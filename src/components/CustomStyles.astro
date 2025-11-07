@@ -129,4 +129,25 @@ import '@fontsource-variable/baloo-bhaijaan-2';
   #header[data-aw-sticky-header].header-visible {
     transform: translateY(0);
   }
+
+  /* Hover/Focus Pop Animation - Raumschiffartig */
+  .hover-pop {
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+  }
+
+  .hover-pop:hover,
+  .hover-pop:focus-within {
+    transform: scale(1.15);
+    filter: brightness(1.1);
+  }
+
+  .hover-pop:active {
+    transform: scale(0.95);
+  }
+
+  /* Sanfte Transitions für alle interaktiven Elemente */
+  a, button {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
 </style>

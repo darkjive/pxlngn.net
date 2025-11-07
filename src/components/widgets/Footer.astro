@@ -36,8 +36,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
     <div class="flex items-center justify-between gap-6 py-2">
       <div class="flex items-center gap-8 flex-wrap">
         {
-          links.map(({ title, href, links }) => (
-            <div class="flex items-center gap-4">
+          links.map(({ title, href, links }, index) => (
+            <div class="flex items-center gap-4" data-aos="fade-right" data-aos-duration="1200" data-aos-delay={index * 100}>
               {href ? (
                 <a
                   href={href}
@@ -92,7 +92,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             </ul>
           ) : null
         } -->
-        <div>
+        <div data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200" class="hover-pop">
           <ToggleTheme />
         </div>
       </div>
