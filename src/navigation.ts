@@ -3,19 +3,12 @@ import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    {
-      text: 'Intro',
-      href: getPermalink(),
-      icon: '',
-      links: [],
-    },
-    {
-      text: 'Profil',
-      href: getPermalink('/profile'),
-      icon: '',
-      links: [],
-    },
-
+    // {
+    //   text: 'Intro',
+    //   href: getPermalink(),
+    //   icon: '',
+    //   links: [],
+    // },
     //{
     //text: 'Gallerie',
     // href: getPermalink('/gallery'),
@@ -36,12 +29,6 @@ export const footerData = {
     {
       title: 'Intro',
       href: getPermalink(),
-      icon: '',
-      links: [],
-    },
-    {
-      title: 'Profil',
-      href: getPermalink('/profile'),
       icon: '',
       links: [],
     },

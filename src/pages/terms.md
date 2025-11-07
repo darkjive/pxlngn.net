@@ -9,7 +9,7 @@ E-Mail: hi@pxlngn.net
 
 ## Haftungsausschluss
 
-Keine Gewähr für Richtigkeit und Aktualität der Inhalte. Keine Haftung für externe Links. Alle Inhalte unterliegen dem Urheberrecht – Nutzung nur für private, nicht-kommerzielle Zwecke.
+Keine Gewähr für Richtigkeit und Aktualität der Inhalte. Keine Haftung für externe Links. Alle Inhalte unterliegen dem Urheberrecht - Nutzung nur für private, nicht-kommerzielle Zwecke.
 
 ### Bildnachweise
 
