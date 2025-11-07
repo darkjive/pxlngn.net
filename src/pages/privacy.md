@@ -11,15 +11,11 @@ Alain Ritter, Amselweg 33, 64295 Darmstadt, E-Mail: hi@pxlngn.net
 
 ## Datenverarbeitung
 
-Ich verarbeite Nutzungsdaten (IP-Adresse, Browsertyp, Zugriffszeiten) zur Website-Optimierung. Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DS-GVO). Logfiles werden 70 Tage gespeichert. Daten werden gelöscht, sobald der Zweck entfällt.
+Diese Website verarbeitet automatisch technische Daten (IP-Adresse, Browsertyp, Zugriffszeiten) zur Bereitstellung der Website und Fehleranalyse. Rechtsgrundlage: berechtigtes Interesse (Art. 6 Abs. 1 lit. f DS-GVO). Server-Logfiles werden maximal 70 Tage gespeichert.
 
-## Cookies & Tracking
+## Cookies
 
-**Cookies**: Essentielle und Session-Cookies für Grundfunktionen. Deaktivierung über Browsereinstellungen oder [About Ads](https://optout.aboutads.info).
-
-**Google Analytics**: Analyse mit anonymisierter IP, Speicherung 14 Monate. Datenübermittlung an Google Ireland/USA. [Opt-out-Plugin](http://tools.google.com/dlpage/gaoptout?hl=de).
-
-**YouTube**: Eingebettete Videos im erweiterten Datenschutzmodus. Bei Aufruf Datenübermittlung an Google/USA, Cookies bis 2 Jahre. [Opt-out](https://adssettings.google.com/authenticated).
+Diese Website verwendet ausschließlich technisch notwendige Session-Cookies für Grundfunktionen. Diese werden nach Schließen des Browsers gelöscht. Du kannst Cookies in deinen Browsereinstellungen deaktivieren.
 
 ## Deine Rechte
 
@@ -29,4 +25,4 @@ Du hast Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbe
 
 SSL-Verschlüsselung und weitere technische Maßnahmen schützen deine Daten.
 
-_Stand: 09.01.2025_
+_Stand: 07.11.2025_
