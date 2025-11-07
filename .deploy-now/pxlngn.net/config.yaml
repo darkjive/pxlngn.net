@@ -1,3 +1,20 @@
+# .deploy-now/config.yaml
+
+deployment:
+  bootstrap:
+    excludes:
+      - .git
+      - .github
+      - node_modules
+      - .deploy-now
+
+  recurring:
+    excludes:
+      - .git
+      - .github
+      - node_modules
+      - .deploy-now
+
 project:
   name: pxlngn.net
   type: static
@@ -6,16 +23,3 @@ project:
     output: dist
   environment:
     NODE_VERSION: 20
-  deployment:
-    bootstrap:
-      excludes:
-        - .git
-        - .github
-        - node_modules
-        - .deploy-now
-    recurring:
-      excludes:
-        - .git
-        - .github
-        - node_modules
-        - .deploy-now
