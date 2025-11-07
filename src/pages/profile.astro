@@ -17,6 +17,27 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Hallo,<br/> mein Name<br/> ist Alain."
+    tagline="intro"
+    class:list={['border-b border-gray-200/100 dark:border-gray-500/20']}
+    actions={[{ variant: 'secondary', text: 'Profil', href: '/profile', icon: 'tabler:user' }]}
+    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute -my-2 inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.jpg" />'
+  >
+    <Fragment slot="title"></Fragment>
+
+    <!--     <Fragment slot="subtitle">
+      <span
+        >Willkommen in meiner digitalen Welt!<br />Auf den folgenden Seiten teile ich meine Erfahrungen und Gedanken zu
+        Webentwicklung, Design, Projektmanagement und anderen Themen, die mich begeistern.
+      </span>
+    </Fragment>
+ -->
+  </Hero>
+
   <Hero
     id="profile"
     title="<span class='lg:text-7xl'>Generalist<br/>aus<br/> Überzeugung.</span>"
@@ -25,14 +46,14 @@ const metadata = {
       { variant: 'secondary', text: 'CV', href: '#resume', icon: 'tabler:id' },
       { variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' },
     ]}
-    bg='<img class="border-b  border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.jpg" />'
   >
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span>
-        Ich heiße <span class="font-bold"> Alain Ritter</span><br class="md:hidden" /> - ein Generalist, der die Schnittstellen
-        zwischen Design und Logik liebt. Hier kannst du mehr über meine Person und meinen Hintergrund erfahren.
+        Der die Schnittstellen zwischen Design und Logik liebt. Hier kannst du mehr über meine Person und meinen
+        Hintergrund erfahren.
       </span>
     </Fragment>
   </Hero>
@@ -130,16 +151,6 @@ const metadata = {
         title:
           'PREUSS<br class="sm:hidden" /> MEDIENSERVICE e.K. <br /> <span class="font-normal">Mediengestalter</span> <br /> <span class="text-sm font-normal">2003 - 2009</span>',
         description: `Gestaltung und Druckvorbereitung von Printmedien. <br /> Entwicklung kreativer Konzepte für Werbematerialien. <br /> Betreuung des gesamten Druckvorstufenprozesses.`,
-        icon: 'tabler:briefcase',
-        logo: {
-          src: '/images/Screenshot-2024-12-05-125602.jpg',
-          alt: 'PREUSS MEDIENSERVICE Logo',
-        },
-      },
-      {
-        title:
-          'PREUSS<br class="sm:hidden" /> MEDIENSERVICE e.K. <br /> <span class="font-normal">Auszubildender im Bereich Drucktechnik</span> <br /> <span class="text-sm font-normal">1999 - 2003</span>',
-        description: `Ausbildung in Drucktechnik mit Schwerpunkt Printmedien. <br /> Erlernen der Grundlagen von Design und Druckvorstufe. <br /> Praktische Erfahrung in der Produktion und Qualitätskontrolle.`,
         icon: 'tabler:briefcase',
         logo: {
           src: '/images/Screenshot-2024-12-05-125602.jpg',
