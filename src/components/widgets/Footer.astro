@@ -30,70 +30,72 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <footer
   class:list={[
     { dark: theme === 'dark' },
-    'bg-white border-t border-gray-200/100 dark:border-gray-500/20 md:backdrop-blur  dark:bg-black drop-shadow-2xl not-prose py-8 relative',
+    'bg-white border-t border-gray-200/100 dark:border-gray-500/20 md:backdrop-blur  dark:bg-black drop-shadow-2xl not-prose py-4 relative',
   ]}
 >
   <div class="relative max-w-5xl mx-auto px-6 dark:text-slate-300">
-    <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 pt-8 md:pt-12">
-      {
-        links.map(({ title, href, links }) => (
-          <div class="col-span-6 md:col-span-3 lg:col-span-2">
-            {href ? (
-              <a
-                href={href}
-                class:list={[
-                  'dark:text-gray-300 font-medium mb-2 block hover:text-primary dark:hover:text-primary',
-                  { 'aw-link-active': href === currentPath },
-                ]}
-              >
-                {title}
-              </a>
-            ) : (
-              <div class="font-medium mb-2 dark:text-gray-300">{title}</div>
-            )}
-            {links && Array.isArray(links) && links.length > 0 && (
-              <ul class="text-sm">
-                {links.map(({ text, href, ariaLabel }) => (
-                  <li class="mb-2">
-                    <a
-                      class:list={[
-                        'text-muted hover:text-primary dark:hover:text-primary dark:text-gray-400 transition duration-150 ease-in-out',
-                        { 'aw-link-active': href === currentPath },
-                      ]}
-                      href={href}
-                      aria-label={ariaLabel}
-                    >
-                      <Fragment set:html={text} />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-        ))
-      }
-    </div>
-    <div class="flex items-center justify-end py-6 md:py-8">
-      {
-        socialLinks?.length ? (
-          <ul class="flex space-x-3 rtl:space-x-reverse">
-            {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-              <li>
+    <div class="flex items-center justify-between gap-6 py-2">
+      <div class="flex items-center gap-8 flex-wrap">
+        {
+          links.map(({ title, href, links }) => (
+            <div class="flex items-center gap-4">
+              {href ? (
                 <a
-                  class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
-                  aria-label={ariaLabel}
                   href={href}
+                  class:list={[
+                    'dark:text-gray-300 font-medium hover:text-primary dark:hover:text-primary whitespace-nowrap',
+                    { 'aw-link-active': href === currentPath },
+                  ]}
                 >
-                  {icon && <Icon name={icon} class="w-5 h-5" />}
-                  <Fragment set:html={text} />
+                  {title}
                 </a>
-              </li>
-            ))}
-          </ul>
-        ) : null
-      }
-      <div class="">
-        <ToggleTheme />
+              ) : (
+                <div class="font-medium dark:text-gray-300 whitespace-nowrap">{title}</div>
+              )}
+              {links && Array.isArray(links) && links.length > 0 && (
+                <ul class="flex items-center gap-4 text-sm">
+                  {links.map(({ text, href, ariaLabel }) => (
+                    <li>
+                      <a
+                        class:list={[
+                          'text-muted hover:text-primary dark:hover:text-primary dark:text-gray-400 transition duration-150 ease-in-out whitespace-nowrap',
+                          { 'aw-link-active': href === currentPath },
+                        ]}
+                        href={href}
+                        aria-label={ariaLabel}
+                      >
+                        <Fragment set:html={text} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))
+        }
+      </div>
+      <div class="flex items-center gap-3">
+        {
+          socialLinks?.length ? (
+            <ul class="flex space-x-3 rtl:space-x-reverse">
+              {socialLinks.map(({ ariaLabel, href, text, icon }) => (
+                <li>
+                  <a
+                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
+                    aria-label={ariaLabel}
+                    href={href}
+                  >
+                    {icon && <Icon name={icon} class="w-5 h-5" />}
+                    <Fragment set:html={text} />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          ) : null
+        }
+        <div>
+          <ToggleTheme />
+        </div>
       </div>
     </div>
   </div>
