@@ -28,6 +28,7 @@
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/baloo-bhaijaan-2": "^5.1.0",
     "@playwright/test": "^1.49.1",
+    "aos": "^2.3.4",
     "astro": "^5.2.3",
     "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",

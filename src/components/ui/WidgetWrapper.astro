@@ -7,14 +7,18 @@ import Background from './Background.astro';
 export interface Props extends Widget {
   containerClass?: string;
   ['as']?: HTMLTag;
+  ['data-aos']?: string;
+  ['data-aos-delay']?: string;
+  ['data-aos-duration']?: string;
+  ['data-aos-easing']?: string;
 }
 
-const { id, isDark = false, containerClass = '', bg, as = 'section' } = Astro.props;
+const { id, isDark = false, containerClass = '', bg, as = 'section', ...restProps } = Astro.props;
 
 const WrapperTag = as;
 ---
 
-<WrapperTag class="relative not-prose scroll-mt-[80px]" {...id ? { id } : {}}>
+<WrapperTag class="relative not-prose scroll-mt-[80px]" {...id ? { id } : {}} {...restProps}>
   <div class="absolute inset-0 pointer-events-none -z-[1]" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : <Background isDark={isDark} />}

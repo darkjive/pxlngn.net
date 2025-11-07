@@ -2,6 +2,9 @@
 import { UI } from 'astrowind:config';
 ---
 
+<!-- AOS CSS -->
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
 <script is:inline define:vars={{ defaultTheme: UI.theme }}>
   if (window.basic_script) {
     return;
@@ -190,6 +193,18 @@ import { UI } from 'astrowind:config';
     document.querySelector('#header nav')?.classList.add('hidden');
   }
 
+  // AOS initialisieren
+  function initAOS() {
+    if (typeof AOS !== 'undefined') {
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100,
+      });
+    }
+  }
+
   // Hauptinitialisierung
   function initPage() {
     initTheme(); // Theme setzen
@@ -197,11 +212,21 @@ import { UI } from 'astrowind:config';
     initTypingEffect(); // Typewriter starten
     initDarkModeAndMenu(); // Darkmode und Menu initialisieren
     onPageShow(); // Weitere Initialisierungen nach dem Laden
+    initAOS(); // AOS initialisieren
   }
 
   // Initiale Ausführung beim Laden der Seite
   window.onload = initPage;
 
   // Re-Initialisierung bei Seitenwechsel in Astro
-  document.addEventListener('astro:after-swap', initPage);
+  document.addEventListener('astro:after-swap', () => {
+    initPage();
+    // AOS refresh bei Seitenwechsel
+    if (typeof AOS !== 'undefined') {
+      AOS.refresh();
+    }
+  });
 </script>
+
+<!-- AOS JavaScript -->
+<script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
