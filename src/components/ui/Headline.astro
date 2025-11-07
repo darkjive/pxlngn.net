@@ -20,7 +20,13 @@ const {
   (title || subtitle || tagline) && (
     <div class={twMerge('mb-8 md:mx-auto md:mb-12 text-center', containerClass)}>
       {tagline && (
-        <p class="text-slate-900/30 dark:text-slate-300/50 font-bold tracking-normal uppercase" set:html={tagline} />
+        <p
+          class="text-slate-900/30 dark:text-slate-300/50 font-bold tracking-normal uppercase"
+          set:html={tagline}
+          data-aos="fade-down"
+          data-aos-duration="1200"
+          data-aos-delay="0"
+        />
       )}
       {title && (
         <h2
@@ -29,10 +35,13 @@ const {
             titleClass
           )}
           set:html={title}
+          data-aos="fade-up"
+          data-aos-duration="1400"
+          data-aos-delay="200"
         />
       )}
 
-      {subtitle && <p class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
+      {subtitle && <p class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400" />}
     </div>
   )
 }

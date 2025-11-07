@@ -32,8 +32,8 @@ const {
         containerClass
       )}
     >
-      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
-        <div class={twMerge('relative flex flex-col items-center', panelClass, itemClasses?.panel)}>
+      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }, index) => (
+        <div class={twMerge('relative flex flex-col items-center', panelClass, itemClasses?.panel)} data-aos="fade-up" data-aos-duration="1200" data-aos-delay={100 * index}>
           {(icon || defaultIcon) && (
             <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
           )}
