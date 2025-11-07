@@ -17,3 +17,14 @@ deployment:
       - .github
       - node_modules
       - .deploy-now
+
+
+version: 1
+project:
+  name: pxlngn.net
+  type: static
+  build:
+    command: npm run build
+    output: dist
+  environment:
+    NODE_VERSION: 20
