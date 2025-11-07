@@ -39,25 +39,67 @@ import { UI } from 'astrowind:config';
     }
   }
 
-  // Funktion für das Scroll-Event
+  // Funktion für das Scroll-Event mit Auto-Hide-Funktion
+  let lastScrollPosition = 0;
+  const scrollThreshold = 10; // Minimale Scroll-Distanz bevor hide/show getriggert wird
+  const scrollOffsetShow = 60; // Ab welcher Position die Navigation ausgeblendet werden kann
+
   function applyHeaderStylesOnScroll() {
     const header = document.querySelector('#header[data-aw-sticky-header]');
     if (!header) return;
-    const lastKnownScrollPosition = window.scrollY;
-    if (lastKnownScrollPosition > 60 && !header.classList.contains('scroll')) {
+
+    const currentScrollPosition = window.scrollY;
+
+    // Standard scroll class für Header-Styling
+    if (currentScrollPosition > 60 && !header.classList.contains('scroll')) {
       header.classList.add('scroll');
-    } else if (lastKnownScrollPosition <= 60 && header.classList.contains('scroll')) {
+    } else if (currentScrollPosition <= 60 && header.classList.contains('scroll')) {
       header.classList.remove('scroll');
+    }
+
+    // Auto-Hide-Logik nur für mobile Geräte (unter 768px)
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // Berechne Scroll-Richtung
+      const scrollingDown = currentScrollPosition > lastScrollPosition;
+      const scrollDifference = Math.abs(currentScrollPosition - lastScrollPosition);
+
+      // Nur reagieren wenn genug gescrollt wurde
+      if (scrollDifference < scrollThreshold) {
+        return;
+      }
+
+      // Beim Runterscrollen (scrolling down = nach unten wischen): Header ausblenden
+      if (scrollingDown && currentScrollPosition > scrollOffsetShow) {
+        header.classList.add('header-hidden');
+        header.classList.remove('header-visible');
+      }
+      // Beim Hochscrollen (scrolling up = nach oben wischen): Header einblenden
+      else if (!scrollingDown) {
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+
+      lastScrollPosition = currentScrollPosition;
+    } else {
+      // Auf Desktop: Header immer sichtbar
+      header.classList.remove('header-hidden');
+      header.classList.add('header-visible');
     }
   }
 
   // Initialisierung der Scroll-Event-Listener
   function initScrollEvents() {
+    // Reset scroll position tracking
+    lastScrollPosition = window.scrollY;
+
     let ticking = false;
     attachEvent([document], 'scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           applyHeaderStylesOnScroll();
+          ticking = false;
         });
         ticking = true;
       }
