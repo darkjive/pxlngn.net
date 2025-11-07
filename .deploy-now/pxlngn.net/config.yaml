@@ -1,0 +1,19 @@
+# Deploy Now configuration for pxlngn.net
+# More information: https://docs.ionos.space/docs/deployment-configuration/
+
+deployment:
+  # Excludes for bootstrap (initial deployment)
+  bootstrap:
+    excludes:
+      - .git
+      - .github
+      - node_modules
+      - .deploy-now
+
+  # Excludes for recurring deployments
+  recurring:
+    excludes:
+      - .git
+      - .github
+      - node_modules
+      - .deploy-now
