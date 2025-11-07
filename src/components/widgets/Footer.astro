@@ -1,5 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 
 import { trimSlash } from '~/utils/permalinks';
@@ -23,7 +22,7 @@ export interface Props {
   theme?: string;
 }
 
-const { socialLinks = [], links = [], theme = 'light' } = Astro.props;
+const { links = [], theme = 'light' } = Astro.props;
 const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 ---
 
@@ -75,7 +74,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         }
       </div>
       <div class="flex items-center gap-3">
-        {
+        <!-- {
           socialLinks?.length ? (
             <ul class="flex space-x-3 rtl:space-x-reverse">
               {socialLinks.map(({ ariaLabel, href, text, icon }) => (
@@ -92,7 +91,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ))}
             </ul>
           ) : null
-        }
+        } -->
         <div>
           <ToggleTheme />
         </div>
