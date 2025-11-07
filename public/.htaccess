@@ -1,0 +1,251 @@
+# ============================================================================
+# .htaccess Configuration for Astro Static Site
+# Optimized for IONOS Deploy Now
+# ============================================================================
+
+# ----------------------------------------------------------------------
+# Security Headers
+# ----------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+    # X-Frame-Options: Prevent clickjacking attacks
+    Header always set X-Frame-Options "SAMEORIGIN"
+
+    # X-Content-Type-Options: Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+
+    # X-XSS-Protection: Enable XSS filter in browsers
+    Header always set X-XSS-Protection "1; mode=block"
+
+    # Referrer-Policy: Control referrer information
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions-Policy: Control browser features
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+    # Content-Security-Policy: Protect against XSS and injection attacks
+    # Note: Adjust this policy based on your specific needs
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: cdn.pixabay.com img.icons8.com git-scm.com; font-src 'self' data:; connect-src 'self';"
+
+    # Remove server signature
+    Header unset Server
+    Header unset X-Powered-By
+
+    # Remove ETag for security
+    Header unset ETag
+</IfModule>
+
+# Disable ETag
+FileETag None
+
+# ----------------------------------------------------------------------
+# Security: Deny Access to Hidden Files and Directories
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Block access to hidden files and directories (starting with .)
+    # Raise 404 error to give attackers no clue
+    RedirectMatch 404 /\..*$
+</IfModule>
+
+# Additional protection for .git, .env, etc.
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# ----------------------------------------------------------------------
+# Security: Disable Directory Browsing
+# ----------------------------------------------------------------------
+
+Options All -Indexes
+
+# ----------------------------------------------------------------------
+# Character Encoding
+# ----------------------------------------------------------------------
+
+<IfModule mod_mime.c>
+    # Set default charset to UTF-8
+    AddDefaultCharset UTF-8
+
+    # Force UTF-8 for specific file types
+    AddCharset UTF-8 .html .css .js .xml .json .rss .atom
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Compression: Enable Gzip and Brotli
+# ----------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+    # Brotli compression
+    RewriteCond "%{HTTP:Accept-encoding}" "br"
+    RewriteCond "%{REQUEST_FILENAME}.br" -s
+    RewriteRule "^(.*)\.(html|css|js)$" "/$1.$2.br" [QSA]
+
+    RewriteRule "\.html\.br$" "-" [T=text/html,E=no-brotli:1,E=no-gzip:1]
+    RewriteRule "\.css\.br$" "-" [T=text/css,E=no-brotli:1,E=no-gzip:1]
+    RewriteRule "\.js\.br$" "-" [T=text/javascript,E=no-brotli:1,E=no-gzip:1]
+
+    <FilesMatch "(\.html\.br|\.js\.br|\.css\.br)$">
+      Header append Content-Encoding br
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+
+    # Gzip compression
+    RewriteCond "%{HTTP:Accept-encoding}" "gzip"
+    RewriteCond "%{REQUEST_FILENAME}.gz" -s
+    RewriteRule "^(.*)\.(html|css|js)$" "/$1.$2.gz" [QSA]
+
+    RewriteRule "\.html\.gz$" "-" [T=text/html,E=no-brotli:1,E=no-gzip:1]
+    RewriteRule "\.css\.gz$" "-" [T=text/css,E=no-brotli:1,E=no-gzip:1]
+    RewriteRule "\.js\.gz$" "-" [T=text/javascript,E=no-brotli:1,E=no-gzip:1]
+
+    <FilesMatch "(\.html\.gz|\.js\.gz|\.css\.gz)$">
+      Header append Content-Encoding gzip
+      Header append Vary Accept-Encoding
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    # Compress HTML, CSS, JavaScript, Text, XML, JSON and fonts
+    AddOutputFilterByType DEFLATE text/html \
+                                  text/plain \
+                                  text/css \
+                                  text/xml \
+                                  text/javascript \
+                                  application/javascript \
+                                  application/x-javascript \
+                                  application/json \
+                                  application/xml \
+                                  application/rss+xml \
+                                  application/atom+xml \
+                                  application/xhtml+xml \
+                                  font/ttf \
+                                  font/otf \
+                                  font/woff \
+                                  font/woff2 \
+                                  image/svg+xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Caching: Leverage Browser Caching
+# ----------------------------------------------------------------------
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Default expiration: 1 week
+    ExpiresDefault "access plus 1 week"
+
+    # HTML: 1 hour (for dynamic content)
+    ExpiresByType text/html "access plus 1 hour"
+
+    # CSS and JavaScript: 1 year
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/javascript "access plus 1 year"
+
+    # Images: 1 year
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    ExpiresByType image/x-icon "access plus 1 year"
+
+    # Fonts: 1 year
+    ExpiresByType font/ttf "access plus 1 year"
+    ExpiresByType font/otf "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+
+    # Feeds and manifests: 1 day
+    ExpiresByType application/rss+xml "access plus 1 day"
+    ExpiresByType application/atom+xml "access plus 1 day"
+    ExpiresByType application/manifest+json "access plus 1 day"
+</IfModule>
+
+<IfModule mod_headers.c>
+    # Cache control for static assets
+    <FilesMatch "\.(css|js|jpg|jpeg|png|gif|webp|svg|woff|woff2|ttf|otf)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Cache control for HTML
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "public, max-age=3600, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+# ----------------------------------------------------------------------
+# MIME Types
+# ----------------------------------------------------------------------
+
+<IfModule mod_mime.c>
+    # JavaScript
+    AddType text/javascript js mjs
+
+    # JSON
+    AddType application/json json
+
+    # Web fonts
+    AddType font/woff woff
+    AddType font/woff2 woff2
+    AddType font/ttf ttf
+    AddType font/otf otf
+    AddType application/font-woff woff
+    AddType application/font-woff2 woff2
+
+    # Images
+    AddType image/webp webp
+    AddType image/svg+xml svg svgz
+
+    # Other
+    AddType application/manifest+json webmanifest
+    AddType text/xml xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Error Pages (optional)
+# ----------------------------------------------------------------------
+
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# ----------------------------------------------------------------------
+# Rewrite Rules
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Remove trailing slash (optional, adjust based on your needs)
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteCond %{REQUEST_URI} (.+)/$
+    # RewriteRule ^ %1 [R=301,L]
+
+    # Serve .html files without extension (optional)
+    # RewriteCond %{REQUEST_FILENAME} !-f
+    # RewriteCond %{REQUEST_FILENAME} !-d
+    # RewriteCond %{REQUEST_FILENAME}.html -f
+    # RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Additional Security
+# ----------------------------------------------------------------------
+
+# Prevent access to backup and source files
+<FilesMatch "(^#.*#|\.(bak|conf|dist|fla|in[ci]|log|orig|psd|sh|sql|sw[op])|~)$">
+    Require all denied
+</FilesMatch>
+
+# Block access to common sensitive files
+<FilesMatch "(composer\.json|composer\.lock|package\.json|package-lock\.json|yarn\.lock)$">
+    Require all denied
+</FilesMatch>
