@@ -153,43 +153,49 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       ]}
     >
       <div class="items-center flex justify-between w-full md:w-auto">
-        <div class="flex">
+        <div class="flex items-center gap-3">
           {showToggleTheme && <ToggleTheme iconClass="w-6 h-6 md:w-5 md:h-5 md:inline-block" />}
-          {
-            showRssFeed && (
-              <a
-                class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
-                aria-label="RSS Feed"
-                href={getAsset('/rss.xml')}
-              >
-                <Icon name="tabler:rss" class="w-5 h-5" />
-              </a>
-            )
-          }
-          {
-            actions?.length ? (
-              <a
-                class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
-                href={actions?.[0].href}
-              >
-                <Icon name="tabler:brand-github" class="w-5 h-5" />
-              </a>
-            ) : (
-              ''
-            )
-          }
-          {
-            actions?.length ? (
-              <a
-                class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center ml-3"
-                href={actions?.[1].href}
-              >
-                <Icon name="tabler:mail" class="w-5 h-5" />
-              </a>
-            ) : (
-              ''
-            )
-          }
+          <ul class="flex space-x-3 rtl:space-x-reverse">
+            {
+              showRssFeed && (
+                <li>
+                  <a
+                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
+                    aria-label="RSS Feed"
+                    href={getAsset('/rss.xml')}
+                  >
+                    <Icon name="tabler:rss" class="w-5 h-5" />
+                  </a>
+                </li>
+              )
+            }
+            {
+              actions?.[0]?.href && (
+                <li>
+                  <a
+                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
+                    aria-label="Github"
+                    href={actions[0].href}
+                  >
+                    <Icon name="tabler:brand-github" class="w-5 h-5" />
+                  </a>
+                </li>
+              )
+            }
+            {
+              actions?.[1]?.href && (
+                <li>
+                  <a
+                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
+                    aria-label="E-Mail"
+                    href={actions[1].href}
+                  >
+                    <Icon name="tabler:mail" class="w-5 h-5" />
+                  </a>
+                </li>
+              )
+            }
+          </ul>
         </div>
       </div>
     </div>
