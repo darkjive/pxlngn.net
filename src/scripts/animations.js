@@ -173,8 +173,7 @@ const animateCycleTypewriter = (element) => {
     element.style.transform = 'translateY(10px)';
 
     // Erscheinen-Animation
-    anime({
-      targets: element,
+    anime(element, {
       opacity: [0, 1],
       translateY: [10, 0],
       duration: 500,
@@ -182,8 +181,7 @@ const animateCycleTypewriter = (element) => {
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
-          anime({
-            targets: element,
+          anime(element, {
             opacity: [1, 0],
             translateY: [0, -10],
             duration: 400,
