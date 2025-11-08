@@ -1,4 +1,5 @@
-import { animate } from 'animejs';
+import { anime } from 'animejs';
+import { splitText } from 'animejs/splitText';
 
 const CONFIG = {
   duration: 600,
@@ -67,7 +68,7 @@ const animateElement = (element) => {
       easing: 'easeOutQuad',
       delay,
       complete: () => {
-        const glitchAnim = animate(element, {
+        const glitchAnim = anime(element, {
           translateX: [
             { value: -5, duration: 100 },
             { value: 5, duration: 100 },
@@ -106,7 +107,7 @@ const animateElement = (element) => {
   };
 
   const animProps = animations[animType] || animations.default;
-  animate(element, animProps);
+  anime(element, animProps);
 };
 
 const animateTypewriter = (element) => {
@@ -127,7 +128,7 @@ const animateTypewriter = (element) => {
     return span;
   });
 
-  animate(charSpans, {
+  anime(charSpans, {
     opacity: [0, 1],
     duration: 50,
     delay: (el, i) => delay + i * 30,
@@ -135,6 +136,9 @@ const animateTypewriter = (element) => {
   });
 };
 
+// ============================================================
+// 🔥 NEUE VERSION DES cycle-typewriter MIT SPLITTEXT (Zeilen)
+// ============================================================
 const animateCycleTypewriter = (element) => {
   if (element.dataset.animated) return;
   element.dataset.animated = 'true';
@@ -149,51 +153,53 @@ const animateCycleTypewriter = (element) => {
     'text-blue-500',
   ];
 
-  let currentIndex = 0;
+  let index = 0;
 
-  const typeWord = () => {
-    const word = words[currentIndex];
-    const color = colors[currentIndex];
+  const animateNext = () => {
+    const word = words[index];
+    const color = colors[index];
 
+    // Text einsetzen
+    element.innerHTML = word;
+
+    // SplitText verwenden – Linien-Wrapper generieren
+    const { lines } = splitText(element, { lines: true });
+
+    // Farbe setzen
     element.className = `${element.className
       .split(' ')
       .filter((c) => !c.startsWith('text-'))
       .join(' ')} ${color}`;
-    element.textContent = '';
 
-    const chars = word.split('');
-    const charSpans = chars.map((char) => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      span.style.opacity = '0';
-      element.appendChild(span);
-      return span;
-    });
-
-    animate(charSpans, {
+    // Erscheinen-Animation
+    anime(lines, {
       opacity: [0, 1],
-      duration: 50,
-      delay: (el, i) => i * 60,
-      easing: 'linear',
+      translateY: [10, 0],
+      duration: 500,
+      delay: (el, i) => i * 50,
+      easing: 'easeOutExpo',
       complete: () => {
+        // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
-          animate(charSpans, {
+          anime(lines, {
             opacity: [1, 0],
-            duration: 50,
-            delay: (el, i) => i * 30,
-            easing: 'linear',
+            translateY: [0, -10],
+            duration: 400,
+            easing: 'easeInExpo',
             complete: () => {
-              currentIndex = (currentIndex + 1) % words.length;
-              setTimeout(typeWord, 300);
+              index = (index + 1) % words.length;
+              animateNext();
             },
           });
-        }, 1500);
+        }, 1000);
       },
     });
   };
 
-  typeWord();
+  animateNext();
 };
+
+// ============================================================
 
 const addImageGlitch = (img) => {
   img.style.position = 'relative';
@@ -296,7 +302,6 @@ const initAnimations = () => {
     });
   });
 
-  // Glitch-Effekt für alle Bilder
   document.querySelectorAll('img[data-glitch]').forEach((img) => {
     addImageGlitch(img);
   });
@@ -312,13 +317,13 @@ const initThemeToggleAnimation = () => {
 
     [sunIcon, moonIcon].forEach((icon) => {
       if (icon) {
-        animate(icon, {
+        anime(icon, {
           scale: [1, 0],
           rotate: [0, 180],
           duration: 300,
           easing: 'easeInOutQuad',
           complete: () => {
-            animate(icon, {
+            anime(icon, {
               scale: [0, 1],
               rotate: [180, 360],
               duration: 300,
