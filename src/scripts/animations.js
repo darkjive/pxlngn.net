@@ -1,8 +1,5 @@
 import { animate } from 'animejs';
 
-// Alias for backward compatibility
-const anime = animate;
-
 const CONFIG = {
   duration: 600,
   easing: 'easeOutExpo',
@@ -70,7 +67,7 @@ const animateElement = (element) => {
       easing: 'easeOutQuad',
       delay,
       complete: () => {
-        const glitchAnim = anime(element, {
+        const glitchAnim = animate(element, {
           translateX: [
             { value: -5, duration: 100 },
             { value: 5, duration: 100 },
@@ -109,7 +106,7 @@ const animateElement = (element) => {
   };
 
   const animProps = animations[animType] || animations.default;
-  anime(element, animProps);
+  animate(element, animProps);
 };
 
 const animateTypewriter = (element) => {
@@ -130,7 +127,7 @@ const animateTypewriter = (element) => {
     return span;
   });
 
-  anime(charSpans, {
+  animate(charSpans, {
     opacity: [0, 1],
     duration: 50,
     delay: (el, i) => delay + i * 30,
@@ -173,8 +170,7 @@ const animateCycleTypewriter = (element) => {
     element.style.transform = 'translateY(10px)';
 
     // Erscheinen-Animation
-    anime({
-      targets: element,
+    animate(element, {
       opacity: [0, 1],
       translateY: [10, 0],
       duration: 500,
@@ -182,8 +178,7 @@ const animateCycleTypewriter = (element) => {
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
-          anime({
-            targets: element,
+          animate(element, {
             opacity: [1, 0],
             translateY: [0, -10],
             duration: 400,
@@ -319,13 +314,13 @@ const initThemeToggleAnimation = () => {
 
     [sunIcon, moonIcon].forEach((icon) => {
       if (icon) {
-        anime(icon, {
+        animate(icon, {
           scale: [1, 0],
           rotate: [0, 180],
           duration: 300,
           easing: 'easeInOutQuad',
           complete: () => {
-            anime(icon, {
+            animate(icon, {
               scale: [0, 1],
               rotate: [180, 360],
               duration: 300,
