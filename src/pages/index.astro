@@ -32,26 +32,6 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <Hero
-    id="profile"
-    title="<span class='lg:text-7xl'>Generalist<br/>aus<br/> Überzeugung.</span>"
-    tagline="Profil"
-    actions={[
-      { variant: 'secondary', text: 'CV', href: '#resume', icon: 'tabler:id' },
-      { variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' },
-    ]}
-    bg='<img class="border-b  border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
-  >
-    <Fragment slot="title"></Fragment>
-
-    <Fragment slot="subtitle">
-      <span>
-        ...der die Schnittstellen zwischen Design und Logik liebt.<br class="md:inline" /> Hier kannst du mehr über meine
-        Person und meinen Hintergrund erfahren.
-      </span>
-    </Fragment>
-  </Hero>
-
   <Content
     bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
     id="about"
@@ -99,6 +79,22 @@ const metadata = {
   </Content>
 
   <!-- Content Widget **************** -->
+  <Hero
+    id="profile"
+    title="<span class='lg:text-7xl'>Generalist<br/>aus<br/> Überzeugung.</span>"
+    tagline="Profil"
+    actions={[{ variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' }]}
+    bg='<img class="border-b  border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.jpg" />'
+  >
+    <Fragment slot="title"></Fragment>
+
+    <Fragment slot="subtitle">
+      <span>
+        ...der die Schnittstellen zwischen Design und Logik liebt.<br class="md:inline" /> Hier kannst du mehr über meine
+        Person und meinen Hintergrund erfahren.
+      </span>
+    </Fragment>
+  </Hero>
 
   <Steps
     id="resume"
