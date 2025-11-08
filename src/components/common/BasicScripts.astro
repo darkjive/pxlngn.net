@@ -106,40 +106,7 @@ import { UI } from 'astrowind:config';
     });
   }
 
-  // Typewriter-Effekt
-  function initTypingEffect() {
-    const a = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
-    const ref = document.getElementById('text');
-    if (!ref) return; // Sicherstellen, dass das Ziel-Element existiert
 
-    let ind = 0,
-      cInd = 0;
-    let remove = false;
-
-    function typing() {
-      if (ind < a.length) {
-        const currentText = a[ind];
-        if (!remove && cInd < currentText.length) {
-          ref.textContent += currentText.charAt(cInd);
-          cInd++;
-          setTimeout(typing, 100);
-        } else if (remove && cInd >= 0) {
-          ref.textContent = currentText.substring(0, cInd);
-          cInd--;
-          setTimeout(typing, 100);
-        } else {
-          remove = !remove;
-          if (!remove) {
-            ind = (ind + 1) % a.length;
-          }
-          setTimeout(typing, 1000);
-        }
-      }
-    }
-
-    ref.textContent = ''; // Zurücksetzen des Textinhalts
-    typing();
-  }
 
   function initDarkModeAndMenu() {
     // Darkmode Toggle
@@ -192,11 +159,10 @@ import { UI } from 'astrowind:config';
 
   // Hauptinitialisierung
   function initPage() {
-    initTheme(); // Theme setzen
-    initScrollEvents(); // Scroll Events initialisieren
-    initTypingEffect(); // Typewriter starten
-    initDarkModeAndMenu(); // Darkmode und Menu initialisieren
-    onPageShow(); // Weitere Initialisierungen nach dem Laden
+    initTheme();
+    initScrollEvents();
+    initDarkModeAndMenu();
+    onPageShow();
   }
 
   // Initiale Ausführung beim Laden der Seite

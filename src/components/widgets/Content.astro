@@ -4,7 +4,8 @@ import Headline from '../ui/Headline.astro';
 import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
-import ItemGrid from '../ui/ItemGrid.astro';
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
 
 const {
   title = await Astro.slots.render('title'),
@@ -41,7 +42,7 @@ const {
       subtitle: 'max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400',
     }}
   />
-  <div data-animate class="mx-auto max-w-7xl p-4 md:px-8">
+  <div class="mx-auto max-w-7xl p-4 md:px-8">
     <div class={`md:flex ${isReversed ? 'md:flex-row-reverse' : ''} md:gap-16`}>
       <div class="self-center md:basis-1/2">
         {content && <div class="mb-12 text-lg dark:text-slate-200" set:html={content} />}
@@ -54,24 +55,37 @@ const {
           )
         }
 
-        <ItemGrid
-          items={items}
-          columns={columns}
-          defaultIcon="tabler:check"
-          classes={{
-            container: `gap-y-4 md:gap-y-8`,
-            panel: 'max-w-none',
-            title: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
-            description: 'text-muted dark:text-slate-400 ml-2 rtl:ml-0 rtl:mr-2',
-            icon: 'flex h-7 w-7 items-center justify-center rounded-full bg-primary text-gray-50 p-1',
-            action: 'text-lg font-medium leading-6 dark:text-white ml-2 rtl:ml-0 rtl:mr-2',
-          }}
-        />
+        {
+          items && items.length > 0 && (
+            <div class="gap-y-4 md:gap-y-8">
+              {items.map(({ icon, callToAction: itemCallToAction }, index) => (
+                <div class="flex items-center mb-4" data-animate data-anim-type="fade-up" data-anim-delay={index * 100}>
+                  <div class="flex justify-center">
+                    {icon && (
+                      <Icon
+                        name={icon}
+                        class="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-gray-50 p-1 mr-2"
+                        data-animate
+                        data-anim-type="scale-up"
+                        data-anim-delay={index * 100 + 100}
+                      />
+                    )}
+                  </div>
+                  {itemCallToAction && (
+                    <div class="text-lg font-medium leading-6 dark:text-white">
+                      <Button variant="link" {...itemCallToAction} />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )
+        }
       </div>
-      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2" data-animate>
+      <div aria-hidden="true" class="mt-10 md:mt-0 md:basis-1/2">
         {
           image && (
-            <div class="relative m-auto max-w-4xl">
+            <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
               {typeof image === 'string' ? (
                 <Fragment set:html={image} />
               ) : (
@@ -82,6 +96,7 @@ const {
                   widths={[400, 768]}
                   sizes="(max-width: 768px) 100vw, 432px"
                   layout="responsive"
+                  data-glitch
                   {...image}
                 />
               )}

@@ -18,10 +18,49 @@ const {
   classes = {},
   bg = await Astro.slots.render('bg'),
 } = Astro.props;
+
+const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>
-  <Headline title={title} subtitle={subtitle} tagline={tagline} classes={classes?.headline as Record<string, string>} />
+  <div class="mb-8 text-center md:mx-auto md:mb-12">
+    {
+      tagline && (
+        <p
+          data-animate
+          data-anim-type="fade-down"
+          class="font-bold uppercase tracking-normal text-slate-900/30 dark:text-slate-300/50"
+          set:html={tagline}
+        />
+      )
+    }
+    {
+      titleLines.length > 0 ? (
+        <h2 class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl">
+          {titleLines.map((line, index) => (
+            <span
+              data-animate
+              data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+              data-anim-delay={index * 150}
+              set:html={line}
+              class="block"
+            />
+          ))}
+        </h2>
+      ) : (
+        title && (
+          <h2
+            data-animate
+            data-anim-type="fade-up"
+            class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl"
+            set:html={title}
+          />
+        )
+      )
+    }
+    {subtitle && <p data-animate data-anim-type="typewriter" class="mt-4 text-muted text-xl" set:html={subtitle} />}
+  </div>
+  
   <ItemGrid
     items={items}
     columns={columns}
