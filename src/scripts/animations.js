@@ -1,5 +1,8 @@
-import { anime } from 'animejs';
-import { splitText } from 'animejs/splitText';
+import { animate } from 'animejs';
+import { splitText } from 'animejs/text';
+
+// Alias for backward compatibility
+const anime = animate;
 
 const CONFIG = {
   duration: 600,
@@ -154,22 +157,35 @@ const animateCycleTypewriter = (element) => {
   ];
 
   let index = 0;
+  let currentSplit = null;
 
   const animateNext = () => {
     const word = words[index];
     const color = colors[index];
 
+    // Cleanup: Revert previous splitText changes
+    if (currentSplit && typeof currentSplit.revert === 'function') {
+      currentSplit.revert();
+    }
+
     // Text einsetzen
-    element.innerHTML = word;
+    element.textContent = word;
 
     // SplitText verwenden – Linien-Wrapper generieren
-    const { lines } = splitText(element, { lines: true });
+    currentSplit = splitText(element, { lines: true });
+    const lines = currentSplit.lines || [];
 
     // Farbe setzen
     element.className = `${element.className
       .split(' ')
       .filter((c) => !c.startsWith('text-'))
       .join(' ')} ${color}`;
+
+    // Sicherstellen, dass Lines existieren
+    if (lines.length === 0) {
+      console.warn('No lines found for animation');
+      return;
+    }
 
     // Erscheinen-Animation
     anime(lines, {
@@ -191,7 +207,7 @@ const animateCycleTypewriter = (element) => {
               animateNext();
             },
           });
-        }, 1000);
+        }, 1500);
       },
     });
   };
