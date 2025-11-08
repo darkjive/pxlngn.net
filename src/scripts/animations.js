@@ -1,5 +1,4 @@
 import { animate } from 'animejs';
-import { splitText } from 'animejs/text';
 
 // Alias for backward compatibility
 const anime = animate;
@@ -140,7 +139,7 @@ const animateTypewriter = (element) => {
 };
 
 // ============================================================
-// 🔥 NEUE VERSION DES cycle-typewriter MIT SPLITTEXT (Zeilen)
+// 🔥 cycle-typewriter Animation - Wörter mit Farben durchlaufen
 // ============================================================
 const animateCycleTypewriter = (element) => {
   if (element.dataset.animated) return;
@@ -157,47 +156,34 @@ const animateCycleTypewriter = (element) => {
   ];
 
   let index = 0;
-  let currentSplit = null;
 
   const animateNext = () => {
     const word = words[index];
     const color = colors[index];
 
-    // Cleanup: Revert previous splitText changes
-    if (currentSplit && typeof currentSplit.revert === 'function') {
-      currentSplit.revert();
-    }
-
     // Text einsetzen
     element.textContent = word;
 
-    // SplitText verwenden – Linien-Wrapper generieren
-    currentSplit = splitText(element, { lines: true });
-    const lines = currentSplit.lines || [];
+    // Farbe setzen - Klassen-Liste bereinigen und neue Farbe hinzufügen
+    const baseClasses = element.className.split(' ').filter((c) => !c.startsWith('text-'));
+    element.className = `${baseClasses.join(' ')} ${color}`;
 
-    // Farbe setzen
-    element.className = `${element.className
-      .split(' ')
-      .filter((c) => !c.startsWith('text-'))
-      .join(' ')} ${color}`;
-
-    // Sicherstellen, dass Lines existieren
-    if (lines.length === 0) {
-      console.warn('No lines found for animation');
-      return;
-    }
+    // Element initial unsichtbar machen
+    element.style.opacity = '0';
+    element.style.transform = 'translateY(10px)';
 
     // Erscheinen-Animation
-    anime(lines, {
+    anime({
+      targets: element,
       opacity: [0, 1],
       translateY: [10, 0],
       duration: 500,
-      delay: (el, i) => i * 50,
       easing: 'easeOutExpo',
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
-          anime(lines, {
+          anime({
+            targets: element,
             opacity: [1, 0],
             translateY: [0, -10],
             duration: 400,
