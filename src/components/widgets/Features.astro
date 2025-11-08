@@ -22,7 +22,7 @@ const {
 const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-5xl ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-4xl ${classes?.container ?? ''}`} bg={bg}>
   <div class="mb-8 text-center md:mx-auto md:mb-12">
     {
       tagline && (
@@ -52,13 +52,14 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
           <h2
             data-animate
             data-anim-type="fade-up"
+            data-anim-delay="300"
             class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl"
             set:html={title}
           />
         )
       )
     }
-    {subtitle && <p data-animate data-anim-type="typewriter" class="mt-4 text-xl text-muted" set:html={subtitle} />}
+    {subtitle && <p class="mt-4 text-xl text-muted" set:html={subtitle} />}
   </div>
 
   <ItemGrid
