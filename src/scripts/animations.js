@@ -57,52 +57,6 @@ const animateElement = (element) => {
 };
 
 /**
- * Animiert initial sichtbare Elemente beim Seitenladen
- */
-const animateInitialElements = () => {
-  const visibleElements = Array.from(document.querySelectorAll('[data-animate]:not([data-animated])'));
-
-  if (visibleElements.length === 0) return;
-
-  // Gruppiere Elemente nach Sektionen für besseres Staggering
-  const sections = new Map();
-
-  visibleElements.forEach((el) => {
-    const section = el.closest('section') || el.closest('header') || el.closest('footer');
-    const key = section ? section.outerHTML : 'root';
-
-    if (!sections.has(key)) {
-      sections.set(key, []);
-    }
-    sections.get(key).push(el);
-  });
-
-  // Animiere jede Sektion mit Stagger
-  let globalDelay = 0;
-  sections.forEach((elements) => {
-    elements.forEach((el, index) => {
-      const rect = el.getBoundingClientRect();
-      const viewportWidth = window.innerWidth;
-      const isLeftSide = rect.left < viewportWidth / 2;
-
-      animate(el, {
-        opacity: [0, 1],
-        translateY: [CONFIG.offset, 0],
-        translateX: [isLeftSide ? -CONFIG.offset : CONFIG.offset, 0],
-        scale: [0.95, 1],
-        duration: CONFIG.duration,
-        ease: CONFIG.ease,
-        delay: globalDelay + index * CONFIG.staggerDelay,
-      });
-
-      el.dataset.animated = 'true';
-    });
-
-    globalDelay += elements.length * CONFIG.staggerDelay + 200;
-  });
-};
-
-/**
  * Bereinigt Animations-States (wichtig für View Transitions)
  */
 const resetAnimations = () => {
@@ -128,11 +82,9 @@ const initAnimations = () => {
     el.style.opacity = '0';
   });
 
-  // Animiere bereits sichtbare Elemente
+  // Starte Observer für Scroll-Animationen
+  // Animationen starten nur wenn Elemente in den Viewport gescrollt werden
   requestAnimationFrame(() => {
-    animateInitialElements();
-
-    // Starte Observer für Scroll-Animationen
     observer = createObserver();
     document.querySelectorAll('[data-animate]').forEach((el) => {
       observer.observe(el);
