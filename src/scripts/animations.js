@@ -171,9 +171,9 @@ const animateCycleTypewriter = (element) => {
 
     // Erscheinen-Animation
     animate(element, {
-      opacity: [0, 1],
+      // opacity: [0, 100],
       translateY: [10, 0],
-      duration: 500,
+      duration: 1000,
       easing: 'easeOutExpo',
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
@@ -181,14 +181,14 @@ const animateCycleTypewriter = (element) => {
           animate(element, {
             opacity: [1, 0],
             translateY: [0, -10],
-            duration: 400,
+            duration: 1400,
             easing: 'easeInExpo',
             complete: () => {
               index = (index + 1) % words.length;
               animateNext();
             },
           });
-        }, 1500);
+        }, 500);
       },
     });
   };
