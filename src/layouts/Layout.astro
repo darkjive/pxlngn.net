@@ -10,6 +10,7 @@ import Metadata from '~/components/common/Metadata.astro';
 import SiteVerification from '~/components/common/SiteVerification.astro';
 import Analytics from '~/components/common/Analytics.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
+
 import BackgroundAnimation from '~/components/ui/BackgroundAnimation.astro';
 // Comment the line below to disable View Transitions
 import { ClientRouter } from 'astro:transitions';
@@ -39,7 +40,7 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
   </head>
 
-  <body class="antialiased text-default bg-page tracking-tight">
+  <body class="bg-page tracking-tight text-default antialiased">
     <slot />
     <BackgroundAnimation />
     <BasicScripts />

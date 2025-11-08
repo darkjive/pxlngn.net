@@ -29,12 +29,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
 <footer
   class:list={[
     { dark: theme === 'dark' },
-    'bg-white border-t border-gray-200/100 dark:border-gray-500/20 md:backdrop-blur  dark:bg-black drop-shadow-2xl not-prose py-4 relative',
+    'not-prose relative border-t border-gray-200/100 bg-white py-4 drop-shadow-2xl dark:border-gray-500/20 dark:bg-black md:backdrop-blur',
   ]}
 >
-  <div class="relative max-w-5xl mx-auto px-6 dark:text-slate-300">
+  <div class="relative mx-auto max-w-5xl px-6 dark:text-slate-300">
     <div class="flex items-center justify-between gap-6 py-2">
-      <div class="flex items-center gap-8 flex-wrap">
+      <div class="flex flex-wrap items-center gap-8">
         {
           links.map(({ title, href, links }) => (
             <div class="flex items-center gap-4">
@@ -42,14 +42,14 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <a
                   href={href}
                   class:list={[
-                    'dark:text-gray-300 font-medium hover:text-primary dark:hover:text-primary whitespace-nowrap',
+                    'whitespace-nowrap font-medium hover:text-primary dark:text-gray-300 dark:hover:text-primary',
                     { 'aw-link-active': href === currentPath },
                   ]}
                 >
                   {title}
                 </a>
               ) : (
-                <div class="font-medium dark:text-gray-300 whitespace-nowrap">{title}</div>
+                <div class="whitespace-nowrap font-medium dark:text-gray-300">{title}</div>
               )}
               {links && Array.isArray(links) && links.length > 0 && (
                 <ul class="flex items-center gap-4 text-sm">
@@ -57,7 +57,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     <li>
                       <a
                         class:list={[
-                          'text-muted hover:text-primary dark:hover:text-primary dark:text-gray-400 transition duration-150 ease-in-out whitespace-nowrap',
+                          'whitespace-nowrap text-muted transition duration-150 ease-in-out hover:text-primary dark:text-gray-400 dark:hover:text-primary',
                           { 'aw-link-active': href === currentPath },
                         ]}
                         href={href}

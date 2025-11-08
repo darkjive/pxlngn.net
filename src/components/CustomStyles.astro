@@ -129,4 +129,11 @@ import '@fontsource-variable/baloo-bhaijaan-2';
   #header[data-aw-sticky-header].header-visible {
     transform: translateY(0);
   }
+  [data-animate]:not([data-animated]) {
+    opacity: 0;
+  }
+
+  [data-animate][data-animated] {
+    opacity: 1;
+  }
 </style>

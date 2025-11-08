@@ -64,7 +64,7 @@ Im Plugin sehe ich mehrere Export-Optionen, darunter **HTML**, **Tailwind CSS**,
 Nachdem ich die Option **Tailwind CSS** ausgewählt habe, analysiert das Plugin mein Design und zeigt mir die passenden Tailwind-Klassen. Hier ein Beispiel, das ich für einen Button erhalten habe:
 
 ```html
-<div class="bg-blue-500 text-white p-4 rounded shadow-md">Button Text</div>
+<div class="rounded bg-blue-500 p-4 text-white shadow-md">Button Text</div>
 ```
 
 [[Top]](#top)

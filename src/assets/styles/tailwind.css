@@ -30,19 +30,19 @@
 
 @layer components {
   .btn {
-    @apply Anklepants tracking-wider uppercase inline-flex items-center justify-center rounded-lg text-base px-5 py-2.5 text-center me-2 mb-2;
+    @apply Anklepants mb-2 me-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-base uppercase tracking-wider;
   }
 
   .btn-primary {
-    @apply btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
+    @apply btn bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-cyan-800/80;
   }
 
   .btn-secondary {
-    @apply btn text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br shadow-lg shadow-yellow-500/50 dark:shadow-lg dark:shadow-yellow-800/80;
+    @apply btn bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white shadow-lg shadow-yellow-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-yellow-800/80;
   }
 
   .btn-tertiary {
-    @apply btn text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80;
+    @apply btn bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-cyan-800/80;
   }
 }
 
@@ -102,11 +102,11 @@
 }
 
 [data-aw-toggle-menu].expanded g > path:first-child {
-  @apply -rotate-45 translate-y-[15px] translate-x-[-3px];
+  @apply translate-x-[-3px] translate-y-[15px] -rotate-45;
 }
 
 [data-aw-toggle-menu].expanded g > path:last-child {
-  @apply rotate-45 translate-y-[-8px] translate-x-[14px];
+  @apply translate-x-[14px] translate-y-[-8px] rotate-45;
 }
 
 /* To deprecated */

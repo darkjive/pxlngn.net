@@ -205,3 +205,22 @@ import { UI } from 'astrowind:config';
   // Re-Initialisierung bei Seitenwechsel in Astro
   document.addEventListener('astro:after-swap', initPage);
 </script>
+<script>
+  import '~/scripts/animations.js';
+</script>
+
+<style is:global>
+  [data-animate]:not([data-animated]) {
+    opacity: 0;
+    will-change: opacity, transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-animate] {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>

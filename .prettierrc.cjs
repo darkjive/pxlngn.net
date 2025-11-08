@@ -6,8 +6,8 @@ module.exports = {
   tabWidth: 2,
   trailingComma: 'es5',
   useTabs: false,
-
-  plugins: [require.resolve('prettier-plugin-astro')],
-
+  // tailwindStylesheet: 'src/assets/styles/tailwind.css',
+  // tailwindConfig: 'tailwind.config.js',
+  plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
   overrides: [{ files: '*.astro', options: { parser: 'astro' } }],
 };

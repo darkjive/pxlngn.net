@@ -18,14 +18,14 @@ const {
 
 {
   (title || subtitle || tagline) && (
-    <div class={twMerge('mb-8 md:mx-auto md:mb-12 text-center', containerClass)}>
+    <div class={twMerge('mb-8 text-center md:mx-auto md:mb-12', containerClass)}>
       {tagline && (
-        <p class="text-slate-900/30 dark:text-slate-300/50 font-bold tracking-normal uppercase" set:html={tagline} />
+        <p class="font-bold uppercase tracking-normal text-slate-900/30 dark:text-slate-300/50" set:html={tagline} />
       )}
       {title && (
         <h2
           class={twMerge(
-            'Anklepants leading-tighter tracking-tighter font-heading text-heading text-4xl lg:text-5xl text-center',
+            'Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl',
             titleClass
           )}
           set:html={title}
