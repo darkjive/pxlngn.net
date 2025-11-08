@@ -23,12 +23,13 @@ const variants = {
 
 {
   type === 'button' || type === 'submit' || type === 'reset' ? (
-    <button type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
+    <button data-animate type={type} class={twMerge(variants[variant] || '', className)} {...rest}>
       <Fragment set:html={text} />
       {icon && <Icon name={icon} class="-mr-1.5 ml-1 inline-block h-5 w-5 rtl:-ml-1.5 rtl:mr-1" />}
     </button>
   ) : (
     <a
+      data-animate
       class={twMerge(variants[variant] || '', className)}
       {...(target ? { target: target, rel: 'noopener noreferrer' } : {})}
       {...rest}

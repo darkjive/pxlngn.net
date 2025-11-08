@@ -33,7 +33,7 @@ const {
       )}
     >
       {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
-        <div class="">
+        <div class="" data-animate>
           <div class={twMerge('flex max-w-md flex-row', panelClass, itemClasses?.panel)}>
             <div class="flex justify-center">
               {(icon || defaultIcon) && (

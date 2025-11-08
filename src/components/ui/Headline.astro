@@ -20,10 +20,15 @@ const {
   (title || subtitle || tagline) && (
     <div class={twMerge('mb-8 text-center md:mx-auto md:mb-12', containerClass)}>
       {tagline && (
-        <p class="font-bold uppercase tracking-normal text-slate-900/30 dark:text-slate-300/50" set:html={tagline} />
+        <p
+          data-animate
+          class="font-bold uppercase tracking-normal text-slate-900/30 dark:text-slate-300/50"
+          set:html={tagline}
+        />
       )}
       {title && (
         <h2
+          data-animate
           class={twMerge(
             'Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl',
             titleClass
@@ -32,7 +37,7 @@ const {
         />
       )}
 
-      {subtitle && <p class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
+      {subtitle && <p data-animate class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
     </div>
   )
 }

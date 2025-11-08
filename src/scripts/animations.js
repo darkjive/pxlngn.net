@@ -29,10 +29,7 @@ const createObserver = () => {
         }
       });
     },
-    {
-      threshold: CONFIG.threshold,
-      rootMargin: CONFIG.rootMargin,
-    }
+    { threshold: CONFIG.threshold, rootMargin: CONFIG.rootMargin }
   );
 };
 

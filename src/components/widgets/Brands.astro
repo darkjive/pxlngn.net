@@ -29,7 +29,10 @@ const {
         images.map(
           (image) =>
             image.src && (
-              <div class="col-span-1 my-2 flex flex-col items-center rounded-md bg-slate-50 px-3 py-3 lg:my-4">
+              <div
+                class="col-span-1 my-2 flex flex-col items-center rounded-md bg-slate-50 px-3 py-3 lg:my-4"
+                data-animate
+              >
                 <Image
                   src={image.src}
                   alt={image.alt || ''}
