@@ -92,18 +92,24 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
           if (hasIntegration && sitemapExists) {
             const robotsTxt = fs.readFileSync(robotsTxtFile, { encoding: 'utf8', flag: 'a+' });
             const sitemapUrl = new URL(sitemapName, String(new URL(cfg.base, cfg.site)));
+            const sitemapUrlString = String(sitemapUrl);
             const pattern = /^Sitemap:(.*)$/m;
 
             if (!pattern.test(robotsTxt)) {
-              fs.writeFileSync(robotsTxtFileInOut, `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrl}`, {
+              fs.writeFileSync(robotsTxtFileInOut, `${robotsTxt}${os.EOL}${os.EOL}Sitemap: ${sitemapUrlString}`, {
                 encoding: 'utf8',
                 flag: 'w',
               });
             } else {
-              fs.writeFileSync(robotsTxtFileInOut, robotsTxt.replace(pattern, `Sitemap: ${sitemapUrl}`), {
-                encoding: 'utf8',
-                flag: 'w',
-              });
+              // Use function replacement to avoid issues with special replacement patterns ($&, $`, $', etc.)
+              fs.writeFileSync(
+                robotsTxtFileInOut,
+                robotsTxt.replace(pattern, () => `Sitemap: ${sitemapUrlString}`),
+                {
+                  encoding: 'utf8',
+                  flag: 'w',
+                }
+              );
             }
           }
           // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -3,6 +3,20 @@
   command = "npm run build"
 [build.processing.html]
   pretty_urls = false
+
+# Security headers for all pages
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net *.googletagmanager.com *.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: cdn.pixabay.com img.icons8.com; font-src 'self' data:; connect-src 'self' *.google-analytics.com *.analytics.google.com *.googletagmanager.com"
+
+# Cache headers for static assets
 [[headers]]
   for = "/_astro/*"
   [headers.values]
