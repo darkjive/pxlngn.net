@@ -172,23 +172,23 @@ const animateCycleTypewriter = (element) => {
     // Erscheinen-Animation
     animate(element, {
       // opacity: [0, 100],
-      translateY: [10, 0],
-      duration: 1000,
+      // translateY: [10, 0],
+      duration: 0,
       easing: 'easeOutExpo',
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
           animate(element, {
-            opacity: [1, 0],
-            translateY: [0, -10],
-            duration: 1400,
+            opacity: [1, 1],
+            // translateY: [0, -10],
+            duration: 10,
             easing: 'easeInExpo',
             complete: () => {
               index = (index + 1) % words.length;
               animateNext();
             },
           });
-        }, 500);
+        }, 1000);
       },
     });
   };
