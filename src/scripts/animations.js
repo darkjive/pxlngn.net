@@ -61,7 +61,7 @@ const animateElement = (element) => {
       easing: 'easeOutBack',
       delay,
     },
-    'glitch': {
+    glitch: {
       opacity: [0, 1],
       duration: 400,
       easing: 'easeOutQuad',
@@ -140,17 +140,27 @@ const animateCycleTypewriter = (element) => {
   element.dataset.animated = 'true';
 
   const words = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
-  const colors = ['text-yellow-500', 'text-blue-500', 'text-yellow-500', 'text-blue-500', 'text-yellow-500', 'text-blue-500'];
-  
+  const colors = [
+    'text-yellow-500',
+    'text-blue-500',
+    'text-yellow-500',
+    'text-blue-500',
+    'text-yellow-500',
+    'text-blue-500',
+  ];
+
   let currentIndex = 0;
 
   const typeWord = () => {
     const word = words[currentIndex];
     const color = colors[currentIndex];
-    
-    element.className = `${element.className.split(' ').filter(c => !c.startsWith('text-')).join(' ')} ${color}`;
+
+    element.className = `${element.className
+      .split(' ')
+      .filter((c) => !c.startsWith('text-'))
+      .join(' ')} ${color}`;
     element.textContent = '';
-    
+
     const chars = word.split('');
     const charSpans = chars.map((char) => {
       const span = document.createElement('span');
@@ -188,10 +198,10 @@ const animateCycleTypewriter = (element) => {
 const addImageGlitch = (img) => {
   img.style.position = 'relative';
   img.style.display = 'block';
-  
+
   const glitchBefore = document.createElement('div');
   const glitchAfter = document.createElement('div');
-  
+
   [glitchBefore, glitchAfter].forEach((el, i) => {
     el.style.cssText = `
       content: '';
@@ -213,18 +223,18 @@ const addImageGlitch = (img) => {
 
   let frame = 0;
   const maxFrames = 60;
-  
+
   const glitchAnimation = () => {
     if (frame < maxFrames) {
-      const intensity = 1 - (frame / maxFrames);
+      const intensity = 1 - frame / maxFrames;
       const offset = Math.random() * 20 * intensity;
-      
+
       glitchBefore.style.transform = `translateX(${offset}px)`;
       glitchBefore.style.opacity = Math.random() * 0.8 * intensity;
-      
+
       glitchAfter.style.transform = `translateX(-${offset}px)`;
       glitchAfter.style.opacity = Math.random() * 0.8 * intensity;
-      
+
       frame++;
       requestAnimationFrame(glitchAnimation);
     } else {
@@ -275,7 +285,7 @@ const initAnimations = () => {
   }
 
   document.querySelectorAll('[data-animate]:not([data-animated])').forEach((el) => {
-    el.style.opacity = '0';
+    el.style.opacity = '100';
     el.style.willChange = 'opacity, transform';
   });
 
@@ -299,8 +309,8 @@ const initThemeToggleAnimation = () => {
   toggleBtn.addEventListener('click', () => {
     const sunIcon = toggleBtn.querySelector('[class*="dark:hidden"]');
     const moonIcon = toggleBtn.querySelector('[class*="dark:block"]');
-    
-    [sunIcon, moonIcon].forEach(icon => {
+
+    [sunIcon, moonIcon].forEach((icon) => {
       if (icon) {
         animate(icon, {
           scale: [1, 0],
