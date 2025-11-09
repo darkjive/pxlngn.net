@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
-// import ToggleMenu from '~/components/common/ToggleMenu.astro';
+import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 // import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -33,7 +33,7 @@ export interface Props {
 
 const {
   id = 'header',
-  // links = [],
+  links = [],
   actions = [],
   isSticky = false,
   isDark = false,
@@ -43,9 +43,9 @@ const {
   position = 'center',
 } = Astro.props;
 
-// const url = new URL(Astro.url);
+const url = new URL(Astro.url);
 // const currentPath = `/${trimSlash(url.pathname)}`;
-// const currentHash = url.hash; // Enthält den #anchor-Teil der URL
+const currentHash = url.hash; // Enthält den #anchor-Teil der URL
 ---
 
 <header
@@ -75,20 +75,20 @@ const {
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
-      <!-- <div class="flex items-center md:hidden">
+      <div class="flex items-center md:hidden">
         <ToggleMenu />
-      </div> -->
+      </div>
     </div>
     <nav
       class="hidden w-full items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
       aria-label="Hauptnavigation"
     >
-      <!-- <ul
+      <ul
         class="flex w-full flex-col justify-center text-[2rem] text-base font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-[0.9375rem]"
       >
         {
           links.map(({ text, href, links, icon }) => {
-            const isActive = href === currentPath || href === currentHash || href === `${currentPath}${currentHash}`;
+            const isActive = href === currentHash;
             return (
               <li class={links?.length ? 'dropdown' : ''}>
                 {links?.length ? (
@@ -108,8 +108,7 @@ const {
                     </a>
                     <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/100 md:pl-0">
                       {links.map(({ text: text2, href: href2, icon: icon2 }) => {
-                        const isSubActive =
-                          href2 === currentPath || href2 === currentHash || href2 === `${currentPath}${currentHash}`;
+                        const isSubActive = href2 === currentHash;
                         return (
                           <li>
                             <a
@@ -143,7 +142,7 @@ const {
             );
           })
         }
-      </ul> -->
+      </ul>
     </nav>
     <!-- Buttons -->
     <div
