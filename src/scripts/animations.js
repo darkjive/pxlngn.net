@@ -1,4 +1,4 @@
-import { animate } from 'animejs';
+import anime from 'animejs';
 
 const CONFIG = {
   duration: 600,
@@ -67,7 +67,8 @@ const animateElement = (element) => {
       easing: 'easeOutQuad',
       delay,
       complete: () => {
-        const glitchAnim = animate(element, {
+        const glitchAnim = anime({
+          targets: element,
           translateX: [
             { value: -5, duration: 100 },
             { value: 5, duration: 100 },
@@ -106,7 +107,10 @@ const animateElement = (element) => {
   };
 
   const animProps = animations[animType] || animations.default;
-  animate(element, animProps);
+  anime({
+    targets: element,
+    ...animProps,
+  });
 };
 
 const animateTypewriter = (element) => {
@@ -127,7 +131,8 @@ const animateTypewriter = (element) => {
     return span;
   });
 
-  animate(charSpans, {
+  anime({
+    targets: charSpans,
     opacity: [0, 1],
     duration: 50,
     delay: (el, i) => delay + i * 10,
@@ -170,7 +175,8 @@ const animateCycleTypewriter = (element) => {
     element.style.transform = 'translateY(10px)';
 
     // Erscheinen-Animation
-    animate(element, {
+    anime({
+      targets: element,
       // opacity: [0, 100],
       // translateY: [10, 0],
       duration: 0,
@@ -178,7 +184,8 @@ const animateCycleTypewriter = (element) => {
       complete: () => {
         // Nach kurzer Pause: Ausblenden und Wechsel
         setTimeout(() => {
-          animate(element, {
+          anime({
+            targets: element,
             opacity: [1, 1],
             // translateY: [0, -10],
             duration: 10,
