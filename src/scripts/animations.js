@@ -1,8 +1,8 @@
-import anime from 'animejs';
+import { animate } from 'animejs';
 
 const CONFIG = {
   duration: 600,
-  easing: 'easeOutExpo',
+  easing: 'out-expo',
   offset: 40,
   threshold: 0.15,
   rootMargin: '0px',
@@ -23,66 +23,65 @@ const animateElement = (element) => {
       opacity: [0, 1],
       translateY: [CONFIG.offset, 0],
       duration: CONFIG.duration,
-      easing: CONFIG.easing,
+      ease: CONFIG.easing,
       delay,
     },
     'fade-down': {
       opacity: [0, 1],
       translateY: [-CONFIG.offset, 0],
       duration: CONFIG.duration,
-      easing: CONFIG.easing,
+      ease: CONFIG.easing,
       delay,
     },
     'fade-left': {
       opacity: [0, 1],
       translateX: [CONFIG.offset, 0],
       duration: CONFIG.duration,
-      easing: CONFIG.easing,
+      ease: CONFIG.easing,
       delay,
     },
     'fade-right': {
       opacity: [0, 1],
       translateX: [-CONFIG.offset, 0],
       duration: CONFIG.duration,
-      easing: CONFIG.easing,
+      ease: CONFIG.easing,
       delay,
     },
     'logo-slide': {
       opacity: [0, 1],
       translateX: [100, 0],
       duration: 800,
-      easing: 'easeOutElastic(1, .6)',
+      ease: 'out-elastic(1, .6)',
       delay: 0,
     },
     'scale-up': {
       opacity: [0, 1],
       scale: [0.1, 1],
       duration: CONFIG.duration,
-      easing: 'easeOutBack',
+      ease: 'out-back',
       delay,
     },
     glitch: {
       opacity: [0, 1],
       duration: 400,
-      easing: 'easeOutQuad',
+      ease: 'out-quad',
       delay,
-      complete: () => {
-        const glitchAnim = anime({
-          targets: element,
+      onComplete: () => {
+        const glitchAnim = animate(element, {
           translateX: [
-            { value: -5, duration: 100 },
-            { value: 5, duration: 100 },
-            { value: -3, duration: 100 },
-            { value: 3, duration: 100 },
-            { value: 0, duration: 100 },
+            { to: -5, duration: 100 },
+            { to: 5, duration: 100 },
+            { to: -3, duration: 100 },
+            { to: 3, duration: 100 },
+            { to: 0, duration: 100 },
           ],
           opacity: [
-            { value: 0.8, duration: 100 },
-            { value: 1, duration: 100 },
-            { value: 0.9, duration: 100 },
-            { value: 1, duration: 200 },
+            { to: 0.8, duration: 100 },
+            { to: 1, duration: 100 },
+            { to: 0.9, duration: 100 },
+            { to: 1, duration: 200 },
           ],
-          easing: 'linear',
+          ease: 'linear',
           loop: true,
         });
 
@@ -94,23 +93,20 @@ const animateElement = (element) => {
       opacity: [0, 1],
       translateY: [20, 0],
       duration: 500,
-      easing: 'easeOutQuad',
+      ease: 'out-quad',
       delay: delay || 0,
     },
     default: {
       opacity: [0, 1],
       translateY: [CONFIG.offset * 0.5, 0],
       duration: CONFIG.duration,
-      easing: CONFIG.easing,
+      ease: CONFIG.easing,
       delay,
     },
   };
 
   const animProps = animations[animType] || animations.default;
-  anime({
-    targets: element,
-    ...animProps,
-  });
+  animate(element, animProps);
 };
 
 const animateTypewriter = (element) => {
@@ -131,12 +127,11 @@ const animateTypewriter = (element) => {
     return span;
   });
 
-  anime({
-    targets: charSpans,
+  animate(charSpans, {
     opacity: [0, 1],
     duration: 50,
     delay: (el, i) => delay + i * 10,
-    easing: 'linear',
+    ease: 'linear',
   });
 };
 
@@ -174,28 +169,24 @@ const animateCycleTypewriter = (element) => {
     element.style.opacity = '0';
     element.style.transform = 'translateY(10px)';
 
-    // Erscheinen-Animation
-    anime({
-      targets: element,
-      // opacity: [0, 100],
-      // translateY: [10, 0],
-      duration: 0,
-      easing: 'easeOutExpo',
-      complete: () => {
-        // Nach kurzer Pause: Ausblenden und Wechsel
+    animate(element, {
+      opacity: [0, 1],
+      translateY: [10, 0],
+      duration: 300,
+      ease: 'out-expo',
+      onComplete: () => {
         setTimeout(() => {
-          anime({
-            targets: element,
-            opacity: [1, 1],
-            // translateY: [0, -10],
-            duration: 10,
-            easing: 'easeInExpo',
-            complete: () => {
+          animate(element, {
+            opacity: [1, 0],
+            translateY: [0, -10],
+            duration: 300,
+            ease: 'in-expo',
+            onComplete: () => {
               index = (index + 1) % words.length;
               animateNext();
             },
           });
-        }, 1000);
+        }, 1500);
       },
     });
   };
