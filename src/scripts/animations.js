@@ -130,7 +130,7 @@ const animateTypewriter = (element) => {
   animate(charSpans, {
     opacity: [0, 1],
     duration: 50,
-    delay: (el, i) => delay + i * 30,
+    delay: (el, i) => delay + i * 10,
     easing: 'linear',
   });
 };
@@ -230,12 +230,12 @@ const addImageGlitch = (img) => {
   const glitchAnimation = () => {
     if (frame < maxFrames) {
       const intensity = 1 - frame / maxFrames;
-      const offset = Math.random() * 20 * intensity;
+      const offset = Math.random() * 200 * intensity;
 
       glitchBefore.style.transform = `translateX(${offset}px)`;
       glitchBefore.style.opacity = Math.random() * 0.8 * intensity;
 
-      glitchAfter.style.transform = `translateX(-${offset}px)`;
+      glitchAfter.style.transform = `translateY(-${offset}px)`;
       glitchAfter.style.opacity = Math.random() * 0.8 * intensity;
 
       frame++;
@@ -304,35 +304,6 @@ const initAnimations = () => {
   });
 };
 
-const initThemeToggleAnimation = () => {
-  const toggleBtn = document.querySelector('[data-aw-toggle-color-scheme]');
-  if (!toggleBtn) return;
-
-  toggleBtn.addEventListener('click', () => {
-    const sunIcon = toggleBtn.querySelector('[class*="dark:hidden"]');
-    const moonIcon = toggleBtn.querySelector('[class*="dark:block"]');
-
-    [sunIcon, moonIcon].forEach((icon) => {
-      if (icon) {
-        animate(icon, {
-          scale: [1, 0],
-          rotate: [0, 180],
-          duration: 300,
-          easing: 'easeInOutQuad',
-          complete: () => {
-            animate(icon, {
-              scale: [0, 1],
-              rotate: [180, 360],
-              duration: 300,
-              easing: 'easeInOutQuad',
-            });
-          },
-        });
-      }
-    });
-  });
-};
-
 const cleanup = () => {
   if (observer) {
     observer.disconnect();
@@ -347,22 +318,18 @@ if (typeof document !== 'undefined') {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       initAnimations();
-      initThemeToggleAnimation();
     });
   } else {
     initAnimations();
-    initThemeToggleAnimation();
   }
 
   document.addEventListener('astro:before-swap', cleanup);
   document.addEventListener('astro:after-swap', () => {
     resetAnimations();
     initAnimations();
-    initThemeToggleAnimation();
   });
   document.addEventListener('astro:page-load', () => {
     initAnimations();
-    initThemeToggleAnimation();
   });
 }
 
