@@ -295,7 +295,7 @@ const initAnimations = () => {
   }
 
   document.querySelectorAll('[data-animate]:not([data-animated])').forEach((el) => {
-    el.style.opacity = '100';
+    el.style.opacity = '0';
     el.style.willChange = 'opacity, transform';
   });
 
