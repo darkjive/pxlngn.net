@@ -3,60 +3,59 @@ import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    // {
-    //   text: 'Intro',
-    //   href: getPermalink(),
-    //   icon: '',
-    //   links: [],
-    // },
-    // {
-    //   text: 'Profil',
-    //   href: getPermalink('/profile'),
-    //   icon: '',
-    //   links: [],
-    // },
-    //{
-    //text: 'Gallerie',
-    // href: getPermalink('/gallery'),
-    //  icon: '',
-    //  links: [],
-    //  },
-    // {
-    //   text: 'Blog',
-    //   href: getBlogPermalink(),
-    //   icon: '',
-    //   links: [],
-    // },
+    {
+      text: 'Intro',
+      href: '#hero',
+      icon: '',
+      links: [],
+    },
+    {
+      text: 'Profil',
+      href: '#profile',
+      icon: '',
+      links: [],
+    },
+    {
+      text: 'Skills',
+      href: '#skills',
+      icon: '',
+      links: [],
+    },
+    {
+      text: 'Projekte',
+      href: '#projects',
+      icon: '',
+      links: [],
+    },
   ],
   actions: [{ href: 'https://github.com/darkjive/pxlngn.net' }, { href: 'mailto:hi@pxlngn.net' }],
 };
 export const footerData = {
   links: [
-    // {
-    //   title: 'Intro',
-    //   href: getPermalink(),
-    //   icon: '',
-    //   links: [],
-    // },
-    // {
-    //   title: 'Profil',
-    //   href: getPermalink('/profile'),
-    //   icon: '',
-    //   links: [],
-    // },
-
-    //   {
-    //    title: 'Gallery',
-    //   href: getPermalink('/gallery'),
-    //   icon: '',
-    //    links: [],
-    //   },
-    // {
-    //   title: 'Blog',
-    //   href: getBlogPermalink(),
-    //   icon: '',
-    //   links: [],
-    // },
+    {
+      title: 'Intro',
+      href: '#hero',
+      icon: '',
+      links: [],
+    },
+    {
+      title: 'Profil',
+      href: '#profile',
+      icon: '',
+      links: [],
+    },
+    {
+      title: 'Skills',
+      href: '#skills',
+      icon: '',
+      links: [],
+    },
+    {
+      title: 'Projekte',
+      href: '#projects',
+      icon: '',
+      links: [],
+    },
     {
       title: 'Impressum',
       href: getPermalink('/terms'),
