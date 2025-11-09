@@ -34,29 +34,44 @@ export type ImagesOptimizer = (
   format?: string
 ) => Promise<Array<{ src: string; width: number }>>;
 
-/* ******* */
+/**
+ * Image Optimization Konfiguration
+ *
+ * Definiert Breakpoints und Formate für responsive Bilder
+ */
 const config = {
-  // FIXME: Use this when image.width is minor than deviceSizes
+  /**
+   * Image Sizes für kleine Bilder (Icons, Thumbnails)
+   * TODO: Implementiere automatische Auswahl basierend auf image.width < deviceSizes
+   */
   imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 
+  /**
+   * Device Sizes für responsive Breakpoints
+   * Basiert auf gängigen Gerät-Auflösungen
+   */
   deviceSizes: [
-    640, // older and lower-end phones
+    640, // Ältere und Low-End Smartphones
     750, // iPhone 6-8
     828, // iPhone XR/11
-    960, // older horizontal phones
+    960, // Ältere Smartphones horizontal
     1080, // iPhone 6-8 Plus
-    1280, // 720p
-    1668, // Various iPads
-    1920, // 1080p
+    1280, // 720p Displays
+    1668, // Verschiedene iPads
+    1920, // 1080p Full HD
     2048, // QXGA
     2560, // WQXGA
     3200, // QHD+
-    3840, // 4K
+    3840, // 4K UHD
     4480, // 4.5K
     5120, // 5K
     6016, // 6K
   ],
 
+  /**
+   * Standard Output-Formate für optimierte Bilder
+   * WebP bietet beste Kompression mit guter Browser-Unterstützung
+   */
   formats: ['image/webp'],
 };
 
