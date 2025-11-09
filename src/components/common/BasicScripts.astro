@@ -131,10 +131,27 @@ import { UI } from 'astrowind:config';
   }
 
   function toggleMenu(elem) {
+    const isExpanding = !elem.classList.contains('expanded');
+
     elem.classList.toggle('expanded');
-    document.body.classList.toggle('overflow-hidden');
+
     const header = document.getElementById('header');
     if (header) {
+      if (isExpanding) {
+        // Speichere aktuelle Scroll-Position
+        const scrollY = window.scrollY;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = '100%';
+      } else {
+        // Stelle Scroll-Position wieder her
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+
       header.classList.toggle('h-screen');
       header.classList.toggle('expanded');
       header.classList.toggle('bg-page');
