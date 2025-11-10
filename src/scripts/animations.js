@@ -96,7 +96,7 @@ const animateElement = (element) => {
       opacity: [0, 1],
       scale: [0.1, 1],
       duration: CONFIG.duration,
-      ease: 'out-back',
+      ease: CONFIG.easing,
       delay,
     },
     glitch: {
