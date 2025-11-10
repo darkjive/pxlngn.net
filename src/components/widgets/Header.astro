@@ -107,13 +107,18 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       aria-label="Hauptnavigation"
     >
       <ul
-        class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-[0.9375rem] md:font-sans"
+        class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:font-sans md:text-[0.9375rem]"
       >
         {
           links.map(({ text, href, links, icon }, index) => {
             const isActive = href === currentHash;
             return (
-              <li class={links?.length ? 'dropdown' : ''} data-animate data-anim-type="fade-left" data-anim-delay={index * 50}>
+              <li
+                class={links?.length ? 'dropdown' : ''}
+                data-animate
+                data-anim-type="fade-left"
+                data-anim-delay={index * 50}
+              >
                 {links?.length ? (
                   <>
                     <a
@@ -136,7 +141,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                           <li>
                             <a
                               class:list={[
-                                'whitespace-no-wrap block w-full border-b border-gray-200/100 px-5 py-3 text-2xl hover:text-primary dark:border-gray-500/20 md:border-0 md:text-base md:py-2',
+                                'whitespace-no-wrap block w-full border-b border-gray-200/100 px-5 py-3 text-2xl hover:text-primary dark:border-gray-500/20 md:border-0 md:py-2 md:text-base',
                                 { 'aw-link-active': isSubActive },
                               ]}
                               href={href2}
