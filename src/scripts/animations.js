@@ -105,19 +105,38 @@ const animateElement = (element) => {
       ease: 'out-quad',
       delay,
       onComplete: () => {
+        // Verstärkte Glitch-Animation mit größeren Bewegungen
         const glitchAnim = animate(element, {
           translateX: [
-            { to: -5, duration: 100 },
-            { to: 5, duration: 100 },
-            { to: -3, duration: 100 },
-            { to: 3, duration: 100 },
-            { to: 0, duration: 100 },
+            { to: -12, duration: 80 },
+            { to: 15, duration: 80 },
+            { to: -8, duration: 80 },
+            { to: 10, duration: 80 },
+            { to: -5, duration: 80 },
+            { to: 0, duration: 120 },
+          ],
+          translateY: [
+            { to: 3, duration: 80 },
+            { to: -4, duration: 80 },
+            { to: 2, duration: 80 },
+            { to: -3, duration: 80 },
+            { to: 1, duration: 80 },
+            { to: 0, duration: 120 },
+          ],
+          skewX: [
+            { to: 2, duration: 80 },
+            { to: -3, duration: 80 },
+            { to: 1, duration: 80 },
+            { to: -2, duration: 80 },
+            { to: 1, duration: 80 },
+            { to: 0, duration: 120 },
           ],
           opacity: [
-            { to: 0.8, duration: 100 },
-            { to: 1, duration: 100 },
-            { to: 0.9, duration: 100 },
-            { to: 1, duration: 200 },
+            { to: 0.85, duration: 80 },
+            { to: 1, duration: 80 },
+            { to: 0.9, duration: 80 },
+            { to: 0.95, duration: 80 },
+            { to: 1, duration: 240 },
           ],
           ease: 'linear',
           loop: true,
@@ -269,7 +288,7 @@ const animateCycleTypewriter = (element) => {
  * Verwendung: <img data-glitch src="..." />
  *
  * Erstellt zwei Duplikat-Layers mit Farbversatz (RGB-Split-Effekt)
- * Der Effekt klingt über 60 Frames ab (ca. 1 Sekunde bei 60fps)
+ * Der Effekt läuft kontinuierlich für intensivere Sichtbarkeit
  *
  * @param {HTMLImageElement} img - Bild-Element für Glitch-Effekt
  * @returns {void}
@@ -295,15 +314,18 @@ const addImageGlitch = (img) => {
       background-position: center;
       opacity: 0;
       pointer-events: none;
+      z-index: 10;
     `;
-    // Unterschiedliche Blend-Modes für RGB-Split-Effekt
-    el.style.mixBlendMode = i === 0 ? 'screen' : 'multiply';
+    // Verstärkte Blend-Modes für deutlicheren RGB-Split-Effekt
+    el.style.mixBlendMode = i === 0 ? 'screen' : 'color-dodge';
+    // Farbfilter für stärkeren Glitch-Effekt (Rot und Cyan)
+    el.style.filter = i === 0 ? 'hue-rotate(90deg) saturate(3)' : 'hue-rotate(270deg) saturate(3)';
     img.parentElement.style.position = 'relative';
     img.parentElement.insertBefore(el, img);
   });
 
   let frame = 0;
-  const maxFrames = 60; // 60 Frames bei 60fps = 1 Sekunde
+  const maxFrames = 180; // 3 Sekunden bei 60fps für längere Sichtbarkeit
 
   /**
    * Glitch-Animation Loop mit abnehmender Intensität
@@ -312,14 +334,27 @@ const addImageGlitch = (img) => {
     if (frame < maxFrames) {
       // Intensität nimmt über Zeit ab (1.0 → 0.0)
       const intensity = 1 - frame / maxFrames;
-      const offset = Math.random() * 200 * intensity;
 
-      // Verschiebe Layers in verschiedene Richtungen
-      glitchBefore.style.transform = `translateX(${offset}px)`;
-      glitchBefore.style.opacity = Math.random() * 0.8 * intensity;
+      // Verstärkter Offset für deutlich sichtbareren Effekt
+      const baseOffset = Math.random() * 40 + 10; // Minimum 10px, Maximum 50px
+      const offsetX = (Math.random() - 0.5) * baseOffset * intensity;
+      const offsetY = (Math.random() - 0.5) * baseOffset * intensity;
 
-      glitchAfter.style.transform = `translateY(-${offset}px)`;
-      glitchAfter.style.opacity = Math.random() * 0.8 * intensity;
+      // Verschiebe Layers mit kombinierten Transformationen
+      glitchBefore.style.transform = `translate(${offsetX}px, ${offsetY * 0.5}px) skewX(${Math.random() * 5 - 2.5}deg)`;
+      glitchBefore.style.opacity = (Math.random() * 0.5 + 0.3) * intensity; // Min 0.3, Max 0.8
+
+      glitchAfter.style.transform = `translate(${-offsetX}px, ${-offsetY}px) skewX(${Math.random() * 5 - 2.5}deg)`;
+      glitchAfter.style.opacity = (Math.random() * 0.5 + 0.3) * intensity; // Min 0.3, Max 0.8
+
+      // Gelegentliche intensive Glitch-Spikes
+      if (Math.random() > 0.95) {
+        const spikeOffset = 80;
+        glitchBefore.style.transform = `translate(${spikeOffset}px, 0) skewX(10deg)`;
+        glitchAfter.style.transform = `translate(${-spikeOffset}px, 0) skewX(-10deg)`;
+        glitchBefore.style.opacity = 0.9 * intensity;
+        glitchAfter.style.opacity = 0.9 * intensity;
+      }
 
       frame++;
       requestAnimationFrame(glitchAnimation);
