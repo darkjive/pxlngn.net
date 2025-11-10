@@ -131,7 +131,7 @@ const animateElement = (element) => {
       opacity: [0, 1],
       translateY: [20, 0],
       duration: 500,
-      ease: 'out-quad',
+      ease: 'outInCirc',
       delay: delay || 0,
     },
     default: {
