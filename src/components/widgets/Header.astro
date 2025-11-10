@@ -75,16 +75,39 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       <a class="flex items-center" href={getHomePermalink()}>
         <Logo />
       </a>
-      <div class="flex items-center md:hidden">
+      <div class="flex items-center gap-3 md:hidden">
+        {showToggleTheme && <ToggleTheme iconClass="md:inline-block" />}
+        {
+          actions?.[0]?.href && (
+            <a
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              aria-label="Github"
+              href={actions[0].href}
+            >
+              <Icon name="tabler:brand-github" class="h-5 w-5" />
+            </a>
+          )
+        }
+        {
+          actions?.[1]?.href && (
+            <a
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              aria-label="E-Mail"
+              href={actions[1].href}
+            >
+              <Icon name="tabler:mail" class="h-5 w-5" />
+            </a>
+          )
+        }
         <ToggleMenu />
       </div>
     </div>
     <nav
-      class="hidden items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
+      class="hidden w-full items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
       aria-label="Hauptnavigation"
     >
       <ul
-        class="flex flex-col justify-center text-[2rem] text-base font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-[0.9375rem]"
+        class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-[0.9375rem] md:font-sans"
       >
         {
           links.map(({ text, href, links, icon }) => {
@@ -95,7 +118,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                   <>
                     <a
                       class:list={[
-                        'flex items-center whitespace-nowrap px-4 py-3 hover:text-primary dark:hover:text-primary',
+                        'flex w-full items-center whitespace-nowrap px-4 py-4 hover:text-primary dark:hover:text-primary md:w-auto md:py-3',
                         { 'aw-link-active': isActive },
                       ]}
                       href={href}
@@ -106,14 +129,14 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                       {icon && <Icon name={icon} class="mr-2 hidden h-6 w-6 text-muted md:inline" />}
                       {text}
                     </a>
-                    <ul class="dropdown-menu dark:md:bg-dark rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/100 md:pl-0">
+                    <ul class="dropdown-menu dark:md:bg-dark w-full rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/100 md:pl-0">
                       {links.map(({ text: text2, href: href2, icon: icon2 }) => {
                         const isSubActive = href2 === currentHash;
                         return (
                           <li>
                             <a
                               class:list={[
-                                'whitespace-no-wrap block border-b border-gray-200/100 px-5 py-2 text-base hover:text-primary dark:border-gray-500/20 md:border-0',
+                                'whitespace-no-wrap block w-full border-b border-gray-200/100 px-5 py-3 text-2xl hover:text-primary dark:border-gray-500/20 md:border-0 md:text-base md:py-2',
                                 { 'aw-link-active': isSubActive },
                               ]}
                               href={href2}
@@ -129,7 +152,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                 ) : (
                   <a
                     class:list={[
-                      'flex items-center whitespace-nowrap px-4 py-3 first:rounded-t last:rounded-b hover:text-primary',
+                      'flex w-full items-center whitespace-nowrap px-4 py-4 first:rounded-t last:rounded-b hover:text-primary dark:hover:text-primary md:w-auto md:py-3',
                       { 'aw-link-active': isActive },
                     ]}
                     href={href}
