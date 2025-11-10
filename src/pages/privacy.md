@@ -7,7 +7,7 @@ Ich informiere gemäß BDSG n.F. und DS-GVO über die Verarbeitung personenbezog
 
 ## Verantwortlicher
 
-Alain Ritter, Amselweg 33, 64295 Darmstadt, E-Mail: hi@pxlngn.net
+𐌀𐌋𐌀𐌉𐌍 𐌐𐌉𐌕𐌕𐌄𐌐, Amselweg 33, 64295 Darmstadt, E-Mail: hi@pxlngn.net
 
 ## Daten und Verarbeitungszwecke
 

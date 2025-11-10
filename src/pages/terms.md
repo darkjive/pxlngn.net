@@ -3,15 +3,15 @@ title: 'Impressum'
 layout: '~/layouts/MarkdownLayout.astro'
 ---
 
-Alain Ritter  
-64295, Darmstadt  
-Amselweg 33  
+𐌀𐌋𐌀𐌉𐌍 𐌐𐌉𐌕𐌕𐌄𐌐  
+ᑳᔦᘖᖗᔕ, 𐌃𐌀𐌐𐌌𐌔𐌕𐌀𐌃𐌕  
+𐌀𐌌𐌔𐌄𐌋Ꮤ𐌄Ᏽ ᙣᙣ  
 E-Mail:  
-hi@pxlngn.net
+𐋅𐌉@𐌓𐋄𐌋𐌍Ᏽ𐌍.𐌍𐌄𐌕
 
 ## Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV):
 
-Alain Ritter
+𐌀𐌋𐌀𐌉𐌍 𐌐𐌉𐌕𐌕𐌄𐌐
 
 ## Disclaimer
 

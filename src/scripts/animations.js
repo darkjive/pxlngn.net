@@ -101,7 +101,7 @@ const animateElement = (element) => {
     },
     glitch: {
       opacity: [0, 1],
-      duration: 400,
+      duration: 10,
       ease: 'out-quad',
       delay,
       onComplete: () => {
