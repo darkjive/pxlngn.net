@@ -1,6 +1,4 @@
 ---
-import ToggleTheme from '~/components/common/ToggleTheme.astro';
-
 import { trimSlash } from '~/utils/permalinks';
 
 interface Link {
@@ -92,9 +90,6 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             </ul>
           ) : null
         } -->
-        <div>
-          <ToggleTheme />
-        </div>
       </div>
     </div>
   </div>
