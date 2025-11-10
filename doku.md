@@ -1,0 +1,17 @@
+https://docs.astro.build/en/getting-started/
+https://docs.astro.build/en/guides/integrations-guide/db/
+https://astrowind.vercel.app/
+https://tailwindcss.com/docs/
+https://animejs.com/documentation/
+https://developer.mozilla.org/en-US/
+https://caniuse.com/
+https://tc39.es/ecma262/
+https://www.typescriptlang.org/docs/
+https://www.ionos.de/hilfe/hosting/deploy-now/projekte-einrichten-und-verwalten/?utm_source=search&utm_medium=global&utm_term=deploy&utm_campaign=HELP_CENTER&utm_content=/hilfe/
+https://markdown.de/
+https://www.ibm.com/de-de/think/topics/yaml
+https://git-scm.com/docs
+https://nodejs.org/docs/
+https://docs.npmjs.com/
+https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=de
+https://astro.build/integrations/

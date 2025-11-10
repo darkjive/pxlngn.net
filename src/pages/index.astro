@@ -62,7 +62,7 @@ const metadata = {
   >
     <Fragment slot="content">
       <h2 class="Anklepants mb-2 text-2xl tracking-tight dark:text-white sm:text-3xl">
-        Ich bin
+        <span data-animate data-anim-type="typewriter">Ich bin</span>
         <span data-animate data-anim-type="cycle-typewriter"></span>
       </h2>
 
@@ -88,8 +88,8 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span data-animate data-anim-type="typewriter">
-        ...der die Schnittstellen zwischen Design und Logik liebt. Hier kannst du mehr über meine
-        Person und meinen Hintergrund erfahren.
+        ...der die Schnittstellen zwischen Design und Logik liebt. Hier kannst du mehr über meine Person und meinen
+        Hintergrund erfahren.
       </span>
     </Fragment>
   </Hero>
@@ -103,8 +103,8 @@ const metadata = {
     items={[
       {
         title:
-          'ion2s GmbH <br /> <span class="font-normal">Projektmanager / Scrum Master</span> <br /> <span class="text-sm font-normal">2016 - 2024</span>',
-        description: `Verantwortlich für IT-Management und Scrum-Prozesse. <br /> Sicherstellung effizienter Projektabläufe und Kommunikation im Team. <br /> Einführung und Betreuung agiler Methoden und Tools.`,
+          'ion2s GmbH <br/> <span class="font-normal">Projektmanager / Scrum Master</span> <br/> <span class="text-sm font-normal">2016 - 2024</span>',
+        description: `Verantwortlich für IT-Management und Scrum-Prozesse. <br/> Sicherstellung effizienter Projektabläufe und Kommunikation im Team. <br/> Einführung und Betreuung agiler Methoden und Tools.`,
         icon: 'tabler:briefcase',
         logo: {
           src: '/images/Screenshot-2024-12-05-125828.jpg',
@@ -113,8 +113,8 @@ const metadata = {
       },
       {
         title:
-          'ion2s GmbH <br /> <span class="font-normal">Front-End-Entwickler</span> <br /> <span class="text-sm font-normal">2012 - 2016</span>',
-        description: `Umsetzung moderner Benutzeroberflächen mit CSS und Typo3. <br /> Optimierung von Webseiten für Performance und Benutzerfreundlichkeit. <br /> Zusammenarbeit mit Design- und Back-End-Teams.`,
+          'ion2s GmbH <br/> <span class="font-normal">Front-End-Entwickler</span> <br/> <span class="text-sm font-normal">2012 - 2016</span>',
+        description: `Umsetzung moderner Benutzeroberflächen mit CSS und Typo3. <br/> Optimierung von Webseiten für Performance und Benutzerfreundlichkeit. <br/> Zusammenarbeit mit Design- und Back-End-Teams.`,
         icon: 'tabler:briefcase',
         logo: {
           src: '/images/Screenshot-2024-12-05-125828.jpg',
@@ -123,8 +123,8 @@ const metadata = {
       },
       {
         title:
-          'Intercontact<br class="sm:hidden" /> Werbegesellschaft mbH <br /> <span class="font-normal">Web-Entwickler</span> <br /> <span class="text-sm font-normal">2010 - 2012</span>',
-        description: `Entwicklung von Webseiten und Online-Anwendungen. <br /> Einsatz von CSS und Adobe Illustrator für die Gestaltung und Umsetzung. <br /> Unterstützung bei digitalen Marketingkampagnen.`,
+          'Intercontact<br class="sm:hidden" /> Werbegesellschaft mbH <br/> <span class="font-normal">Web-Entwickler</span> <br/> <span class="text-sm font-normal">2010 - 2012</span>',
+        description: `Entwicklung von Webseiten und Online-Anwendungen. <br/> Einsatz von CSS und Adobe Illustrator für die Gestaltung und Umsetzung. <br/> Unterstützung bei digitalen Marketingkampagnen.`,
         icon: 'tabler:briefcase',
         logo: {
           src: '/images/werbeagentur_frankfurt.png',
@@ -133,8 +133,8 @@ const metadata = {
       },
       {
         title:
-          'PREUSS<br class="sm:hidden" /> MEDIENSERVICE e.K. <br /> <span class="font-normal">Mediengestalter</span> <br /> <span class="text-sm font-normal">2003 - 2009</span>',
-        description: `Gestaltung und Druckvorbereitung von Printmedien. <br /> Entwicklung kreativer Konzepte für Werbematerialien. <br /> Betreuung des gesamten Druckvorstufenprozesses.`,
+          'PREUSS<br class="sm:hidden" /> MEDIENSERVICE e.K. <br/> <span class="font-normal">Mediengestalter</span> <br/> <span class="text-sm font-normal">2003 - 2009</span>',
+        description: `Gestaltung und Druckvorbereitung von Printmedien. <br/> Entwicklung kreativer Konzepte für Werbematerialien. <br/> Betreuung des gesamten Druckvorstufenprozesses.`,
         icon: 'tabler:briefcase',
         logo: {
           src: '/images/Screenshot-2024-12-05-125602.jpg',
@@ -150,7 +150,7 @@ const metadata = {
     classes={{ container: 'max-w-3xl' }}
     items={[
       {
-        title: `Certified ScrumMaster® <br /> <span class="font-normal">Scrum Alliance</span> <br /> <span class="text-sm font-normal">Ausgestellt: Apr. 2021 · Gültig bis: Apr. 2025</span>`,
+        title: `Certified ScrumMaster® <br/> <span class="font-normal">Scrum Alliance</span> <br/> <span class="text-sm font-normal">Ausgestellt: Apr. 2021 · Gültig bis: Apr. 2025</span>`,
         description: `Zertifikats-ID: 001189726`,
         icon: 'tabler:certificate',
         logo: {
@@ -164,7 +164,7 @@ const metadata = {
   <Features3
     id="projects"
     tagline="Projekte"
-    title="Projekte für Kunden"
+    title="Projekte<br/> für<br/> Kunden"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.jpg" />'
     classes={{
       container: 'max-w-5xl border-b border-gray-200/100 dark:border-gray-500/20 dark:bg-transparent',
@@ -306,8 +306,8 @@ const metadata = {
       },
     ]}
   />
-  <!-- Brands Widget ****************** -->
 
+  <!-- Brands Widget ****************** -->
   <Brands
     id="tech"
     classes={{
@@ -411,7 +411,7 @@ const metadata = {
     ]}
   />
   <Brands
-    title="Projekt<br />management"
+    title="Projekt<br/> management"
     classes={{
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
     }}
@@ -435,7 +435,6 @@ const metadata = {
       },
     ]}
   />
-
   <Brands
     title="Tools"
     classes={{
@@ -554,7 +553,7 @@ const metadata = {
     id="abstract"
     tagline="Dienstleistungen"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/5461913.jpg" />'
-    title="Was ich bieten kann"
+    title="Was ich<br/> bieten kann"
     subtitle="Als Generalist bringe ich eine breite Palette an Fähigkeiten und Erfahrungen mit,<br class='sm:inline-block' /> die ich in jedes Projekt einfließen lasse. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt Spaß macht."
     classes={{ container: 'max-w-4xl border-t border-gray-200/100 dark:border-gray-500/20' }}
     items={[
@@ -608,6 +607,7 @@ const metadata = {
       },
     ]}
   />
+
   <!-- Blog Latest Posts ******************* -->
   <!-- <BlogLatestPosts
     id="blog"

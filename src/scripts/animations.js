@@ -19,9 +19,9 @@ import { animate } from 'animejs';
  * @property {string} rootMargin - Zusätzlicher Rand für frühere/spätere Trigger ('0px' = exakt bei Sichtbarkeit)
  */
 const CONFIG = {
-  duration: 600,
-  easing: 'out-expo',
-  offset: 40,
+  duration: 450,
+  easing: 'outInCirc',
+  offset: 50,
   threshold: 0.15,
   rootMargin: '0px',
 };
@@ -88,7 +88,7 @@ const animateElement = (element) => {
     'logo-slide': {
       opacity: [0, 1],
       translateX: [100, 0],
-      duration: 800,
+      duration: CONFIG.duration,
       ease: 'out-elastic(1, .6)',
       delay: 0,
     },
