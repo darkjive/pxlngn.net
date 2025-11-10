@@ -75,27 +75,27 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       <a class="flex items-center scale-75 md:scale-100 origin-left" href={getHomePermalink()}>
         <Logo />
       </a>
-      <div class="flex items-center gap-1.5 md:gap-3">
-        {showToggleTheme && <ToggleTheme iconClass="md:inline-block" />}
+      <div class="flex items-center gap-3">
+        {showToggleTheme && <ToggleTheme class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center" iconClass="md:inline-block" />}
         {
           actions?.[0]?.href && (
             <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-1.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden md:p-2.5"
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden"
               aria-label="Github"
               href={actions[0].href}
             >
-              <Icon name="tabler:brand-github" class="h-4 w-4 md:h-5 md:w-5" />
+              <Icon name="tabler:brand-github" class="h-5 w-5" />
             </a>
           )
         }
         {
           actions?.[1]?.href && (
             <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-1.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden md:p-2.5"
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden"
               aria-label="E-Mail"
               href={actions[1].href}
             >
-              <Icon name="tabler:mail" class="h-4 w-4 md:h-5 md:w-5" />
+              <Icon name="tabler:mail" class="h-5 w-5" />
             </a>
           )
         }
@@ -181,48 +181,29 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
     >
       <div class="flex w-full items-center justify-between md:w-auto">
         <div class="flex items-center gap-3">
-          {showToggleTheme && <ToggleTheme iconClass="md:inline-block" />}
-          <ul class="flex space-x-3 rtl:space-x-reverse">
-            <!-- {
-              showRssFeed && (
-                <li>
-                  <a
-                    class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                    aria-label="RSS Feed"
-                    href={getAsset('/rss.xml')}
-                  >
-                    <Icon name="tabler:rss" class="h-5 w-5" />
-                  </a>
-                </li>
-              )
-            } -->
-            {
-              actions?.[0]?.href && (
-                <li>
-                  <a
-                    class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                    aria-label="Github"
-                    href={actions[0].href}
-                  >
-                    <Icon name="tabler:brand-github" class="h-5 w-5" />
-                  </a>
-                </li>
-              )
-            }
-            {
-              actions?.[1]?.href && (
-                <li>
-                  <a
-                    class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                    aria-label="E-Mail"
-                    href={actions[1].href}
-                  >
-                    <Icon name="tabler:mail" class="h-5 w-5" />
-                  </a>
-                </li>
-              )
-            }
-          </ul>
+          {showToggleTheme && <ToggleTheme class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center" iconClass="md:inline-block" />}
+          {
+            actions?.[0]?.href && (
+              <a
+                class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+                aria-label="Github"
+                href={actions[0].href}
+              >
+                <Icon name="tabler:brand-github" class="h-5 w-5" />
+              </a>
+            )
+          }
+          {
+            actions?.[1]?.href && (
+              <a
+                class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+                aria-label="E-Mail"
+                href={actions[1].href}
+              >
+                <Icon name="tabler:mail" class="h-5 w-5" />
+              </a>
+            )
+          }
         </div>
       </div>
     </div>
