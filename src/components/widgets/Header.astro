@@ -110,10 +110,10 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
         class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:text-[0.9375rem] md:font-sans"
       >
         {
-          links.map(({ text, href, links, icon }) => {
+          links.map(({ text, href, links, icon }, index) => {
             const isActive = href === currentHash;
             return (
-              <li class={links?.length ? 'dropdown' : ''}>
+              <li class={links?.length ? 'dropdown' : ''} data-animate data-anim-type="fade-left" data-anim-delay={index * 50}>
                 {links?.length ? (
                   <>
                     <a
