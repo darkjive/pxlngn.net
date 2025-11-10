@@ -46,14 +46,14 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 
 ## Commands
 
-| Command             | Action                                             |
-| :------------------ | :------------------------------------------------- |
-| `npm install`       | Installiert Dependencies                           |
-| `npm run dev`       | Startet Dev-Server auf `localhost:4321`            |
-| `npm run build`     | Baut Production Site nach `./dist/`                |
-| `npm run preview`   | Lokale Preview des Production Builds               |
-| `npm run check`     | Prüft Projekt auf Fehler (Astro + ESLint + Prettier) |
-| `npm run fix`       | Formatiert Code mit ESLint und Prettier            |
+| Command           | Action                                               |
+| :---------------- | :--------------------------------------------------- |
+| `npm install`     | Installiert Dependencies                             |
+| `npm run dev`     | Startet Dev-Server auf `localhost:4321`              |
+| `npm run build`   | Baut Production Site nach `./dist/`                  |
+| `npm run preview` | Lokale Preview des Production Builds                 |
+| `npm run check`   | Prüft Projekt auf Fehler (Astro + ESLint + Prettier) |
+| `npm run fix`     | Formatiert Code mit ESLint und Prettier              |
 
 ## Konfiguration
 
@@ -112,6 +112,7 @@ Details: [src/scripts/animations.js](src/scripts/animations.js)
 Das Projekt wird auf **IONOS Deploy & Space** gehostet:
 
 1. **Build**:
+
    ```bash
    npm run build
    ```
@@ -152,6 +153,7 @@ touch src/content/post/my-new-post.mdx
 ```
 
 Frontmatter-Beispiel:
+
 ```yaml
 ---
 title: 'Mein neuer Post'
@@ -178,12 +180,14 @@ tags: ['javascript', 'astro']
 ## Performance
 
 Das Projekt erreicht in PageSpeed Insights:
+
 - Performance: 100
 - Accessibility: 100
 - Best Practices: 100
 - SEO: 100
 
 Optimierungen:
+
 - Image Optimization via Astro Assets
 - CSS/JS Minification
 - Critical CSS Inlining
@@ -197,6 +201,7 @@ MIT License - siehe [LICENSE.md](LICENSE.md)
 ## Kontakt
 
 **Alain Ritter**
+
 - Website: [pxlngn.net](https://pxlngn.net)
 - Email: hi@pxlngn.net
 - LinkedIn: [alain-ritter-b49ba8233](https://www.linkedin.com/in/alain-ritter-b49ba8233/)
