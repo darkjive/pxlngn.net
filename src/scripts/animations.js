@@ -87,9 +87,9 @@ const animateElement = (element) => {
     },
     'logo-slide': {
       opacity: [0, 1],
-      translateX: [100, 0],
+      translateX: [-100, 0],
       duration: CONFIG.duration,
-      ease: 'out-elastic(1, .6)',
+      ease: CONFIG.easing,
       delay: 0,
     },
     'scale-up': {
