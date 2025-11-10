@@ -289,6 +289,7 @@ const animateCycleTypewriter = (element) => {
  *
  * Erstellt zwei Duplikat-Layers mit Farbversatz (RGB-Split-Effekt)
  * Der Effekt läuft kontinuierlich für intensivere Sichtbarkeit
+ * Wechselt zufällig zwischen normal.jpg und glitch.jpg
  *
  * @param {HTMLImageElement} img - Bild-Element für Glitch-Effekt
  * @returns {void}
@@ -296,6 +297,11 @@ const animateCycleTypewriter = (element) => {
 const addImageGlitch = (img) => {
   img.style.position = 'relative';
   img.style.display = 'block';
+
+  // Ermittle Original-Bild-URL und erstelle glitch.jpg Variante
+  const originalSrc = img.src;
+  const glitchSrc = originalSrc.replace(/normal\.jpg/i, 'glitch.jpg');
+  const hasGlitchVariant = originalSrc.includes('normal.jpg');
 
   const glitchBefore = document.createElement('div');
   const glitchAfter = document.createElement('div');
@@ -340,6 +346,17 @@ const addImageGlitch = (img) => {
       const offsetX = (Math.random() - 0.5) * baseOffset * intensity;
       const offsetY = (Math.random() - 0.5) * baseOffset * intensity;
 
+      // Zufällig zwischen normal.jpg und glitch.jpg wechseln (20% Chance)
+      if (hasGlitchVariant && Math.random() > 0.8) {
+        img.src = glitchSrc;
+        glitchBefore.style.backgroundImage = `url('${glitchSrc}')`;
+        glitchAfter.style.backgroundImage = `url('${glitchSrc}')`;
+      } else {
+        img.src = originalSrc;
+        glitchBefore.style.backgroundImage = `url('${originalSrc}')`;
+        glitchAfter.style.backgroundImage = `url('${originalSrc}')`;
+      }
+
       // Verschiebe Layers mit kombinierten Transformationen
       glitchBefore.style.transform = `translate(${offsetX}px, ${offsetY * 0.5}px) skewX(${Math.random() * 5 - 2.5}deg)`;
       glitchBefore.style.opacity = (Math.random() * 0.5 + 0.3) * intensity; // Min 0.3, Max 0.8
@@ -359,9 +376,10 @@ const addImageGlitch = (img) => {
       frame++;
       requestAnimationFrame(glitchAnimation);
     } else {
-      // Effekt beendet - verstecke Layers
+      // Effekt beendet - verstecke Layers und setze auf Original zurück
       glitchBefore.style.opacity = '0';
       glitchAfter.style.opacity = '0';
+      img.src = originalSrc;
     }
   };
 
