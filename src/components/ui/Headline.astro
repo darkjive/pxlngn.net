@@ -37,7 +37,9 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
           ))}
         </h1>
       )}
-      {subtitle && <p data-animate class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />}
+      {subtitle && (
+        <p data-animate data-anim-type="typewriter" class={twMerge('mt-4 text-muted', subtitleClass)} set:html={subtitle} />
+      )}
     </div>
   )
 }
