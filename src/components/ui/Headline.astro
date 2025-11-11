@@ -7,10 +7,12 @@ const {
   subtitle = await Astro.slots.render('subtitle'),
   tagline,
   classes = {},
+  headingLevel = 'h2',
 } = Astro.props;
 
 const { container: containerClass = 'max-w-3xl', subtitle: subtitleClass = 'text-xl' } = classes;
 const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
+const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 ---
 
 {
@@ -25,7 +27,7 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
         />
       )}
       {titleLines.length > 0 && (
-        <h2 class="text-shadow-[1px_1px_0px_0px_#fff] Anklepants leading-tighter mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200">
+        <HeadingTag class="text-shadow-[1px_1px_0px_0px_#fff] Anklepants leading-tighter mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200">
           {titleLines.map((line, index) => (
             <span
               data-animate
@@ -35,7 +37,7 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
               class="block"
             />
           ))}
-        </h2>
+        </HeadingTag>
       )}
       {subtitle && (
         <p

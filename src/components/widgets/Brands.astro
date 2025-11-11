@@ -16,9 +16,11 @@ const {
   isDark = false,
   classes = {},
   bg = await Astro.slots.render('bg'),
+  headingLevel = 'h2',
 } = Astro.props;
 
 const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
+const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -35,7 +37,7 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
     }
     {
       titleLines.length > 0 ? (
-        <h2 class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl">
+        <HeadingTag class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl">
           {titleLines.map((line, index) => (
             <span
               data-animate
@@ -45,10 +47,10 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
               class="block"
             />
           ))}
-        </h2>
+        </HeadingTag>
       ) : (
         title && (
-          <h2
+          <HeadingTag
             data-animate
             data-anim-type="fade-up"
             class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl"

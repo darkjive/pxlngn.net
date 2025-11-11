@@ -32,7 +32,7 @@
 
 @layer components {
   .btn {
-    @apply Anklepants mb-2 me-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-base uppercase tracking-wider;
+    @apply mb-2 me-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-base uppercase tracking-wider;
   }
 
   .btn-primary {
@@ -48,7 +48,11 @@
   }
 }
 
-/* Custom Font */
+/*
+ * Font-Strategie:
+ * - Baloo Bhaijaan 2 Variable: Haupt-Schrift für Body/Standard (definiert in CustomStyles.astro)
+ * - Anklepants: Display-Schrift für spezielle Überschriften (über Klasse .Anklepants)
+ */
 @font-face {
   font-family: 'Anklepants';
   src: url('/fonts/Anklepants.woff2') format('woff2');
@@ -92,6 +96,28 @@
   padding: 0 5px;
 }
 
+/* Auto-hide navigation on scroll */
+#header[data-aw-sticky-header] {
+  transition: transform 0.3s ease-in-out;
+}
+
+#header[data-aw-sticky-header].header-hidden {
+  transform: translateY(-100%);
+}
+
+#header[data-aw-sticky-header].header-visible {
+  transform: translateY(0);
+}
+
+/* Animation states */
+[data-animate]:not([data-animated]) {
+  opacity: 0;
+}
+
+[data-animate][data-animated] {
+  opacity: 1;
+}
+
 .dropdown:focus .dropdown-menu,
 .dropdown:focus-within .dropdown-menu,
 .dropdown:hover .dropdown-menu {
@@ -123,13 +149,7 @@
   margin-top: 0;
 }
 
-/* Custom Gradient */
+/* Custom Gradient - uses CSS Custom Properties from CustomStyles.astro */
 .gradient {
-  background: rgb(240, 254, 255);
-  background: linear-gradient(0deg, rgba(240, 254, 255, 1) 0%, rgba(255, 255, 255, 1) 50%, rgba(255, 248, 240, 1) 100%);
-}
-/* Custom Gradient */
-.dark .gradient {
-  background: transparent;
-  background: linear-gradient(0deg, rgba(240, 254, 255, 0) 0%, rgba(255, 255, 255, 0) 50%, rgba(255, 248, 240, 0) 100%);
+  background: linear-gradient(0deg, var(--aw-gradient-start) 0%, var(--aw-gradient-middle) 50%, var(--aw-gradient-end) 100%);
 }
