@@ -72,7 +72,7 @@ const config = {
    * Standard Output-Formate für optimierte Bilder
    * AVIF bietet beste Kompression, WebP als Fallback
    */
-  formats: ['image/avif', 'image/webp'],
+  formats: ['avif', 'webp'],
 };
 
 const computeHeight = (width: number, aspectRatio: number) => {

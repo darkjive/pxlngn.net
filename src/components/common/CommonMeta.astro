@@ -15,4 +15,8 @@ import { getAsset } from '~/utils/permalinks';
 <!-- Preload critical fonts -->
 <link rel="preload" href="/fonts/Anklepants.woff2" as="font" type="font/woff2" crossorigin />
 
+<!-- Load fonts asynchronously with font-display: swap -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
 <link rel="sitemap" href={getAsset('/sitemap-index.xml')} />
