@@ -76,7 +76,7 @@ export default defineConfig({
 
   vite: {
     resolve: {
-      alias: { '~': path.resolve(__dirname, './src') }
+      alias: { '~': path.resolve(__dirname, './src') },
     },
     build: {
       cssCodeSplit: true,
