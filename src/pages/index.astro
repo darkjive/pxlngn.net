@@ -184,6 +184,7 @@ const metadata = {
 
   <Steps
     id="certificates"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/O6DXV30.webp" width="1920" height="1080" loading="lazy" />'
     title="Zertifikate"
     classes={{ container: 'max-w-3xl' }}
     items={[
@@ -348,6 +349,7 @@ const metadata = {
   <!-- Brands Widget ****************** -->
   <Brands
     id="tech"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     classes={{
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
     }}
@@ -404,6 +406,7 @@ const metadata = {
   />
   <Brands
     id="learning"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     title=""
     subtitle="Weniger genutzte, aber ebenfalls bekannte Technologien."
     icons={[]}
@@ -450,6 +453,7 @@ const metadata = {
   />
   <Brands
     title="Projekt<br/> management"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     classes={{
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
     }}
@@ -475,6 +479,7 @@ const metadata = {
   />
   <Brands
     title="Tools"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     classes={{
       container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
     }}
@@ -560,6 +565,7 @@ const metadata = {
   />
   <Brands
     title="CMS"
+    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     classes={{ container: 'dark:bg-transparent max-w-4xl' }}
     subtitle="Content-Management-Systeme, mit denen ich auch vertraut bin, sowohl mit ihren Möglichkeiten als auch ihren Grenzen."
     icons={[]}
@@ -591,57 +597,49 @@ const metadata = {
     id="abstract"
     tagline="Dienstleistungen"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/5461913.webp" width="1920" height="1080" loading="lazy" />'
-    title="Was ich<br/> bieten kann"
-    subtitle="Als Generalist bringe ich eine breite Palette an Fähigkeiten und Erfahrungen mit, die ich in jedes Projekt einfließen lasse. Mit Herz und Engagement sorge ich dafür, dass jedes Projekt Spaß macht."
+    title="Was ich<br/> anbiete"
+    subtitle="Entwicklung, Leitung und Qualitätssicherung von Webprojekten. Fokus auf Code-Qualität, Stabilität und Effizienz."
     classes={{ container: 'max-w-4xl border-t border-gray-200/100 dark:border-gray-500/20' }}
     items={[
       {
-        title: 'Projektleitung und Servant Leadership',
-        description:
-          'Mit meiner Erfahrung in der Projektleitung und einem Servant Leadership Ansatz sorge ich dafür, dass Projekte Spaß machen und das Team motiviert bleibt.',
+        title: 'Frontend-Entwicklung',
+        description: 'Modulare Weboberflächen mit HTML, CSS und Javascript. Sauberer, wartbarer Code.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Projektleitung',
+        description: 'Planung, Steuerung und Umsetzung technischer Projekte mit klaren Prozessen.',
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: 'Teamleitung & Scrum',
+        description: 'Führung und Unterstützung von Entwicklerteams. Strukturierte Abläufe nach Scrum.',
         icon: 'tabler:users',
       },
       {
-        title: 'Betreuung und Erweiterung von Legacy-Systemen',
-        description:
-          'Ich arbeite nicht nur an neuen Projekten, sondern helfe auch dabei, das Beste aus bestehenden Legacy-Systemen herauszuholen. Egal ob Wartung, Optimierung oder Erweiterung - ich sorge dafür, dass alte Systeme genauso gut laufen wie neue.',
+        title: 'Legacy-Systeme',
+        description: 'Analyse, Refactoring und Modernisierung bestehender Anwendungen.',
         icon: 'tabler:layers-linked',
       },
       {
-        title: 'Mit Herz und Engagement',
-        description:
-          'Jedes Projekt gehe ich mit Herzblut und vollem Engagement an. Meine Arbeit ist erst dann beendet, wenn alles funktioniert und toll aussieht.',
-        icon: 'tabler:heart',
-      },
-      {
-        title: 'Hohe Performance',
-        description:
-          'Performance ist mir persönlich besonders wichtig. Jedes Projekt, das ich betreue, wird genaustens geprüft, um sicherzustellen, dass alles perfekt funktioniert und performant läuft.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Perfektion und Liebe zum Detail',
-        description:
-          'Ich strebe nach Perfektion und achte auf die kleinen Details, die den Unterschied machen. Meine Arbeit zeigt sich in der Qualität und Präzision.',
-        icon: 'tabler:diamond',
-      },
-      {
-        title: 'Software Testing',
-        description:
-          'Gründliches Software Testing ist mir wichtig und macht mir großen Spaß. So stelle ich sicher, dass alles stabil und fehlerfrei läuft.',
+        title: 'Quality Assurance',
+        description: 'Manuelles und automatisiertes Testen. Fehleranalyse und Nachverfolgung in Ticketsystem.',
         icon: 'tabler:checkup-list',
       },
       {
-        title: 'Technisches Marketing',
-        description:
-          'Ich unterstütze dich dabei, deine Online-Präsenz durch SEO, Social Media und andere Strategien zu maximieren, damit du genau die richtigen Leute erreichst.',
-        icon: 'tabler:chart-pie',
+        title: 'CI/CD & Monitoring',
+        description: 'Deployments über Jenkins. Überwachung von Leistung und Stabilität.',
+        icon: 'tabler:rocket',
       },
       {
-        title: 'Gemeinsam etwas Neues schaffen',
-        description:
-          'Ich liebe es, wenn Projekte wachsen und neue Ideen einfließen. Offenheit und Zusammenarbeit sind für mich das A und O, um das Beste aus einem Projekt herauszuholen.',
-        icon: 'tabler:bulb',
+        title: 'Dokumentation',
+        description: 'Projektdokumentation und Wissensmanagement in Kolaborationstools.',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Prozessverbesserung',
+        description: 'Optimierung von Abläufen und Kommunikation im Team.',
+        icon: 'tabler:settings',
       },
     ]}
   />
