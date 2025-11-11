@@ -59,12 +59,40 @@ export default defineConfig({
     astrowind({ config: './src/config.yaml' }),
   ],
 
-  image: { domains: ['cdn.pixabay.com', 'img.icons8.com'] },
+  image: {
+    domains: ['cdn.pixabay.com', 'img.icons8.com'],
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+      config: {
+        limitInputPixels: false,
+      },
+    },
+  },
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
   },
 
-  vite: { resolve: { alias: { '~': path.resolve(__dirname, './src') } } },
+  vite: {
+    resolve: {
+      alias: { '~': path.resolve(__dirname, './src') }
+    },
+    build: {
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            // Split vendor chunks for better caching
+            if (id.includes('node_modules')) {
+              if (id.includes('animejs')) {
+                return 'vendor-anime';
+              }
+              return 'vendor';
+            }
+          },
+        },
+      },
+    },
+  },
 });
