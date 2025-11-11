@@ -298,6 +298,13 @@ const addImageGlitch = (img) => {
   if (img.dataset.glitchInitialized) return;
   img.dataset.glitchInitialized = 'true';
 
+  // Performance check: Skip glitch on low-end devices
+  const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
+  if (isLowEndDevice) {
+    img.dataset.glitchSkipped = 'true';
+    return;
+  }
+
   img.style.position = 'relative';
   img.style.display = 'block';
 
@@ -319,6 +326,7 @@ const addImageGlitch = (img) => {
       opacity: 0;
       pointer-events: none;
       z-index: 10;
+      will-change: transform, opacity;
     `;
     // Verstärkte Blend-Modes für deutlicheren RGB-Split-Effekt
     el.style.mixBlendMode = i === 0 ? 'screen' : 'color-dodge';
@@ -333,35 +341,45 @@ const addImageGlitch = (img) => {
 
   /**
    * Glitch-Animation Loop mit abnehmender Intensität
+   * Optimized: Reduced frames from 180 to 60 (1 second instead of 3)
    */
   const runGlitchAnimation = () => {
     let frame = 0;
-    const maxFrames = 180; // 3 Sekunden bei 60fps
+    const maxFrames = 60; // 1 Sekunde bei 60fps (optimiert von 180)
+    let lastFrameTime = performance.now();
 
-    const glitchAnimation = () => {
+    const glitchAnimation = (currentTime) => {
+      // Throttle to max 60fps
+      const deltaTime = currentTime - lastFrameTime;
+      if (deltaTime < 16) {
+        animationFrameId = requestAnimationFrame(glitchAnimation);
+        return;
+      }
+      lastFrameTime = currentTime;
+
       if (frame < maxFrames) {
         // Intensität nimmt über Zeit ab (1.0 → 0.0)
         const intensity = 1 - frame / maxFrames;
 
-        // Verstärkter Offset für deutlich sichtbareren Effekt
-        const baseOffset = Math.random() * 40 + 10; // Minimum 10px, Maximum 50px
+        // Reduzierter Offset für bessere Performance
+        const baseOffset = Math.random() * 30 + 5; // Minimum 5px, Maximum 35px (optimiert)
         const offsetX = (Math.random() - 0.5) * baseOffset * intensity;
         const offsetY = (Math.random() - 0.5) * baseOffset * intensity;
 
         // Verschiebe Layers mit kombinierten Transformationen
-        glitchBefore.style.transform = `translate(${offsetX}px, ${offsetY * 0.5}px) skewX(${Math.random() * 5 - 2.5}deg)`;
-        glitchBefore.style.opacity = (Math.random() * 0.5 + 0.3) * intensity; // Min 0.3, Max 0.8
+        glitchBefore.style.transform = `translate(${offsetX}px, ${offsetY * 0.5}px) skewX(${Math.random() * 3 - 1.5}deg)`;
+        glitchBefore.style.opacity = (Math.random() * 0.4 + 0.2) * intensity; // Min 0.2, Max 0.6 (reduziert)
 
-        glitchAfter.style.transform = `translate(${-offsetX}px, ${-offsetY}px) skewX(${Math.random() * 5 - 2.5}deg)`;
-        glitchAfter.style.opacity = (Math.random() * 0.5 + 0.3) * intensity; // Min 0.3, Max 0.8
+        glitchAfter.style.transform = `translate(${-offsetX}px, ${-offsetY}px) skewX(${Math.random() * 3 - 1.5}deg)`;
+        glitchAfter.style.opacity = (Math.random() * 0.4 + 0.2) * intensity; // Min 0.2, Max 0.6 (reduziert)
 
-        // Gelegentliche intensive Glitch-Spikes
-        if (Math.random() > 0.95) {
-          const spikeOffset = 80;
-          glitchBefore.style.transform = `translate(${spikeOffset}px, 0) skewX(10deg)`;
-          glitchAfter.style.transform = `translate(${-spikeOffset}px, 0) skewX(-10deg)`;
-          glitchBefore.style.opacity = 0.9 * intensity;
-          glitchAfter.style.opacity = 0.9 * intensity;
+        // Gelegentliche intensive Glitch-Spikes (reduzierte Häufigkeit)
+        if (Math.random() > 0.97) {
+          const spikeOffset = 60; // Reduziert von 80
+          glitchBefore.style.transform = `translate(${spikeOffset}px, 0) skewX(8deg)`;
+          glitchAfter.style.transform = `translate(${-spikeOffset}px, 0) skewX(-8deg)`;
+          glitchBefore.style.opacity = 0.7 * intensity;
+          glitchAfter.style.opacity = 0.7 * intensity;
         }
 
         frame++;
@@ -371,15 +389,15 @@ const addImageGlitch = (img) => {
         glitchBefore.style.opacity = '0';
         glitchAfter.style.opacity = '0';
 
-        // Plane nächste Animation in zufälligem Intervall (5-10 Sekunden)
-        const nextDelay = Math.random() * 5000 + 5000;
+        // Plane nächste Animation in längerem Intervall (10-15 Sekunden statt 5-10)
+        const nextDelay = Math.random() * 5000 + 10000;
         timeoutId = setTimeout(() => {
           runGlitchAnimation();
         }, nextDelay);
       }
     };
 
-    glitchAnimation();
+    glitchAnimation(performance.now());
   };
 
   // IntersectionObserver für Viewport-Detection
