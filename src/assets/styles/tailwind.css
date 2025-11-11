@@ -61,7 +61,8 @@
   font-display: swap;
 }
 
-.Anklepants {
+.Anklepants,
+.btn {
   font-family: 'Anklepants';
 }
 
@@ -151,5 +152,10 @@
 
 /* Custom Gradient - uses CSS Custom Properties from CustomStyles.astro */
 .gradient {
-  background: linear-gradient(0deg, var(--aw-gradient-start) 0%, var(--aw-gradient-middle) 50%, var(--aw-gradient-end) 100%);
+  background: linear-gradient(
+    0deg,
+    var(--aw-gradient-start) 0%,
+    var(--aw-gradient-middle) 50%,
+    var(--aw-gradient-end) 100%
+  );
 }
