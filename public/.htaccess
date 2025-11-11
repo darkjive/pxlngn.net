@@ -83,7 +83,7 @@
   
   # Preload für kritische Ressourcen
   <FilesMatch "\.html$">
-    Header add Link "</fonts/your-font.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
+    Header add Link "</fonts/Anklepants.woff2>; rel=preload; as=font; type=font/woff2; crossorigin"
   </FilesMatch>
 </IfModule>
 
