@@ -8,6 +8,7 @@ import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import FuturisticImage from '~/components/common/FuturisticImage.astro';
 // import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
@@ -54,12 +55,26 @@ const metadata = {
         },
       },
     ]}
-    image={{
-      src: '~/assets/images/normal.jpg',
-      alt: 'Colorful Image',
-      loading: 'eager',
-    }}
   >
+    <Fragment slot="image">
+      <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
+        <FuturisticImage
+          src="~/assets/images/normal.jpg"
+          alt="Alain Ritter - Profilbild"
+          width={500}
+          height={500}
+          widths={[400, 768]}
+          sizes="(max-width: 768px) 100vw, 432px"
+          layout="responsive"
+          loading="eager"
+          futuristicEffect="cyber"
+          glowColor="cyan"
+          data-glitch
+          class="mx-auto w-full rounded-lg shadow-lg"
+        />
+      </div>
+    </Fragment>
+
     <Fragment slot="content">
       <h2 class="Anklepants text-1xl mb-2 tracking-tight dark:text-white sm:text-2xl">
         <span data-animate data-anim-type="typewriter">Ich bin</span>
