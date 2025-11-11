@@ -49,7 +49,7 @@
 /* Custom Font */
 @font-face {
   font-family: 'Anklepants';
-  src: url('/fonts/Anklepants.woff') format('woff');
+  src: url('/fonts/Anklepants.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
