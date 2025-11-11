@@ -72,26 +72,15 @@ const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : 
               data-anim-type="scale-up"
               data-anim-delay={index * 50}
             >
-              {typeof image.src === 'string' && image.src.startsWith('/') ? (
-                <img
-                  src={image.src}
-                  alt={image.alt || ''}
-                  class="max-full"
-                  width="70"
-                  height="70"
-                  title={image.alt}
-                />
-              ) : (
-                <Image
-                  src={image.src}
-                  alt={image.alt || ''}
-                  class="max-full"
-                  width={70}
-                  height={70}
-                  layout="fixed"
-                  title={image.alt}
-                />
-              )}
+              <Image
+                src={image.src}
+                alt={image.alt || ''}
+                class="max-full"
+                width={70}
+                height={70}
+                layout="fixed"
+                title={image.alt}
+              />
               {image.title && (
                 <span class="mt-2 text-xs tracking-wider text-muted dark:text-gray-900">{image.title}</span>
               )}
