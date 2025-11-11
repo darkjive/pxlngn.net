@@ -205,14 +205,14 @@ const animateTypewriter = (element) => {
 };
 
 /**
- * Cycle-Typewriter: Wörter erscheinen/verschwinden in Endlosschleife mit wechselnden Farben
+ * Cycle-Typewriter: Wörter werden Buchstabe für Buchstabe geschrieben und gelöscht mit blinkendem Cursor
  *
  * Verwendung: <span data-animate data-anim-type="cycle-typewriter"></span>
  *
  * Ablauf:
- * 1. Wort erscheint mit Fade-In und Slide-Up (300ms)
+ * 1. Buchstaben werden einzeln hinzugefügt (100ms pro Buchstabe)
  * 2. Wort bleibt sichtbar (1500ms)
- * 3. Wort verschwindet mit Fade-Out und Slide-Up (300ms)
+ * 3. Buchstaben werden einzeln gelöscht (50ms pro Buchstabe)
  * 4. Nächstes Wort beginnt (goto 1)
  *
  * @param {HTMLElement} element - Container-Element für rotierende Wörter
@@ -235,6 +235,33 @@ const animateCycleTypewriter = (element) => {
 
   let index = 0;
 
+  // Erstelle Cursor-Element
+  const cursor = document.createElement('span');
+  cursor.className = 'typewriter-cursor';
+  cursor.textContent = '|';
+  cursor.style.cssText = `
+    display: inline-block;
+    margin-left: 2px;
+    animation: blink 1s step-end infinite;
+  `;
+
+  // Füge CSS-Animation für blinkenden Cursor hinzu (falls noch nicht vorhanden)
+  if (!document.getElementById('typewriter-cursor-style')) {
+    const style = document.createElement('style');
+    style.id = 'typewriter-cursor-style';
+    style.textContent = `
+      @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // Element initial sichtbar machen
+  element.style.opacity = '1';
+  element.appendChild(cursor);
+
   /**
    * Animiert das nächste Wort in der Sequenz
    * Rekursiv aufgerufen für Endlos-Loop
@@ -243,40 +270,50 @@ const animateCycleTypewriter = (element) => {
     const word = words[index];
     const color = colors[index];
 
-    element.textContent = word;
-
     // Entferne alte text-* Klassen und füge neue Farbe hinzu
     const baseClasses = element.className.split(' ').filter((c) => !c.startsWith('text-'));
     element.className = `${baseClasses.join(' ')} ${color}`;
 
-    // Setze Startzustand für Animation
-    element.style.opacity = '0';
-    element.style.transform = 'translateY(10px)';
+    // Leere aktuellen Text (behalte nur Cursor)
+    element.textContent = '';
+    element.appendChild(cursor);
 
-    // Fade-In Animation (erscheinen von unten)
-    animate(element, {
-      opacity: [0, 1],
-      translateY: [10, 0],
-      duration: 300,
-      ease: 'out-expo',
-      onComplete: () => {
-        // Warte 1.5s bevor Fade-Out startet
+    let currentText = '';
+    let charIndex = 0;
+
+    // Schreibphase: Füge Buchstaben hinzu
+    const typeInterval = setInterval(() => {
+      if (charIndex < word.length) {
+        currentText += word[charIndex];
+        element.textContent = currentText;
+        element.appendChild(cursor);
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+
+        // Warte 1.5 Sekunden bevor Löschen beginnt
         setTimeout(() => {
-          // Fade-Out Animation (verschwinden nach oben)
-          animate(element, {
-            opacity: [1, 0],
-            translateY: [0, -10],
-            duration: 300,
-            ease: 'in-expo',
-            onComplete: () => {
+          // Löschphase: Entferne Buchstaben
+          const deleteInterval = setInterval(() => {
+            if (currentText.length > 0) {
+              currentText = currentText.slice(0, -1);
+              element.textContent = currentText;
+              element.appendChild(cursor);
+            } else {
+              clearInterval(deleteInterval);
+
               // Nächster Index (Loop bei Ende)
               index = (index + 1) % words.length;
-              animateNext();
-            },
-          });
+
+              // Kurze Pause vor nächstem Wort
+              setTimeout(() => {
+                animateNext();
+              }, 500);
+            }
+          }, 50); // 50ms pro Zeichen beim Löschen (schneller als Schreiben)
         }, 1500);
-      },
-    });
+      }
+    }, 100); // 100ms pro Zeichen beim Schreiben
   };
 
   animateNext();
