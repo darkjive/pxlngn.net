@@ -56,16 +56,16 @@ export const footerData = {
       icon: '',
       links: [],
     },
-    {
-      title: 'Impressum',
-      href: getPermalink('/terms'),
-      links: [],
-    },
-    {
-      title: 'Datenschutz',
-      href: getPermalink('/privacy'),
-      links: [],
-    },
+    // {
+    //   title: 'Impressum',
+    //   href: getPermalink('/terms'),
+    //   links: [],
+    // },
+    // {
+    //   title: 'Datenschutz',
+    //   href: getPermalink('/privacy'),
+    //   links: [],
+    // },
   ],
   socialLinks: [
     // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
