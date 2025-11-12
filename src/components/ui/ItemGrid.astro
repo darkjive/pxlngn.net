@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import Button from './Button.astro';
 import { Icon } from 'astro-icon/components';
 
-const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+const { items = [], columns, defaultIcon = '', layout = 'horizontal', classes = {} } = Astro.props;
 
 const {
   container: containerClass = '',
@@ -20,7 +20,7 @@ const {
   items && (
     <div
       class={twMerge(
-        `mx-auto grid gap-8 md:gap-y-12 ${
+        `${layout === 'horizontal' ? 'mx-auto' : ''} grid gap-8 ${layout === 'horizontal' ? 'md:gap-y-12' : 'gap-x-12 sm:gap-y-8'} ${
           columns === 4
             ? 'sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
             : columns === 3
@@ -31,48 +31,66 @@ const {
         }`,
         containerClass
       )}
+      data-animate={layout === 'vertical' ? true : undefined}
     >
       {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }, index) => (
-        <div class="">
-          <div
-            class={twMerge('flex max-w-md flex-row', panelClass, itemClasses?.panel)}
-            data-animate
-            data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
-            data-anim-delay={index * 100}
-          >
-            <div class="flex justify-center">
-              {(icon || defaultIcon) && (
-                <Icon
-                  name={icon || defaultIcon}
-                  class={twMerge('mr-2 h-7 w-7 rtl:ml-2 rtl:mr-0', defaultIconClass, itemClasses?.icon)}
-                  data-animate
-                  data-anim-type="scale-up"
-                  data-anim-delay={index * 100 + 100}
-                />
-              )}
+        <div class={layout === 'vertical' ? twMerge('relative flex flex-col items-center', panelClass, itemClasses?.panel) : ''}>
+          {layout === 'horizontal' ? (
+            <div
+              class={twMerge('flex max-w-md flex-row', panelClass, itemClasses?.panel)}
+              data-animate
+              data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+              data-anim-delay={index * 100}
+            >
+              <div class="flex justify-center">
+                {(icon || defaultIcon) && (
+                  <Icon
+                    name={icon || defaultIcon}
+                    class={twMerge('mr-2 h-7 w-7 rtl:ml-2 rtl:mr-0', defaultIconClass, itemClasses?.icon)}
+                    data-animate
+                    data-anim-type="scale-up"
+                    data-anim-delay={index * 100 + 100}
+                  />
+                )}
+              </div>
+              <div class="mt-0.5">
+                {title && (
+                  <h3 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}>
+                    {title}
+                  </h3>
+                )}
+                {description && (
+                  <p
+                    class={twMerge(`${title ? 'mt-3' : ''} text-muted`, descriptionClass, itemClasses?.description)}
+                    set:html={description}
+                    data-animate
+                    data-anim-type="typewriter"
+                    data-anim-delay={index * 100 + 200}
+                  />
+                )}
+                {callToAction && (
+                  <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
+                    <Button variant="link" {...callToAction} />
+                  </div>
+                )}
+              </div>
             </div>
-            <div class="mt-0.5">
-              {title && (
-                <h3 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}>
-                  {title}
-                </h3>
+          ) : (
+            <>
+              {(icon || defaultIcon) && (
+                <Icon name={icon || defaultIcon} class={twMerge('mb-2 h-10 w-10', defaultIconClass, itemClasses?.icon)} />
               )}
+              <div class={twMerge('text-xl font-semibold', titleClass, itemClasses?.title)}>{title}</div>
               {description && (
-                <p
-                  class={twMerge(`${title ? 'mt-3' : ''} text-muted`, descriptionClass, itemClasses?.description)}
-                  set:html={description}
-                  data-animate
-                  data-anim-type="typewriter"
-                  data-anim-delay={index * 100 + 200}
-                />
+                <p class={twMerge('mt-2 text-muted', descriptionClass, itemClasses?.description)} set:html={description} />
               )}
               {callToAction && (
-                <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
-                  <Button variant="link" {...callToAction} />
+                <div class="mt-2">
+                  <Button {...callToAction} />
                 </div>
               )}
-            </div>
-          </div>
+            </>
+          )}
         </div>
       ))}
     </div>
