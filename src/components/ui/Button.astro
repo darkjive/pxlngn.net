@@ -10,6 +10,7 @@ const {
   icon = '',
   class: className = '',
   type,
+  copyUrl,
   ...rest
 } = Astro.props;
 
@@ -27,6 +28,17 @@ const variants = {
       <Fragment set:html={text} />
       {icon && <Icon name={icon} class="-mr-1.5 ml-1 inline-block h-5 w-5 rtl:-ml-1.5 rtl:mr-1" />}
     </button>
+  ) : copyUrl ? (
+    <button
+      data-animate
+      type="button"
+      class={twMerge(variants[variant] || '', 'inline-flex items-center gap-2', className)}
+      data-copy-url={copyUrl}
+      onclick="copyUrlToClipboard(this)"
+    >
+      <Fragment set:html={text} />
+      <Icon name="tabler:copy" class="inline-block h-4 w-4" />
+    </button>
   ) : (
     <a
       data-animate
@@ -39,3 +51,31 @@ const variants = {
     </a>
   )
 }
+
+<script is:inline>
+  function copyUrlToClipboard(button) {
+    const url = button.getAttribute('data-copy-url');
+    if (!url) return;
+
+    navigator.clipboard.writeText(url).then(() => {
+      // Feedback visuell anzeigen
+      const originalIcon = button.querySelector('svg').outerHTML;
+      const iconElement = button.querySelector('svg');
+
+      // Icon zu Check ändern
+      if (iconElement) {
+        iconElement.outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>';
+      }
+
+      // Nach 2 Sekunden wieder zum Original-Icon zurück
+      setTimeout(() => {
+        const currentIcon = button.querySelector('svg');
+        if (currentIcon) {
+          currentIcon.outerHTML = originalIcon;
+        }
+      }, 2000);
+    }).catch(err => {
+      console.error('Fehler beim Kopieren:', err);
+    });
+  }
+</script>
