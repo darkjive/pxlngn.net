@@ -67,8 +67,6 @@ export default defineConfig({
         limitInputPixels: false,
       },
     },
-    // Enable AVIF for better compression
-    experimentalResponsiveImages: true,
   },
 
   markdown: {
