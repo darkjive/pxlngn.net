@@ -134,6 +134,14 @@ interface Social {
 //   icon?: string;
 // }
 
+export interface ItemClasses {
+  panel?: string;
+  icon?: string;
+  title?: string;
+  description?: string;
+  actionClass?: string;
+}
+
 export interface Item {
   title?: string;
   description?: string;
@@ -143,7 +151,7 @@ export interface Item {
     alt?: string;
     classes?: string;
   };
-  classes?: Record<string, string>;
+  classes?: ItemClasses;
   callToAction?: CallToAction;
   image?: Image;
 }
@@ -278,7 +286,7 @@ export interface Steps extends Omit<Headline, 'classes'>, Widget {
     title: string;
     description?: string;
     icon?: string;
-    classes?: Record<string, string>;
+    classes?: ItemClasses;
     logo?: {
       src: string;
       alt?: string;
