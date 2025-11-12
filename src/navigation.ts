@@ -5,25 +5,25 @@ export const headerData = {
   links: [
     {
       text: 'Intro',
-      href: getPermalink(),
+      href: getPermalink('/#intro'),
       icon: '',
       links: [],
     },
     {
       text: 'Profil',
-      href: '#profile',
+      href: getPermalink('/#profile'),
       icon: '',
       links: [],
     },
     {
       text: 'Skills',
-      href: '#skills',
+      href: getPermalink('/#skills'),
       icon: '',
       links: [],
     },
     {
       text: 'Projekte',
-      href: '#projects',
+      href: getPermalink('/#projects'),
       icon: '',
       links: [],
     },
@@ -34,38 +34,40 @@ export const footerData = {
   links: [
     {
       title: 'Intro',
-      href: getPermalink(),
+      href: getPermalink('/#intro'),
       icon: '',
       links: [],
     },
     {
       title: 'Profil',
-      href: '#profile',
+      href: getPermalink('/#profile'),
       icon: '',
       links: [],
     },
     {
       title: 'Skills',
-      href: '#skills',
+      href: getPermalink('/#skills'),
       icon: '',
       links: [],
     },
     {
       title: 'Projekte',
-      href: '#projects',
+      href: getPermalink('/#projects'),
       icon: '',
       links: [],
     },
-    // {
-    //   title: 'Impressum',
-    //   href: getPermalink('/terms'),
-    //   links: [],
-    // },
-    // {
-    //   title: 'Datenschutz',
-    //   href: getPermalink('/privacy'),
-    //   links: [],
-    // },
+    {
+      title: 'Datenschutz',
+      href: getPermalink('/privacy'),
+      icon: '',
+      links: [],
+    },
+    {
+      title: 'Impressum',
+      href: getPermalink('/terms'),
+      icon: '',
+      links: [],
+    },
   ],
   socialLinks: [
     // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
