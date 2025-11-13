@@ -34,7 +34,11 @@ const {
       data-animate={layout === 'vertical' ? true : undefined}
     >
       {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }, index) => (
-        <div class={layout === 'vertical' ? twMerge('relative flex flex-col items-center', panelClass, itemClasses?.panel) : ''}>
+        <div
+          class={
+            layout === 'vertical' ? twMerge('relative flex flex-col items-center', panelClass, itemClasses?.panel) : ''
+          }
+        >
           {layout === 'horizontal' ? (
             <div
               class={twMerge('flex max-w-md flex-row', panelClass, itemClasses?.panel)}
@@ -55,7 +59,9 @@ const {
               </div>
               <div class="mt-0.5">
                 {title && (
-                  <h3 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}>
+                  <h3
+                    class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}
+                  >
                     {title}
                   </h3>
                 )}
@@ -78,11 +84,17 @@ const {
           ) : (
             <>
               {(icon || defaultIcon) && (
-                <Icon name={icon || defaultIcon} class={twMerge('mb-2 h-10 w-10', defaultIconClass, itemClasses?.icon)} />
+                <Icon
+                  name={icon || defaultIcon}
+                  class={twMerge('mb-2 h-10 w-10', defaultIconClass, itemClasses?.icon)}
+                />
               )}
               <div class={twMerge('text-xl font-semibold', titleClass, itemClasses?.title)}>{title}</div>
               {description && (
-                <p class={twMerge('mt-2 text-muted', descriptionClass, itemClasses?.description)} set:html={description} />
+                <p
+                  class={twMerge('mt-2 text-muted', descriptionClass, itemClasses?.description)}
+                  set:html={description}
+                />
               )}
               {callToAction && (
                 <div class="mt-2">

@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ImageMetadata } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types';
 
 export interface MetaData {
   title?: string;

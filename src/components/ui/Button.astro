@@ -32,7 +32,7 @@ const variants = {
     <button
       data-animate
       type="button"
-      class={twMerge(variants[variant] || '', 'inline-flex items-center gap-2 copy-url-btn', className)}
+      class={twMerge(variants[variant] || '', 'copy-url-btn inline-flex items-center gap-2', className)}
       data-copy-url={copyUrl}
     >
       <Fragment set:html={text} />
@@ -55,31 +55,35 @@ const variants = {
   document.addEventListener('DOMContentLoaded', () => {
     const copyButtons = document.querySelectorAll('.copy-url-btn');
 
-    copyButtons.forEach(button => {
+    copyButtons.forEach((button) => {
       button.addEventListener('click', () => {
         const url = button.getAttribute('data-copy-url');
         if (!url) return;
 
-        navigator.clipboard.writeText(url).then(() => {
-          // Feedback visuell anzeigen
-          const iconElement = button.querySelector('svg');
-          if (!iconElement) return;
+        navigator.clipboard
+          .writeText(url)
+          .then(() => {
+            // Feedback visuell anzeigen
+            const iconElement = button.querySelector('svg');
+            if (!iconElement) return;
 
-          const originalIcon = iconElement.outerHTML;
+            const originalIcon = iconElement.outerHTML;
 
-          // Icon zu Check ändern
-          iconElement.outerHTML = '<svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>';
+            // Icon zu Check ändern
+            iconElement.outerHTML =
+              '<svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-4 w-4" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l5 5l10 -10" /></svg>';
 
-          // Nach 2 Sekunden wieder zum Original-Icon zurück
-          setTimeout(() => {
-            const currentIcon = button.querySelector('svg');
-            if (currentIcon) {
-              currentIcon.outerHTML = originalIcon;
-            }
-          }, 2000);
-        }).catch(err => {
-          console.error('Fehler beim Kopieren:', err);
-        });
+            // Nach 2 Sekunden wieder zum Original-Icon zurück
+            setTimeout(() => {
+              const currentIcon = button.querySelector('svg');
+              if (currentIcon) {
+                currentIcon.outerHTML = originalIcon;
+              }
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Fehler beim Kopieren:', err);
+          });
       });
     });
   });
