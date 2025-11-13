@@ -6,6 +6,22 @@ import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import FuturisticImage from '~/components/common/FuturisticImage.astro';
+import BackgroundImage from '~/components/ui/BackgroundImage.astro';
+
+// Daten-Imports
+import { resumeItems } from '~/data/resume';
+import { certificateItems } from '~/data/certificates';
+import { projectItems } from '~/data/projects';
+import { skillItems } from '~/data/skills';
+import { contactItems, profileText } from '~/data/profile';
+import {
+  primaryTechStack,
+  secondaryTechStack,
+  projectManagementMethods,
+  toolStack,
+  cmsStack,
+  abstractItems,
+} from '~/data/tech-stack';
 
 const metadata = {
   title: 'pxlngn | PIXEL ENGINE {Profil}',
@@ -14,14 +30,16 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Hero Section -->
   <Hero
     id="intro"
     title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
-    class:list={['border-b border-gray-200/100 dark:border-gray-500/20']}
+    class="section-border"
     actions={[{ variant: 'secondary', text: 'Profil', href: '#profile', icon: 'tabler:user' }]}
-    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.webp" fetchpriority="high" width="1920" height="1080" loading="eager" />'
   >
+    <BackgroundImage slot="bg" src="/images/5594016.webp" fetchpriority="high" loading="eager" />
+
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
@@ -29,29 +47,10 @@ const metadata = {
     </Fragment>
   </Hero>
 
-  <Content
-    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.webp" width="1920" height="1080" loading="lazy" />'
-    id="about"
-    columns={3}
-    items={[
-      {
-        icon: 'tabler:brand-linkedin',
-        callToAction: {
-          target: '_blank',
-          text: 'Linkedin',
-          href: 'https://www.linkedin.com/in/alain-ritter-b49ba8233/',
-        },
-      },
-      {
-        icon: 'tabler:mail',
-        callToAction: {
-          target: '_blank',
-          text: 'E-Mail',
-          href: 'mailto:hi@pxlngn.net',
-        },
-      },
-    ]}
-  >
+  <!-- About Section -->
+  <Content id="about" columns={3} items={contactItems}>
+    <BackgroundImage slot="bg" src="/images/5571508.webp" />
+
     <Fragment slot="image">
       <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
         <FuturisticImage
@@ -77,25 +76,20 @@ const metadata = {
         <span data-animate data-anim-type="cycle-typewriter"></span>
       </h2>
 
-      <p data-animate data-anim-type="typewriter">
-        Mir macht es Spaß, digitale Erlebnisse zu schaffen, die gut aussehen und einfach funktionieren. Egal, ob Design
-        oder Code. Meine Stärke liegt in meiner hohen Anpassungsfähigkeit. Ich passe mich schnell an neue Anforderungen,
-        Technologien oder Herausforderungen an und finde Lösungen, die genau zum Projekt und den Nutzern passen. Neben
-        meiner Arbeit als Entwickler bringe ich Erfahrung in Scrum und QA mit, weil Projekte für mich nicht nur kreativ,
-        sondern auch gut strukturiert sein müssen.
-      </p>
+      <p data-animate data-anim-type="typewriter" set:html={profileText.description} />
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
+  <!-- Profile Hero -->
   <Hero
     id="profile"
     title="<span class='lg:text-7xl'>Generalist<br/>mit<br/> Herz.</span>"
     tagline="Profil"
     headingLevel="h2"
     actions={[{ variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' }]}
-    bg='<img class="border-b  border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5571508.webp" width="1920" height="1080" loading="lazy" />'
   >
+    <BackgroundImage slot="bg" src="/images/5571508.webp" />
+
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
@@ -106,507 +100,116 @@ const metadata = {
     </Fragment>
   </Hero>
 
+  <!-- Resume Section -->
   <Steps
     id="resume"
     tagline="Lebenslauf"
     title="Meine<br/>Laufbahn"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{ container: 'border-b border-gray-200/100 dark:border-gray-500/20 max-w-3xl' }}
-    items={[
-      {
-        title:
-          'ion2s GmbH <br/> <span class="font-normal">Projektmanager / Scrum Master</span> <br/> <span class="text-sm font-normal">2016 - 2025</span>',
-        description: `<ul class="list-disc sm:pr-40 xl:pr-0 list-outside space-y-1 marker:text-primary">
-          <li>Leitung von TYPO3-basierten Enterprise-Projekten (u.a. OXG Glasfaser, Baukultur Baden-Württemberg, TKS Cable) mit hybriden Projektmanagement-Ansätzen</li>
-          <li>Betreuung und Coaching von Scrum Teams sowie Implementierung agiler Prozesse mit JIRA und Confluence</li>
-          <li>Servant Leadership: Förderung selbstorganisierter Teams und kontinuierlicher Verbesserungsprozesse</li>
-          <li>Incident- und Release-Management sowie Stakeholder-Kommunikation</li>
-          <li>QA-Softwaretesting manuell und mit Playwright und systematischer Fehlerdokumentation</li>
-        </ul>`,
-        icon: 'tabler:briefcase',
-        logo: {
-          src: '~/assets/images/Screenshot-2024-12-05-125828.webp',
-          alt: 'ion2s GmbH Logo',
-        },
-      },
-      {
-        title:
-          'ion2s GmbH <br/> <span class="font-normal">Front-End-Entwickler</span> <br/> <span class="text-sm font-normal">2012 - 2016</span>',
-        description: `<ul class="list-disc sm:pr-40 xl:pr-0 list-outside space-y-1 marker:text-primary">
-          <li>Entwicklung moderner Web-Interfaces mit AngularJS, SCSS, Node.js und npm</li>
-          <li>Migration und Transformation von Legacy-Software zu modernen Static Site Generators: Betreuung der technischen Migration von Kabel Deutschland zu Vodafone Zuhause Plus mit Fokus auf Performance-Optimierung und moderne Frontend-Architektur</li>
-          <li>Performance-Optimierung, Responsive Design und Verbesserung der Benutzerfreundlichkeit für TYPO3-basierte Enterprise-Lösungen</li>
-          <li>Code Reviews und CI/CD-Integration mit Jenkins</li>
-          <li>Cross-funktionale Zusammenarbeit zwischen Design, Front-End und Back-End</li>
-        </ul>`,
-        icon: 'tabler:briefcase',
-        logo: {
-          src: '~/assets/images/Screenshot-2024-12-05-125828.webp',
-          alt: 'ion2s GmbH Logo',
-        },
-      },
-      {
-        title:
-          'Intercontact<br class="sm:hidden" /> Werbegesellschaft mbH <br/> <span class="font-normal">Full-Stack Web-Entwickler</span> <br/> <span class="text-sm font-normal">2010 - 2012</span>',
-        description: `<ul class="list-disc sm:pr-40 xl:pr-0 list-outside space-y-1 marker:text-primary">
-          <li>Full-Stack Web-Development mit HTML, CSS, JavaScript, PHP sowie Adobe Photoshop und Illustrator für Web- und Printgestaltung</li>
-          <li>Administration von Apache-Webservern und Hosting-Infrastruktur</li>
-          <li>CMS-Administration und technische Betreuung von Content-Management-Systemen</li>
-          <li>Technische und gestalterische Umsetzung digitaler Marketingkampagnen</li>
-          <li>Beratung zur Optimierung von User Experience und Performance</li>
-        </ul>`,
-        icon: 'tabler:briefcase',
-        logo: {
-          src: '~/assets/images/werbeagentur_frankfurt.png',
-          alt: 'Intercontact Logo',
-        },
-      },
-      {
-        title:
-          'PREUSS<br class="sm:hidden" /> MEDIENSERVICE e.K. <br/> <span class="font-normal">Mediengestalter</span> <br/> <span class="text-sm font-normal">2003 - 2009</span>',
-        description: `<ul class="list-disc sm:pr-40 xl:pr-0 list-outside space-y-1 marker:text-primary">
-          <li>Webdesign und Programmierung</li>
-          <li>Gestaltung und Druckvorbereitung von Printmedien</li>
-          <li>Entwicklung kreativer Konzepte für Werbematerialien</li>
-          <li>Betreuung des gesamten Druckvorstufenprozesses</li>
-        </ul>`,
-        icon: 'tabler:briefcase',
-        logo: {
-          src: '~/assets/images/Screenshot-2024-12-05-125602.webp',
-          alt: 'PREUSS MEDIENSERVICE Logo',
-        },
-      },
-    ]}
-  />
+    items={resumeItems}
+    classes={{ container: 'section-border max-w-3xl' }}
+  >
+    <BackgroundImage slot="bg" src="/images/87395.webp" />
+  </Steps>
 
-  <Steps
-    id="certificates"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/O6DXV30.webp" width="1920" height="1080" loading="lazy" />'
-    title="Zertifikate"
-    classes={{ container: 'max-w-3xl' }}
-    items={[
-      {
-        title: `Certified ScrumMaster® <br/> <span class="font-normal">Scrum Alliance</span> <br/> <span class="text-sm font-normal">Ausgestellt: Apr. 2021 · Gültig bis: Apr. 2025</span>`,
-        description: `Zertifikats-ID: 001189726`,
-        icon: 'tabler:certificate',
-        logo: {
-          src: '~/assets/images/scrum_alliance_logo.webp',
-          alt: 'Firmen Logo',
-        },
-      },
-    ]}
-  />
+  <!-- Certificates Section -->
+  <Steps id="certificates" title="Zertifikate" items={certificateItems} classes={{ container: 'max-w-3xl' }}>
+    <BackgroundImage slot="bg" src="/images/O6DXV30.webp" />
+  </Steps>
 
+  <!-- Projects Section -->
   <Features
     id="projects"
     tagline="Projekte"
     title="Projekte<br/> für<br/> Kunden"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{
-      container: 'max-w-5xl border-b border-gray-200/100 dark:border-gray-500/20 dark:bg-transparent',
-    }}
     subtitle="Eine Auswahl von Projekten, die ich als Projektmanager und Entwickler begleitet habe."
+    items={projectItems}
     columns={2}
     defaultIcon="tabler:world"
-    items={[
-      {
-        title: 'OXG Glasfaser GmbH',
-        description: `TYPO3-basierte Webseite mit Fokus auf Glasfaser-Internet. Projektmanagement mit Scrum-Methodik für agile Entwicklung und kontinuierliche Verbesserung.`,
-        icon: 'tabler:world',
-        callToAction: {
-          variant: 'link',
-          text: 'https://www.oxg.de',
-          copyUrl: 'https://www.oxg.de',
-        },
-      },
-      {
-        title: 'Baukultur Baden-Württemberg',
-        description: `TYPO3-Website für Architektur und Baukultur. Projektmanagement im Hybrid-Ansatz mit Waterfall- und Scrum-Elementen für strukturierte und flexible Umsetzung.`,
-        icon: 'tabler:world',
-        callToAction: {
-          variant: 'link',
-          text: 'https://www.baukultur-bw.de',
-          copyUrl: 'https://www.baukultur-bw.de',
-        },
-      },
-      {
-        title: 'KuK',
-        description: `TYPO3-Plattform für Ingenieurwesen. Klassisches Projektmanagement mit Kanban für kontinuierlichen Workflow und optimierte Prozesse.`,
-        icon: 'tabler:world',
-        callToAction: {
-          variant: 'link',
-          text: 'https://www.kuk.de',
-          copyUrl: 'https://www.kuk.de',
-        },
-      },
-      {
-        title: 'TKS Cable',
-        description: `TYPO3-Lösung für Kabel- und Netzwerktechnik. Projektmanagement mit Kanban für kontinuierlichen Workflow und optimierte Prozesse.`,
-        icon: 'tabler:world',
-        callToAction: {
-          variant: 'link',
-          text: 'https://www.tkscable.com',
-          copyUrl: 'https://www.tkscable.com',
-        },
-      },
-      {
-        title: 'Vodafone Zuhause Plus',
-        description: `Moderne Website mit Static Site Generator. Frontend-Entwicklung und Scrum-basiertes Projektmanagement für schnelle Iteration und hohe Code-Qualität.`,
-        icon: 'tabler:world',
-        callToAction: {
-          variant: 'link',
-          text: 'https://zuhauseplus.vodafone.de',
-          copyUrl: 'https://zuhauseplus.vodafone.de',
-        },
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-5xl section-border dark:bg-transparent' }}
+  >
+    <BackgroundImage slot="bg" src="/images/87395.webp" />
+  </Features>
 
+  <!-- Skills Section -->
   <Features
     id="skills"
     tagline="Skills"
     title="Meine<br/>Erfahrung"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/87395.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{
-      container: 'max-w-5xl border-b border-t border-gray-200/100 dark:border-gray-500/20 dark:bg-transparent',
-    }}
     subtitle="Eine Übersicht meiner Tätigkeiten und Fähigkeiten in den Bereichen Web-Entwicklung, Projektleitung, Scrum Master und QA-Softwaretesting."
+    items={skillItems}
     columns={3}
     defaultIcon="tabler:point-filled"
-    items={[
-      {
-        title: 'Web-Entwicklung',
-        description: `Kundenanforderungen analysieren, Web-Applikationen erstellen (HTML, CSS, JavaScript) und Codereviews durchführen. Betreuung bestehender Projekte und Deployment über CI/CD (Jenkins) verwalten. Systemleistung durch Monitoring-Tools überwachen.`,
-        icon: 'tabler:code',
-      },
-      {
-        title: 'Scrum Master',
-        description: `Scrum Teams betreuen und in Scrum-Fragen coachen, Prozessoptimierung und Hindernisbeseitigung. Beratung zu Atlassian Produkten (JIRA, Confluence) und Planung von Scrum-Implementierungen.`,
-        icon: 'tabler:progress',
-      },
-      {
-        title: 'Teamleitung',
-        description: `Mitarbeitergespräche führen und Perspektiven zur Weiterentwicklung erarbeiten. Kommunikation im Team sicherstellen, Ressourcenplanung sowie Release- und Incident-Management.`,
-        icon: 'tabler:users-group',
-      },
-      {
-        title: 'Projektleitung',
-        description: `Kundenprojekte planen, Roadmaps und Meilensteine erstellen. Kontrolle von Projektfortschritten und Budgets, Kommunikation und Reporting an Stakeholder. Pflege von Projektboards in Jira und Dokumentation in Confluence.`,
-        icon: 'tabler:cap-projecting',
-      },
-      {
-        title: 'QA-Softwaretesting',
-        description: `Anforderungen prüfen und Testszenarien durchführen. Fehlerdokumentation in Jira und Fehler-Nachtests. Deployment in Testumgebungen und tägliche Status-Berichte in Daily Stand-Ups.`,
-        icon: 'tabler:bug',
-      },
-      {
-        title: 'AI-Entwicklung & Prompt Engineering',
-        description: `Einsatz von KI auf Entwickler-Ebene zur Produktivitätssteigerung. Entwicklung von Prompts für Software-Lösungen und Automatisierung. Erfahrung mit gängigen Lösungen (ChatGPT, Claude, GitHub Copilot). Installation und Einrichtung von GitHub-Projekten und AI-Tools.`,
-        icon: 'tabler:brain',
-      },
-      {
-        title: 'Engagement',
-        description: `Proaktive und leidenschaftliche Herangehensweise an Herausforderungen. Starke Motivation, Ziele zu erreichen und kontinuierlich Neues zu lernen. Bereitschaft, über das Erwartete hinaus einen Mehrwert zu schaffen.`,
-        icon: 'tabler:heart',
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-5xl section-border section-border-top dark:bg-transparent' }}
+  >
+    <BackgroundImage slot="bg" src="/images/87395.webp" />
+  </Features>
 
-  <!-- Brands Widget ****************** -->
+  <!-- Tech Stack - Primary -->
   <Brands
     id="tech"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{
-      container: 'max-w-3xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
-    }}
     title="Software<br/> Stack"
     subtitle="Diese Technologien beherrsche ich fundiert und setze sie routiniert in Projekten ein."
+    images={primaryTechStack}
     icons={[]}
-    images={[
-      {
-        src: '~/assets/images/icons/html-5--v1.png',
-        alt: 'HTML5: Eine Kernsprache für das Erstellen und Strukturieren von Webseiten.',
-        title: 'HTML5',
-      },
-      {
-        src: '~/assets/images/icons/css3.png',
-        alt: 'CSS3: Cascading Stylesheets für das Design und die visuelle Gestaltung von Webseiten.',
-        title: 'CSS3',
-      },
-      {
-        src: '~/assets/images/icons/javascript.png',
-        alt: 'JavaScript: Eine Programmiersprache zur Erstellung dynamischer und interaktiver Webseiten.',
-        title: 'JavaScript',
-      },
-      {
-        src: '~/assets/images/icons/tailwind_css.png',
-        alt: 'Tailwind CSS: Ein Utility-First CSS-Framework für schnelles Styling.',
-        title: 'Tailwind CSS',
-      },
-      {
-        src: '~/assets/images/icons/bem-css-logo.png',
-        alt: 'BEM CSS: Ein Namenskonzept für besser strukturierte CSS-Klassen.',
-        title: 'BEM CSS',
-      },
-      {
-        src: '~/assets/images/icons/nodejs.png',
-        alt: 'Node.js: Eine serverseitige JavaScript-Laufzeitumgebung für Backend-Entwicklung.',
-        title: 'Node.js',
-      },
-      {
-        src: '~/assets/images/icons/astro.png',
-        alt: 'Astro: Ein modernes Framework zur Erstellung von leistungsfähigen, statischen Webseiten.',
-        title: 'Astro',
-      },
-      {
-        src: '~/assets/images/icons/npm.png',
-        alt: 'npm: Ein Paketmanager für JavaScript-Bibliotheken und Node.js.',
-        title: 'npm',
-      },
-      {
-        src: '~/assets/images/icons/logo@2x.png',
-        alt: 'Git: Ein verteiltes Versionskontrollsystem für die Verwaltung von Quellcode.',
-        title: 'Git',
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
+  >
+    <BackgroundImage slot="bg" src="/images/3247046.webp" />
+  </Brands>
+
+  <!-- Tech Stack - Secondary -->
   <Brands
     id="learning"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
     title=""
     subtitle="Weniger genutzte, aber ebenfalls bekannte Technologien."
+    images={secondaryTechStack}
     icons={[]}
-    classes={{
-      container: 'max-w-3xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
-    }}
-    images={[
-      {
-        src: '~/assets/images/icons/react-native.png',
-        alt: 'React: Eine JavaScript-Bibliothek für den Aufbau von UI-Komponenten.',
-        title: 'React',
-      },
-      {
-        src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
-        alt: 'TypeScript: Eine typsichere Erweiterung von JavaScript, entwickelt für größere Projekte.',
-        title: 'TypeScript',
-      },
-      {
-        src: '~/assets/images/icons/python--v1.png',
-        alt: 'Python: Eine vielseitige Programmiersprache mit Anwendungen in Webentwicklung, Data Science und mehr.',
-        title: 'Python',
-      },
-      {
-        src: '~/assets/images/icons/playwright-seeklogo.png',
-        alt: 'Playwright: Ein vielseitiges End-to-End-Testing-Framework für moderne Webanwendungen.',
-        title: 'Playwright',
-      },
-      {
-        src: '~/assets/images/icons/vue-js.png',
-        alt: 'Vue.js: Ein progressives JavaScript-Framework für den Aufbau von Benutzeroberflächen.',
-        title: 'Vue.js',
-      },
-      {
-        src: '~/assets/images/icons/docker.png',
-        alt: 'Docker: Eine Plattform für die Containerisierung von Anwendungen.',
-        title: 'Docker',
-      },
-      {
-        src: '~/assets/images/icons/linux--v1.png',
-        alt: 'Linux: Ein Open-Source-Betriebssystem für Server und Entwicklungsumgebungen.',
-        title: 'Linux',
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
+  >
+    <BackgroundImage slot="bg" src="/images/3247046.webp" />
+  </Brands>
+
+  <!-- Project Management -->
   <Brands
     title="Projekt<br/> management"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{
-      container: 'max-w-3xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
-    }}
     subtitle="Agile und klassische Projektmanagement-Methoden, die ich in verschiedenen Projekten erfolgreich eingesetzt habe."
+    images={projectManagementMethods}
     icons={[]}
-    images={[
-      {
-        src: '~/assets/images/icons/sprint-iteration.png',
-        alt: 'Scrum: Ein agiles Framework für iteratives Projektmanagement und Produktentwicklung.',
-        title: 'Scrum',
-      },
-      {
-        src: '~/assets/images/icons/external-kanban-project-management-kmg-design-flat-kmg-design.png',
-        alt: 'Kanban: Eine visuelle Methode zur Steuerung und Optimierung von Arbeitsprozessen.',
-        title: 'Kanban',
-      },
-      {
-        src: '~/assets/images/icons/waterfall.png',
-        alt: 'Waterfall: Ein sequenzieller Projektmanagement-Ansatz mit klar definierten Phasen.',
-        title: 'Waterfall',
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
+  >
+    <BackgroundImage slot="bg" src="/images/3247046.webp" />
+  </Brands>
+
+  <!-- Tools -->
   <Brands
     title="Tools"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{
-      container: 'max-w-4xl dark:bg-transparent dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0',
-    }}
     subtitle="Tools, mit denen ich arbeite, oder Erfahrung in ihrer Anwendung habe."
+    images={toolStack}
     icons={[]}
-    images={[
-      {
-        src: '~/assets/images/icons/vscode-logo.png',
-        alt: 'Visual Studio Code: Ein beliebter Code-Editor mit umfassenden Erweiterungen.',
-        title: 'Visual Studio Code',
-      },
-      {
-        src: '~/assets/images/icons/intellij-idea.png',
-        alt: 'IntelliJ IDEA: Ein beliebter Code-Editor mit umfassenden Erweiterungen.',
-        title: 'IntelliJ IDEA',
-      },
-      {
-        src: '~/assets/images/icons/figma--v1.png',
-        alt: 'Figma: Ein kollaboratives Design-Tool für UX/UI-Projekte.',
-        title: 'Figma',
-      },
-      {
-        src: '~/assets/images/icons/inkscape--v1.png',
-        alt: 'Inkscape: Eine Open-Source-Software für Vektorgrafiken und Illustration.',
-        title: 'Inkscape',
-      },
-      {
-        src: '~/assets/images/icons/gimp.png',
-        alt: 'GIMP: Ein Open-Source-Bildbearbeitungsprogramm für grafische Projekte.',
-        title: 'GIMP',
-      },
-      {
-        src: '~/assets/images/icons/adobe-photoshop--v1.png',
-        alt: 'Adobe Photoshop: Eine führende Software für professionelle Bildbearbeitung.',
-        title: 'Adobe Photoshop',
-      },
-      {
-        src: '~/assets/images/icons/adobe-illustrator--v1.png',
-        alt: 'Adobe Illustrator: Ein Tool für Vektorgrafikdesign und Illustrationen.',
-        title: 'Adobe Illustrator',
-      },
-      {
-        src: '~/assets/images/icons/jenkins.png',
-        alt: 'Jenkins: Ein Open-Source-Tool für die Automatisierung von Softwareentwicklungsprozessen.',
-        title: 'Jenkins',
-      },
-      {
-        src: '~/assets/images/icons/jira.png',
-        alt: 'Jira: Eine Plattform für Projektmanagement und Issue-Tracking.',
-        title: 'Jira',
-      },
-      {
-        src: '~/assets/images/icons/icons/confluence.png',
-        alt: 'Confluence: Eine Kollaborationssoftware zur Dokumentation und Teamorganisation.',
-        title: 'Confluence',
-      },
-      {
-        src: '~/assets/images/github-logo.png',
-        alt: 'GitHub: Eine Plattform für die Versionskontrolle und Zusammenarbeit an Projekten.',
-        title: 'GitHub',
-      },
-      {
-        src: '~/assets/images/icons/gitlab-logo.png',
-        alt: 'GitLab: Eine Plattform für die Versionskontrolle, Continuous Integration und Zusammenarbeit an Projekten.',
-        title: 'GitLab',
-      },
-      {
-        src: '~/assets/images/icons/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.png',
-        alt: 'Bitbucket: Ein webbasierter Hosting-Dienst für Versionskontrolle und Zusammenarbeit mit Git und Mercurial.',
-        title: 'Atlassian Bitbucket',
-      },
-      {
-        src: '~/assets/images/icons/vercel.svg',
-        alt: 'Vercel: Eine Plattform für die Entwicklung und Bereitstellung von Webprojekten.',
-        title: 'Vercel',
-      },
-      {
-        src: '~/assets/images/icons/cloudflare-color.svg',
-        alt: 'Cloudflare: Eine Plattform für sichere und schnelle Websites, APIs und Anwendungen.',
-        title: 'Cloudflare',
-      },
-    ]}
-  />
+    classes={{ container: 'max-w-4xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
+  >
+    <BackgroundImage slot="bg" src="/images/3247046.webp" />
+  </Brands>
+
+  <!-- CMS -->
   <Brands
     title="CMS"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
-    classes={{ container: 'dark:bg-transparent max-w-3xl' }}
     subtitle="Content-Management-Systeme, mit denen ich auch vertraut bin, sowohl mit ihren Möglichkeiten als auch ihren Grenzen."
+    images={cmsStack}
     icons={[]}
-    images={[
-      {
-        src: '~/assets/images/icons/wordpress.png',
-        alt: 'WordPress: Ein weit verbreitetes Content Management System für Webseiten.',
-        title: 'WordPress',
-      },
-      {
-        src: '~/assets/images/icons/external-elementor-the-wordpress-page-builder-a-simple-intuitive-drag-and-drop-interface-logo-color-tal-revivo.png',
-        alt: 'Elementor: Ein Drag-and-Drop-Editor für WordPress-Webseiten.',
-        title: 'Elementor',
-      },
-      {
-        src: '~/assets/images/icons/typo3-logo.png',
-        alt: 'TYPO3: Ein flexibles Content Management System für große Webseiten.',
-        title: 'TYPO3',
-      },
-      {
-        src: '~/assets/images/icons/redaxo-logo.png',
-        alt: 'Redaxo: Ein modulares und anpassbares CMS für Webprojekte.',
-        title: 'Redaxo',
-      },
-    ]}
-  />
+    classes={{ container: 'dark:bg-transparent max-w-3xl' }}
+  >
+    <BackgroundImage slot="bg" src="/images/3247046.webp" />
+  </Brands>
 
+  <!-- Abstract/Services -->
   <Features
     id="abstract"
     tagline="Abstract"
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/images/5461913.webp" width="1920" height="1080" loading="lazy" />'
     title="Was ich<br/> anbiete"
     subtitle="Entwicklung, Leitung und Qualitätssicherung von Webprojekten. Fokus auf Code-Qualität, Stabilität und Effizienz."
-    classes={{ container: 'max-w-3xl border-t border-gray-200/100 dark:border-gray-500/20' }}
-    items={[
-      {
-        title: 'Frontend-Entwicklung',
-        description: 'Modulare Weboberflächen mit HTML, CSS und Javascript. Sauberer, wartbarer Code.',
-        icon: 'tabler:code',
-      },
-      {
-        title: 'Projektleitung',
-        description: 'Planung, Steuerung und Umsetzung technischer Projekte mit klaren Prozessen.',
-        icon: 'tabler:briefcase',
-      },
-      {
-        title: 'Teamleitung & Scrum',
-        description: 'Führung und Unterstützung von Entwicklerteams. Strukturierte Abläufe nach Scrum.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Legacy-Systeme',
-        description: 'Analyse, Refactoring und Modernisierung bestehender Anwendungen.',
-        icon: 'tabler:layers-linked',
-      },
-      {
-        title: 'Quality Assurance',
-        description: 'Manuelles und automatisiertes Testen. Fehleranalyse und Nachverfolgung in Ticketsystem.',
-        icon: 'tabler:checkup-list',
-      },
-      {
-        title: 'CI/CD & Monitoring',
-        description: 'Deployments über Jenkins. Überwachung von Leistung und Stabilität.',
-        icon: 'tabler:rocket',
-      },
-      {
-        title: 'Dokumentation',
-        description: 'Projektdokumentation und Wissensmanagement in Kolaborationstools.',
-        icon: 'tabler:book',
-      },
-      {
-        title: 'Prozessverbesserung',
-        description: 'Optimierung von Abläufen und Kommunikation im Team.',
-        icon: 'tabler:settings',
-      },
-    ]}
-  />
+    items={abstractItems}
+    classes={{ container: 'max-w-3xl section-border-top' }}
+  >
+    <BackgroundImage slot="bg" src="/images/5461913.webp" />
+  </Features>
 </Layout>

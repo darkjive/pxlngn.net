@@ -235,6 +235,7 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
   actions?: string | CallToAction[];
   image?: string | unknown;
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+  class?: string;
 }
 
 export interface Team extends Omit<Headline, 'classes'>, Widget {
@@ -284,17 +285,7 @@ export interface Faqs extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Steps extends Omit<Headline, 'classes'>, Widget {
-  items: Array<{
-    title: string;
-    description?: string;
-    icon?: string;
-    classes?: ItemClasses;
-    logo?: {
-      src: string;
-      alt?: string;
-      classes?: string;
-    };
-  }>;
+  items?: Array<Item>;
   callToAction?: string | CallToAction;
   image?: string | Image;
   isReversed?: boolean;

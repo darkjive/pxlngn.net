@@ -1,6 +1,8 @@
 ---
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
+import AnimatedTitle from '~/components/ui/AnimatedTitle.astro';
+import { twMerge } from 'tailwind-merge';
 
 import type { Hero as Props } from '~/types';
 
@@ -15,13 +17,11 @@ const {
   id,
   bg = await Astro.slots.render('bg'),
   headingLevel = 'h1',
+  class: className,
 } = Astro.props;
-
-const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
-const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 ---
 
-<section class="not-prose relative md:-mt-[80px]" {...id ? { id } : {}}>
+<section class={twMerge('not-prose relative md:-mt-[80px]', className)} {...id ? { id } : {}}>
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
@@ -42,18 +42,12 @@ const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
           )
         }
         {
-          titleLines.length > 0 && (
-            <HeadingTag class="text-shadow-[1px_1px_0px_0px_#fff] Anklepants leading-tighter mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200 md:text-7xl">
-              {titleLines.map((line, index) => (
-                <span
-                  data-animate
-                  data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
-                  data-anim-delay={index * 150}
-                  set:html={line}
-                  class="block"
-                />
-              ))}
-            </HeadingTag>
+          title && (
+            <AnimatedTitle
+              title={title}
+              headingLevel={headingLevel}
+              class="text-shadow-[1px_1px_0px_0px_#fff] Anklepants mb-4 break-all text-5xl dark:text-gray-200 md:text-7xl"
+            />
           )
         }
         <div class="mx-auto max-w-3xl">

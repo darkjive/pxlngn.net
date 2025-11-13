@@ -28,9 +28,17 @@
   .text-link {
     color: var(--aw-color-text-link);
   }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @layer components {
+  /* Buttons */
   .btn {
     @apply mb-2 me-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-base uppercase tracking-wider;
   }
@@ -45,6 +53,45 @@
 
   .btn-tertiary {
     @apply btn bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-cyan-800/80;
+  }
+
+  /* Section & Widget Styles */
+  .section-border {
+    @apply border-b border-gray-200/100 dark:border-gray-500/20;
+  }
+
+  .section-border-top {
+    @apply border-t border-gray-200/100 dark:border-gray-500/20;
+  }
+
+  .widget-container {
+    @apply max-w-5xl dark:bg-transparent;
+  }
+
+  .widget-container-lg {
+    @apply max-w-6xl dark:bg-transparent;
+  }
+
+  .widget-container-xl {
+    @apply max-w-7xl dark:bg-transparent;
+  }
+
+  /* Text Styles */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent;
+  }
+
+  /* Cards & Panels */
+  .card {
+    @apply rounded-lg bg-white p-6 shadow-md dark:bg-gray-800;
+  }
+
+  .panel-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary p-2 text-primary dark:border-primary;
   }
 }
 
