@@ -87,21 +87,15 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     <Fragment />
   ) : (
     <div class={`futuristic-image-wrapper ${futuristicEffect}`} data-futuristic-wrapper id={uniqueId}>
-      <!-- Cyber Skeleton Loader Component -->
+      {/* Cyber Skeleton Loader Component */}
       <FuturisticLoader glowColor={glowColor} effect={futuristicEffect} />
 
-      <!-- Blur Placeholder -->
+      {/* Blur Placeholder */}
       {blurDataUrl && (
-        <img
-          src={blurDataUrl}
-          alt=""
-          aria-hidden="true"
-          class="blur-placeholder"
-          data-blur-placeholder
-        />
+        <img src={blurDataUrl} alt="" aria-hidden="true" class="blur-placeholder" data-blur-placeholder />
       )}
 
-      <!-- Actual Image -->
+      {/* Actual Image */}
       <img
         src={image.src}
         crossorigin="anonymous"
