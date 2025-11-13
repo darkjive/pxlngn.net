@@ -1,4 +1,3 @@
-// import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 import { getPermalink } from './utils/permalinks';
 
 export const headerData = {
@@ -70,7 +69,6 @@ export const footerData = {
     },
   ],
   socialLinks: [
-    // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
     { ariaLabel: 'E-Mail', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' },
   ],
