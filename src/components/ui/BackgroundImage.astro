@@ -1,0 +1,72 @@
+---
+/**
+ * BackgroundImage Component
+ *
+ * Typsichere Komponente für Hintergrund-Bilder in Widgets.
+ * Ersetzt HTML-String-Props mit strukturierten Props.
+ *
+ * Features:
+ * - Type-Safety für alle Image-Attribute
+ * - Konsistente Klassen über alle Widgets
+ * - Dark-Mode Unterstützung (via dark:hidden)
+ * - Performance-Hints (loading, fetchpriority)
+ *
+ * @example
+ * <!-- In Widget-Komponente: -->
+ * <slot name="bg">
+ *   <BackgroundImage
+ *     src="/images/background.webp"
+ *     fetchpriority="high"
+ *     loading="eager"
+ *   />
+ * </slot>
+ */
+
+interface Props {
+  /** Bild-Quelle (public/ oder /images/ Pfad) */
+  src: string;
+  /** Alt-Text für Accessibility (default: leer für dekorative Bilder) */
+  alt?: string;
+  /** Bild-Breite in Pixeln (default: 1920) */
+  width?: number;
+  /** Bild-Höhe in Pixeln (default: 1080) */
+  height?: number;
+  /** Loading-Strategie (default: lazy) */
+  loading?: 'lazy' | 'eager';
+  /** Fetch-Priority für LCP-Optimierung (default: auto) */
+  fetchpriority?: 'high' | 'low' | 'auto';
+  /** Zusätzliche CSS-Klassen */
+  class?: string;
+  /** Zeige Bild im Dark-Mode (default: false = nur Light-Mode) */
+  showInDarkMode?: boolean;
+  /** Zeige Border (default: true) */
+  showBorder?: boolean;
+}
+
+const {
+  src,
+  alt = '',
+  width = 1920,
+  height = 1080,
+  loading = 'lazy',
+  fetchpriority = 'auto',
+  class: className = '',
+  showInDarkMode = false,
+  showBorder = true,
+} = Astro.props;
+---
+
+<img
+  src={src}
+  alt={alt}
+  width={width}
+  height={height}
+  loading={loading}
+  fetchpriority={fetchpriority}
+  class:list={[
+    'absolute inset-0 object-cover w-full h-full',
+    { 'dark:hidden': !showInDarkMode },
+    { 'section-border': showBorder },
+    className,
+  ]}
+/>

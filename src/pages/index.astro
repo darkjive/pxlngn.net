@@ -6,6 +6,21 @@ import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import FuturisticImage from '~/components/common/FuturisticImage.astro';
+import BackgroundImage from '~/components/ui/BackgroundImage.astro';
+
+// Daten-Imports
+import { resumeItems } from '~/data/resume';
+import { certificateItems } from '~/data/certificates';
+import { projectItems } from '~/data/projects';
+import { skillItems } from '~/data/skills';
+import {
+  primaryTechStack,
+  secondaryTechStack,
+  projectManagementMethods,
+  toolStack,
+  cmsStack,
+  abstractItems,
+} from '~/data/tech-stack';
 
 const metadata = {
   title: 'pxlngn | PIXEL ENGINE {Profil}',
@@ -18,10 +33,11 @@ const metadata = {
     id="hero"
     title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
-    class:list={['border-b border-gray-200/100 dark:border-gray-500/20']}
+    class="section-border"
     actions={[{ variant: 'secondary', text: 'Profil', href: '#profile', icon: 'tabler:user' }]}
-    bg='<img class="border-b border-gray-200/100 dark:border-gray-500/20 absolute inset-0 bottom-0 object-cover w-full h-full dark:hidden" src="/images/5594016.webp" fetchpriority="high" width="1920" height="1080" loading="eager" />'
   >
+    <BackgroundImage slot="bg" src="/images/5594016.webp" fetchpriority="high" loading="eager" />
+
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">

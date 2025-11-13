@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 import type { Brands as Props } from '~/types';
 
 import Image from '~/components/common/Image.astro';
-// import Headline from '~/components/ui/Headline.astro';
+import AnimatedTitle from '~/components/ui/AnimatedTitle.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 
 const {
@@ -18,9 +18,6 @@ const {
   bg = await Astro.slots.render('bg'),
   headingLevel = 'h2',
 } = Astro.props;
-
-const titleLines = title ? title.split('<br/>').filter((line) => line.trim()) : [];
-const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 ---
 
 <WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
@@ -36,27 +33,12 @@ const HeadingTag = headingLevel as 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
       )
     }
     {
-      titleLines.length > 0 ? (
-        <HeadingTag class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl">
-          {titleLines.map((line, index) => (
-            <span
-              data-animate
-              data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
-              data-anim-delay={index * 150}
-              set:html={line}
-              class="block"
-            />
-          ))}
-        </HeadingTag>
-      ) : (
-        title && (
-          <HeadingTag
-            data-animate
-            data-anim-type="fade-up"
-            class="Anklepants leading-tighter text-heading text-center font-heading text-4xl tracking-tighter lg:text-5xl"
-            set:html={title}
-          />
-        )
+      title && (
+        <AnimatedTitle
+          title={title}
+          headingLevel={headingLevel}
+          class="Anklepants text-heading text-center text-4xl lg:text-5xl"
+        />
       )
     }
     {subtitle && <p data-animate data-anim-type="typewriter" class="mt-4 text-xl text-muted" set:html={subtitle} />}
