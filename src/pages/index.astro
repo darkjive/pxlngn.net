@@ -1,14 +1,11 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-// import Hero from '~/components/widgets/Hero.astro';
+import Hero from '~/components/widgets/Hero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Hero from '~/components/widgets/Hero.astro';
 import FuturisticImage from '~/components/common/FuturisticImage.astro';
-// import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
   title: 'pxlngn | PIXEL ENGINE {Profil}',
@@ -58,7 +55,7 @@ const metadata = {
     <Fragment slot="image">
       <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
         <FuturisticImage
-          src="~/assets/images/normal.webp"
+          src="~/assets/images/normal.jpg"
           alt="Alain Ritter - Profilbild"
           width={500}
           height={500}
@@ -90,7 +87,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
   <Hero
     id="profile"
     title="<span class='lg:text-7xl'>Generalist<br/>mit<br/> Herz.</span>"
@@ -160,7 +156,7 @@ const metadata = {
         </ul>`,
         icon: 'tabler:briefcase',
         logo: {
-          src: '~/assets/images/werbeagentur_frankfurt.webp',
+          src: '~/assets/images/werbeagentur_frankfurt.png',
           alt: 'Intercontact Logo',
         },
       },
@@ -200,7 +196,7 @@ const metadata = {
     ]}
   />
 
-  <Features3
+  <Features
     id="projects"
     tagline="Projekte"
     title="Projekte<br/> für<br/> Kunden"
@@ -264,39 +260,7 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- <Features4
-    id="languages"
-    tagline=""
-    bg=""
-    title="Sonstiges"
-    subtitle=""
-    classes={{ container: 'max-w-3xl' }}
-    items={[
-      {
-        title: 'Deutsch',
-        description: 'Muttersprache',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Englisch',
-        description: 'Verhandlungssicher',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Französisch',
-        description: 'Grundkenntnisse',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Führerscheinklassen',
-        description: 'A, A2, A1, B, BE',
-        icon: 'tabler:car',
-      },
-    ]}
-  /> -->
-
-  <Features3
+  <Features
     id="skills"
     tagline="Skills"
     title="Meine<br/>Erfahrung"
@@ -345,8 +309,6 @@ const metadata = {
       },
     ]}
   />
-
-  <!-- Brands Widget ****************** -->
   <Brands
     id="tech"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
@@ -358,47 +320,47 @@ const metadata = {
     icons={[]}
     images={[
       {
-        src: '~/assets/images/icons/html-5--v1.webp',
+        src: '~/assets/images/icons/html-5--v1.png',
         alt: 'HTML5: Eine Kernsprache für das Erstellen und Strukturieren von Webseiten.',
         title: 'HTML5',
       },
       {
-        src: '~/assets/images/icons/css3.webp',
+        src: '~/assets/images/icons/css3.png',
         alt: 'CSS3: Cascading Stylesheets für das Design und die visuelle Gestaltung von Webseiten.',
         title: 'CSS3',
       },
       {
-        src: '~/assets/images/icons/javascript.webp',
+        src: '~/assets/images/icons/javascript.png',
         alt: 'JavaScript: Eine Programmiersprache zur Erstellung dynamischer und interaktiver Webseiten.',
         title: 'JavaScript',
       },
       {
-        src: '~/assets/images/icons/tailwind_css.webp',
+        src: '~/assets/images/icons/tailwind_css.png',
         alt: 'Tailwind CSS: Ein Utility-First CSS-Framework für schnelles Styling.',
         title: 'Tailwind CSS',
       },
       {
-        src: '~/assets/images/bem-css-logo.webp',
+        src: '~/assets/images/bem-css-logo.png',
         alt: 'BEM CSS: Ein Namenskonzept für besser strukturierte CSS-Klassen.',
         title: 'BEM CSS',
       },
       {
-        src: '~/assets/images/icons/nodejs.webp',
+        src: '~/assets/images/icons/nodejs.png',
         alt: 'Node.js: Eine serverseitige JavaScript-Laufzeitumgebung für Backend-Entwicklung.',
         title: 'Node.js',
       },
       {
-        src: '~/assets/images/astro.webp',
+        src: '~/assets/images/astro.png',
         alt: 'Astro: Ein modernes Framework zur Erstellung von leistungsfähigen, statischen Webseiten.',
         title: 'Astro',
       },
       {
-        src: '~/assets/images/icons/npm.webp',
+        src: '~/assets/images/icons/npm.png',
         alt: 'npm: Ein Paketmanager für JavaScript-Bibliotheken und Node.js.',
         title: 'npm',
       },
       {
-        src: '~/assets/images/icons/logo@2x.webp',
+        src: '~/assets/images/icons/logo@2x.png',
         alt: 'Git: Ein verteiltes Versionskontrollsystem für die Verwaltung von Quellcode.',
         title: 'Git',
       },
@@ -415,37 +377,37 @@ const metadata = {
     }}
     images={[
       {
-        src: '~/assets/images/icons/react-native.webp',
+        src: '~/assets/images/icons/react-native.png',
         alt: 'React: Eine JavaScript-Bibliothek für den Aufbau von UI-Komponenten.',
         title: 'React',
       },
       {
-        src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.webp',
+        src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
         alt: 'TypeScript: Eine typsichere Erweiterung von JavaScript, entwickelt für größere Projekte.',
         title: 'TypeScript',
       },
       {
-        src: '~/assets/images/icons/python--v1.webp',
+        src: '~/assets/images/icons/python--v1.png',
         alt: 'Python: Eine vielseitige Programmiersprache mit Anwendungen in Webentwicklung, Data Science und mehr.',
         title: 'Python',
       },
       {
-        src: '~/assets/images/playwright-seeklogo.webp',
+        src: '~/assets/images/playwright-seeklogo.png',
         alt: 'Playwright: Ein vielseitiges End-to-End-Testing-Framework für moderne Webanwendungen.',
         title: 'Playwright',
       },
       {
-        src: '~/assets/images/icons/vue-js.webp',
+        src: '~/assets/images/icons/vue-js.png',
         alt: 'Vue.js: Ein progressives JavaScript-Framework für den Aufbau von Benutzeroberflächen.',
         title: 'Vue.js',
       },
       {
-        src: '~/assets/images/icons/docker.webp',
+        src: '~/assets/images/icons/docker.png',
         alt: 'Docker: Eine Plattform für die Containerisierung von Anwendungen.',
         title: 'Docker',
       },
       {
-        src: '~/assets/images/icons/linux--v1.webp',
+        src: '~/assets/images/icons/linux--v1.png',
         alt: 'Linux: Ein Open-Source-Betriebssystem für Server und Entwicklungsumgebungen.',
         title: 'Linux',
       },
@@ -461,17 +423,17 @@ const metadata = {
     icons={[]}
     images={[
       {
-        src: '~/assets/images/icons/sprint-iteration.webp',
+        src: '~/assets/images/icons/sprint-iteration.png',
         alt: 'Scrum: Ein agiles Framework für iteratives Projektmanagement und Produktentwicklung.',
         title: 'Scrum',
       },
       {
-        src: '~/assets/images/icons/external-kanban-project-management-kmg-design-flat-kmg-design.webp',
+        src: '~/assets/images/icons/external-kanban-project-management-kmg-design-flat-kmg-design.png',
         alt: 'Kanban: Eine visuelle Methode zur Steuerung und Optimierung von Arbeitsprozessen.',
         title: 'Kanban',
       },
       {
-        src: '~/assets/images/icons/waterfall.webp',
+        src: '~/assets/images/icons/waterfall.png',
         alt: 'Waterfall: Ein sequenzieller Projektmanagement-Ansatz mit klar definierten Phasen.',
         title: 'Waterfall',
       },
@@ -487,67 +449,67 @@ const metadata = {
     icons={[]}
     images={[
       {
-        src: '~/assets/images/vscode-logo.webp',
+        src: '~/assets/images/vscode-logo.png',
         alt: 'Visual Studio Code: Ein beliebter Code-Editor mit umfassenden Erweiterungen.',
         title: 'Visual Studio Code',
       },
       {
-        src: '~/assets/images/icons/intellij-idea.webp',
+        src: '~/assets/images/icons/intellij-idea.png',
         alt: 'IntelliJ IDEA: Ein beliebter Code-Editor mit umfassenden Erweiterungen.',
         title: 'IntelliJ IDEA',
       },
       {
-        src: '~/assets/images/icons/figma--v1.webp',
+        src: '~/assets/images/icons/figma--v1.png',
         alt: 'Figma: Ein kollaboratives Design-Tool für UX/UI-Projekte.',
         title: 'Figma',
       },
       {
-        src: '~/assets/images/icons/inkscape--v1.webp',
+        src: '~/assets/images/icons/inkscape--v1.png',
         alt: 'Inkscape: Eine Open-Source-Software für Vektorgrafiken und Illustration.',
         title: 'Inkscape',
       },
       {
-        src: '~/assets/images/icons/gimp.webp',
+        src: '~/assets/images/icons/gimp.png',
         alt: 'GIMP: Ein Open-Source-Bildbearbeitungsprogramm für grafische Projekte.',
         title: 'GIMP',
       },
       {
-        src: '~/assets/images/icons/adobe-photoshop--v1.webp',
+        src: '~/assets/images/icons/adobe-photoshop--v1.png',
         alt: 'Adobe Photoshop: Eine führende Software für professionelle Bildbearbeitung.',
         title: 'Adobe Photoshop',
       },
       {
-        src: '~/assets/images/icons/adobe-illustrator--v1.webp',
+        src: '~/assets/images/icons/adobe-illustrator--v1.png',
         alt: 'Adobe Illustrator: Ein Tool für Vektorgrafikdesign und Illustrationen.',
         title: 'Adobe Illustrator',
       },
       {
-        src: '~/assets/images/icons/jenkins.webp',
+        src: '~/assets/images/icons/jenkins.png',
         alt: 'Jenkins: Ein Open-Source-Tool für die Automatisierung von Softwareentwicklungsprozessen.',
         title: 'Jenkins',
       },
       {
-        src: '~/assets/images/icons/jira.webp',
+        src: '~/assets/images/icons/jira.png',
         alt: 'Jira: Eine Plattform für Projektmanagement und Issue-Tracking.',
         title: 'Jira',
       },
       {
-        src: '~/assets/images/icons/confluence.webp',
+        src: '~/assets/images/icons/confluence.png',
         alt: 'Confluence: Eine Kollaborationssoftware zur Dokumentation und Teamorganisation.',
         title: 'Confluence',
       },
       {
-        src: '~/assets/images/github-logo.webp',
+        src: '~/assets/images/github-logo.png',
         alt: 'GitHub: Eine Plattform für die Versionskontrolle und Zusammenarbeit an Projekten.',
         title: 'GitHub',
       },
       {
-        src: '~/assets/images/gitlab-logo.webp',
+        src: '~/assets/images/gitlab-logo.png',
         alt: 'GitLab: Eine Plattform für die Versionskontrolle, Continuous Integration und Zusammenarbeit an Projekten.',
         title: 'GitLab',
       },
       {
-        src: '~/assets/images/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.webp',
+        src: '~/assets/images/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.png',
         alt: 'Bitbucket: Ein webbasierter Hosting-Dienst für Versionskontrolle und Zusammenarbeit mit Git und Mercurial.',
         title: 'Atlassian Bitbucket',
       },
@@ -571,28 +533,27 @@ const metadata = {
     icons={[]}
     images={[
       {
-        src: '~/assets/images/icons/wordpress.webp',
+        src: '~/assets/images/icons/wordpress.png',
         alt: 'WordPress: Ein weit verbreitetes Content Management System für Webseiten.',
         title: 'WordPress',
       },
       {
-        src: '~/assets/images/icons/external-elementor-the-wordpress-page-builder-a-simple-intuitive-drag-and-drop-interface-logo-color-tal-revivo.webp',
+        src: '~/assets/images/icons/external-elementor-the-wordpress-page-builder-a-simple-intuitive-drag-and-drop-interface-logo-color-tal-revivo.png',
         alt: 'Elementor: Ein Drag-and-Drop-Editor für WordPress-Webseiten.',
         title: 'Elementor',
       },
       {
-        src: '~/assets/images/typo3-logo.webp',
+        src: '~/assets/images/typo3-logo.png',
         alt: 'TYPO3: Ein flexibles Content Management System für große Webseiten.',
         title: 'TYPO3',
       },
       {
-        src: '~/assets/images/redaxo-logo.webp',
+        src: '~/assets/images/redaxo-logo.png',
         alt: 'Redaxo: Ein modulares und anpassbares CMS für Webprojekte.',
         title: 'Redaxo',
       },
     ]}
   />
-
   <Features
     id="abstract"
     tagline="Abstract"
