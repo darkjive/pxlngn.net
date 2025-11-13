@@ -5,7 +5,7 @@ import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
-// import { trimSlash, getAsset } from '~/utils/permalinks';
+
 import type { CallToAction } from '~/types';
 
 interface Link {
@@ -39,13 +39,13 @@ const {
   isDark = false,
   isFullWidth = false,
   showToggleTheme = true,
-  // showRssFeed = false,
+  
   position = 'center',
 } = Astro.props;
 
 const url = new URL(Astro.url);
-// const currentPath = `/${trimSlash(url.pathname)}`;
-const currentHash = url.hash; // Enthält den #anchor-Teil der URL
+
+const currentHash = url.hash; 
 ---
 
 <header
@@ -85,17 +85,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           )
         }
         {
-          /* GitHub-Button auskommentiert
-          actions?.[0]?.href && (
-            <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden"
-              aria-label="Github"
-              href={actions[0].href}
-            >
-              <Icon name="tabler:brand-github" class="h-5 w-5" />
-            </a>
-          )
-        */
+
         }
         {
           actions?.[1]?.href && (
@@ -181,7 +171,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
         }
       </ul>
     </nav>
-    <!-- Buttons -->
+    
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'right' },
@@ -201,17 +191,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
             )
           }
           {
-            /* GitHub-Button auskommentiert
-            actions?.[0]?.href && (
-              <a
-                class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                aria-label="Github"
-                href={actions[0].href}
-              >
-                <Icon name="tabler:brand-github" class="h-5 w-5" />
-              </a>
-            )
-          */
+
           }
           {
             actions?.[1]?.href && (

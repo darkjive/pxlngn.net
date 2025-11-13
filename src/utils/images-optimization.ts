@@ -34,44 +34,28 @@ export type ImagesOptimizer = (
   format?: string
 ) => Promise<Array<{ src: string; width: number }>>;
 
-/**
- * Image Optimization Konfiguration
- *
- * Definiert Breakpoints und Formate für responsive Bilder
- */
 const config = {
-  /**
-   * Image Sizes für kleine Bilder (Icons, Thumbnails)
-   * TODO: Implementiere automatische Auswahl basierend auf image.width < deviceSizes
-   */
+
   imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
 
-  /**
-   * Device Sizes für responsive Breakpoints
-   * Basiert auf gängigen Gerät-Auflösungen
-   */
   deviceSizes: [
-    640, // Ältere und Low-End Smartphones
-    750, // iPhone 6-8
-    828, // iPhone XR/11
-    960, // Ältere Smartphones horizontal
-    1080, // iPhone 6-8 Plus
-    1280, // 720p Displays
-    1668, // Verschiedene iPads
-    1920, // 1080p Full HD
-    2048, // QXGA
-    2560, // WQXGA
-    3200, // QHD+
-    3840, // 4K UHD
-    4480, // 4.5K
-    5120, // 5K
-    6016, // 6K
+    640, 
+    750, 
+    828, 
+    960, 
+    1080, 
+    1280, 
+    1668, 
+    1920, 
+    2048, 
+    2560, 
+    3200, 
+    3840, 
+    4480, 
+    5120, 
+    6016, 
   ],
 
-  /**
-   * Standard Output-Formate für optimierte Bilder
-   * AVIF bietet beste Kompression, WebP als Fallback
-   */
   formats: ['avif', 'webp'],
 };
 
@@ -97,24 +81,18 @@ const parseAspectRatio = (aspectRatio: number | string | null | undefined): numb
   return undefined;
 };
 
-/**
- * Gets the `sizes` attribute for an image, based on the layout and width
- */
 export const getSizes = (width?: number, layout?: Layout): string | undefined => {
   if (!width || !layout) {
     return undefined;
   }
   switch (layout) {
-    // If screen is wider than the max size, image width is the max size,
-    // otherwise it's the width of the screen
+
     case `constrained`:
       return `(min-width: ${width}px) ${width}px, 100vw`;
 
-    // Image is always the same width, whatever the size of the screen
     case `fixed`:
       return `${width}px`;
 
-    // Image is always the width of the screen
     case `fullWidth`:
       return `100vw`;
 
@@ -147,7 +125,6 @@ const getStyle = ({
     ['object-position', objectPosition],
   ];
 
-  // If background is a URL, set it to cover the image and not repeat
   if (background?.startsWith('https:') || background?.startsWith('http:') || background?.startsWith('data:')) {
     styleEntries.push(['background-image', `url(${background})`]);
     styleEntries.push(['background-size', 'cover']);
@@ -215,10 +192,10 @@ const getBreakpoints = ({
   }
   if (layout === 'constrained') {
     return [
-      // Always include the image at 1x and 2x the specified width
+      
       width,
       doubleWidth,
-      // Filter out any resolutions that are larger than the double-res image
+      
       ...(breakpoints || config.deviceSizes).filter((w) => w < doubleWidth),
     ];
   }
@@ -226,7 +203,6 @@ const getBreakpoints = ({
   return [];
 };
 
-/* ** */
 export const astroAsseetsOptimizer: ImagesOptimizer = async (
   image,
   breakpoints,
@@ -255,7 +231,6 @@ export const isUnpicCompatible = (image: string) => {
   return typeof parseUrl(image) !== 'undefined';
 };
 
-/* ** */
 export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width, height, format = undefined) => {
   if (!image || typeof image !== 'string') {
     return [];
@@ -286,7 +261,6 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
   );
 };
 
-/* ** */
 export async function getImagesOptimized(
   image: ImageMetadata | string,
   {
@@ -316,25 +290,24 @@ export async function getImagesOptimized(
   sizes ||= getSizes(Number(width) || undefined, layout);
   aspectRatio = parseAspectRatio(aspectRatio);
 
-  // Calculate dimensions from aspect ratio
   if (aspectRatio) {
     if (width) {
       if (height) {
-        /* empty */
+        
       } else {
         height = width / aspectRatio;
       }
     } else if (height) {
       width = Number(height * aspectRatio);
     } else if (layout !== 'fullWidth') {
-      // Fullwidth images have 100% width, so aspectRatio is applicable
+      
       console.error('When aspectRatio is set, either width or height must also be set');
       console.error('Image', image);
     }
   } else if (width && height) {
     aspectRatio = width / height;
   } else if (layout !== 'fullWidth') {
-    // Fullwidth images don't need dimensions
+    
     console.error('Either aspectRatio or both width and height must be set');
     console.error('Image', image);
   }

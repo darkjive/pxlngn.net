@@ -2,52 +2,38 @@ import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import type { HTMLAttributes, ImageMetadata } from 'astro/types';
 
 export interface Post {
-  /** A unique ID number that identifies a post. */
+  
   id: string;
 
-  /** A post’s unique slug – part of the post’s URL based on its name, i.e. a post called “My Sample Page” has a slug “my-sample-page”. */
   slug: string;
 
-  /**  */
   permalink: string;
 
-  /**  */
   publishDate: Date;
-  /**  */
+  
   updateDate?: Date;
 
-  /**  */
   title: string;
-  /** Optional summary of post content. */
+  
   excerpt?: string;
-  /**  */
+  
   image?: ImageMetadata | string;
 
-  /**  */
   category?: Taxonomy;
-  /**  */
+  
   tags?: Taxonomy[];
-  /**  */
+  
   author?: string;
 
-  /**  */
   metadata?: MetaData;
 
-  /**  */
   draft?: boolean;
 
-  /**  */
   Content?: AstroComponentFactory;
   content?: string;
 
-  /**  */
   readingTime?: number;
 }
-
-// export interface Taxonomy {
-//   slug: string;
-//   title: string;
-// }
 
 export interface MetaData {
   title?: string;
@@ -115,25 +101,10 @@ export interface Headline {
   headingLevel?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
-// interface TeamMember {
-//   name?: string;
-//   job?: string;
-//   image?: Image;
-//   socials?: Array<Social>;
-//   description?: string;
-//   classes?: Record<string, string>;
-// }
-
 interface Social {
   icon?: string;
   href?: string;
 }
-
-// export interface Stat {
-//   amount?: number | string;
-//   title?: string;
-//   icon?: string;
-// }
 
 export interface ItemClasses {
   panel?: string;
@@ -196,7 +167,6 @@ export interface Disclaimer {
   label?: string;
 }
 
-// COMPONENTS
 export interface CallToAction extends Omit<HTMLAttributes<'a'>, 'slot'> {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'link';
   text?: string;
@@ -229,7 +199,6 @@ export interface Form {
   description?: string;
 }
 
-// WIDGETS
 export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' | 'classes'> {
   content?: string;
   actions?: string | CallToAction[];
@@ -240,14 +209,6 @@ export interface Hero extends Omit<Headline, 'classes'>, Omit<Widget, 'isDark' |
 export interface Team extends Omit<Headline, 'classes'>, Widget {
   team?: Array<TeamMember>;
 }
-
-// export interface Stats extends Omit<Headline, 'classes'>, Widget {
-//   stats?: Array<Stat>;
-// }
-
-// export interface Pricing extends Omit<Headline, 'classes'>, Widget {
-//   prices?: Array<Price>;
-// }
 
 export interface Testimonials extends Omit<Headline, 'classes'>, Widget {
   testimonials?: Array<Testimonial>;

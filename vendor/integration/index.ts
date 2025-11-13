@@ -12,10 +12,9 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
 
     hooks: {
       'astro:config:setup': async ({
-        // command,
+        
         config,
-        // injectRoute,
-        // isRestart,
+
         logger,
         updateConfig,
         addWatchFile,
@@ -101,7 +100,7 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
                 flag: 'w',
               });
             } else {
-              // Use function replacement to avoid issues with special replacement patterns ($&, $`, $', etc.)
+              
               fs.writeFileSync(
                 robotsTxtFileInOut,
                 robotsTxt.replace(pattern, () => `Sitemap: ${sitemapUrlString}`),
@@ -112,9 +111,9 @@ export default ({ config: _themeConfig = 'src/config.yaml' } = {}): AstroIntegra
               );
             }
           }
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
+          
         } catch (error) {
-          /* empty */
+          
         }
       },
     },

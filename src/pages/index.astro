@@ -1,15 +1,14 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-// import Hero from '~/components/widgets/Hero.astro';
+
 import Content from '~/components/widgets/Content.astro';
-// import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+
 import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features3 from '~/components/widgets/Features3.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import FuturisticImage from '~/components/common/FuturisticImage.astro';
-// import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
   title: 'pxlngn | PIXEL ENGINE {Profil}',
@@ -91,7 +90,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Content Widget **************** -->
   <Hero
     id="profile"
     title="<span class='lg:text-7xl'>Generalist<br/>mit<br/> Herz.</span>"
@@ -266,37 +264,6 @@ const metadata = {
     ]}
   />
 
-  <!-- <Features4
-    id="languages"
-    tagline=""
-    bg=""
-    title="Sonstiges"
-    subtitle=""
-    classes={{ container: 'max-w-3xl' }}
-    items={[
-      {
-        title: 'Deutsch',
-        description: 'Muttersprache',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Englisch',
-        description: 'Verhandlungssicher',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Französisch',
-        description: 'Grundkenntnisse',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Führerscheinklassen',
-        description: 'A, A2, A1, B, BE',
-        icon: 'tabler:car',
-      },
-    ]}
-  /> -->
-
   <Features3
     id="skills"
     tagline="Skills"
@@ -347,7 +314,6 @@ const metadata = {
     ]}
   />
 
-  <!-- Brands Widget ****************** -->
   <Brands
     id="tech"
     bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="/assets/images/3247046.webp" width="1920" height="1080" loading="lazy" />'
@@ -645,12 +611,4 @@ const metadata = {
     ]}
   />
 
-  <!-- Blog Latest Posts ******************* -->
-  <!-- <BlogLatestPosts
-    id="blog"
-    title="Lernen, Scheitern, Wachsen: Meine digitale Reise"
-    information={`Von Webentwicklung bis Design: Hier gibt es ehrliche Geschichten über Herausforderungen und Erfolgsmomente. Lass dich inspirieren und entdecke neue Perspektiven.`}
-    classes={{ container: 'py-12 md:py-16' }}
-    bg='<img class="absolute inset-0 object-cover w-full h-full dark:hidden" src="~/assets/images/3247046.webp" />'
-  /> -->
 </Layout>
