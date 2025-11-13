@@ -4,7 +4,7 @@ export const headerData = {
   links: [
     {
       text: 'Intro',
-      href: getPermalink('/#intro'),
+      href: getPermalink('/#hero'),
       icon: '',
       links: [],
     },
@@ -33,7 +33,7 @@ export const footerData = {
   links: [
     {
       title: 'Intro',
-      href: getPermalink('/#intro'),
+      href: getPermalink('/#hero'),
       icon: '',
       links: [],
     },
