@@ -2,6 +2,7 @@
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import AnimatedTitle from '~/components/ui/AnimatedTitle.astro';
+import { twMerge } from 'tailwind-merge';
 
 import type { Hero as Props } from '~/types';
 
@@ -16,10 +17,11 @@ const {
   id,
   bg = await Astro.slots.render('bg'),
   headingLevel = 'h1',
+  class: className,
 } = Astro.props;
 ---
 
-<section class="not-prose relative md:-mt-[80px]" {...id ? { id } : {}}>
+<section class={twMerge('not-prose relative md:-mt-[80px]', className)} {...id ? { id } : {}}>
   <div class="pointer-events-none absolute inset-0" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
