@@ -210,6 +210,7 @@ export interface ItemGrid {
   items?: Array<Item>;
   columns?: number;
   defaultIcon?: string;
+  layout?: 'horizontal' | 'vertical';
   classes?: Record<string, string>;
 }
 
