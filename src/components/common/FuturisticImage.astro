@@ -1,12 +1,5 @@
 ---
-/**
- * Futuristic Image Component with Progressive Loading
- * Features:
- * - Cyber-style skeleton loader with scanlines
- * - Progressive blur-up loading
- * - Neon glow effects
- * - Smooth transitions
- */
+
 import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import {
@@ -62,13 +55,12 @@ if (
 ) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);
 } else if (_image) {
-  // Use AVIF format by default for better compression
+  
   if (!props.format) {
     props.format = 'avif';
   }
   image = await getImagesOptimized(_image, props, astroAsseetsOptimizer);
 
-  // Generate tiny blur placeholder (20px width)
   const blurImage = await getImagesOptimized(
     _image,
     { ...props, width: 20, height: 20, format: 'webp' },
@@ -85,24 +77,21 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     <Fragment />
   ) : (
     <div class={`futuristic-image-wrapper ${futuristicEffect}`} data-futuristic-wrapper id={uniqueId}>
-      <!-- Cyber Skeleton Loader -->
+      
       <div class="futuristic-skeleton" data-futuristic-skeleton>
         <div class="skeleton-inner">
-          <!-- Scanlines -->
+          
           <div class="scanlines"></div>
 
-          <!-- Corner Brackets (Cyber Style) -->
           <div class="corner-bracket top-left"></div>
           <div class="corner-bracket top-right"></div>
           <div class="corner-bracket bottom-left"></div>
           <div class="corner-bracket bottom-right"></div>
 
-          <!-- Loading Bar -->
           <div class="loading-bar">
             <div class="loading-progress"></div>
           </div>
 
-          <!-- Glowing Text -->
           <div class="loading-text">
             <span class="text-glow">INITIALIZING</span>
             <span class="loading-dots">
@@ -112,7 +101,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
         </div>
       </div>
 
-      <!-- Blur Placeholder -->
       {blurDataUrl && (
         <img
           src={blurDataUrl}
@@ -123,7 +111,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
         />
       )}
 
-      <!-- Actual Image -->
       <img
         src={image.src}
         crossorigin="anonymous"
@@ -145,7 +132,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     background: linear-gradient(135deg, rgba(13, 173, 221, 0.9) 0%, rgba(247, 182, 3, 0.9) 100%);
   }
 
-  /* Skeleton Loader */
   .futuristic-skeleton {
     position: absolute;
     inset: 0;
@@ -169,7 +155,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     height: 100%;
   }
 
-  /* Scanlines Effect */
   .scanlines {
     position: absolute;
     inset: 0;
@@ -193,7 +178,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     }
   }
 
-  /* Cyber Corner Brackets */
   .corner-bracket {
     position: absolute;
     width: 30px;
@@ -257,7 +241,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     }
   }
 
-  /* Loading Bar */
   .loading-bar {
     position: absolute;
     top: 60px;
@@ -294,7 +277,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     }
   }
 
-  /* Loading Text */
   .loading-text {
     position: absolute;
     top: 30px;
@@ -335,7 +317,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     }
   }
 
-  /* Loading Dots Animation */
   .loading-dots span {
     animation: dot-blink 1.5s ease-in-out infinite;
   }
@@ -357,7 +338,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     }
   }
 
-  /* Blur Placeholder */
   .blur-placeholder {
     position: absolute;
     inset: 0;
@@ -375,7 +355,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     opacity: 0;
   }
 
-  /* Actual Image */
   .futuristic-image {
     position: relative;
     z-index: 2;
@@ -394,12 +373,10 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
     transform: scale(1);
   }
 
-  /* Dark mode adjustments */
   .dark .futuristic-skeleton {
     background: linear-gradient(135deg, #000000 0%, #0a0a1e 50%, #000000 100%);
   }
 
-  /* Neon Effect Variant */
   .futuristic-image-wrapper.neon .corner-bracket {
     border-color: #ff00ff;
     box-shadow:
@@ -430,7 +407,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
       0 0 15px rgba(255, 0, 255, 0.4);
   }
 
-  /* Minimal Effect Variant */
   .futuristic-image-wrapper.minimal .corner-bracket {
     opacity: 0.4;
     border-width: 1px;
@@ -442,10 +418,6 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
 </style>
 
 <script>
-  /**
-   * Futuristic Image Progressive Loading
-   * Handles the loading states and transitions
-   */
 
   function initFuturisticImages() {
     const wrappers = document.querySelectorAll('[data-futuristic-wrapper]');
@@ -457,51 +429,43 @@ const uniqueId = `futuristic-img-${Math.random().toString(36).substr(2, 9)}`;
 
       if (!actualImage) return;
 
-      // Function to complete loading animation
       const completeLoading = () => {
-        // Add loaded class to skeleton (fade out)
+        
         skeleton?.classList.add('loaded');
 
-        // Add loaded class to blur placeholder (fade out)
         blurPlaceholder?.classList.add('loaded');
 
-        // Add loaded class to actual image (fade in)
         actualImage.classList.add('loaded');
 
-        // Cleanup after animations complete
         setTimeout(() => {
           skeleton?.remove();
           blurPlaceholder?.remove();
         }, 800);
       };
 
-      // Check if image is already loaded (cached)
       if (actualImage.complete && actualImage.naturalHeight !== 0) {
-        // Add small delay for visual effect even when cached
+        
         setTimeout(completeLoading, 600);
       } else {
-        // Wait for image to load
+        
         actualImage.addEventListener('load', () => {
           completeLoading();
         });
 
-        // Handle loading errors
         actualImage.addEventListener('error', () => {
           console.warn('Futuristic image failed to load:', actualImage.src);
-          completeLoading(); // Still remove skeleton on error
+          completeLoading(); 
         });
       }
     });
   }
 
-  // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initFuturisticImages);
   } else {
     initFuturisticImages();
   }
 
-  // Re-initialize on Astro page transitions
   document.addEventListener('astro:after-swap', initFuturisticImages);
   document.addEventListener('astro:page-load', initFuturisticImages);
 </script>

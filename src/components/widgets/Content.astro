@@ -5,7 +5,6 @@ import WidgetWrapper from '../ui/WidgetWrapper.astro';
 import Image from '~/components/common/Image.astro';
 import Button from '~/components/ui/Button.astro';
 import { Icon } from 'astro-icon/components';
-// import { twMerge } from 'tailwind-merge';
 
 const {
   title = await Astro.slots.render('title'),
@@ -14,7 +13,7 @@ const {
   content = await Astro.slots.render('content'),
   callToAction,
   items = [],
-  // columns,
+  
   image = await Astro.slots.render('image'),
   isReversed = false,
   isAfterContent = false,

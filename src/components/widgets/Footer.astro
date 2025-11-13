@@ -72,24 +72,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
         }
       </div>
       <div class="flex items-center gap-3">
-        <!-- {
-          socialLinks?.length ? (
-            <ul class="flex space-x-3 rtl:space-x-reverse">
-              {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-                <li>
-                  <a
-                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
-                    aria-label={ariaLabel}
-                    href={href}
-                  >
-                    {icon && <Icon name={icon} class="w-5 h-5" />}
-                    <Fragment set:html={text} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : null
-        } -->
+        
       </div>
     </div>
   </div>
