@@ -71,13 +71,10 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       },
     ]}
   >
-    <div class:list={[{ 'mr-auto rtl:ml-auto rtl:mr-0': position === 'right' }, 'flex justify-between']}>
+    <div class:list={[{ 'mr-auto rtl:ml-auto rtl:mr-0': position === 'right' }]}>
       <a class="flex origin-left scale-75 items-center md:scale-100" href={getHomePermalink()}>
         <Logo />
       </a>
-      <div class="flex items-center gap-3 md:hidden">
-        <ToggleMenu />
-      </div>
     </div>
     <nav
       class="no-scrollbar hidden w-full items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
@@ -179,6 +176,9 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           </div>
         )
       }
+      <div data-animate data-anim-type="fade-left" data-anim-delay="350">
+        <ToggleMenu />
+      </div>
     </div>
   </div>
 </header>
