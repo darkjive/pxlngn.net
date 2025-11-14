@@ -27,6 +27,11 @@ export const primaryTechStack: TechImage[] = [
     title: 'JavaScript',
   },
   {
+    src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
+    alt: 'TypeScript: Eine typsichere Erweiterung von JavaScript, entwickelt für größere Projekte.',
+    title: 'TypeScript',
+  },
+  {
     src: '~/assets/images/icons/tailwind_css.png',
     alt: 'Tailwind CSS: Ein Utility-First CSS-Framework für schnelles Styling.',
     title: 'Tailwind CSS',
@@ -40,11 +45,6 @@ export const primaryTechStack: TechImage[] = [
     src: '~/assets/images/icons/nodejs.png',
     alt: 'Node.js: Eine serverseitige JavaScript-Laufzeitumgebung für Backend-Entwicklung.',
     title: 'Node.js',
-  },
-  {
-    src: '~/assets/images/icons/astro.png',
-    alt: 'Astro: Ein modernes Framework zur Erstellung von leistungsfähigen, statischen Webseiten.',
-    title: 'Astro',
   },
   {
     src: '~/assets/images/icons/npm.png',
@@ -65,9 +65,14 @@ export const secondaryTechStack: TechImage[] = [
     title: 'React',
   },
   {
-    src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
-    alt: 'TypeScript: Eine typsichere Erweiterung von JavaScript, entwickelt für größere Projekte.',
-    title: 'TypeScript',
+    src: '~/assets/images/icons/vue-js.png',
+    alt: 'Vue.js: Ein progressives JavaScript-Framework für den Aufbau von Benutzeroberflächen.',
+    title: 'Vue.js',
+  },
+  {
+    src: '~/assets/images/icons/astro.png',
+    alt: 'Astro: Ein modernes Framework zur Erstellung von leistungsfähigen, statischen Webseiten.',
+    title: 'Astro',
   },
   {
     src: '~/assets/images/icons/python--v1.png',
@@ -78,11 +83,6 @@ export const secondaryTechStack: TechImage[] = [
     src: '~/assets/images/icons/playwright-seeklogo.png',
     alt: 'Playwright: Ein vielseitiges End-to-End-Testing-Framework für moderne Webanwendungen.',
     title: 'Playwright',
-  },
-  {
-    src: '~/assets/images/icons/vue-js.png',
-    alt: 'Vue.js: Ein progressives JavaScript-Framework für den Aufbau von Benutzeroberflächen.',
-    title: 'Vue.js',
   },
   {
     src: '~/assets/images/icons/docker.png',
@@ -136,6 +136,11 @@ export const toolStack: TechImage[] = [
     title: 'Inkscape',
   },
   {
+    src: '~/assets/images/icons/adobe-illustrator--v1.png',
+    alt: 'Adobe Illustrator: Ein Tool für Vektorgrafikdesign und Illustrationen.',
+    title: 'Adobe Illustrator',
+  },
+  {
     src: '~/assets/images/icons/gimp.png',
     alt: 'GIMP: Ein Open-Source-Bildbearbeitungsprogramm für grafische Projekte.',
     title: 'GIMP',
@@ -144,26 +149,6 @@ export const toolStack: TechImage[] = [
     src: '~/assets/images/icons/adobe-photoshop--v1.png',
     alt: 'Adobe Photoshop: Eine führende Software für professionelle Bildbearbeitung.',
     title: 'Adobe Photoshop',
-  },
-  {
-    src: '~/assets/images/icons/adobe-illustrator--v1.png',
-    alt: 'Adobe Illustrator: Ein Tool für Vektorgrafikdesign und Illustrationen.',
-    title: 'Adobe Illustrator',
-  },
-  {
-    src: '~/assets/images/icons/jenkins.png',
-    alt: 'Jenkins: Ein Open-Source-Tool für die Automatisierung von Softwareentwicklungsprozessen.',
-    title: 'Jenkins',
-  },
-  {
-    src: '~/assets/images/icons/jira.png',
-    alt: 'Jira: Eine Plattform für Projektmanagement und Issue-Tracking.',
-    title: 'Jira',
-  },
-  {
-    src: '~/assets/images/icons/confluence.png',
-    alt: 'Confluence: Eine Kollaborationssoftware zur Dokumentation und Teamorganisation.',
-    title: 'Confluence',
   },
   {
     src: '~/assets/images/icons/github-logo.png',
@@ -179,6 +164,21 @@ export const toolStack: TechImage[] = [
     src: '~/assets/images/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.png',
     alt: 'Bitbucket: Ein webbasierter Hosting-Dienst für Versionskontrolle und Zusammenarbeit mit Git und Mercurial.',
     title: 'Atlassian Bitbucket',
+  },
+  {
+    src: '~/assets/images/icons/jira.png',
+    alt: 'Jira: Eine Plattform für Projektmanagement und Issue-Tracking.',
+    title: 'Jira',
+  },
+  {
+    src: '~/assets/images/icons/confluence.png',
+    alt: 'Confluence: Eine Kollaborationssoftware zur Dokumentation und Teamorganisation.',
+    title: 'Confluence',
+  },
+  {
+    src: '~/assets/images/icons/jenkins.png',
+    alt: 'Jenkins: Ein Open-Source-Tool für die Automatisierung von Softwareentwicklungsprozessen.',
+    title: 'Jenkins',
   },
   {
     src: '~/assets/images/icons/vercel.svg',
