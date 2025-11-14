@@ -161,12 +161,12 @@ export const toolStack: TechImage[] = [
     title: 'Jira',
   },
   {
-    src: '~/assets/images/icons/icons/confluence.png',
+    src: '~/assets/images/icons/confluence.png',
     alt: 'Confluence: Eine Kollaborationssoftware zur Dokumentation und Teamorganisation.',
     title: 'Confluence',
   },
   {
-    src: '~/assets/images/github-logo.png',
+    src: '~/assets/images/icons/github-logo.png',
     alt: 'GitHub: Eine Plattform für die Versionskontrolle und Zusammenarbeit an Projekten.',
     title: 'GitHub',
   },
@@ -176,7 +176,7 @@ export const toolStack: TechImage[] = [
     title: 'GitLab',
   },
   {
-    src: '~/assets/images/icons/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.png',
+    src: '~/assets/images/icons/external-bitbucket-is-a-web-based-version-control-repository-hosting-service-logo-shadow-tal-revivo.png',
     alt: 'Bitbucket: Ein webbasierter Hosting-Dienst für Versionskontrolle und Zusammenarbeit mit Git und Mercurial.',
     title: 'Atlassian Bitbucket',
   },
