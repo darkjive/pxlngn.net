@@ -76,38 +76,6 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
         <Logo />
       </a>
       <div class="flex items-center gap-3 md:hidden">
-        {
-          showToggleTheme && (
-            <ToggleTheme
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-              iconClass="md:inline-block"
-            />
-          )
-        }
-        {
-          /* GitHub-Button auskommentiert
-          actions?.[0]?.href && (
-            <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden"
-              aria-label="Github"
-              href={actions[0].href}
-            >
-              <Icon name="tabler:brand-github" class="h-5 w-5" />
-            </a>
-          )
-        */
-        }
-        {
-          actions?.[1]?.href && (
-            <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70 md:hidden"
-              aria-label="E-Mail"
-              href={actions[1].href}
-            >
-              <Icon name="tabler:mail" class="h-5 w-5" />
-            </a>
-          )
-        }
         <ToggleMenu />
       </div>
     </div>
@@ -185,49 +153,32 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
     <div
       class:list={[
         { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'right' },
-        'fixed bottom-0 left-0 hidden w-full items-center justify-end p-3 md:static md:mb-0 md:flex md:w-auto md:self-center md:justify-self-end md:p-0 rtl:left-auto rtl:right-0',
+        'flex items-center justify-end gap-3 md:self-center md:justify-self-end',
       ]}
     >
-      <div class="flex w-full items-center justify-between md:w-auto">
-        <div class="flex items-center gap-3">
-          {
-            showToggleTheme && (
-              <div data-animate data-anim-type="fade-left" data-anim-delay="250">
-                <ToggleTheme
-                  class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                  iconClass="md:inline-block"
-                />
-              </div>
-            )
-          }
-          {
-            /* GitHub-Button auskommentiert
-            actions?.[0]?.href && (
-              <a
-                class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                aria-label="Github"
-                href={actions[0].href}
-              >
-                <Icon name="tabler:brand-github" class="h-5 w-5" />
-              </a>
-            )
-          */
-          }
-          {
-            actions?.[1]?.href && (
-              <div data-animate data-anim-type="fade-left" data-anim-delay="300">
-                <a
-                  class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-                  aria-label="E-Mail"
-                  href={actions[1].href}
-                >
-                  <Icon name="tabler:mail" class="h-5 w-5" />
-                </a>
-              </div>
-            )
-          }
-        </div>
-      </div>
+      {
+        showToggleTheme && (
+          <div data-animate data-anim-type="fade-left" data-anim-delay="250">
+            <ToggleTheme
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              iconClass="md:inline-block"
+            />
+          </div>
+        )
+      }
+      {
+        actions?.[1]?.href && (
+          <div data-animate data-anim-type="fade-left" data-anim-delay="300">
+            <a
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              aria-label="E-Mail"
+              href={actions[1].href}
+            >
+              <Icon name="tabler:mail" class="h-5 w-5" />
+            </a>
+          </div>
+        )
+      }
     </div>
   </div>
 </header>
