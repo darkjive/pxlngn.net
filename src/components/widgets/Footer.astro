@@ -31,66 +31,44 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   ]}
 >
   <div class="relative mx-auto max-w-5xl px-6 dark:text-slate-300">
-    <div class="flex items-center justify-between gap-6 py-2">
-      <div class="flex flex-wrap items-center gap-8">
-        {
-          links.map(({ title, href, links }) => (
-            <div class="flex items-center gap-4">
-              {href ? (
-                <a
-                  href={href}
-                  class:list={[
-                    'whitespace-nowrap font-medium hover:text-primary dark:text-gray-300 dark:hover:text-primary',
-                    { 'aw-link-active': href === currentPath },
-                  ]}
-                >
-                  {title}
-                </a>
-              ) : (
-                <div class="whitespace-nowrap font-medium dark:text-gray-300">{title}</div>
-              )}
-              {links && Array.isArray(links) && links.length > 0 && (
-                <ul class="flex items-center gap-4 text-sm">
-                  {links.map(({ text, href, ariaLabel }) => (
-                    <li>
-                      <a
-                        class:list={[
-                          'whitespace-nowrap text-muted transition duration-150 ease-in-out hover:text-primary dark:text-gray-400 dark:hover:text-primary',
-                          { 'aw-link-active': href === currentPath },
-                        ]}
-                        href={href}
-                        aria-label={ariaLabel}
-                      >
-                        <Fragment set:html={text} />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))
-        }
-      </div>
-      <div class="flex items-center gap-3">
-        <!-- {
-          socialLinks?.length ? (
-            <ul class="flex space-x-3 rtl:space-x-reverse">
-              {socialLinks.map(({ ariaLabel, href, text, icon }) => (
-                <li>
-                  <a
-                    class="text-muted bg-gray-100 hover:text-primary hover:bg-gray-100 dark:bg-gray-900/60 dark:hover:bg-gray-900/70 rounded-lg text-sm p-2.5 inline-flex items-center"
-                    aria-label={ariaLabel}
-                    href={href}
-                  >
-                    {icon && <Icon name={icon} class="w-5 h-5" />}
-                    <Fragment set:html={text} />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          ) : null
-        } -->
-      </div>
+    <div class="flex items-center justify-center gap-8 py-2 flex-wrap">
+      {
+        links.map(({ title, href, links }) => (
+          <div class="flex items-center gap-4">
+            {href ? (
+              <a
+                href={href}
+                class:list={[
+                  'whitespace-nowrap font-medium hover:text-primary dark:text-gray-300 dark:hover:text-primary',
+                  { 'aw-link-active': href === currentPath },
+                ]}
+              >
+                {title}
+              </a>
+            ) : (
+              <div class="whitespace-nowrap font-medium dark:text-gray-300">{title}</div>
+            )}
+            {links && Array.isArray(links) && links.length > 0 && (
+              <ul class="flex items-center gap-4 text-sm">
+                {links.map(({ text, href, ariaLabel }) => (
+                  <li>
+                    <a
+                      class:list={[
+                        'whitespace-nowrap text-muted transition duration-150 ease-in-out hover:text-primary dark:text-gray-400 dark:hover:text-primary',
+                        { 'aw-link-active': href === currentPath },
+                      ]}
+                      href={href}
+                      aria-label={ariaLabel}
+                    >
+                      <Fragment set:html={text} />
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        ))
+      }
     </div>
   </div>
 </footer>
