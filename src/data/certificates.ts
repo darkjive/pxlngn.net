@@ -12,7 +12,7 @@ export const certificateItems: Item[] = [
     description: `Zertifikats-ID: 001189726`,
     icon: 'tabler:certificate',
     logo: {
-      src: '~/assets/images/scrum_alliance_logo.webp',
+      src: '~/assets/images/scrum_alliance_logo.jpg',
       alt: 'Scrum Alliance Logo',
     },
   },
