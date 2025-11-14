@@ -94,6 +94,16 @@ export const secondaryTechStack: TechImage[] = [
     alt: 'Linux: Ein Open-Source-Betriebssystem für Server und Entwicklungsumgebungen.',
     title: 'Linux',
   },
+  {
+    src: '~/assets/images/icons/php.svg',
+    alt: 'PHP: Eine serverseitige Skriptsprache für dynamische Webseiten und Webanwendungen.',
+    title: 'PHP',
+  },
+  {
+    src: '~/assets/images/icons/handlebars.svg',
+    alt: 'Handlebars: Minimal templating on steroids - ein semantisches Template-System für JavaScript.',
+    title: 'Handlebars',
+  },
 ];
 
 export const projectManagementMethods: TechImage[] = [
