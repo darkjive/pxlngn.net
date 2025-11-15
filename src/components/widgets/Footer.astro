@@ -12,6 +12,8 @@ interface Links {
   title?: string;
   href?: string;
   links: Array<Link>;
+  dataNav?: string;
+  dataFooter?: string;
 }
 
 export interface Props {
@@ -33,7 +35,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
   <div class="relative mx-auto max-w-5xl px-6 dark:text-slate-300">
     <div class="flex items-center justify-center gap-8 py-2 flex-wrap">
       {
-        links.map(({ title, href, links }) => (
+        links.map(({ title, href, links, dataNav, dataFooter }) => (
           <div class="flex items-center gap-4">
             {href ? (
               <a
@@ -42,6 +44,8 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                   'whitespace-nowrap font-medium hover:text-primary dark:text-gray-300 dark:hover:text-primary',
                   { 'aw-link-active': href === currentPath },
                 ]}
+                {...(dataNav ? { 'data-nav': dataNav } : {})}
+                {...(dataFooter ? { 'data-footer': dataFooter } : {})}
               >
                 {title}
               </a>

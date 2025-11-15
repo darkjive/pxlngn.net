@@ -3,6 +3,7 @@ import { Icon } from 'astro-icon/components';
 import Logo from '~/components/Logo.astro';
 import ToggleTheme from '~/components/common/ToggleTheme.astro';
 import ToggleMenu from '~/components/common/ToggleMenu.astro';
+import LanguageSwitcher from '~/components/common/LanguageSwitcher.astro';
 
 import { getHomePermalink } from '~/utils/permalinks';
 // import { trimSlash, getAsset } from '~/utils/permalinks';
@@ -17,6 +18,7 @@ interface Link {
 
 interface MenuLink extends Link {
   links?: Array<MenuLink>;
+  dataNav?: string;
 }
 
 export interface Props {
@@ -82,7 +84,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
         class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:font-sans md:text-[0.9375rem]"
       >
         {
-          links.map(({ text, href, links, icon }, index) => {
+          links.map(({ text, href, links, icon, dataNav }, index) => {
             const isActive = href === currentHash;
             return (
               <li
@@ -102,6 +104,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                       role="button"
                       aria-haspopup="true"
                       aria-expanded="false"
+                      {...(dataNav ? { 'data-nav': dataNav } : {})}
                     >
                       {icon && <Icon name={icon} class="mr-2 hidden h-6 w-6 text-muted md:inline" />}
                       {text}
@@ -133,6 +136,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                       { 'aw-link-active': isActive },
                     ]}
                     href={href}
+                    {...(dataNav ? { 'data-nav': dataNav } : {})}
                   >
                     {icon && <Icon name={icon} class="mr-2 hidden h-6 w-6 text-muted md:inline" />}
                     {text}
@@ -161,6 +165,9 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           </div>
         )
       }
+      <div data-animate data-anim-type="fade-left" data-anim-delay="275">
+        <LanguageSwitcher />
+      </div>
       {
         actions?.[1]?.href && (
           <div data-animate data-anim-type="fade-left" data-anim-delay="300">

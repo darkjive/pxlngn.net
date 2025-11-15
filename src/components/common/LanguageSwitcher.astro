@@ -1,0 +1,193 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Language } from '~/i18n/translations';
+import { languageNames, languageFlags } from '~/i18n/translations';
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const languages: Language[] = ['de', 'en', 'fr'];
+---
+
+<div class:list={['language-switcher relative', className]}>
+  <button
+    id="language-toggle"
+    class="inline-flex items-center gap-2 rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+    aria-label="Switch language"
+    aria-haspopup="true"
+    aria-expanded="false"
+  >
+    <Icon name="tabler:language" class="h-5 w-5" />
+    <span id="current-language-label" class="hidden md:inline">DE</span>
+    <Icon name="tabler:chevron-down" class="h-4 w-4" />
+  </button>
+
+  <div
+    id="language-menu"
+    class="absolute right-0 top-full z-50 mt-2 hidden w-40 rounded-lg bg-white shadow-lg dark:bg-gray-900"
+    role="menu"
+  >
+    {
+      languages.map((lang) => (
+        <button
+          class="language-option flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-gray-100 hover:text-primary first:rounded-t-lg last:rounded-b-lg dark:hover:bg-gray-800"
+          data-lang={lang}
+          role="menuitem"
+        >
+          <span class="text-lg">{languageFlags[lang]}</span>
+          <span>{languageNames[lang]}</span>
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  import { translations, languageNames, type Language } from '~/i18n/translations';
+
+  const STORAGE_KEY = 'preferred-language';
+  const DEFAULT_LANGUAGE: Language = 'de';
+
+  // Get current language from localStorage or use default
+  function getCurrentLanguage(): Language {
+    if (typeof window === 'undefined') return DEFAULT_LANGUAGE;
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return (stored as Language) || DEFAULT_LANGUAGE;
+  }
+
+  // Set language and update UI
+  function setLanguage(lang: Language) {
+    localStorage.setItem(STORAGE_KEY, lang);
+    updatePageContent(lang);
+    updateCurrentLanguageLabel(lang);
+    document.documentElement.lang = lang;
+  }
+
+  // Update the current language label in the button
+  function updateCurrentLanguageLabel(lang: Language) {
+    const label = document.getElementById('current-language-label');
+    if (label) {
+      label.textContent = lang.toUpperCase();
+    }
+  }
+
+  // Update page content based on language
+  function updatePageContent(lang: Language) {
+    const t = translations[lang];
+
+    // Update navigation links
+    updateNavLinks(t.nav);
+
+    // Update footer links
+    updateFooterLinks(t.footer);
+
+    // Update meta description
+    updateMetaDescription(t.meta.description);
+  }
+
+  function updateNavLinks(nav: typeof translations.de.nav) {
+    const navMapping = {
+      intro: nav.intro,
+      profile: nav.profile,
+      skills: nav.skills,
+      projects: nav.projects,
+    };
+
+    Object.entries(navMapping).forEach(([key, text]) => {
+      const elements = document.querySelectorAll(`[data-nav="${key}"]`);
+      elements.forEach((el) => {
+        if (el.textContent) {
+          el.textContent = text;
+        }
+      });
+    });
+  }
+
+  function updateFooterLinks(footer: typeof translations.de.footer) {
+    const footerMapping = {
+      privacy: footer.privacy,
+      imprint: footer.imprint,
+    };
+
+    Object.entries(footerMapping).forEach(([key, text]) => {
+      const elements = document.querySelectorAll(`[data-footer="${key}"]`);
+      elements.forEach((el) => {
+        if (el.textContent) {
+          el.textContent = text;
+        }
+      });
+    });
+  }
+
+  function updateMetaDescription(description: string) {
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    if (ogDescription) {
+      ogDescription.setAttribute('content', description);
+    }
+  }
+
+  // Initialize on page load
+  function init() {
+    const currentLang = getCurrentLanguage();
+    updatePageContent(currentLang);
+    updateCurrentLanguageLabel(currentLang);
+
+    // Setup toggle button
+    const toggleButton = document.getElementById('language-toggle');
+    const menu = document.getElementById('language-menu');
+
+    toggleButton?.addEventListener('click', () => {
+      const isExpanded = toggleButton.getAttribute('aria-expanded') === 'true';
+      toggleButton.setAttribute('aria-expanded', String(!isExpanded));
+      menu?.classList.toggle('hidden');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.language-switcher')) {
+        menu?.classList.add('hidden');
+        toggleButton?.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Setup language options
+    const options = document.querySelectorAll('.language-option');
+    options.forEach((option) => {
+      option.addEventListener('click', () => {
+        const lang = (option as HTMLElement).dataset.lang as Language;
+        setLanguage(lang);
+        menu?.classList.add('hidden');
+        toggleButton?.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Run on initial load
+  init();
+
+  // Re-run after page transitions (Astro View Transitions)
+  document.addEventListener('astro:page-load', init);
+</script>
+
+<style>
+  .language-switcher {
+    user-select: none;
+  }
+
+  .language-option {
+    transition: all 0.2s ease;
+  }
+
+  .language-option:hover {
+    transform: translateX(4px);
+  }
+</style>
