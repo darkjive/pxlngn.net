@@ -1,0 +1,9 @@
+# Allow all search engines to crawl the entire site
+User-agent: *
+Disallow: /logs/  # Block crawling of admin sections (if applicable)
+Disallow: /_astro/    # Block API endpoints from search engines
+Disallow: /_sec/    # Block API endpoints from search engines
+Allow: /          # Allow the homepage and public pages
+
+# Sitemap declaration (adjust URL based on your actual sitemap location)
+Sitemap: https://pxlngn.net/sitemap-0.xml

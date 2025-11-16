@@ -1,0 +1,182 @@
+---
+import { Icon } from 'astro-icon/components';
+import Logo from '~/components/Logo.astro';
+import ToggleTheme from '~/components/common/ToggleTheme.astro';
+import ToggleMenu from '~/components/common/ToggleMenu.astro';
+
+import { getHomePermalink } from '~/utils/permalinks';
+// import { trimSlash, getAsset } from '~/utils/permalinks';
+import type { CallToAction } from '~/types';
+
+interface Link {
+  text?: string;
+  href?: string;
+  ariaLabel?: string;
+  icon?: string;
+}
+
+interface MenuLink extends Link {
+  links?: Array<MenuLink>;
+}
+
+export interface Props {
+  id?: string;
+  links?: Array<MenuLink>;
+  actions?: Array<CallToAction>;
+  isSticky?: boolean;
+  isDark?: boolean;
+  isFullWidth?: boolean;
+  showToggleTheme?: boolean;
+  showRssFeed?: boolean;
+  position?: string;
+}
+
+const {
+  id = 'header',
+  links = [],
+  actions = [],
+  isSticky = false,
+  isDark = false,
+  isFullWidth = false,
+  showToggleTheme = true,
+  // showRssFeed = false,
+  position = 'center',
+} = Astro.props;
+
+const url = new URL(Astro.url);
+// const currentPath = `/${trimSlash(url.pathname)}`;
+const currentHash = url.hash; // Enthält den #anchor-Teil der URL
+---
+
+<header
+  class:list={[
+    { sticky: isSticky, relative: !isSticky, dark: isDark },
+    'top-0 z-40 mx-auto w-full flex-none border-b border-gray-200/100 bg-white dark:border-gray-500/20 dark:bg-black',
+  ]}
+  {...isSticky ? { 'data-aw-sticky-header': true } : {}}
+  {...id ? { id } : {}}
+>
+  <div class="absolute inset-0"></div>
+  <div
+    class:list={[
+      'relative mx-auto w-full px-2 py-2 md:px-6 md:py-3',
+      'flex flex-nowrap items-center justify-between',
+      {
+        'md:grid md:grid-cols-3': position === 'center',
+      },
+      {
+        'max-w-5xl': !isFullWidth,
+      },
+    ]}
+  >
+    <div class:list={[{ 'mr-auto rtl:ml-auto rtl:mr-0': position === 'right' }]}>
+      <a class="flex origin-left scale-75 items-center md:scale-100" href={getHomePermalink()}>
+        <Logo />
+      </a>
+    </div>
+    <nav
+      class="no-scrollbar hidden w-full items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
+      aria-label="Hauptnavigation"
+    >
+      <ul
+        class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:font-sans md:text-[0.9375rem]"
+      >
+        {
+          links.map(({ text, href, links, icon }, index) => {
+            const isActive = href === currentHash;
+            return (
+              <li
+                class={links?.length ? 'dropdown' : ''}
+                data-animate
+                data-anim-type="fade-left"
+                data-anim-delay={index * 50}
+              >
+                {links?.length ? (
+                  <>
+                    <a
+                      class:list={[
+                        'flex w-full items-center whitespace-nowrap px-4 py-4 hover:text-primary dark:hover:text-primary md:w-auto md:py-3',
+                        { 'aw-link-active': isActive },
+                      ]}
+                      href={href}
+                      role="button"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {icon && <Icon name={icon} class="mr-2 hidden h-6 w-6 text-muted md:inline" />}
+                      {text}
+                    </a>
+                    <ul class="dropdown-menu dark:md:bg-dark w-full rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/100 md:pl-0">
+                      {links.map(({ text: text2, href: href2, icon: icon2 }) => {
+                        const isSubActive = href2 === currentHash;
+                        return (
+                          <li>
+                            <a
+                              class:list={[
+                                'whitespace-no-wrap block w-full border-b border-gray-200/100 px-5 py-3 text-2xl hover:text-primary dark:border-gray-500/20 md:border-0 md:py-2 md:text-base',
+                                { 'aw-link-active': isSubActive },
+                              ]}
+                              href={href2}
+                            >
+                              {icon2 && <Icon name={icon2} class="w-5.5 h-5.5 mr-2 inline-block text-muted" />}
+                              {text2}
+                            </a>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </>
+                ) : (
+                  <a
+                    class:list={[
+                      'flex w-full items-center whitespace-nowrap px-4 py-4 first:rounded-t last:rounded-b hover:text-primary dark:hover:text-primary md:w-auto md:py-3',
+                      { 'aw-link-active': isActive },
+                    ]}
+                    href={href}
+                  >
+                    {icon && <Icon name={icon} class="mr-2 hidden h-6 w-6 text-muted md:inline" />}
+                    {text}
+                  </a>
+                )}
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+    <!-- Buttons -->
+    <div
+      class:list={[
+        { 'ml-auto rtl:ml-0 rtl:mr-auto': position === 'right' },
+        'flex flex-nowrap items-center justify-end gap-2 md:gap-3 md:self-center md:justify-self-end',
+      ]}
+    >
+      {
+        showToggleTheme && (
+          <div data-animate data-anim-type="fade-left" data-anim-delay="250">
+            <ToggleTheme
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              iconClass="md:inline-block"
+            />
+          </div>
+        )
+      }
+      {
+        actions?.[1]?.href && (
+          <div data-animate data-anim-type="fade-left" data-anim-delay="300">
+            <a
+              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+              aria-label="E-Mail"
+              href={actions[1].href}
+            >
+              <Icon name="tabler:mail" class="h-5 w-5" />
+            </a>
+          </div>
+        )
+      }
+      <div class="md:hidden" data-animate data-anim-type="fade-left" data-anim-delay="350">
+        <ToggleMenu />
+      </div>
+    </div>
+  </div>
+</header>

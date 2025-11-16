@@ -1,0 +1,208 @@
+@import './fonts.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .bg-page {
+    background-color: var(--aw-color-bg-page);
+  }
+
+  .bg-dark {
+    background-color: var(--aw-color-bg-page-dark);
+  }
+
+  .bg-light {
+    background-color: var(--aw-color-bg-page);
+  }
+
+  .text-page {
+    color: var(--aw-color-text-page);
+  }
+
+  .text-muted {
+    color: var(--aw-color-text-muted);
+  }
+
+  .text-link {
+    color: var(--aw-color-text-link);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn {
+    @apply mb-2 me-2 inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-center text-base uppercase tracking-wider;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-cyan-800/80;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 text-white shadow-lg shadow-yellow-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-yellow-800/80;
+  }
+
+  .btn-tertiary {
+    @apply btn bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 text-white shadow-lg shadow-cyan-500/50 hover:bg-gradient-to-br dark:shadow-lg dark:shadow-cyan-800/80;
+  }
+
+  /* Section & Widget Styles */
+  .section-border {
+    @apply border-b border-gray-200/100 dark:border-gray-500/20;
+  }
+
+  .section-border-top {
+    @apply border-t border-gray-200/100 dark:border-gray-500/20;
+  }
+
+  .widget-container {
+    @apply max-w-5xl dark:bg-transparent;
+  }
+
+  .widget-container-lg {
+    @apply max-w-6xl dark:bg-transparent;
+  }
+
+  .widget-container-xl {
+    @apply max-w-7xl dark:bg-transparent;
+  }
+
+  /* Text Styles */
+  .text-gradient-primary {
+    @apply bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-secondary {
+    @apply bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent;
+  }
+
+  /* Cards & Panels */
+  .card {
+    @apply rounded-lg bg-white p-6 shadow-md dark:bg-gray-800;
+  }
+
+  .panel-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border-2 border-primary p-2 text-primary dark:border-primary;
+  }
+}
+
+/*
+ * Font-Strategie:
+ * - Baloo Bhaijaan 2 Variable: Haupt-Schrift für Body/Standard (definiert in CustomStyles.astro)
+ * - Anklepants: Display-Schrift für spezielle Überschriften (über Klasse .Anklepants)
+ */
+@font-face {
+  font-family: 'Anklepants';
+  src: url('/fonts/Anklepants.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.Anklepants,
+.btn {
+  font-family: 'Anklepants';
+}
+
+/* Header/Nav */
+#header.scroll > div:first-child {
+  @apply bg-page border-b border-gray-500/20;
+}
+
+.dark #header.scroll > div:first-child,
+#header.scroll.dark > div:first-child {
+  @apply bg-page border-b border-gray-500/20;
+  box-shadow: none;
+}
+
+/* #header.scroll > div:last-child {
+  @apply py-3;
+} */
+
+#header.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#header.expanded nav {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 5px;
+}
+
+/* Auto-hide navigation on scroll */
+#header[data-aw-sticky-header] {
+  transition: transform 0.3s ease-in-out;
+}
+
+#header[data-aw-sticky-header].header-hidden {
+  transform: translateY(-100%);
+}
+
+#header[data-aw-sticky-header].header-visible {
+  transform: translateY(0);
+}
+
+/* Animation states */
+[data-animate]:not([data-animated]) {
+  opacity: 0;
+}
+
+[data-animate][data-animated] {
+  opacity: 1;
+}
+
+.dropdown:focus .dropdown-menu,
+.dropdown:focus-within .dropdown-menu,
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+[astro-icon].icon-light > * {
+  stroke-width: 1.2;
+}
+
+[astro-icon].icon-bold > * {
+  stroke-width: 2.4;
+}
+
+[data-aw-toggle-menu] path {
+  @apply transition;
+}
+
+[data-aw-toggle-menu].expanded g > path:first-child {
+  @apply translate-x-[-3px] translate-y-[15px] -rotate-45;
+}
+
+[data-aw-toggle-menu].expanded g > path:last-child {
+  @apply translate-x-[14px] translate-y-[-8px] rotate-45;
+}
+
+/* To deprecated */
+.dd *:first-child {
+  margin-top: 0;
+}
+
+/* Custom Gradient - uses CSS Custom Properties from CustomStyles.astro */
+.gradient {
+  background: linear-gradient(
+    0deg,
+    var(--aw-gradient-start) 0%,
+    var(--aw-gradient-middle) 50%,
+    var(--aw-gradient-end) 100%
+  );
+}

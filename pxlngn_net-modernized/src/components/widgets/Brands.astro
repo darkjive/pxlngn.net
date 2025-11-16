@@ -1,0 +1,74 @@
+---
+import { Icon } from 'astro-icon/components';
+import type { Brands as Props } from '~/types';
+
+import Image from '~/components/common/Image.astro';
+import AnimatedTitle from '~/components/ui/AnimatedTitle.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+
+const {
+  title = '',
+  subtitle = '',
+  tagline = '',
+  icons = [],
+  images = [],
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+  headingLevel = 'h2',
+} = Astro.props;
+---
+
+<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+  <div class="mb-8 text-center md:mx-auto md:mb-12">
+    {
+      tagline && (
+        <p
+          data-animate
+          data-anim-type="fade-down"
+          class="font-bold uppercase tracking-normal text-slate-900/30 dark:text-slate-300/50"
+          set:html={tagline}
+        />
+      )
+    }
+    {
+      title && (
+        <AnimatedTitle
+          title={title}
+          headingLevel={headingLevel}
+          class="Anklepants text-heading text-center text-4xl lg:text-5xl"
+        />
+      )
+    }
+    {subtitle && <p data-animate data-anim-type="typewriter" class="mt-4 text-xl text-muted" set:html={subtitle} />}
+  </div>
+
+  <div class="lg:gap-x-15 flex flex-wrap justify-center gap-x-3 sm:gap-x-12">
+    {icons && icons.map((icon) => <Icon name={icon} class="mx-auto h-auto w-12 py-3 text-gray-500 sm:mx-0 lg:py-5" />)}
+    {
+      images &&
+        images.map((image, index) =>
+          image.src ? (
+            <div
+              class="col-span-1 my-2 flex flex-col items-center rounded-md bg-slate-50 px-3 py-3 dark:bg-slate-600 lg:my-4"
+              data-animate
+              data-anim-type="scale-up"
+              data-anim-delay={index * 50}
+            >
+              <Image
+                src={image.src}
+                alt={image.alt || ''}
+                class="max-full"
+                width={70}
+                height={70}
+                layout="fixed"
+                title={image.alt}
+              />
+              {image.title && <span class="mt-2 text-xs tracking-wider text-muted dark:text-white">{image.title}</span>}
+            </div>
+          ) : null
+        )
+    }
+  </div>
+</WidgetWrapper>

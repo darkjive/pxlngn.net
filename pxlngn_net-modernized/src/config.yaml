@@ -1,0 +1,40 @@
+site:
+  name: PIXEL ENGINE
+  site: 'https://pxlngn.net'
+  base: '/'
+  trailingSlash: false
+
+  googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
+
+# Default SEO metadata
+metadata:
+  title:
+    default: P X L N G N
+    template: '%s'
+  description: 'Frontend-Entwickler und Designer für Webmedien. Ich kombiniere modernes Design und sauberen Code, um benutzerfreundliche Webanwendungen zu schaffen. Schau dir meine Projekte an oder erfahre mehr über mich!'
+  robots:
+    index: true
+    follow: true
+  openGraph:
+    site_name: P X L N G N
+    images:
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
+    type: website
+  twitter:
+    handle: '@pxlngn'
+    site: '@pxlngn'
+    cardType: summary_large_image
+
+i18n:
+  language: de
+  textDirection: ltr
+
+analytics:
+  vendors:
+    googleAnalytics:
+      id: G-HWV3Y9PWKJ # or "null"
+
+ui:
+  theme: 'system' # Values: "system" | "light" | "dark" | "light:only" | "dark:only"

@@ -1,0 +1,68 @@
+---
+import type { ItemGrid as Props } from '~/types';
+import { twMerge } from 'tailwind-merge';
+import Button from './Button.astro';
+import { Icon } from 'astro-icon/components';
+import { getGridColumns } from '~/utils/grid';
+
+const { items = [], columns, defaultIcon = '', classes = {} } = Astro.props;
+
+const {
+  container: containerClass = '',
+  panel: panelClass = '',
+  title: titleClass = '',
+  description: descriptionClass = '',
+  icon: defaultIconClass = 'text-primary',
+  action: actionClass = '',
+} = classes;
+---
+
+{
+  items && (
+    <div class={twMerge(`mx-auto grid gap-8 md:gap-y-12 ${getGridColumns(columns)}`, containerClass)}>
+      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }, index) => (
+        <div class="">
+          <div
+            class={twMerge('flex max-w-md flex-row', panelClass, itemClasses?.panel)}
+            data-animate
+            data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+            data-anim-delay={index * 100}
+          >
+            <div class="flex justify-center">
+              {(icon || defaultIcon) && (
+                <Icon
+                  name={icon || defaultIcon}
+                  class={twMerge('mr-2 h-7 w-7 rtl:ml-2 rtl:mr-0', defaultIconClass, itemClasses?.icon)}
+                  data-animate
+                  data-anim-type="scale-up"
+                  data-anim-delay={index * 100 + 100}
+                />
+              )}
+            </div>
+            <div class="mt-0.5">
+              {title && (
+                <h3 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}>
+                  {title}
+                </h3>
+              )}
+              {description && (
+                <p
+                  class={twMerge(`${title ? 'mt-3' : ''} text-muted`, descriptionClass, itemClasses?.description)}
+                  set:html={description}
+                  data-animate
+                  data-anim-type="typewriter"
+                  data-anim-delay={index * 100 + 200}
+                />
+              )}
+              {callToAction && (
+                <div class={twMerge(`${title || description ? 'mt-3' : ''}`, actionClass, itemClasses?.actionClass)}>
+                  <Button variant="link" {...callToAction} />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
