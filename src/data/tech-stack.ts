@@ -13,47 +13,47 @@ interface TechImage {
 export const primaryTechStack: TechImage[] = [
   {
     src: '~/assets/images/icons/html-5--v1.png',
-    alt: 'HTML5: Eine Kernsprache für das Erstellen und Strukturieren von Webseiten.',
+    alt: 'HTML5',
     title: 'HTML5',
   },
   {
     src: '~/assets/images/icons/css3.png',
-    alt: 'CSS3: Cascading Stylesheets für das Design und die visuelle Gestaltung von Webseiten.',
+    alt: 'CSS3',
     title: 'CSS3',
   },
   {
     src: '~/assets/images/icons/javascript.png',
-    alt: 'JavaScript: Eine Programmiersprache zur Erstellung dynamischer und interaktiver Webseiten.',
+    alt: 'JavaScript',
     title: 'JavaScript',
   },
   {
     src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
-    alt: 'TypeScript: Eine typsichere Erweiterung von JavaScript, entwickelt für größere Projekte.',
+    alt: 'TypeScript - JavaScript mit Types',
     title: 'TypeScript',
   },
   {
     src: '~/assets/images/icons/tailwind_css.png',
-    alt: 'Tailwind CSS: Ein Utility-First CSS-Framework für schnelles Styling.',
+    alt: 'Tailwind CSS - Utility-First Framework',
     title: 'Tailwind CSS',
   },
   {
     src: '~/assets/images/icons/bem-css-logo.png',
-    alt: 'BEM CSS: Ein Namenskonzept für besser strukturierte CSS-Klassen.',
+    alt: 'BEM CSS - Strukturierte CSS-Namenskonvention',
     title: 'BEM CSS',
   },
   {
     src: '~/assets/images/icons/nodejs.png',
-    alt: 'Node.js: Eine serverseitige JavaScript-Laufzeitumgebung für Backend-Entwicklung.',
+    alt: 'Node.js - JavaScript Runtime',
     title: 'Node.js',
   },
   {
     src: '~/assets/images/icons/npm.png',
-    alt: 'npm: Ein Paketmanager für JavaScript-Bibliotheken und Node.js.',
+    alt: 'npm - Package Manager',
     title: 'npm',
   },
   {
     src: '~/assets/images/icons/logo@2x.png',
-    alt: 'Git: Ein verteiltes Versionskontrollsystem für die Verwaltung von Quellcode.',
+    alt: 'Git - Version Control',
     title: 'Git',
   },
 ];
@@ -61,47 +61,47 @@ export const primaryTechStack: TechImage[] = [
 export const secondaryTechStack: TechImage[] = [
   {
     src: '~/assets/images/icons/react-native.png',
-    alt: 'React: Eine JavaScript-Bibliothek für den Aufbau von UI-Komponenten.',
+    alt: 'React - UI Library',
     title: 'React',
   },
   {
     src: '~/assets/images/icons/vue-js.png',
-    alt: 'Vue.js: Ein progressives JavaScript-Framework für den Aufbau von Benutzeroberflächen.',
+    alt: 'Vue.js - Progressive Framework',
     title: 'Vue.js',
   },
   {
     src: '~/assets/images/icons/astro.png',
-    alt: 'Astro: Ein modernes Framework zur Erstellung von leistungsfähigen, statischen Webseiten.',
+    alt: 'Astro - Modern Static Site Generator',
     title: 'Astro',
   },
   {
     src: '~/assets/images/icons/python--v1.png',
-    alt: 'Python: Eine vielseitige Programmiersprache mit Anwendungen in Webentwicklung, Data Science und mehr.',
+    alt: 'Python',
     title: 'Python',
   },
   {
     src: '~/assets/images/icons/playwright-seeklogo.png',
-    alt: 'Playwright: Ein vielseitiges End-to-End-Testing-Framework für moderne Webanwendungen.',
+    alt: 'Playwright - E2E Testing',
     title: 'Playwright',
   },
   {
     src: '~/assets/images/icons/docker.png',
-    alt: 'Docker: Eine Plattform für die Containerisierung von Anwendungen.',
+    alt: 'Docker - Containerization',
     title: 'Docker',
   },
   {
     src: '~/assets/images/icons/linux--v1.png',
-    alt: 'Linux: Ein Open-Source-Betriebssystem für Server und Entwicklungsumgebungen.',
+    alt: 'Linux',
     title: 'Linux',
   },
   {
     src: '~/assets/images/icons/php.svg',
-    alt: 'PHP: Eine serverseitige Skriptsprache für dynamische Webseiten und Webanwendungen.',
+    alt: 'PHP',
     title: 'PHP',
   },
   {
     src: '~/assets/images/icons/handlebars.svg',
-    alt: 'Handlebars: Minimal templating on steroids - ein semantisches Template-System für JavaScript.',
+    alt: 'Handlebars - Template Engine',
     title: 'Handlebars',
   },
 ];
@@ -228,42 +228,42 @@ export const cmsStack: TechImage[] = [
 export const abstractItems = [
   {
     title: 'Frontend-Entwicklung',
-    description: 'Modulare Weboberflächen mit HTML, CSS und Javascript. Sauberer, wartbarer Code.',
+    description: 'HTML, CSS, JavaScript. Sauberer Code, wartbar, modular.',
     icon: 'tabler:code',
   },
   {
     title: 'Projektleitung',
-    description: 'Planung, Steuerung und Umsetzung technischer Projekte mit klaren Prozessen.',
+    description: 'Planung, Steuerung, Umsetzung. Klare Prozesse, messbare Ergebnisse.',
     icon: 'tabler:briefcase',
   },
   {
     title: 'Teamleitung & Scrum',
-    description: 'Führung und Unterstützung von Entwicklerteams. Strukturierte Abläufe nach Scrum.',
+    description: 'Teams führen und unterstützen. Scrum-Prozesse strukturiert aufsetzen.',
     icon: 'tabler:users',
   },
   {
     title: 'Legacy-Systeme',
-    description: 'Analyse, Refactoring und Modernisierung bestehender Anwendungen.',
+    description: 'Alte Codebases analysieren, refactoren, modernisieren.',
     icon: 'tabler:layers-linked',
   },
   {
     title: 'Quality Assurance',
-    description: 'Manuelles und automatisiertes Testen. Fehleranalyse und Nachverfolgung in Ticketsystem.',
+    description: 'Manuell und automatisiert testen. Bugs tracken, reproduzieren, fixen.',
     icon: 'tabler:checkup-list',
   },
   {
     title: 'CI/CD & Monitoring',
-    description: 'Deployments über Jenkins. Überwachung von Leistung und Stabilität.',
+    description: 'Jenkins-Deployments. Performance und Stabilität überwachen.',
     icon: 'tabler:rocket',
   },
   {
     title: 'Dokumentation',
-    description: 'Projektdokumentation und Wissensmanagement in Kolaborationstools.',
+    description: 'Projektdocs und Wissensmanagement in Confluence.',
     icon: 'tabler:book',
   },
   {
     title: 'Prozessverbesserung',
-    description: 'Optimierung von Abläufen und Kommunikation im Team.',
+    description: 'Workflows optimieren. Kommunikation im Team verbessern.',
     icon: 'tabler:settings',
   },
 ];
