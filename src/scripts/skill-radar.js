@@ -16,22 +16,53 @@ export function initSkillRadar() {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
-  // Skill data
+  // Detect dark mode
+  const isDarkMode = document.documentElement.classList.contains('dark');
+
+  // Color scheme based on theme
+  const colors = {
+    primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
+    primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.2)' : 'rgba(14, 165, 233, 0.2)',
+    gridColor: isDarkMode ? 'rgba(75, 85, 99, 0.3)' : 'rgba(209, 213, 219, 0.5)', // gray-600 / gray-300
+    textColor: isDarkMode ? 'rgba(229, 231, 235, 0.9)' : 'rgba(31, 41, 55, 0.9)', // gray-200 / gray-800
+    tickColor: isDarkMode ? 'rgba(156, 163, 175, 0.8)' : 'rgba(107, 114, 128, 0.8)', // gray-400 / gray-500
+    pointBorder: isDarkMode ? '#fff' : '#1f2937',
+  };
+
+  // Expanded skill data with multiple categories
   const skillData = {
-    labels: ['Frontend', 'Projektleitung', 'Scrum Master', 'Designer'],
+    labels: [
+      'Frontend\nDevelopment',
+      'JavaScript/\nTypeScript',
+      'Projektleitung',
+      'Scrum Master',
+      'Team\nLeadership',
+      'QA & Testing',
+      'UI/UX\nDesign',
+      'Soft Skills',
+    ],
     datasets: [
       {
-        label: 'Skills',
-        data: [65, 5, 10, 20],
-        backgroundColor: 'rgba(6, 182, 212, 0.2)', // cyan with opacity
-        borderColor: 'rgba(6, 182, 212, 1)', // cyan
-        borderWidth: 2,
-        pointBackgroundColor: 'rgba(6, 182, 212, 1)',
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(6, 182, 212, 1)',
-        pointRadius: 4,
-        pointHoverRadius: 6,
+        label: 'Skill Level',
+        data: [
+          85, // Frontend Development
+          80, // JavaScript/TypeScript
+          70, // Projektleitung
+          75, // Scrum Master
+          70, // Team Leadership
+          65, // QA & Testing
+          60, // UI/UX Design
+          85, // Soft Skills (Kommunikation, Problemlösung, Engagement)
+        ],
+        backgroundColor: colors.primaryAlpha,
+        borderColor: colors.primary,
+        borderWidth: 3,
+        pointBackgroundColor: colors.primary,
+        pointBorderColor: colors.pointBorder,
+        pointHoverBackgroundColor: colors.pointBorder,
+        pointHoverBorderColor: colors.primary,
+        pointRadius: 5,
+        pointHoverRadius: 8,
       },
     ],
   };
@@ -54,25 +85,30 @@ export function initSkillRadar() {
           min: 0,
           ticks: {
             stepSize: 20,
-            color: 'rgba(156, 163, 175, 0.8)', // gray-400
+            color: colors.tickColor,
             backdropColor: 'transparent',
             font: {
-              size: 12,
+              size: 14,
+              weight: '500',
             },
           },
           grid: {
-            color: 'rgba(75, 85, 99, 0.3)', // gray-600 with opacity
+            color: colors.gridColor,
             circular: true,
+            lineWidth: 2,
           },
           pointLabels: {
-            color: 'rgba(229, 231, 235, 0.9)', // gray-200
+            color: colors.textColor,
             font: {
-              size: 14,
+              size: 16,
               weight: 'bold',
+              family: "'Inter', sans-serif",
             },
+            padding: 15,
           },
           angleLines: {
-            color: 'rgba(75, 85, 99, 0.3)', // gray-600 with opacity
+            color: colors.gridColor,
+            lineWidth: 2,
           },
         },
       },
@@ -81,16 +117,23 @@ export function initSkillRadar() {
           display: false,
         },
         tooltip: {
-          backgroundColor: 'rgba(17, 24, 39, 0.9)', // gray-900
-          titleColor: 'rgba(6, 182, 212, 1)', // cyan
-          bodyColor: 'rgba(229, 231, 235, 1)', // gray-200
-          borderColor: 'rgba(6, 182, 212, 0.5)',
-          borderWidth: 1,
-          padding: 12,
+          backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+          titleColor: colors.primary,
+          bodyColor: colors.textColor,
+          borderColor: colors.primary,
+          borderWidth: 2,
+          padding: 16,
           displayColors: false,
+          titleFont: {
+            size: 16,
+            weight: 'bold',
+          },
+          bodyFont: {
+            size: 14,
+          },
           callbacks: {
             label: function (context) {
-              return context.parsed.r + '%';
+              return 'Skill Level: ' + context.parsed.r + '%';
             },
           },
         },
@@ -100,4 +143,23 @@ export function initSkillRadar() {
 
   // Create chart
   new Chart(ctx, config);
+
+  // Listen for theme changes and recreate chart
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class') {
+        // Destroy existing chart and reinitialize
+        const existingChart = Chart.getChart(canvas);
+        if (existingChart) {
+          existingChart.destroy();
+        }
+        setTimeout(initSkillRadar, 50);
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
 }
