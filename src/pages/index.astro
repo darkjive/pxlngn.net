@@ -5,7 +5,6 @@ import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import FuturisticImage from '~/components/common/FuturisticImage.astro';
 import BackgroundImage from '~/components/ui/BackgroundImage.astro';
 import SkillRadar from '~/components/ui/SkillRadar.astro';
 import GlitchProfileImage from '~/components/ui/GlitchProfileImage.astro';
@@ -45,7 +44,7 @@ const metadata = {
     <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
-      <span data-animate data-anim-type="typewriter">Dev. PM. Scrum Master. Seit den 90ern. </span>
+      <span data-animate data-anim-type="typewriter">Entwickler mit Fokus auf Frontend.</span>
     </Fragment>
   </Hero>
 
@@ -62,7 +61,6 @@ const metadata = {
           glowColor="cyan"
           class="mx-auto w-full"
         />
-        <SkillRadar class="mt-8" />
       </div>
     </Fragment>
 
@@ -77,21 +75,22 @@ const metadata = {
   </Content>
 
   <!-- Skill Chart Section -->
-  <Content id="about" columns={3} items={contactItems}>
+  <Content id="chart">
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
-    <Fragment slot="image">
-      <h2 class="Anklepants text-1xl mb-2 tracking-tight dark:text-white sm:text-2xl">
-        <span data-animate data-anim-type="typewriter">Ich bin</span>
-        <span data-animate data-anim-type="cycle-typewriter"></span>
-      </h2>
-
-      <p data-animate data-anim-type="typewriter" set:html={profileText.description} />
-    </Fragment>
-
     <Fragment slot="content">
+      <h2
+        data-animate
+        data-anim-type="typewriter"
+        class="Anklepants text-1xl mb-2 tracking-tight dark:text-white sm:text-2xl"
+      >
+        Skill Chart
+      </h2>
       <div class="relative m-auto max-w-4xl space-y-8" data-animate data-anim-type="fade-up">
-        <SkillRadar class="mt-8" />
+        <SkillRadar class="m-8" />
       </div>
+    </Fragment>
+    <Fragment slot="image">
+      <p data-animate data-anim-type="typewriter">sss</p>
     </Fragment>
   </Content>
 
