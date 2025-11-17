@@ -1,0 +1,56 @@
+---
+/**
+ * Glitch Profile Image Component
+ * Displays random glitch image, shows normal.jpg on hover
+ * Features preloading for smooth transitions
+ */
+import { Image } from 'astro:assets';
+import type { GlitchProfileImage } from '~/types';
+import '~/assets/styles/glitch-profile.css';
+
+// Import all images for preloading
+import normalImg from '~/assets/images/normal.jpg';
+import glitchImg from '~/assets/images/glitch.jpg';
+import glitchHardImg from '~/assets/images/glitch-hard.png';
+
+interface Props extends GlitchProfileImage {}
+
+const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props;
+---
+
+<div class={`glitch-profile-wrapper ${className || ''}`} data-glitch-profile>
+  <div class="glitch-profile-container">
+    <!-- Loading State -->
+    <div class="glitch-profile-loading" data-glitch-loader>
+      <div class="glitch-profile-loader"></div>
+    </div>
+
+    <!-- Base Image (normal.jpg - shown on hover) -->
+    <Image
+      src={normalImg}
+      alt={alt}
+      width={width}
+      height={height}
+      class="glitch-profile-base"
+      loading="eager"
+      fetchpriority="high"
+      data-glitch-base
+    />
+
+    <!-- Random Image (glitch-hard.png or glitch.jpg or normal.jpg) -->
+    <img
+      src=""
+      alt=""
+      aria-hidden="true"
+      class="glitch-profile-random"
+      width={width}
+      height={height}
+      data-glitch-random
+    />
+  </div>
+</div>
+
+<!-- Preload all images -->
+<link rel="preload" as="image" href={normalImg.src} fetchpriority="high" />
+<link rel="preload" as="image" href={glitchImg.src} />
+<link rel="preload" as="image" href={glitchHardImg.src} />

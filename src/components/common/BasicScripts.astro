@@ -222,14 +222,20 @@ import { UI } from 'astrowind:config';
 <script>
   import '~/scripts/animations.js';
   import { initSkillRadar } from '~/scripts/skill-radar.js';
+  import { initGlitchProfile } from '~/scripts/glitch-profile.js';
 
-  // Initialize skill radar chart when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initSkillRadar);
-  } else {
+  // Initialize components when DOM is ready
+  function initComponents() {
     initSkillRadar();
+    initGlitchProfile();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initComponents);
+  } else {
+    initComponents();
   }
 
   // Re-initialize after page swap
-  document.addEventListener('astro:after-swap', initSkillRadar);
+  document.addEventListener('astro:after-swap', initComponents);
 </script>

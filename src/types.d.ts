@@ -311,3 +311,11 @@ export interface SkillData {
   label: string;
   value: number;
 }
+
+export interface GlitchProfileImage {
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  glowColor?: string;
+}
