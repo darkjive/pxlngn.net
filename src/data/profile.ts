@@ -26,8 +26,6 @@ export const contactItems: Item[] = [
 ];
 
 export const profileText = {
-  description: `Code seit den 90ern. Webdesign, später Full-Stack mit modernem JavaScript-Stack.
-    12 Jahre professionell - von Front-End über Scrum Master bis Projektleitung. Bin Generalist aus Überzeugung:
-    Design verstehen, Code schreiben, Teams koordinieren. Kein Bullshit, kein Marketing-Sprech. Einfach Projekte
-    die funktionieren.`,
+  description: `"beep, boop" seit dem ich 14 bin. Screendesign, UI-Design, später Full-Stack im Web mit modernem JavaScript-Stack.
+    12 Jahre professionell - von Front-End über Scrum Master bis Projektleitung. Design verstehen, Code schreiben, Teams koordinieren, Menschen helfen und zu begeistern, ist was ich liebe`,
 };

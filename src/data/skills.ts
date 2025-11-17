@@ -34,7 +34,7 @@ export const skillItems: Item[] = [
   },
   {
     title: 'AI-Entwicklung & Prompt Engineering',
-    description: `KI-Tools produktiv einsetzen - ChatGPT, Claude, GitHub Copilot. Prompts für Automatisierung entwickeln, GitHub-Projekte und AI-Tools aufsetzen.`,
+    description: `KI-Tools wie LLM's produktiv einsetzen. Prompts für Automatisierung entwickeln, GitHub-Projekte und AI-Tools aufsetzen.`,
     icon: 'tabler:brain',
   },
   {
