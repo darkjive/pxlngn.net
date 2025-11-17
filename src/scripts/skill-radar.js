@@ -84,13 +84,9 @@ export function initSkillRadar() {
           max: 100,
           min: 0,
           ticks: {
+            display: false, // Hide tick numbers
             stepSize: 20,
-            color: colors.tickColor,
             backdropColor: 'transparent',
-            font: {
-              size: 14,
-              weight: '500',
-            },
           },
           grid: {
             color: colors.gridColor,
@@ -117,6 +113,7 @@ export function initSkillRadar() {
           display: false,
         },
         tooltip: {
+          enabled: true,
           backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
           titleColor: colors.primary,
           bodyColor: colors.textColor,
@@ -132,8 +129,12 @@ export function initSkillRadar() {
             size: 14,
           },
           callbacks: {
-            label: function (context) {
-              return 'Skill Level: ' + context.parsed.r + '%';
+            label: function () {
+              return ''; // No label text
+            },
+            title: function (context) {
+              // Only show skill name
+              return context[0].label.replace(/\n/g, ' ');
             },
           },
         },
