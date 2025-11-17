@@ -221,4 +221,15 @@ import { UI } from 'astrowind:config';
 </script>
 <script>
   import '~/scripts/animations.js';
+  import { initSkillRadar } from '~/scripts/skill-radar.js';
+
+  // Initialize skill radar chart when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSkillRadar);
+  } else {
+    initSkillRadar();
+  }
+
+  // Re-initialize after page swap
+  document.addEventListener('astro:after-swap', initSkillRadar);
 </script>
