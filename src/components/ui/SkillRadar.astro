@@ -15,15 +15,19 @@ const { class: className } = Astro.props;
   <canvas id="skillRadarChart"></canvas>
 </div>
 
-<script>
-  import { Chart, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
+<!-- Load Chart.js from CDN -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
 
-  // Register Chart.js components
-  Chart.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
+<script is:inline>
+  // Wait for Chart.js to load
 
-  // Initialize chart when DOM is ready
-  document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('skillRadarChart') as HTMLCanvasElement;
+  function initChart() {
+    if (typeof Chart === 'undefined') {
+      setTimeout(initChart, 100);
+      return;
+    }
+
+    const canvas = document.getElementById('skillRadarChart');
     if (!canvas) return;
 
     const ctx = canvas.getContext('2d');
@@ -51,14 +55,14 @@ const { class: className } = Astro.props;
 
     // Chart configuration
     const config = {
-      type: 'radar' as const,
+      type: 'radar',
       data: skillData,
       options: {
         responsive: true,
         maintainAspectRatio: true,
         animation: {
           duration: 2000,
-          easing: 'easeInOutQuart' as const,
+          easing: 'easeInOutQuart',
         },
         scales: {
           r: {
@@ -81,7 +85,7 @@ const { class: className } = Astro.props;
               color: 'rgba(229, 231, 235, 0.9)', // gray-200
               font: {
                 size: 14,
-                weight: 'bold' as const,
+                weight: 'bold',
               },
             },
             angleLines: {
@@ -113,7 +117,14 @@ const { class: className } = Astro.props;
 
     // Create chart
     new Chart(ctx, config);
-  });
+  }
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChart);
+  } else {
+    initChart();
+  }
 </script>
 
 <style>
