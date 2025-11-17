@@ -68,7 +68,6 @@ const metadata = {
           data-glitch
           class="mx-auto w-full rounded-lg shadow-lg"
         />
-        <SkillRadar class="mt-8" />
       </div>
     </Fragment>
 
@@ -79,6 +78,25 @@ const metadata = {
       </h2>
 
       <p data-animate data-anim-type="typewriter" set:html={profileText.description} />
+    </Fragment>
+  </Content>
+
+  <!-- Skill Chart Section -->
+  <Content id="about" columns={3} items={contactItems}>
+    <BackgroundImage slot="bg" src="/images/5571508.webp" />
+    <Fragment slot="image">
+      <h2 class="Anklepants text-1xl mb-2 tracking-tight dark:text-white sm:text-2xl">
+        <span data-animate data-anim-type="typewriter">Ich bin</span>
+        <span data-animate data-anim-type="cycle-typewriter"></span>
+      </h2>
+
+      <p data-animate data-anim-type="typewriter" set:html={profileText.description} />
+    </Fragment>
+
+    <Fragment slot="content">
+      <div class="relative m-auto max-w-4xl space-y-8" data-animate data-anim-type="fade-up">
+        <SkillRadar class="mt-8" />
+      </div>
     </Fragment>
   </Content>
 
