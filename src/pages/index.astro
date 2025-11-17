@@ -7,6 +7,7 @@ import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import FuturisticImage from '~/components/common/FuturisticImage.astro';
 import BackgroundImage from '~/components/ui/BackgroundImage.astro';
+import SkillRadar from '~/components/ui/SkillRadar.astro';
 
 // Daten-Imports
 import { resumeItems } from '~/data/resume';
@@ -52,7 +53,7 @@ const metadata = {
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
 
     <Fragment slot="image">
-      <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
+      <div class="relative m-auto max-w-4xl space-y-8" data-animate data-anim-type="fade-up">
         <FuturisticImage
           src="~/assets/images/normal.jpg"
           alt="Alain Ritter - Profilbild"
@@ -67,6 +68,7 @@ const metadata = {
           data-glitch
           class="mx-auto w-full rounded-lg shadow-lg"
         />
+        <SkillRadar class="mt-8" />
       </div>
     </Fragment>
 

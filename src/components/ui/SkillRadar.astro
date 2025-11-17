@@ -1,0 +1,163 @@
+---
+/**
+ * Skill Radar Chart Component
+ * Animated spider/radar chart showing skill distribution
+ */
+
+export interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class={`skill-radar-container ${className || ''}`}>
+  <canvas id="skillRadarChart"></canvas>
+</div>
+
+<script>
+  import { Chart, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend } from 'chart.js';
+
+  // Register Chart.js components
+  Chart.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
+
+  // Initialize chart when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('skillRadarChart') as HTMLCanvasElement;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    // Skill data
+    const skillData = {
+      labels: ['Frontend', 'Projektleitung', 'Scrum Master', 'Designer'],
+      datasets: [
+        {
+          label: 'Skills',
+          data: [65, 5, 10, 20],
+          backgroundColor: 'rgba(6, 182, 212, 0.2)', // cyan with opacity
+          borderColor: 'rgba(6, 182, 212, 1)', // cyan
+          borderWidth: 2,
+          pointBackgroundColor: 'rgba(6, 182, 212, 1)',
+          pointBorderColor: '#fff',
+          pointHoverBackgroundColor: '#fff',
+          pointHoverBorderColor: 'rgba(6, 182, 212, 1)',
+          pointRadius: 4,
+          pointHoverRadius: 6,
+        },
+      ],
+    };
+
+    // Chart configuration
+    const config = {
+      type: 'radar' as const,
+      data: skillData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        animation: {
+          duration: 2000,
+          easing: 'easeInOutQuart' as const,
+        },
+        scales: {
+          r: {
+            beginAtZero: true,
+            max: 100,
+            min: 0,
+            ticks: {
+              stepSize: 20,
+              color: 'rgba(156, 163, 175, 0.8)', // gray-400
+              backdropColor: 'transparent',
+              font: {
+                size: 12,
+              },
+            },
+            grid: {
+              color: 'rgba(75, 85, 99, 0.3)', // gray-600 with opacity
+              circular: true,
+            },
+            pointLabels: {
+              color: 'rgba(229, 231, 235, 0.9)', // gray-200
+              font: {
+                size: 14,
+                weight: 'bold' as const,
+              },
+            },
+            angleLines: {
+              color: 'rgba(75, 85, 99, 0.3)', // gray-600 with opacity
+            },
+          },
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+          tooltip: {
+            backgroundColor: 'rgba(17, 24, 39, 0.9)', // gray-900
+            titleColor: 'rgba(6, 182, 212, 1)', // cyan
+            bodyColor: 'rgba(229, 231, 235, 1)', // gray-200
+            borderColor: 'rgba(6, 182, 212, 0.5)',
+            borderWidth: 1,
+            padding: 12,
+            displayColors: false,
+            callbacks: {
+              label: function (context) {
+                return context.parsed.r + '%';
+              },
+            },
+          },
+        },
+      },
+    };
+
+    // Create chart
+    new Chart(ctx, config);
+  });
+</script>
+
+<style>
+  .skill-radar-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  canvas {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Futuristic glow effect */
+  .skill-radar-container::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,
+    100% {
+      opacity: 0.5;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+  }
+
+  /* Dark mode adjustments */
+  :global(.dark) .skill-radar-container {
+    filter: brightness(1.1);
+  }
+</style>
