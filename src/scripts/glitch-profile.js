@@ -1,51 +1,103 @@
 /**
  * Glitch Profile Image Script
- * Randomly selects and displays one of the glitch images
- * Shows normal.jpg on hover
+ * Creates random glitch effect by briefly showing glitch images
+ * Only active when image is in viewport
  */
 
 export function initGlitchProfile() {
-  const container = document.querySelector('[data-glitch-profile]');
-  if (!container) return;
+  const wrapper = document.querySelector('[data-glitch-profile]');
+  if (!wrapper) return;
 
-  const randomImg = container.querySelector('[data-glitch-random]');
-  const baseImg = container.querySelector('[data-glitch-base]');
-  const loader = container.querySelector('[data-glitch-loader]');
+  const loader = wrapper.querySelector('[data-glitch-loader]');
+  const overlays = wrapper.querySelectorAll('[data-glitch-overlay]');
 
-  if (!randomImg || !baseImg || !loader) return;
+  if (!overlays.length || !loader) return;
 
-  // Get all preloaded images from link tags
-  const preloadLinks = document.querySelectorAll('link[rel="preload"][as="image"]');
-  const imageUrls = Array.from(preloadLinks).map((link) => link.getAttribute('href')).filter(Boolean);
+  let isInViewport = false;
+  let glitchInterval = null;
+  let isHovered = false;
 
-  if (imageUrls.length === 0) {
-    console.warn('No preloaded images found for glitch profile');
-    loader.classList.add('hidden');
-    return;
+  // Hide loader when ready
+  const skeleton = loader.querySelector('[data-futuristic-skeleton]');
+  if (skeleton) {
+    setTimeout(() => {
+      skeleton.classList.add('loaded');
+    }, 100);
   }
 
-  // Select random image from preloaded URLs
-  const randomIndex = Math.floor(Math.random() * imageUrls.length);
-  const selectedImage = imageUrls[randomIndex];
+  // Intersection Observer to detect viewport visibility
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        isInViewport = entry.isIntersecting;
 
-  // Set the random image
-  const img = new Image();
-  img.onload = () => {
-    randomImg.src = selectedImage;
-    randomImg.style.opacity = '1';
+        if (isInViewport && !isHovered) {
+          startGlitchEffect();
+        } else {
+          stopGlitchEffect();
+        }
+      });
+    },
+    {
+      threshold: 0.5, // Trigger when 50% of image is visible
+    }
+  );
 
-    // Hide loader after image is loaded
-    setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 100);
-  };
+  observer.observe(wrapper);
 
-  img.onerror = () => {
-    console.error('Failed to load glitch profile image:', selectedImage);
-    // Fallback to base image
-    randomImg.src = baseImg.src;
-    loader.classList.add('hidden');
-  };
+  // Pause glitch on hover
+  wrapper.addEventListener('mouseenter', () => {
+    isHovered = true;
+    stopGlitchEffect();
+  });
 
-  img.src = selectedImage;
+  wrapper.addEventListener('mouseleave', () => {
+    isHovered = false;
+    if (isInViewport) {
+      startGlitchEffect();
+    }
+  });
+
+  function startGlitchEffect() {
+    if (glitchInterval) return; // Already running
+
+    // Random glitch effect between 2-5 seconds
+    const triggerGlitch = () => {
+      const randomDelay = Math.random() * 3000 + 2000; // 2-5 seconds
+
+      glitchInterval = setTimeout(() => {
+        // Select random overlay
+        const randomIndex = Math.floor(Math.random() * overlays.length);
+        const overlay = overlays[randomIndex];
+
+        // Show glitch briefly
+        overlay.classList.add('glitch-active');
+
+        // Hide after 200-400ms
+        const glitchDuration = Math.random() * 200 + 200;
+        setTimeout(() => {
+          overlay.classList.remove('glitch-active');
+
+          // Schedule next glitch if still in viewport
+          if (isInViewport && !isHovered) {
+            triggerGlitch();
+          }
+        }, glitchDuration);
+      }, randomDelay);
+    };
+
+    triggerGlitch();
+  }
+
+  function stopGlitchEffect() {
+    if (glitchInterval) {
+      clearTimeout(glitchInterval);
+      glitchInterval = null;
+    }
+
+    // Remove any active glitches
+    overlays.forEach((overlay) => {
+      overlay.classList.remove('glitch-active');
+    });
+  }
 }

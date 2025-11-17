@@ -1,6 +1,6 @@
 /**
  * Glitch Profile Image Styles
- * Random image rotation with hover reset
+ * Random glitch effect with flickering images
  */
 
 .glitch-profile-wrapper {
@@ -22,7 +22,7 @@
     inset 0 0 20px rgba(6, 182, 212, 0.1);
 }
 
-/* Base image - always normal.jpg */
+/* Base image - normal.jpg always visible */
 .glitch-profile-base {
   position: absolute;
   inset: 0;
@@ -30,64 +30,56 @@
   height: 100%;
   object-fit: cover;
   z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
 }
 
-/* Random glitch image */
-.glitch-profile-random {
+/* Glitch overlays - hidden by default */
+.glitch-profile-overlay {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   z-index: 2;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Hover state - show base image (normal.jpg) */
-.glitch-profile-wrapper:hover .glitch-profile-base {
-  opacity: 1;
-  z-index: 3;
-}
-
-.glitch-profile-wrapper:hover .glitch-profile-random {
-  opacity: 0;
-}
-
-/* Loading state */
-.glitch-profile-loading {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, rgba(13, 173, 221, 0.9) 0%, rgba(247, 182, 3, 0.9) 100%);
-  z-index: 10;
-  opacity: 1;
-  transition: opacity 0.5s ease-out;
-}
-
-.glitch-profile-loading.hidden {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.05s linear;
 }
 
-/* Loader animation */
-.glitch-profile-loader {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(6, 182, 212, 0.3);
-  border-top-color: rgba(6, 182, 212, 1);
-  border-radius: 50%;
-  animation: glitchSpin 1s linear infinite;
+/* Active glitch state */
+.glitch-profile-overlay.glitch-active {
+  opacity: 1;
+  animation: glitchFlicker 0.3s steps(3, end);
 }
 
-@keyframes glitchSpin {
-  to {
-    transform: rotate(360deg);
+/* Glitch flicker animation */
+@keyframes glitchFlicker {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(0);
   }
+  20% {
+    opacity: 0.8;
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(2px, -2px);
+  }
+  60% {
+    opacity: 0.9;
+    transform: translate(-1px, -1px);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(1px, 1px);
+  }
+}
+
+/* Pause glitch effect on hover */
+.glitch-profile-wrapper:hover .glitch-profile-overlay {
+  animation-play-state: paused;
+  opacity: 0 !important;
 }
 
 /* Responsive adjustments */
