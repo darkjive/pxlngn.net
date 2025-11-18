@@ -129,52 +129,121 @@ import { UI } from 'astrowind:config';
       }
     });
 
-    // Sound Toggle
+    // Sound Manager
+    initSoundManager();
+  }
+
+  function initSoundManager() {
+    // Global sound state
+    let soundsEnabled = localStorage.getItem('sounds-enabled') !== 'false';
+    let currentAmbiance = null;
+
+    // Get all audio elements
+    const ambianceDark = document.getElementById('ambiance-dark');
+    const ambianceLight = document.getElementById('ambiance-light');
+    const ambianceLegal = document.getElementById('ambiance-legal');
+    const soundHover = document.getElementById('sound-hover');
+    const soundClick = document.getElementById('sound-click');
+
+    // Check if we're on a legal page (Impressum/Datenschutz)
+    const isLegalPage = window.location.pathname.includes('/terms') || window.location.pathname.includes('/privacy');
+
+    // Determine initial ambiance based on theme and page
+    function getActiveAmbiance() {
+      if (isLegalPage) return ambianceLegal;
+      const isDark = document.documentElement.classList.contains('dark');
+      return isDark ? ambianceDark : ambianceLight;
+    }
+
+    // Play sound helper
+    function playSound(audio) {
+      if (!audio || !soundsEnabled) return;
+      audio.currentTime = 0;
+      audio.play().catch(err => console.log('Sound play failed:', err));
+    }
+
+    // Switch ambiance
+    function switchAmbiance(newAmbiance) {
+      if (currentAmbiance === newAmbiance) return;
+
+      // Stop current ambiance
+      if (currentAmbiance) {
+        currentAmbiance.pause();
+        currentAmbiance.currentTime = 0;
+      }
+
+      currentAmbiance = newAmbiance;
+
+      // Play new ambiance if sounds enabled
+      if (soundsEnabled && currentAmbiance) {
+        currentAmbiance.play().catch(err => console.log('Ambiance play failed:', err));
+      }
+    }
+
+    // Sound Toggle Button
     attachEvent('[data-sound-toggle]', 'click', function (_, button) {
-      const audio = document.getElementById('ambiance-sound');
       const iconOn = button.querySelector('[data-sound-icon-on]');
       const iconOff = button.querySelector('[data-sound-icon-off]');
 
-      if (!audio || !iconOn || !iconOff) return;
+      soundsEnabled = !soundsEnabled;
+      localStorage.setItem('sounds-enabled', soundsEnabled);
 
-      if (audio.paused) {
-        audio
-          .play()
-          .then(() => {
-            iconOn.classList.add('hidden');
-            iconOff.classList.remove('hidden');
-            localStorage.setItem('ambiance-sound', 'playing');
-          })
-          .catch((err) => {
-            console.log('Audio playback failed:', err);
-          });
+      // Update icon
+      if (soundsEnabled) {
+        iconOn.classList.add('hidden');
+        iconOff.classList.remove('hidden');
+        // Start ambiance
+        if (currentAmbiance) {
+          currentAmbiance.play().catch(err => console.log('Ambiance play failed:', err));
+        }
       } else {
-        audio.pause();
         iconOn.classList.remove('hidden');
         iconOff.classList.add('hidden');
-        localStorage.setItem('ambiance-sound', 'paused');
+        // Stop all sounds
+        [ambianceDark, ambianceLight, ambianceLegal].forEach(audio => {
+          if (audio) {
+            audio.pause();
+            audio.currentTime = 0;
+          }
+        });
       }
     });
 
-    // Restore sound state from localStorage
-    const audio = document.getElementById('ambiance-sound');
-    const soundState = localStorage.getItem('ambiance-sound');
-    if (audio && soundState === 'playing') {
-      const button = document.querySelector('[data-sound-toggle]');
-      const iconOn = button?.querySelector('[data-sound-icon-on]');
-      const iconOff = button?.querySelector('[data-sound-icon-off]');
+    // Theme change listener (switch ambiance on theme change)
+    if (!isLegalPage) {
+      attachEvent('[data-aw-toggle-color-scheme]', 'click', function () {
+        setTimeout(() => {
+          const newAmbiance = getActiveAmbiance();
+          switchAmbiance(newAmbiance);
+        }, 50);
+      });
+    }
 
-      audio
-        .play()
-        .then(() => {
-          if (iconOn && iconOff) {
-            iconOn.classList.add('hidden');
-            iconOff.classList.remove('hidden');
-          }
-        })
-        .catch((err) => {
-          console.log('Audio autoplay failed:', err);
-        });
+    // Hover sounds for links
+    attachEvent('#header nav a, main a', 'mouseenter', function () {
+      playSound(soundHover);
+    });
+
+    // Click sounds for buttons
+    attachEvent('button, .btn, [role="button"]', 'click', function () {
+      playSound(soundClick);
+    });
+
+    // Initialize ambiance
+    switchAmbiance(getActiveAmbiance());
+
+    // Update button icon based on initial state
+    const button = document.querySelector('[data-sound-toggle]');
+    if (button) {
+      const iconOn = button.querySelector('[data-sound-icon-on]');
+      const iconOff = button.querySelector('[data-sound-icon-off]');
+      if (soundsEnabled) {
+        iconOn.classList.add('hidden');
+        iconOff.classList.remove('hidden');
+      } else {
+        iconOn.classList.remove('hidden');
+        iconOff.classList.add('hidden');
+      }
     }
   }
 

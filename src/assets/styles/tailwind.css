@@ -182,6 +182,19 @@
   }
 }
 
+/* Brand Logo Glow Effect */
+.brand-logo-container {
+  transition: all 0.3s ease;
+}
+
+.dark .brand-logo-container {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+}
+
+.dark .brand-logo-container:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+}
+
 /* Auto-hide navigation on scroll */
 #header[data-aw-sticky-header] {
   transition: transform 0.3s ease-in-out;
