@@ -159,7 +159,7 @@ import { UI } from 'astrowind:config';
     function playSound(audio) {
       if (!audio || !soundsEnabled) return;
       audio.currentTime = 0;
-      audio.play().catch(err => console.log('Sound play failed:', err));
+      audio.play().catch((err) => console.log('Sound play failed:', err));
     }
 
     // Switch ambiance
@@ -176,7 +176,7 @@ import { UI } from 'astrowind:config';
 
       // Play new ambiance if sounds enabled
       if (soundsEnabled && currentAmbiance) {
-        currentAmbiance.play().catch(err => console.log('Ambiance play failed:', err));
+        currentAmbiance.play().catch((err) => console.log('Ambiance play failed:', err));
       }
     }
 
@@ -194,13 +194,13 @@ import { UI } from 'astrowind:config';
         iconOff.classList.remove('hidden');
         // Start ambiance
         if (currentAmbiance) {
-          currentAmbiance.play().catch(err => console.log('Ambiance play failed:', err));
+          currentAmbiance.play().catch((err) => console.log('Ambiance play failed:', err));
         }
       } else {
         iconOn.classList.remove('hidden');
         iconOff.classList.add('hidden');
         // Stop all sounds
-        [ambianceDark, ambianceLight, ambianceLegal].forEach(audio => {
+        [ambianceDark, ambianceLight, ambianceLegal].forEach((audio) => {
           if (audio) {
             audio.pause();
             audio.currentTime = 0;
