@@ -121,27 +121,15 @@ const metadata = {
   </Features>
 
   <!-- Skill Chart Section -->
-  <Content
-    id="chart"
-    tagline="Overview Charts"
-    title="<span class='Anklepants text-5xl md:text-6xl'>Skills</span>"
-    classes={{ container: 'max-w-7xl' }}
-  >
+  <Hero id="chart" title="Skills" tagline="Overview Chart" headingLevel="h2">
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
 
     <Fragment slot="content">
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-white md:text-[1.3rem]">Tech Skills</h3>
-        <SkillRadar chartType="tech" />
+      <div class="mx-auto max-w-4xl">
+        <SkillRadar />
       </div>
     </Fragment>
-    <Fragment slot="image">
-      <div>
-        <h3 class="text-xl font-semibold text-black dark:text-white md:text-[1.3rem]">Soft Skills</h3>
-        <SkillRadar chartType="soft" />
-      </div>
-    </Fragment>
-  </Content>
+  </Hero>
 
   <!-- Skills Section -->
   <Features

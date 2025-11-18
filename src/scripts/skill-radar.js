@@ -1,6 +1,6 @@
 /**
  * Skill Radar Chart Initialization
- * Initializes Chart.js radar chart for skill visualization
+ * Initializes Chart.js radar chart for skill visualization with two datasets
  */
 
 /* global Chart */
@@ -12,19 +12,9 @@ export function initSkillRadar() {
     return;
   }
 
-  // Initialize both chart types
-  const techCanvas = document.querySelector('[data-chart-type="tech"]');
-  const softCanvas = document.querySelector('[data-chart-type="soft"]');
+  const canvas = document.querySelector('[data-chart-type="tech"]');
+  if (!canvas) return;
 
-  if (techCanvas) {
-    initChart(techCanvas, 'tech');
-  }
-  if (softCanvas) {
-    initChart(softCanvas, 'soft');
-  }
-}
-
-function initChart(canvas, chartType) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -33,42 +23,64 @@ function initChart(canvas, chartType) {
 
   // Color scheme based on theme
   const colors = {
-    primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
-    primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.3)' : 'rgba(14, 165, 233, 0.3)',
-    gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)', // More contrast
+    tech: {
+      primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
+      primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.2)' : 'rgba(14, 165, 233, 0.2)',
+    },
+    soft: {
+      primary: isDarkMode ? 'rgba(251, 191, 36, 1)' : 'rgba(245, 158, 11, 1)', // amber-400 / amber-500
+      primaryAlpha: isDarkMode ? 'rgba(251, 191, 36, 0.2)' : 'rgba(245, 158, 11, 0.2)',
+    },
+    gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)',
     textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
-    tickColor: isDarkMode ? 'rgba(156, 163, 175, 1)' : 'rgba(107, 114, 128, 1)',
     pointBorder: isDarkMode ? '#fff' : '#1f2937',
     tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)',
-    tooltipBorder: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)',
   };
 
-  // Skill data based on chart type
-  const techSkillData = {
-    labels: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Vue/Astro', 'Node.js', 'Git', 'Testing', 'Design'],
-    data: [90, 50, 40, 70, 55, 75, 45, 85],
-  };
+  // Combined labels for both datasets
+  const labels = [
+    'HTML/CSS',
+    'JavaScript',
+    'TypeScript',
+    'React/Vue/Astro',
+    'Node.js',
+    'Git',
+    'Testing',
+    'Design',
+  ];
 
-  const softSkillData = {
-    labels: ['Kommunikation', 'Teamwork', 'Problemlösung', 'Projektleitung', 'Scrum Master', 'Mentoring', 'Engagement'],
-    data: [70, 80, 90, 65, 70, 65, 90],
-  };
+  // Tech Skills data
+  const techData = [90, 50, 40, 70, 55, 75, 45, 85];
 
-  const currentData = chartType === 'tech' ? techSkillData : softSkillData;
+  // Soft Skills data (matching same categories conceptually)
+  const softData = [70, 80, 90, 65, 70, 65, 90, 75];
 
   const skillData = {
-    labels: currentData.labels,
+    labels: labels,
     datasets: [
       {
-        label: 'Skill Level',
-        data: currentData.data,
-        backgroundColor: colors.primaryAlpha,
-        borderColor: colors.primary,
-        borderWidth: 1,
-        pointBackgroundColor: colors.primary,
+        label: 'Tech Skills',
+        data: techData,
+        backgroundColor: colors.tech.primaryAlpha,
+        borderColor: colors.tech.primary,
+        borderWidth: 2,
+        pointBackgroundColor: colors.tech.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.primary,
+        pointHoverBorderColor: colors.tech.primary,
+        pointRadius: 5,
+        pointHoverRadius: 8,
+      },
+      {
+        label: 'Soft Skills',
+        data: softData,
+        backgroundColor: colors.soft.primaryAlpha,
+        borderColor: colors.soft.primary,
+        borderWidth: 2,
+        pointBackgroundColor: colors.soft.primary,
+        pointBorderColor: colors.pointBorder,
+        pointHoverBackgroundColor: colors.pointBorder,
+        pointHoverBorderColor: colors.soft.primary,
         pointRadius: 5,
         pointHoverRadius: 8,
       },
@@ -113,37 +125,49 @@ function initChart(canvas, chartType) {
           max: 100,
           min: 0,
           ticks: {
-            display: false, // Hide tick numbers
-            stepSize: 5,
+            display: false,
+            stepSize: 20,
             backdropColor: 'transparent',
           },
           grid: {
             color: colors.gridColor,
             circular: true,
-            lineWidth: 1,
+            lineWidth: 2,
           },
           pointLabels: {
-            display: false, // Hide labels
+            display: false,
           },
           angleLines: {
             color: colors.gridColor,
-            lineWidth: 1,
+            lineWidth: 2,
           },
         },
       },
       plugins: {
         legend: {
           display: true,
+          position: 'top',
+          labels: {
+            color: colors.textColor,
+            font: {
+              size: 16,
+              weight: 'bold',
+              family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+            },
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle',
+          },
         },
         tooltip: {
           enabled: true,
           backgroundColor: colors.tooltipBg,
-          titleColor: colors.tooltipBorder,
+          titleColor: colors.textColor,
           bodyColor: colors.textColor,
-          borderColor: colors.tooltipBorder,
-          borderWidth: 1,
+          borderColor: isDarkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(107, 114, 128, 0.5)',
+          borderWidth: 2,
           padding: 20,
-          displayColors: false,
+          displayColors: true,
           cornerRadius: 8,
           titleFont: {
             size: 18,
@@ -163,8 +187,8 @@ function initChart(canvas, chartType) {
               return context[0].label.replace(/\n/g, ' ');
             },
             label: function (context) {
-              // Show percentage value with styling
-              return context.parsed.r + '%';
+              // Show value without percent sign
+              return context.dataset.label + ': ' + context.parsed.r;
             },
           },
         },
@@ -183,14 +207,14 @@ if (!themeObserverInitialized) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
-        // Destroy existing charts and reinitialize
-        const allCanvases = document.querySelectorAll('[data-chart-type]');
-        allCanvases.forEach((canvas) => {
+        // Destroy existing chart and reinitialize
+        const canvas = document.querySelector('[data-chart-type="tech"]');
+        if (canvas) {
           const existingChart = Chart.getChart(canvas);
           if (existingChart) {
             existingChart.destroy();
           }
-        });
+        }
         setTimeout(initSkillRadar, 50);
       }
     });

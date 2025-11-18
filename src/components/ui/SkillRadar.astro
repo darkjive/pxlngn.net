@@ -1,21 +1,18 @@
 ---
 /**
  * Skill Radar Chart Component
- * Animated spider/radar chart showing skill distribution
+ * Animated spider/radar chart showing skill distribution with dual datasets
  */
 import type { SkillRadar } from '~/types';
 import '~/assets/styles/skill-radar.css';
 
-type Props = SkillRadar & {
-  chartType?: 'tech' | 'soft';
-};
+type Props = SkillRadar;
 
-const { class: className, chartType = 'tech' } = Astro.props;
-const chartId = `skillRadarChart-${chartType}`;
+const { class: className } = Astro.props;
 ---
 
 <div class={`skill-radar-container ${className || ''}`}>
-  <canvas id={chartId} data-chart-type={chartType}></canvas>
+  <canvas id="skillRadarChart" data-chart-type="tech"></canvas>
 </div>
 
 <!-- Load Chart.js from CDN -->
