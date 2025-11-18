@@ -121,13 +121,27 @@ const metadata = {
   </Features>
 
   <!-- Skill Chart Section -->
-  <Hero id="chart" title="Skills" tagline="Overview Chart" headingLevel="h2">
+  <Content
+    id="chart"
+    tagline="Overview Chart"
+    title="<span class='Anklepants text-5xl md:text-6xl'>Skills</span>"
+    classes={{ container: 'max-w-7xl' }}
+  >
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
 
     <Fragment slot="content">
-      <SkillRadar />
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <h3 class="mb-4 text-center text-2xl font-bold text-primary">Tech Skills</h3>
+          <SkillRadar chartType="tech" />
+        </div>
+        <div>
+          <h3 class="mb-4 text-center text-2xl font-bold text-primary">Soft Skills</h3>
+          <SkillRadar chartType="soft" />
+        </div>
+      </div>
     </Fragment>
-  </Hero>
+  </Content>
 
   <!-- Skills Section -->
   <Features

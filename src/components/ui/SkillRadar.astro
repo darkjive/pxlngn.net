@@ -6,13 +6,16 @@
 import type { SkillRadar } from '~/types';
 import '~/assets/styles/skill-radar.css';
 
-type Props = SkillRadar;
+type Props = SkillRadar & {
+  chartType?: 'tech' | 'soft';
+};
 
-const { class: className } = Astro.props;
+const { class: className, chartType = 'tech' } = Astro.props;
+const chartId = `skillRadarChart-${chartType}`;
 ---
 
 <div class={`skill-radar-container ${className || ''}`}>
-  <canvas id="skillRadarChart"></canvas>
+  <canvas id={chartId} data-chart-type={chartType}></canvas>
 </div>
 
 <!-- Load Chart.js from CDN -->

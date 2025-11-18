@@ -12,9 +12,19 @@ export function initSkillRadar() {
     return;
   }
 
-  const canvas = document.getElementById('skillRadarChart');
-  if (!canvas) return;
+  // Initialize both chart types
+  const techCanvas = document.querySelector('[data-chart-type="tech"]');
+  const softCanvas = document.querySelector('[data-chart-type="soft"]');
 
+  if (techCanvas) {
+    initChart(techCanvas, 'tech');
+  }
+  if (softCanvas) {
+    initChart(softCanvas, 'soft');
+  }
+}
+
+function initChart(canvas, chartType) {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -33,33 +43,25 @@ export function initSkillRadar() {
     tooltipBorder: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)',
   };
 
-  // Expanded skill data with multiple categories
+  // Skill data based on chart type
+  const techSkillData = {
+    labels: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Astro', 'Node.js', 'Git', 'Testing', 'Design'],
+    data: [95, 90, 85, 90, 75, 85, 80, 85],
+  };
+
+  const softSkillData = {
+    labels: ['Kommunikation', 'Teamwork', 'Problemlösung', 'Projektleitung', 'Scrum Master', 'Mentoring', 'Engagement'],
+    data: [95, 90, 95, 75, 80, 85, 95],
+  };
+
+  const currentData = chartType === 'tech' ? techSkillData : softSkillData;
+
   const skillData = {
-    labels: [
-      'Frontend\nDevelopment',
-      'JavaScript/\nTypeScript',
-      'CSS / SCSS',
-      'Projektleitung',
-      'Scrum Master',
-      'Team\nLeadership',
-      'QA & Testing',
-      'UI/UX\nDesign',
-      'Soft Skills',
-    ],
+    labels: currentData.labels,
     datasets: [
       {
         label: 'Skill Level',
-        data: [
-          90, // Frontend Development
-          60, // JavaScript/TypeScript
-          60, // CSS / SCSS
-          20, // Projektleitung
-          40, // Scrum Master
-          50, // Team Leadership
-          30, // QA & Testing
-          60, // UI/UX Design
-          90, // Soft Skills (Kommunikation, Problemlösung, Engagement)
-        ],
+        data: currentData.data,
         backgroundColor: colors.primaryAlpha,
         borderColor: colors.primary,
         borderWidth: 1,
@@ -172,16 +174,23 @@ export function initSkillRadar() {
 
   // Create chart
   new Chart(ctx, config);
+}
 
-  // Listen for theme changes and recreate chart
+// Global theme observer (only initialize once)
+let themeObserverInitialized = false;
+
+if (!themeObserverInitialized) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
-        // Destroy existing chart and reinitialize
-        const existingChart = Chart.getChart(canvas);
-        if (existingChart) {
-          existingChart.destroy();
-        }
+        // Destroy existing charts and reinitialize
+        const allCanvases = document.querySelectorAll('[data-chart-type]');
+        allCanvases.forEach((canvas) => {
+          const existingChart = Chart.getChart(canvas);
+          if (existingChart) {
+            existingChart.destroy();
+          }
+        });
         setTimeout(initSkillRadar, 50);
       }
     });
@@ -191,4 +200,6 @@ export function initSkillRadar() {
     attributes: true,
     attributeFilter: ['class'],
   });
+
+  themeObserverInitialized = true;
 }
