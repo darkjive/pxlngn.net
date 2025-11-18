@@ -56,13 +56,13 @@ export function initSkillRadar() {
   ];
 
   // Year 2000 - Beginner (10 points)
-  const data2000 = [30, 25, 0, 10, 15, 20, 10, 35, 5, 30];
+  const data2000 = [5, 0, 0, 0, 5, 5, 0, 60, 10, 30];
 
   // Year 2010 - Growing (10 points)
-  const data2010 = [70, 65, 30, 55, 45, 60, 40, 70, 35, 60];
+  const data2010 = [70, 25, 5, 45, 45, 30, 40, 70, 35, 60];
 
   // Year 2025 - Current (10 points)
-  const data2025 = [95, 85, 75, 85, 65, 80, 70, 85, 60, 75];
+  const data2025 = [95, 75, 55, 85, 65, 80, 70, 85, 60, 75];
 
   const skillData = {
     labels: labels,
@@ -72,7 +72,7 @@ export function initSkillRadar() {
         data: data2000,
         backgroundColor: colors.y2000.primaryAlpha,
         borderColor: colors.y2000.primary,
-        borderWidth: 2,
+        borderWidth: 1,
         pointBackgroundColor: colors.y2000.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
@@ -85,7 +85,7 @@ export function initSkillRadar() {
         data: data2010,
         backgroundColor: colors.y2010.primaryAlpha,
         borderColor: colors.y2010.primary,
-        borderWidth: 2,
+        borderWidth: 1,
         pointBackgroundColor: colors.y2010.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
@@ -98,7 +98,7 @@ export function initSkillRadar() {
         data: data2025,
         backgroundColor: colors.y2025.primaryAlpha,
         borderColor: colors.y2025.primary,
-        borderWidth: 2,
+        borderWidth: 1,
         pointBackgroundColor: colors.y2025.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
@@ -168,7 +168,7 @@ export function initSkillRadar() {
           },
           angleLines: {
             color: colors.gridColor,
-            lineWidth: 2,
+            lineWidth: 1,
           },
         },
       },
@@ -194,7 +194,7 @@ export function initSkillRadar() {
           titleColor: colors.textColor,
           bodyColor: colors.textColor,
           borderColor: isDarkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(107, 114, 128, 0.5)',
-          borderWidth: 2,
+          borderWidth: 1,
           padding: 20,
           displayColors: true,
           cornerRadius: 8,
