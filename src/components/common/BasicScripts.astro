@@ -138,13 +138,16 @@ import { UI } from 'astrowind:config';
       if (!audio || !iconOn || !iconOff) return;
 
       if (audio.paused) {
-        audio.play().then(() => {
-          iconOn.classList.add('hidden');
-          iconOff.classList.remove('hidden');
-          localStorage.setItem('ambiance-sound', 'playing');
-        }).catch(err => {
-          console.log('Audio playback failed:', err);
-        });
+        audio
+          .play()
+          .then(() => {
+            iconOn.classList.add('hidden');
+            iconOff.classList.remove('hidden');
+            localStorage.setItem('ambiance-sound', 'playing');
+          })
+          .catch((err) => {
+            console.log('Audio playback failed:', err);
+          });
       } else {
         audio.pause();
         iconOn.classList.remove('hidden');
@@ -161,14 +164,17 @@ import { UI } from 'astrowind:config';
       const iconOn = button?.querySelector('[data-sound-icon-on]');
       const iconOff = button?.querySelector('[data-sound-icon-off]');
 
-      audio.play().then(() => {
-        if (iconOn && iconOff) {
-          iconOn.classList.add('hidden');
-          iconOff.classList.remove('hidden');
-        }
-      }).catch(err => {
-        console.log('Audio autoplay failed:', err);
-      });
+      audio
+        .play()
+        .then(() => {
+          if (iconOn && iconOff) {
+            iconOn.classList.add('hidden');
+            iconOff.classList.remove('hidden');
+          }
+        })
+        .catch((err) => {
+          console.log('Audio autoplay failed:', err);
+        });
     }
   }
 
