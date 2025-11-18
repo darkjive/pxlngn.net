@@ -41,7 +41,12 @@ const {
             </div>
             <div class="mt-0.5">
               {title && (
-                <h3 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}>
+                <h3
+                  data-animate
+                  data-anim-type="typewriter"
+                  data-anim-delay={index * 100 + 150}
+                  class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}
+                >
                   {title}
                 </h3>
               )}

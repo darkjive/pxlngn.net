@@ -18,6 +18,10 @@ export function initSkillRadar() {
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
+  // Finde den Loader
+  const loader = document.querySelector('[data-skill-radar-loader]');
+  const skeleton = loader?.querySelector('[data-futuristic-skeleton]');
+
   // Detect dark mode
   const isDarkMode = document.documentElement.classList.contains('dark');
 
@@ -123,6 +127,17 @@ export function initSkillRadar() {
       animation: {
         duration: 2000,
         easing: 'easeInOutQuart',
+        onComplete: () => {
+          // Verstecke Loader nach Chart-Animation
+          if (skeleton) {
+            skeleton.classList.add('loaded');
+          }
+          setTimeout(() => {
+            if (loader) {
+              loader.classList.add('loaded');
+            }
+          }, 600);
+        },
       },
       onHover: (event, activeElements) => {
         // Play sound on node hover

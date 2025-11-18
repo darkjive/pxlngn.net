@@ -205,6 +205,55 @@ const animateTypewriter = (element) => {
 };
 
 /**
+ * Decipher-Effekt: Zeichen werden von zufälligen Zeichen zu finalem Text "entschlüsselt"
+ *
+ * Verwendung: <h1 data-animate data-anim-type="decipher">Headline</h1>
+ *
+ * @param {HTMLElement} element - Text-Element für Decipher-Effekt
+ * @returns {void}
+ */
+const animateDecipher = (element) => {
+  if (element.dataset.animated) return;
+  element.dataset.animated = 'true';
+
+  const text = element.textContent;
+  const delay = parseInt(element.dataset.animDelay || '0');
+  const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  // Mache Element sichtbar
+  element.style.opacity = '1';
+
+  // Teile Text in einzelne Zeichen
+  const textChars = text.split('');
+  const iterations = 20; // Anzahl der Iterationen pro Zeichen
+
+  setTimeout(() => {
+    let frame = 0;
+    const interval = setInterval(() => {
+      element.textContent = textChars
+        .map((char, index) => {
+          // Zeichen für Zeichen "entschlüsseln"
+          if (index < frame / 3) {
+            return text[index];
+          }
+          // Zufälliges Zeichen anzeigen, aber Leerzeichen beibehalten
+          if (char === ' ') return ' ';
+          return chars[Math.floor(Math.random() * chars.length)];
+        })
+        .join('');
+
+      frame++;
+
+      // Stoppe wenn alle Zeichen entschlüsselt sind
+      if (frame >= textChars.length * 3 + iterations) {
+        clearInterval(interval);
+        element.textContent = text;
+      }
+    }, 30); // 30ms pro Frame
+  }, delay);
+};
+
+/**
  * Cycle-Typewriter: Wörter werden Buchstabe für Buchstabe geschrieben und gelöscht mit blinkendem Cursor
  *
  * Verwendung: <span data-animate data-anim-type="cycle-typewriter"></span>
@@ -489,6 +538,8 @@ const createObserver = () => {
             animateTypewriter(entry.target);
           } else if (entry.target.dataset.animType === 'cycle-typewriter') {
             animateCycleTypewriter(entry.target);
+          } else if (entry.target.dataset.animType === 'decipher') {
+            animateDecipher(entry.target);
           } else {
             animateElement(entry.target);
           }

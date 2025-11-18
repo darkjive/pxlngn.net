@@ -56,14 +56,14 @@ const hasMultipleLines = titleLines.length > 1;
       titleLines.map((line, index) => (
         <span
           data-animate
-          data-anim-type={index % 2 === 0 ? 'fade-left' : 'fade-right'}
+          data-anim-type="decipher"
           data-anim-delay={baseDelay + index * delayIncrement}
           set:html={line}
           class="block"
         />
       ))
     ) : (
-      <span data-animate data-anim-type="fade-up" data-anim-delay={baseDelay} set:html={title} />
+      <span data-animate data-anim-type="decipher" data-anim-delay={baseDelay} set:html={title} />
     )
   }
 </HeadingTag>

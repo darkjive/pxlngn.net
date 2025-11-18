@@ -5,15 +5,37 @@
  */
 import type { SkillRadar } from '~/types';
 import '~/assets/styles/skill-radar.css';
+import FuturisticLoader from '~/components/ui/FuturisticLoader.astro';
 
 type Props = SkillRadar;
 
 const { class: className } = Astro.props;
 ---
 
-<div class={`skill-radar-container ${className || ''}`}>
+<div class={`skill-radar-container ${className || ''}`} data-skill-radar-wrapper>
+  <!-- Futuristic Loader -->
+  <div data-skill-radar-loader>
+    <FuturisticLoader glowColor="cyan" effect="cyber" />
+  </div>
+
   <canvas id="skillRadarChart" data-chart-type="tech"></canvas>
 </div>
 
 <!-- Load Chart.js from CDN -->
 <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+
+<style is:global>
+  .skill-radar-container {
+    position: relative;
+  }
+
+  [data-skill-radar-loader] {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+  }
+
+  [data-skill-radar-loader].loaded {
+    display: none;
+  }
+</style>
