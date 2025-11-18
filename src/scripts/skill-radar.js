@@ -38,16 +38,7 @@ export function initSkillRadar() {
   };
 
   // Combined labels for both datasets
-  const labels = [
-    'HTML/CSS',
-    'JavaScript',
-    'TypeScript',
-    'React/Vue/Astro',
-    'Node.js',
-    'Git',
-    'Testing',
-    'Design',
-  ];
+  const labels = ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Vue/Astro', 'Node.js', 'Git', 'Testing', 'Design'];
 
   // Tech Skills data
   const techData = [90, 50, 40, 70, 55, 75, 45, 85];
@@ -126,16 +117,16 @@ export function initSkillRadar() {
           min: 0,
           ticks: {
             display: false,
-            stepSize: 20,
+            stepSize: 5,
             backdropColor: 'transparent',
           },
           grid: {
             color: colors.gridColor,
             circular: true,
-            lineWidth: 2,
+            lineWidth: 1,
           },
           pointLabels: {
-            display: false,
+            display: true,
           },
           angleLines: {
             color: colors.gridColor,
