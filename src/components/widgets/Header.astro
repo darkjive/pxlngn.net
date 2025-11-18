@@ -34,7 +34,6 @@ export interface Props {
 const {
   id = 'header',
   links = [],
-  actions = [],
   isSticky = false,
   isDark = false,
   isFullWidth = false,
@@ -77,9 +76,10 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
     <nav
       class="no-scrollbar hidden w-full items-center justify-self-center overflow-y-auto overflow-x-hidden md:mx-5 md:flex md:w-auto md:overflow-x-auto md:overflow-y-visible"
       aria-label="Hauptnavigation"
+      data-mobile-menu
     >
       <ul
-        class="Anklepants flex w-full flex-col justify-center text-3xl font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:font-sans md:text-[0.9375rem]"
+        class="Anklepants flex w-full flex-col justify-center font-medium tracking-[0.01rem] md:w-auto md:flex-row md:self-center md:font-sans md:text-[0.9375rem]"
       >
         {
           links.map(({ text, href, links, icon }, index) => {
@@ -129,7 +129,9 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                 ) : (
                   <a
                     class:list={[
-                      'flex w-full items-center whitespace-nowrap px-4 py-4 first:rounded-t last:rounded-b hover:text-primary dark:hover:text-primary md:w-auto md:py-3',
+                      'flex w-full items-center whitespace-nowrap px-4 py-4 uppercase first:rounded-t last:rounded-b hover:text-primary dark:hover:text-primary',
+                      'Anklepants leading-tighter mb-4 break-all font-heading text-5xl dark:text-gray-200',
+                      'md:mb-0 md:w-auto md:break-normal md:py-3 md:font-sans md:text-[0.9375rem] md:leading-normal',
                       { 'aw-link-active': isActive },
                     ]}
                     href={href}
@@ -143,6 +145,53 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           })
         }
       </ul>
+      <!-- Mobile Menu Footer Buttons -->
+      <div class="absolute bottom-6 right-6 flex flex-row gap-3 md:hidden">
+        {
+          showToggleTheme && (
+            <div data-animate data-anim-type="fade-left" data-anim-delay="100">
+              <ToggleTheme
+                class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+                iconClass="inline-block"
+              />
+            </div>
+          )
+        }
+        <a
+          class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+          aria-label="GitHub"
+          href="https://github.com/darkjive/pxlngn.net"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-animate
+          data-anim-type="fade-left"
+          data-anim-delay="150"
+        >
+          <Icon name="tabler:brand-github" class="h-5 w-5" />
+        </a>
+        <a
+          class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+          aria-label="E-Mail"
+          href="mailto:hi@pxlngn.net"
+          data-animate
+          data-anim-type="fade-left"
+          data-anim-delay="200"
+        >
+          <Icon name="tabler:mail" class="h-5 w-5" />
+        </a>
+        <a
+          class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+          aria-label="LinkedIn"
+          href="https://www.linkedin.com/in/alain-ritter-b49ba8233/"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-animate
+          data-anim-type="fade-left"
+          data-anim-delay="250"
+        >
+          <Icon name="tabler:brand-linkedin" class="h-5 w-5" />
+        </a>
+      </div>
     </nav>
     <!-- Buttons -->
     <div
@@ -161,19 +210,17 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           </div>
         )
       }
-      {
-        actions?.[1]?.href && (
-          <div data-animate data-anim-type="fade-left" data-anim-delay="300">
-            <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-              aria-label="E-Mail"
-              href={actions[1].href}
-            >
-              <Icon name="tabler:mail" class="h-5 w-5" />
-            </a>
-          </div>
-        )
-      }
+      <div data-animate data-anim-type="fade-left" data-anim-delay="300">
+        <button
+          type="button"
+          class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+          aria-label="Ambiance Sound Toggle"
+          data-sound-toggle
+        >
+          <Icon name="tabler:volume" class="h-5 w-5" data-sound-icon-on />
+          <Icon name="tabler:volume-off" class="hidden h-5 w-5" data-sound-icon-off />
+        </button>
+      </div>
       <div class="md:hidden" data-animate data-anim-type="fade-left" data-anim-delay="350">
         <ToggleMenu />
       </div>

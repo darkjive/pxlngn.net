@@ -223,14 +223,14 @@ const animateCycleTypewriter = (element) => {
   element.dataset.animated = 'true';
 
   // Definierte Wörter und zugehörige Tailwind-Farben
-  const words = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
+  const words = ['Designer.', 'Projektleiter.', 'Tester.', 'Entwickler!', 'Ich...'];
   const colors = [
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
   ];
 
   let index = 0;

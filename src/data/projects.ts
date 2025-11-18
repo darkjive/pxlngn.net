@@ -9,7 +9,7 @@ import type { Item } from '~/types';
 export const projectItems: Item[] = [
   {
     title: 'OXG Glasfaser GmbH',
-    description: `TYPO3-basierte Webseite mit Fokus auf Glasfaser-Internet. Projektmanagement mit Scrum-Methodik für agile Entwicklung und kontinuierliche Verbesserung.`,
+    description: `TYPO3-Website für Glasfaser-Internet. Scrum-basiert entwickelt.`,
     icon: 'tabler:world',
     callToAction: {
       variant: 'link',
@@ -19,7 +19,7 @@ export const projectItems: Item[] = [
   },
   {
     title: 'Baukultur Baden-Württemberg',
-    description: `TYPO3-Website für Architektur und Baukultur. Projektmanagement im Hybrid-Ansatz mit Waterfall- und Scrum-Elementen für strukturierte und flexible Umsetzung.`,
+    description: `TYPO3-Plattform für Architektur und Baukultur. Hybrid zwischen Waterfall und Scrum.`,
     icon: 'tabler:world',
     callToAction: {
       variant: 'link',
@@ -29,7 +29,7 @@ export const projectItems: Item[] = [
   },
   {
     title: 'KuK',
-    description: `TYPO3-Plattform für Ingenieurwesen. Klassisches Projektmanagement mit Kanban für kontinuierlichen Workflow und optimierte Prozesse.`,
+    description: `TYPO3-Plattform für Ingenieurwesen. Kanban-basierter Workflow.`,
     icon: 'tabler:world',
     callToAction: {
       variant: 'link',
@@ -39,7 +39,7 @@ export const projectItems: Item[] = [
   },
   {
     title: 'TKS Cable',
-    description: `TYPO3-Lösung für Kabel- und Netzwerktechnik. Projektmanagement mit Kanban für kontinuierlichen Workflow und optimierte Prozesse.`,
+    description: `TYPO3 für Kabel- und Netzwerktechnik. Kontinuierlicher Kanban-Workflow.`,
     icon: 'tabler:world',
     callToAction: {
       variant: 'link',
@@ -49,7 +49,7 @@ export const projectItems: Item[] = [
   },
   {
     title: 'Vodafone Zuhause Plus',
-    description: `Moderne Website mit Static Site Generator. Frontend-Entwicklung und Scrum-basiertes Projektmanagement für schnelle Iteration und hohe Code-Qualität.`,
+    description: `Static Site Generator statt TYPO3. Frontend-Entwicklung mit Scrum - schnelle Iteration, hohe Code-Qualität.`,
     icon: 'tabler:world',
     callToAction: {
       variant: 'link',

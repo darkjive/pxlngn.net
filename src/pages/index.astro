@@ -5,8 +5,9 @@ import Brands from '~/components/widgets/Brands.astro';
 import Features from '~/components/widgets/Features.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Hero from '~/components/widgets/Hero.astro';
-import FuturisticImage from '~/components/common/FuturisticImage.astro';
 import BackgroundImage from '~/components/ui/BackgroundImage.astro';
+import SkillRadar from '~/components/ui/SkillRadar.astro';
+import GlitchProfileImage from '~/components/ui/GlitchProfileImage.astro';
 
 // Daten-Imports
 import { resumeItems } from '~/data/resume';
@@ -35,15 +36,14 @@ const metadata = {
     id="hero"
     title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
+    headingLevel="h1"
     class="section-border"
     actions={[{ variant: 'secondary', text: 'Profil', href: '#profile', icon: 'tabler:user' }]}
   >
     <BackgroundImage slot="bg" src="/images/5594016.webp" fetchpriority="high" loading="eager" />
 
-    <Fragment slot="title"></Fragment>
-
     <Fragment slot="subtitle">
-      <span data-animate data-anim-type="typewriter">Willkommen in meiner digitalen Welt! </span>
+      <span data-animate data-anim-type="typewriter">Entwickler mit Fokus auf Frontend.</span>
     </Fragment>
   </Hero>
 
@@ -52,20 +52,13 @@ const metadata = {
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
 
     <Fragment slot="image">
-      <div class="relative m-auto max-w-4xl" data-animate data-anim-type="fade-up">
-        <FuturisticImage
-          src="~/assets/images/normal.jpg"
+      <div class="relative m-auto max-w-4xl space-y-8" data-animate data-anim-type="fade-up">
+        <GlitchProfileImage
           alt="Alain Ritter - Profilbild"
           width={500}
           height={500}
-          widths={[400, 768]}
-          sizes="(max-width: 768px) 100vw, 432px"
-          layout="responsive"
-          loading="eager"
-          futuristicEffect="cyber"
           glowColor="cyan"
-          data-glitch
-          class="mx-auto w-full rounded-lg shadow-lg"
+          class="mx-auto w-full"
         />
       </div>
     </Fragment>
@@ -83,19 +76,16 @@ const metadata = {
   <!-- Profile Hero -->
   <Hero
     id="profile"
-    title="<span class='lg:text-7xl'>Generalist<br/>mit<br/> Herz.</span>"
+    title="Entwickler<br/>mit Herz."
     tagline="Profil"
-    headingLevel="h2"
+    headingLevel="h3"
     actions={[{ variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' }]}
   >
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
 
-    <Fragment slot="title"></Fragment>
-
     <Fragment slot="subtitle">
       <span data-animate data-anim-type="typewriter">
-        ...der die Schnittstellen zwischen Design und Logik liebt. Hier kannst du mehr über meine Person und meinen
-        Hintergrund erfahren.
+        Design trifft Code. Hier steht, was ich kann und wie ich ticke.
       </span>
     </Fragment>
   </Hero>
@@ -120,8 +110,8 @@ const metadata = {
   <Features
     id="projects"
     tagline="Projekte"
-    title="Projekte<br/> für<br/> Kunden"
-    subtitle="Eine Auswahl von Projekten, die ich als Projektmanager und Entwickler begleitet habe."
+    title="<span class='leading-tighter Anklepants leading-tighter mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200 md:text-7xl'>Projekte</span>"
+    subtitle="Projekte, die ich als PM und Dev begleitet habe."
     items={projectItems}
     columns={2}
     defaultIcon="tabler:world"
@@ -130,12 +120,23 @@ const metadata = {
     <BackgroundImage slot="bg" src="/images/87395.webp" />
   </Features>
 
+  <!-- Skill Chart Section -->
+  <Hero id="chart" title="Skills" tagline="Chronologische Entwicklung" headingLevel="h2">
+    <BackgroundImage slot="bg" src="/images/5571508.webp" />
+
+    <Fragment slot="content">
+      <div class="mx-auto max-w-4xl">
+        <SkillRadar />
+      </div>
+    </Fragment>
+  </Hero>
+
   <!-- Skills Section -->
   <Features
     id="skills"
-    tagline="Skills"
+    tagline=""
     title="Meine<br/>Erfahrung"
-    subtitle="Eine Übersicht meiner Tätigkeiten und Fähigkeiten in den Bereichen Web-Entwicklung, Projektleitung, Scrum Master und QA-Softwaretesting."
+    subtitle="Über 20 Jahre Weg von Web-Dev über Scrum Master bis Teamleitung. Projekte aufgebaut, Teams geführt, Code geschrieben."
     items={skillItems}
     columns={3}
     defaultIcon="tabler:point-filled"
@@ -148,7 +149,7 @@ const metadata = {
   <Brands
     id="tech"
     title="Software<br/> Stack"
-    subtitle="Diese Technologien beherrsche ich fundiert und setze sie routiniert in Projekten ein."
+    subtitle="Damit arbeite ich täglich."
     images={primaryTechStack}
     icons={[]}
     classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
@@ -160,7 +161,7 @@ const metadata = {
   <Brands
     id="learning"
     title=""
-    subtitle="Weniger genutzte, aber ebenfalls bekannte Technologien."
+    subtitle="Seltener genutzt, aber bekannt."
     images={secondaryTechStack}
     icons={[]}
     classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
@@ -171,7 +172,7 @@ const metadata = {
   <!-- Project Management -->
   <Brands
     title="Projekt<br/> management"
-    subtitle="Agile und klassische Projektmanagement-Methoden, die ich in verschiedenen Projekten erfolgreich eingesetzt habe."
+    subtitle="Scrum, Kanban, Waterfall - je nachdem was passt."
     images={projectManagementMethods}
     icons={[]}
     classes={{ container: 'max-w-3xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
@@ -182,7 +183,7 @@ const metadata = {
   <!-- Tools -->
   <Brands
     title="Tools"
-    subtitle="Tools, mit denen ich arbeite, oder Erfahrung in ihrer Anwendung habe."
+    subtitle="Mein Tech-Arsenal."
     images={toolStack}
     icons={[]}
     classes={{ container: 'max-w-4xl dark:bg-transparent pt-12 md:pt-16 lg:pt-20 pb-0 md:pb-0 lg:pb-0' }}
@@ -193,7 +194,7 @@ const metadata = {
   <!-- CMS -->
   <Brands
     title="CMS"
-    subtitle="Content-Management-Systeme, mit denen ich auch vertraut bin, sowohl mit ihren Möglichkeiten als auch ihren Grenzen."
+    subtitle="CMS-Erfahrung - mit allen Vor- und Nachteilen."
     images={cmsStack}
     icons={[]}
     classes={{ container: 'dark:bg-transparent max-w-3xl' }}
@@ -204,9 +205,9 @@ const metadata = {
   <!-- Abstract/Services -->
   <Features
     id="abstract"
-    tagline="Abstract"
+    tagline=""
     title="Was ich<br/> anbiete"
-    subtitle="Entwicklung, Leitung und Qualitätssicherung von Webprojekten. Fokus auf Code-Qualität, Stabilität und Effizienz."
+    subtitle="Development, PM, QA. Code-Qualität, Stabilität, Effizienz."
     items={abstractItems}
     classes={{ container: 'max-w-3xl section-border-top' }}
   >

@@ -302,3 +302,20 @@ export interface Content extends Omit<Headline, 'classes'>, Widget {
 }
 
 export interface Contact extends Omit<Headline, 'classes'>, Form, Widget {}
+
+export interface SkillRadar {
+  class?: string;
+}
+
+export interface SkillData {
+  label: string;
+  value: number;
+}
+
+export interface GlitchProfileImage {
+  alt: string;
+  width: number;
+  height: number;
+  class?: string;
+  glowColor?: string;
+}

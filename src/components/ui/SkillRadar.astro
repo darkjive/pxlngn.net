@@ -1,0 +1,19 @@
+---
+/**
+ * Skill Radar Chart Component
+ * Animated spider/radar chart showing skill distribution with dual datasets
+ */
+import type { SkillRadar } from '~/types';
+import '~/assets/styles/skill-radar.css';
+
+type Props = SkillRadar;
+
+const { class: className } = Astro.props;
+---
+
+<div class={`skill-radar-container ${className || ''}`}>
+  <canvas id="skillRadarChart" data-chart-type="tech"></canvas>
+</div>
+
+<!-- Load Chart.js from CDN -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>

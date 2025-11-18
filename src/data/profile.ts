@@ -26,9 +26,6 @@ export const contactItems: Item[] = [
 ];
 
 export const profileText = {
-  description: `Mir macht es Spaß, digitale Erlebnisse zu schaffen, die gut aussehen und einfach funktionieren. Egal, ob Design
-    oder Code. Meine Stärke liegt in meiner hohen Anpassungsfähigkeit. Ich passe mich schnell an neue Anforderungen,
-    Technologien oder Herausforderungen an und finde Lösungen, die genau zum Projekt und den Nutzern passen. Neben
-    meiner Arbeit als Entwickler bringe ich Erfahrung in Scrum und QA mit, weil Projekte für mich nicht nur kreativ,
-    sondern auch gut strukturiert sein müssen.`,
+  description: `"beep, boop" seit dem ich 14 bin. Screendesign, UI-Design, später Full-Stack im Web mit modernem Software-Stack.
+    12 Jahre professionell, von Front-End über Scrum Master bis Projektleitung. Design verstehen, Code schreiben, Teams koordinieren, Menschen helfen und zu begeistern, ist was ich liebe.`,
 };

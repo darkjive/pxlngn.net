@@ -1,0 +1,79 @@
+---
+/**
+ * Glitch Profile Image Component
+ * Shows normal.jpg with random glitch overlays
+ * Glitch images flash randomly when in viewport
+ */
+import { Image } from 'astro:assets';
+import type { GlitchProfileImage } from '~/types';
+import '~/assets/styles/glitch-profile.css';
+import FuturisticLoader from '~/components/ui/FuturisticLoader.astro';
+
+// Import all images
+import normalImg from '~/assets/images/normal.jpg';
+import glitchImg from '~/assets/images/glitch.jpg';
+import glitchHardImg from '~/assets/images/glitch-hard.png';
+
+type Props = GlitchProfileImage;
+
+const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props;
+---
+
+<div class={`glitch-profile-wrapper ${className || ''}`} data-glitch-profile>
+  <div class="glitch-profile-container">
+    <!-- Futuristic Loader with Scanlines and INITIALIZING Text -->
+    <div data-glitch-loader>
+      <FuturisticLoader glowColor={glowColor} effect="cyber" />
+    </div>
+
+    <!-- Base Image (normal.jpg - always visible, preloaded) -->
+    <Image
+      src={normalImg}
+      alt={alt}
+      width={width}
+      height={height}
+      widths={[320, 400, width]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      class="glitch-profile-base"
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      format="webp"
+      quality={85}
+    />
+
+    <!-- Glitch Overlay 1 (glitch.jpg - lazy loaded) -->
+    <Image
+      src={glitchImg}
+      alt=""
+      aria-hidden="true"
+      width={width}
+      height={height}
+      widths={[320, 400, width]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      class="glitch-profile-overlay"
+      loading="lazy"
+      decoding="async"
+      format="webp"
+      quality={80}
+      data-glitch-overlay
+    />
+
+    <!-- Glitch Overlay 2 (glitch-hard.png - lazy loaded) -->
+    <Image
+      src={glitchHardImg}
+      alt=""
+      aria-hidden="true"
+      width={width}
+      height={height}
+      widths={[320, 400, width]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      class="glitch-profile-overlay"
+      loading="lazy"
+      decoding="async"
+      format="webp"
+      quality={80}
+      data-glitch-overlay
+    />
+  </div>
+</div>

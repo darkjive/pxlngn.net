@@ -57,9 +57,9 @@ const {
 
         {
           items && items.length > 0 && (
-            <div class="gap-y-4 md:gap-y-8">
+            <div class="flex flex-row gap-4">
               {items.map(({ icon, callToAction: itemCallToAction }, index) => (
-                <div class="mb-4 flex items-center" data-animate data-anim-type="fade-up" data-anim-delay={index * 100}>
+                <div class="flex items-center" data-animate data-anim-type="fade-up" data-anim-delay={index * 100}>
                   <div class="flex justify-center">
                     {icon && (
                       <Icon

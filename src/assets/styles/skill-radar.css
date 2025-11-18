@@ -1,0 +1,54 @@
+/**
+ * Skill Radar Chart Styles
+ * Futuristic radar chart with glow effects
+ */
+
+.skill-radar-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+}
+
+.skill-radar-container canvas {
+  width: 100% !important;
+  height: auto !important;
+  /* Note: Chart.js labels are canvas-rendered, so CSS classes don't apply directly.
+     Label styling is configured in skill-radar.js with:
+     - size: 12px (text-xs equivalent)
+     - color: muted gray
+     - tracking-wide effect achieved through font rendering */
+}
+
+/* Futuristic glow effect - Dark Mode */
+.dark .skill-radar-container::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  pointer-events: none;
+  animation: radarPulse 3s ease-in-out infinite;
+  z-index: -1;
+}
+
+/* Light Mode glow effect */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .skill-radar-container {
+    max-width: 100%;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .skill-radar-container {
+    padding: 1rem;
+  }
+}
