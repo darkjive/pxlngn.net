@@ -200,19 +200,17 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
           </div>
         )
       }
-      {
-        actions?.[1]?.href && (
-          <div data-animate data-anim-type="fade-left" data-anim-delay="300">
-            <a
-              class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
-              aria-label="E-Mail"
-              href={actions[1].href}
-            >
-              <Icon name="tabler:mail" class="h-5 w-5" />
-            </a>
-          </div>
-        )
-      }
+      <div data-animate data-anim-type="fade-left" data-anim-delay="300">
+        <button
+          type="button"
+          class="inline-flex items-center rounded-lg bg-gray-100 p-2.5 text-sm text-muted hover:bg-gray-100 hover:text-primary dark:bg-gray-900/60 dark:hover:bg-gray-900/70"
+          aria-label="Ambiance Sound Toggle"
+          data-sound-toggle
+        >
+          <Icon name="tabler:volume" class="h-5 w-5" data-sound-icon-on />
+          <Icon name="tabler:volume-off" class="hidden h-5 w-5" data-sound-icon-off />
+        </button>
+      </div>
       <div class="md:hidden" data-animate data-anim-type="fade-left" data-anim-delay="350">
         <ToggleMenu />
       </div>

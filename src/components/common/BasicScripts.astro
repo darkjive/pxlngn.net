@@ -128,6 +128,48 @@ import { UI } from 'astrowind:config';
         toggleMenu(document.querySelector('[data-aw-toggle-menu]'));
       }
     });
+
+    // Sound Toggle
+    attachEvent('[data-sound-toggle]', 'click', function (_, button) {
+      const audio = document.getElementById('ambiance-sound');
+      const iconOn = button.querySelector('[data-sound-icon-on]');
+      const iconOff = button.querySelector('[data-sound-icon-off]');
+
+      if (!audio || !iconOn || !iconOff) return;
+
+      if (audio.paused) {
+        audio.play().then(() => {
+          iconOn.classList.add('hidden');
+          iconOff.classList.remove('hidden');
+          localStorage.setItem('ambiance-sound', 'playing');
+        }).catch(err => {
+          console.log('Audio playback failed:', err);
+        });
+      } else {
+        audio.pause();
+        iconOn.classList.remove('hidden');
+        iconOff.classList.add('hidden');
+        localStorage.setItem('ambiance-sound', 'paused');
+      }
+    });
+
+    // Restore sound state from localStorage
+    const audio = document.getElementById('ambiance-sound');
+    const soundState = localStorage.getItem('ambiance-sound');
+    if (audio && soundState === 'playing') {
+      const button = document.querySelector('[data-sound-toggle]');
+      const iconOn = button?.querySelector('[data-sound-icon-on]');
+      const iconOff = button?.querySelector('[data-sound-icon-off]');
+
+      audio.play().then(() => {
+        if (iconOn && iconOff) {
+          iconOn.classList.add('hidden');
+          iconOff.classList.remove('hidden');
+        }
+      }).catch(err => {
+        console.log('Audio autoplay failed:', err);
+      });
+    }
   }
 
   function initCopyUrl() {

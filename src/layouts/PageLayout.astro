@@ -24,4 +24,8 @@ const { metadata } = Astro.props;
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
+  <!-- Ambiance Sound -->
+  <audio id="ambiance-sound" loop preload="none">
+    <source src="/audio/513487__x3nus__ardanbanapolis-interstellar-hub.flac" type="audio/flac" />
+  </audio>
 </Layout>
