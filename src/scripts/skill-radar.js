@@ -3,6 +3,8 @@
  * Initializes Chart.js radar chart for skill visualization
  */
 
+/* global Chart */
+
 export function initSkillRadar() {
   if (typeof Chart === 'undefined') {
     console.warn('Chart.js not loaded yet, retrying...');

@@ -14,7 +14,7 @@ import normalImg from '~/assets/images/normal.jpg';
 import glitchImg from '~/assets/images/glitch.jpg';
 import glitchHardImg from '~/assets/images/glitch-hard.png';
 
-interface Props extends GlitchProfileImage {}
+type Props = GlitchProfileImage;
 
 const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props;
 ---

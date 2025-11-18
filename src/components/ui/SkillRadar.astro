@@ -6,7 +6,7 @@
 import type { SkillRadar } from '~/types';
 import '~/assets/styles/skill-radar.css';
 
-interface Props extends SkillRadar {}
+type Props = SkillRadar;
 
 const { class: className } = Astro.props;
 ---
