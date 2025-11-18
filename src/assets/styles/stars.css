@@ -4,10 +4,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('~/assets/images/beautiful-shining-stars-night-sky.webp');
+  background-image: url('~/assets/images/stars-night-sky_m.webp');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+/* Desktop background image */
+@media (min-width: 768px) {
+  .bg-animation {
+    background-image: url('~/assets/images/stars-night-sky_d.webp');
+  }
 }
 
 #pixels {
