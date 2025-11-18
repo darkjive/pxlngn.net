@@ -34,7 +34,6 @@ export interface Props {
 const {
   id = 'header',
   links = [],
-  actions = [],
   isSticky = false,
   isDark = false,
   isFullWidth = false,
@@ -131,8 +130,8 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                   <a
                     class:list={[
                       'flex w-full items-center whitespace-nowrap px-4 py-4 first:rounded-t last:rounded-b hover:text-primary dark:hover:text-primary',
-                      'Anklepants leading-tighter text-5xl tracking-tighter font-heading break-all mb-4 dark:text-gray-200',
-                      'md:w-auto md:py-3 md:text-[0.9375rem] md:mb-0 md:break-normal md:leading-normal md:font-sans',
+                      'Anklepants leading-tighter mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200',
+                      'md:mb-0 md:w-auto md:break-normal md:py-3 md:font-sans md:text-[0.9375rem] md:leading-normal',
                       { 'aw-link-active': isActive },
                     ]}
                     href={href}

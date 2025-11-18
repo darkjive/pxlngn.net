@@ -113,7 +113,7 @@ export function initSkillRadar() {
           display: false,
         },
         tooltip: {
-          enabled: false,
+          enabled: true,
           backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
           titleColor: colors.primary,
           bodyColor: colors.textColor,
@@ -124,7 +124,7 @@ export function initSkillRadar() {
           titleFont: {
             size: 20,
           },
-          bodyFont: { size: 20 },
+          bodyFont: { size: 10 },
           callbacks: {
             label: function () {
               return ''; // No label text
