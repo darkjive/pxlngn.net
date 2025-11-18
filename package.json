@@ -29,7 +29,7 @@
     "@fontsource-variable/baloo-bhaijaan-2": "^5.1.0",
     "@playwright/test": "^1.49.1",
     "animejs": "^4.2.2",
-    "astro": "^5.15.5",
+    "astro": "^5.15.9",
     "astro-embed": "^0.7.4",
     "astro-icon": "^1.1.1",
     "caniuse-lite": "^1.0.30001754",
@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
-    "@astrojs/mdx": "^4.3.10",
+    "@astrojs/mdx": "^4.3.11",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/tailwind": "^6.0.2",
     "@eslint/js": "^9.12.0",
