@@ -24,11 +24,13 @@ export function initSkillRadar() {
   // Color scheme based on theme
   const colors = {
     primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
-    primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.2)' : 'rgba(14, 165, 233, 0.2)',
-    gridColor: isDarkMode ? 'rgba(75, 85, 99, 0.3)' : 'rgba(209, 213, 219, 0.5)', // gray-600 / gray-300
-    textColor: isDarkMode ? 'rgba(229, 231, 235, 0.9)' : 'rgba(31, 41, 55, 0.9)', // gray-200 / gray-800
-    tickColor: isDarkMode ? 'rgba(156, 163, 175, 0.8)' : 'rgba(107, 114, 128, 0.8)', // gray-400 / gray-500
+    primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.3)' : 'rgba(14, 165, 233, 0.3)',
+    gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)', // More contrast
+    textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
+    tickColor: isDarkMode ? 'rgba(156, 163, 175, 1)' : 'rgba(107, 114, 128, 1)',
     pointBorder: isDarkMode ? '#fff' : '#1f2937',
+    tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)',
+    tooltipBorder: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)',
   };
 
   // Expanded skill data with multiple categories
@@ -71,6 +73,10 @@ export function initSkillRadar() {
     ],
   };
 
+  // Get hover sound for interaction
+  const soundHover = document.getElementById('sound-hover');
+  let lastHoveredIndex = null;
+
   // Chart configuration
   const config = {
     type: 'radar',
@@ -82,13 +88,30 @@ export function initSkillRadar() {
         duration: 2000,
         easing: 'easeInOutQuart',
       },
+      onHover: (event, activeElements) => {
+        // Play sound on node hover
+        if (activeElements.length > 0) {
+          const currentIndex = activeElements[0].index;
+          if (currentIndex !== lastHoveredIndex) {
+            lastHoveredIndex = currentIndex;
+            // Play sound if enabled
+            const soundsEnabled = localStorage.getItem('sounds-enabled') !== 'false';
+            if (soundHover && soundsEnabled) {
+              soundHover.currentTime = 0;
+              soundHover.play().catch(() => {});
+            }
+          }
+        } else {
+          lastHoveredIndex = null;
+        }
+      },
       scales: {
         r: {
           beginAtZero: true,
           max: 100,
           min: 0,
           ticks: {
-            display: true, // Hide tick numbers
+            display: false, // Hide tick numbers
             stepSize: 20,
             backdropColor: 'transparent',
           },
@@ -98,9 +121,7 @@ export function initSkillRadar() {
             lineWidth: 2,
           },
           pointLabels: {
-            color: colors.textColor,
-            font: { size: 20 },
-            padding: 15,
+            display: false, // Hide labels
           },
           angleLines: {
             color: colors.gridColor,
@@ -114,24 +135,34 @@ export function initSkillRadar() {
         },
         tooltip: {
           enabled: true,
-          backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
-          titleColor: colors.primary,
+          backgroundColor: colors.tooltipBg,
+          titleColor: colors.tooltipBorder,
           bodyColor: colors.textColor,
-          borderColor: colors.primary,
-          borderWidth: 2,
-          padding: 16,
+          borderColor: colors.tooltipBorder,
+          borderWidth: 3,
+          padding: 20,
           displayColors: false,
+          cornerRadius: 8,
           titleFont: {
-            size: 20,
+            size: 18,
+            weight: 'bold',
+            family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
-          bodyFont: { size: 10 },
+          bodyFont: {
+            size: 28,
+            weight: 'bold',
+            family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+          },
+          titleMarginBottom: 12,
+          bodySpacing: 8,
           callbacks: {
-            label: function () {
-              return ''; // No label text
-            },
             title: function (context) {
-              // Only show skill name
+              // Show skill name
               return context[0].label.replace(/\n/g, ' ');
+            },
+            label: function (context) {
+              // Show percentage value with styling
+              return context.parsed.r + '%';
             },
           },
         },
