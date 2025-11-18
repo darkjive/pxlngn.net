@@ -37,14 +37,25 @@ export function initSkillRadar() {
     tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)',
   };
 
-  // Combined labels for both datasets
-  const labels = ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Vue/Astro', 'Node.js', 'Git', 'Testing', 'Design'];
+  // Combined labels for both datasets (10 categories)
+  const labels = [
+    'Frontend',
+    'JavaScript',
+    'TypeScript',
+    'Frameworks',
+    'Backend',
+    'Git/DevOps',
+    'Testing',
+    'Design',
+    'Management',
+    'Kommunikation',
+  ];
 
-  // Tech Skills data
-  const techData = [90, 50, 40, 70, 55, 75, 45, 85];
+  // Tech Skills data (10 points)
+  const techData = [95, 85, 75, 85, 65, 80, 70, 85, 40, 50];
 
-  // Soft Skills data (matching same categories conceptually)
-  const softData = [70, 80, 90, 65, 70, 65, 90, 75];
+  // Soft Skills data (10 points)
+  const softData = [60, 70, 50, 65, 40, 60, 65, 75, 80, 95];
 
   const skillData = {
     labels: labels,
@@ -127,6 +138,13 @@ export function initSkillRadar() {
           },
           pointLabels: {
             display: true,
+            color: isDarkMode ? 'rgba(156, 163, 175, 1)' : 'rgba(107, 114, 128, 1)', // text-muted
+            font: {
+              size: 12, // text-xs
+              family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+              weight: 'normal',
+            },
+            padding: 15,
           },
           angleLines: {
             color: colors.gridColor,
