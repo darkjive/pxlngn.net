@@ -50,9 +50,9 @@ export function initSkillRadar() {
       {
         label: 'Skill Level',
         data: [
-          99, // Frontend Development
+          90, // Frontend Development
           60, // JavaScript/TypeScript
-          60, // JavaScript/TypeScript
+          60, // CSS / SCSS
           20, // Projektleitung
           40, // Scrum Master
           50, // Team Leadership
@@ -139,7 +139,7 @@ export function initSkillRadar() {
           titleColor: colors.tooltipBorder,
           bodyColor: colors.textColor,
           borderColor: colors.tooltipBorder,
-          borderWidth: 3,
+          borderWidth: 1,
           padding: 20,
           displayColors: false,
           cornerRadius: 8,
