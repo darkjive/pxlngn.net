@@ -27,10 +27,11 @@ export const primaryTechStack: TechImage[] = [
     title: 'JavaScript',
   },
   {
-    src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
-    alt: 'TypeScript - JavaScript mit Types',
-    title: 'TypeScript',
+    src: '~/assets/images/icons/astro.png',
+    alt: 'Astro - Modern Static Site Generator',
+    title: 'Astro',
   },
+
   {
     src: '~/assets/images/icons/tailwind_css.png',
     alt: 'Tailwind CSS - Utility-First Framework',
@@ -70,10 +71,11 @@ export const secondaryTechStack: TechImage[] = [
     title: 'Vue.js',
   },
   {
-    src: '~/assets/images/icons/astro.png',
-    alt: 'Astro - Modern Static Site Generator',
-    title: 'Astro',
+    src: '~/assets/images/icons/external-typescript-an-open-source-programming-language-developed-and-maintained-by-microsoft-logo-bold-tal-revivo.png',
+    alt: 'TypeScript - JavaScript mit Types',
+    title: 'TypeScript',
   },
+
   {
     src: '~/assets/images/icons/python--v1.png',
     alt: 'Python',

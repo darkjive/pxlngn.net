@@ -36,12 +36,11 @@ const metadata = {
     id="hero"
     title="Hallo,<br/> mein Name<br/> ist Alain."
     tagline="intro"
+    headingLevel="h1"
     class="section-border"
     actions={[{ variant: 'secondary', text: 'Profil', href: '#profile', icon: 'tabler:user' }]}
   >
     <BackgroundImage slot="bg" src="/images/5594016.webp" fetchpriority="high" loading="eager" />
-
-    <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span data-animate data-anim-type="typewriter">Entwickler mit Fokus auf Frontend.</span>
@@ -74,37 +73,15 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Skill Chart Section -->
-  <Content id="chart">
-    <BackgroundImage slot="bg" src="/images/5571508.webp" />
-    <Fragment slot="content">
-      <h2
-        data-animate
-        data-anim-type="typewriter"
-        class="Anklepants text-1xl mb-2 tracking-tight dark:text-white sm:text-2xl"
-      >
-        Skill Chart
-      </h2>
-      <div class="relative m-auto max-w-4xl space-y-8" data-animate data-anim-type="fade-up">
-        <SkillRadar class="m-8" />
-      </div>
-    </Fragment>
-    <Fragment slot="image">
-      <p data-animate data-anim-type="typewriter">sss</p>
-    </Fragment>
-  </Content>
-
   <!-- Profile Hero -->
   <Hero
     id="profile"
-    title="<span class='lg:text-7xl'>Generalist<br/>mit<br/> Herz.</span>"
+    title="Generalist<br/>mit Herz."
     tagline="Profil"
-    headingLevel="h2"
+    headingLevel="h3"
     actions={[{ variant: 'primary', text: 'Skills', href: '#skills', icon: 'tabler:adjustments' }]}
   >
     <BackgroundImage slot="bg" src="/images/5571508.webp" />
-
-    <Fragment slot="title"></Fragment>
 
     <Fragment slot="subtitle">
       <span data-animate data-anim-type="typewriter">
@@ -133,7 +110,7 @@ const metadata = {
   <Features
     id="projects"
     tagline="Projekte"
-    title="Projekte<br/> für<br/> Kunden"
+    title="<span class='leading-tighter Anklepants leading-tighter text-shadow-[1px_1px_0px_0px_#fff] mb-4 break-all font-heading text-5xl tracking-tighter dark:text-gray-200 md:text-7xl'>Projekte</span>"
     subtitle="Projekte, die ich als PM und Dev begleitet habe."
     items={projectItems}
     columns={2}
@@ -143,10 +120,19 @@ const metadata = {
     <BackgroundImage slot="bg" src="/images/87395.webp" />
   </Features>
 
+  <!-- Skill Chart Section -->
+  <Hero id="chart" title="Skills" tagline="Overview Chart" headingLevel="h2">
+    <BackgroundImage slot="bg" src="/images/5571508.webp" />
+
+    <Fragment slot="content">
+      <SkillRadar />
+    </Fragment>
+  </Hero>
+
   <!-- Skills Section -->
   <Features
     id="skills"
-    tagline="Skills"
+    tagline=""
     title="Meine<br/>Erfahrung"
     subtitle="Web-Dev, PM, Scrum Master, QA. Was ich mache und wie ich's mache."
     items={skillItems}
@@ -217,7 +203,7 @@ const metadata = {
   <!-- Abstract/Services -->
   <Features
     id="abstract"
-    tagline="Abstract"
+    tagline=""
     title="Was ich<br/> anbiete"
     subtitle="Development, PM, QA. Code-Qualität, Stabilität, Effizienz."
     items={abstractItems}

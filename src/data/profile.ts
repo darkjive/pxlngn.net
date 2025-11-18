@@ -26,6 +26,6 @@ export const contactItems: Item[] = [
 ];
 
 export const profileText = {
-  description: `"beep, boop" seit dem ich 14 bin. Screendesign, UI-Design, später Full-Stack im Web mit modernem JavaScript-Stack.
-    12 Jahre professionell - von Front-End über Scrum Master bis Projektleitung. Design verstehen, Code schreiben, Teams koordinieren, Menschen helfen und zu begeistern, ist was ich liebe`,
+  description: `"beep, boop" seit dem ich 14 bin. Screendesign, UI-Design, später Full-Stack im Web mit modernem Software-Stack.
+    12 Jahre professionell, von Front-End über Scrum Master bis Projektleitung. Design verstehen, Code schreiben, Teams koordinieren, Menschen helfen und zu begeistern, ist was ich liebe.`,
 };

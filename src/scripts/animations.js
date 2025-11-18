@@ -226,11 +226,11 @@ const animateCycleTypewriter = (element) => {
   const words = ['Designer.', 'Entwickler.', 'Projektleiter.', 'Tester.', 'Generalist!', 'Ich...'];
   const colors = [
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
     'text-yellow-500',
-    'text-blue-500',
+    'text-primary',
   ];
 
   let index = 0;

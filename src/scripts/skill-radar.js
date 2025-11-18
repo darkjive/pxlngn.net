@@ -34,6 +34,7 @@ export function initSkillRadar() {
     labels: [
       'Frontend\nDevelopment',
       'JavaScript/\nTypeScript',
+      'CSS / SCSS',
       'Projektleitung',
       'Scrum Master',
       'Team\nLeadership',
@@ -45,18 +46,19 @@ export function initSkillRadar() {
       {
         label: 'Skill Level',
         data: [
-          85, // Frontend Development
-          80, // JavaScript/TypeScript
-          70, // Projektleitung
-          75, // Scrum Master
-          70, // Team Leadership
-          65, // QA & Testing
+          99, // Frontend Development
+          60, // JavaScript/TypeScript
+          60, // JavaScript/TypeScript
+          20, // Projektleitung
+          40, // Scrum Master
+          50, // Team Leadership
+          30, // QA & Testing
           60, // UI/UX Design
-          85, // Soft Skills (Kommunikation, Problemlösung, Engagement)
+          90, // Soft Skills (Kommunikation, Problemlösung, Engagement)
         ],
         backgroundColor: colors.primaryAlpha,
         borderColor: colors.primary,
-        borderWidth: 3,
+        borderWidth: 1,
         pointBackgroundColor: colors.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
@@ -84,7 +86,7 @@ export function initSkillRadar() {
           max: 100,
           min: 0,
           ticks: {
-            display: false, // Hide tick numbers
+            display: true, // Hide tick numbers
             stepSize: 20,
             backdropColor: 'transparent',
           },
@@ -95,11 +97,7 @@ export function initSkillRadar() {
           },
           pointLabels: {
             color: colors.textColor,
-            font: {
-              size: 16,
-              weight: 'bold',
-              family: "'Inter', sans-serif",
-            },
+            font: { size: 20 },
             padding: 15,
           },
           angleLines: {
@@ -113,7 +111,7 @@ export function initSkillRadar() {
           display: false,
         },
         tooltip: {
-          enabled: true,
+          enabled: false,
           backgroundColor: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
           titleColor: colors.primary,
           bodyColor: colors.textColor,
@@ -122,12 +120,9 @@ export function initSkillRadar() {
           padding: 16,
           displayColors: false,
           titleFont: {
-            size: 16,
-            weight: 'bold',
+            size: 20,
           },
-          bodyFont: {
-            size: 14,
-          },
+          bodyFont: { size: 20 },
           callbacks: {
             label: function () {
               return ''; // No label text
