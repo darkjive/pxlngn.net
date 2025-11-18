@@ -8,38 +8,48 @@ import type { Item } from '~/types';
 
 export const skillItems: Item[] = [
   {
-    title: 'Web-Entwicklung',
-    description: `HTML, CSS, JavaScript - das Fundament. Web-Apps bauen, Code reviewen, CI/CD mit Jenkins managen. Performance im Blick behalten, Monitoring aufsetzen.`,
+    title: 'Frontend-Entwicklung',
+    description: `Seit 2000: Von HTML-Tabellen zu modernem JavaScript. Responsive Design seit den frühen Bootstrap-Tagen. Accessibility und Performance immer im Fokus.`,
     icon: 'tabler:code',
   },
   {
-    title: 'Scrum Master',
-    description: `Teams durch Scrum-Prozesse begleiten, Blocker wegräumen, Retrospektiven moderieren. Atlassian-Stack (JIRA, Confluence) setup und pflegen.`,
-    icon: 'tabler:progress',
-  },
-  {
-    title: 'Teamleitung',
-    description: `1-on-1s führen, Entwicklungsperspektiven erarbeiten, Ressourcen planen. Release- und Incident-Management koordinieren.`,
-    icon: 'tabler:users-group',
-  },
-  {
     title: 'Projektleitung',
-    description: `Roadmaps planen, Meilensteine setzen, Budget im Auge behalten. Stakeholder-Kommunikation und Reporting. Jira-Boards strukturieren, Confluence-Dokumentation aktuell halten.`,
+    description: `Von kleinen WordPress-Sites zu großen Enterprise-Projekten. Budgets, Timelines, Stakeholder-Management gelernt und verfeinert.`,
     icon: 'tabler:cap-projecting',
   },
   {
-    title: 'QA-Softwaretesting',
-    description: `Testszenarien durchspielen, Bugs in Jira dokumentieren, Regressions-Tests fahren. Deployments in Testumgebungen koordinieren, Status in Stand-Ups kommunizieren.`,
+    title: 'Teamleitung & Scrum',
+    description: `Teams aufgebaut und geführt. Scrum Master-Rolle übernommen. Sprint-Planning, Retrospektiven, Daily Standups etabliert.`,
+    icon: 'tabler:users-group',
+  },
+  {
+    title: 'Legacy-Systeme',
+    description: `Alte Codebases übernommen, analysiert, aufgeräumt. Schritt für Schritt modernisiert. Continuous Improvement statt Big Bang Rewrite.`,
+    icon: 'tabler:timeline-event',
+  },
+  {
+    title: 'Quality Assurance',
+    description: `Manuelle Tests, später automatisiert. Bug-Tracking-Systeme eingeführt. Testprozesse aufgebaut und verbessert.`,
     icon: 'tabler:bug',
   },
   {
-    title: 'AI-Entwicklung & Prompt Engineering',
-    description: `KI-Tools wie LLM's produktiv einsetzen. Prompts für Automatisierung entwickeln, GitHub-Projekte und AI-Tools aufsetzen.`,
-    icon: 'tabler:brain',
+    title: 'CI/CD & Monitoring',
+    description: `Jenkins-Pipelines gebaut. Deployments automatisiert. Monitoring-Tools integriert. Performance-Metriken etabliert.`,
+    icon: 'tabler:settings-automation',
   },
   {
-    title: 'Engagement',
-    description: `Probleme aktiv angehen, Lösungen finden. Neues lernen, besser werden. Mehr liefern als erwartet.`,
-    icon: 'tabler:heart',
+    title: 'Dokumentation',
+    description: `Wikis gepflegt, Confluence-Spaces strukturiert. Wissenstransfer organisiert. Onboarding-Prozesse dokumentiert.`,
+    icon: 'tabler:file-text',
+  },
+  {
+    title: 'Prozessverbesserung',
+    description: `Workflows optimiert, Bottlenecks identifiziert. Kommunikation im Team verbessert. Continuous Improvement gelebt.`,
+    icon: 'tabler:chart-line',
+  },
+  {
+    title: 'AI & Prompt Engineering',
+    description: `Früh mit LLMs experimentiert. Produktive Workflows mit KI-Tools entwickelt. Automatisierung vorangetrieben.`,
+    icon: 'tabler:brain',
   },
 ];

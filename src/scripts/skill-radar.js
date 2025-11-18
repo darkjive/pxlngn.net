@@ -21,15 +21,19 @@ export function initSkillRadar() {
   // Detect dark mode
   const isDarkMode = document.documentElement.classList.contains('dark');
 
-  // Color scheme based on theme
+  // Color scheme based on theme - Three decades
   const colors = {
-    tech: {
+    y2000: {
+      primary: isDarkMode ? 'rgba(239, 68, 68, 1)' : 'rgba(220, 38, 38, 1)', // red-500 / red-600
+      primaryAlpha: isDarkMode ? 'rgba(239, 68, 68, 0.15)' : 'rgba(220, 38, 38, 0.15)',
+    },
+    y2010: {
+      primary: isDarkMode ? 'rgba(251, 191, 36, 1)' : 'rgba(245, 158, 11, 1)', // amber-400 / amber-500
+      primaryAlpha: isDarkMode ? 'rgba(251, 191, 36, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+    },
+    y2025: {
       primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
       primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.2)' : 'rgba(14, 165, 233, 0.2)',
-    },
-    soft: {
-      primary: isDarkMode ? 'rgba(251, 191, 36, 1)' : 'rgba(245, 158, 11, 1)', // amber-400 / amber-500
-      primaryAlpha: isDarkMode ? 'rgba(251, 191, 36, 0.2)' : 'rgba(245, 158, 11, 0.2)',
     },
     gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)',
     textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
@@ -37,7 +41,7 @@ export function initSkillRadar() {
     tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)',
   };
 
-  // Combined labels for both datasets (10 categories)
+  // Skills categories
   const labels = [
     'Frontend',
     'JavaScript',
@@ -51,38 +55,54 @@ export function initSkillRadar() {
     'Kommunikation',
   ];
 
-  // Tech Skills data (10 points)
-  const techData = [95, 85, 75, 85, 65, 80, 70, 85, 40, 50];
+  // Year 2000 - Beginner (10 points)
+  const data2000 = [30, 25, 0, 10, 15, 20, 10, 35, 5, 30];
 
-  // Soft Skills data (10 points)
-  const softData = [60, 70, 50, 65, 40, 60, 65, 75, 80, 95];
+  // Year 2010 - Growing (10 points)
+  const data2010 = [70, 65, 30, 55, 45, 60, 40, 70, 35, 60];
+
+  // Year 2025 - Current (10 points)
+  const data2025 = [95, 85, 75, 85, 65, 80, 70, 85, 60, 75];
 
   const skillData = {
     labels: labels,
     datasets: [
       {
-        label: 'Tech Skills',
-        data: techData,
-        backgroundColor: colors.tech.primaryAlpha,
-        borderColor: colors.tech.primary,
+        label: '2000',
+        data: data2000,
+        backgroundColor: colors.y2000.primaryAlpha,
+        borderColor: colors.y2000.primary,
         borderWidth: 2,
-        pointBackgroundColor: colors.tech.primary,
+        pointBackgroundColor: colors.y2000.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.tech.primary,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        pointHoverBorderColor: colors.y2000.primary,
+        pointRadius: 4,
+        pointHoverRadius: 7,
       },
       {
-        label: 'Soft Skills',
-        data: softData,
-        backgroundColor: colors.soft.primaryAlpha,
-        borderColor: colors.soft.primary,
+        label: '2010',
+        data: data2010,
+        backgroundColor: colors.y2010.primaryAlpha,
+        borderColor: colors.y2010.primary,
         borderWidth: 2,
-        pointBackgroundColor: colors.soft.primary,
+        pointBackgroundColor: colors.y2010.primary,
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.soft.primary,
+        pointHoverBorderColor: colors.y2010.primary,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+      },
+      {
+        label: '2025',
+        data: data2025,
+        backgroundColor: colors.y2025.primaryAlpha,
+        borderColor: colors.y2025.primary,
+        borderWidth: 2,
+        pointBackgroundColor: colors.y2025.primary,
+        pointBorderColor: colors.pointBorder,
+        pointHoverBackgroundColor: colors.pointBorder,
+        pointHoverBorderColor: colors.y2025.primary,
         pointRadius: 5,
         pointHoverRadius: 8,
       },

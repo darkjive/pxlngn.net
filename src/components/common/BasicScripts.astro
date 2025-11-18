@@ -219,8 +219,8 @@ import { UI } from 'astrowind:config';
       });
     }
 
-    // Hover sounds for links
-    attachEvent('#header nav a, main a', 'mouseenter', function () {
+    // Hover sounds for links (header, main, footer)
+    attachEvent('#header nav a, main a, footer a', 'mouseenter', function () {
       playSound(soundHover);
     });
 
