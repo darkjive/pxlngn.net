@@ -142,6 +142,44 @@
   right: 0;
   bottom: 0;
   padding: 0 5px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: slideInFromTop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.2);
+}
+
+.dark #header.expanded nav {
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.3);
+}
+
+/* Futuristic slide-in animation */
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile menu link styles */
+#header.expanded nav a {
+  text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3);
+}
+
+.dark #header.expanded nav a {
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* Remove text shadow on desktop */
+@media (min-width: 768px) {
+  #header.expanded nav a {
+    text-shadow: none;
+  }
 }
 
 /* Auto-hide navigation on scroll */
