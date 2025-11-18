@@ -45,13 +45,13 @@ function initChart(canvas, chartType) {
 
   // Skill data based on chart type
   const techSkillData = {
-    labels: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Astro', 'Node.js', 'Git', 'Testing', 'Design'],
-    data: [95, 90, 85, 90, 75, 85, 80, 85],
+    labels: ['HTML/CSS', 'JavaScript', 'TypeScript', 'React/Vue/Astro', 'Node.js', 'Git', 'Testing', 'Design'],
+    data: [90, 50, 40, 70, 55, 75, 45, 85],
   };
 
   const softSkillData = {
     labels: ['Kommunikation', 'Teamwork', 'Problemlösung', 'Projektleitung', 'Scrum Master', 'Mentoring', 'Engagement'],
-    data: [95, 90, 95, 75, 80, 85, 95],
+    data: [70, 80, 90, 65, 70, 65, 90],
   };
 
   const currentData = chartType === 'tech' ? techSkillData : softSkillData;
@@ -114,26 +114,26 @@ function initChart(canvas, chartType) {
           min: 0,
           ticks: {
             display: false, // Hide tick numbers
-            stepSize: 20,
+            stepSize: 5,
             backdropColor: 'transparent',
           },
           grid: {
             color: colors.gridColor,
             circular: true,
-            lineWidth: 2,
+            lineWidth: 1,
           },
           pointLabels: {
             display: false, // Hide labels
           },
           angleLines: {
             color: colors.gridColor,
-            lineWidth: 2,
+            lineWidth: 1,
           },
         },
       },
       plugins: {
         legend: {
-          display: false,
+          display: true,
         },
         tooltip: {
           enabled: true,
