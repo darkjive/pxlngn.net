@@ -33,15 +33,27 @@ Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorg
 
 ### Bildnachweise
 
-https://unsplash.com/de/fotos/gelbe-blutenblattblume-auf-klarer-glasvase-gXQCELcnI2U
+<a href="https://www.vecteezy.com/free-photos/space-background">Space Background Stock photos by Vecteezy</a>
 
-https://unsplash.com/de/fotos/person-mit-lila-weisser-karte-OXmym9cuaEY
+### Sounds
 
-https://unsplash.com/de/fotos/schwarzer-rollsessel-unter-weissem-tisch-wxWulfjN-G0
+Sci Fi UI Button Sound 019.wav by crash_358 -- https://freesound.org/s/615543/ -- License: Creative Commons 0
 
-https://unsplash.com/de/fotos/skogafoss-wasserfalle-8ZAxI5FwjFo
+Click_Electronic_13.wav by LittleRobotSoundFactory -- https://freesound.org/s/288965/ -- License: Attribution 4.0
 
-https://unsplash.com/de/fotos/rote-und-weisse-blume-in-klarer-glasvase-IFbXfJbhp0w
+6_Boton Presionado.wav by Pocosebas -- https://freesound.org/s/469399/ -- License: Attribution 3.0
+
+UI Open by unfa -- https://freesound.org/s/584186/ -- License: Creative Commons 0
+
+Spaceship Cockpit Ambience 01.wav by Tim_Verberne -- https://freesound.org/s/487416/ -- License: Creative Commons 0
+
+Sci-fi Laboratory Ambience by qubodup -- https://freesound.org/s/212025/ -- License: Attribution 4.0
+
+control_room.wav by Diboz -- https://freesound.org/s/211683/ -- License: Creative Commons 0
+
+Spaceship Interior Background Noise by Suhuy -- https://freesound.org/s/715175/ -- License: Creative Commons 0
+
+Spaceship Interior Hibernation Unit by Suhuy -- https://freesound.org/s/715177/ -- License: Creative Commons 0
 
 ### Framework
 
