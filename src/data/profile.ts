@@ -8,7 +8,7 @@ import type { Item } from '~/types';
 
 export const contactItems: Item[] = [
   {
-    icon: 'tabler:brand-linkedin',
+    icon: 'tabler:brand-linkedin-filled',
     callToAction: {
       target: '_blank',
       text: 'Linkedin',
@@ -16,7 +16,7 @@ export const contactItems: Item[] = [
     },
   },
   {
-    icon: 'tabler:mail',
+    icon: 'tabler:mail-filled',
     callToAction: {
       target: '_blank',
       text: 'E-Mail',

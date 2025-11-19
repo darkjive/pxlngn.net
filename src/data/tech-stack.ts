@@ -272,41 +272,41 @@ export const abstractItems = [
   {
     title: 'Frontend-Entwicklung',
     description: 'HTML, CSS, JavaScript. Sauberer Code, wartbar, modular.',
-    icon: 'tabler:code',
+    icon: 'tabler:code-filled',
   },
   {
     title: 'Projektleitung',
     description: 'Planung, Steuerung, Umsetzung. Klare Prozesse, messbare Ergebnisse.',
-    icon: 'tabler:briefcase',
+    icon: 'tabler:briefcase-filled',
   },
   {
     title: 'Teamleitung & Scrum',
     description: 'Teams führen und unterstützen. Scrum-Prozesse strukturiert aufsetzen.',
-    icon: 'tabler:users',
+    icon: 'tabler:users-filled',
   },
   {
     title: 'Legacy-Systeme',
     description: 'Alte Codebases analysieren, refactoren, modernisieren.',
-    icon: 'tabler:layers-linked',
+    icon: 'tabler:layers-linked-filled',
   },
   {
     title: 'Quality Assurance',
     description: 'Manuell und automatisiert testen. Bugs tracken, reproduzieren, fixen.',
-    icon: 'tabler:checkup-list',
+    icon: 'tabler:checkup-list-filled',
   },
   {
     title: 'CI/CD & Monitoring',
     description: 'Jenkins-Deployments. Performance und Stabilität überwachen.',
-    icon: 'tabler:rocket',
+    icon: 'tabler:rocket-filled',
   },
   {
     title: 'Dokumentation',
     description: 'Projektdocs und Wissensmanagement in Confluence.',
-    icon: 'tabler:book',
+    icon: 'tabler:book-filled',
   },
   {
     title: 'Prozessverbesserung',
     description: 'Workflows optimieren. Kommunikation im Team verbessern.',
-    icon: 'tabler:settings',
+    icon: 'tabler:settings-filled',
   },
 ];

@@ -70,7 +70,7 @@ export const footerData = {
   ],
   socialLinks: [
     // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
-    { ariaLabel: 'E-Mail', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' },
+    { ariaLabel: 'Github', icon: 'tabler:brand-github-filled', href: 'https://github.com/darkjive/pxlngn.net' },
+    { ariaLabel: 'E-Mail', icon: 'tabler:mail-filled', href: 'mailto:hi@pxlngn.net' },
   ],
 };
