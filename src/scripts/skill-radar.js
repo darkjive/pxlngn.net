@@ -1,6 +1,6 @@
 /**
- * Skill Radar Chart Initialization
- * Initializes Chart.js radar chart for skill visualization with two datasets
+ * Skill Evolution Chart Initialization
+ * Zeitbasierter Line-Chart der die Skill-Entwicklung über die berufliche Laufbahn zeigt
  */
 
 /* global Chart */
@@ -25,90 +25,151 @@ export function initSkillRadar() {
   // Detect dark mode
   const isDarkMode = document.documentElement.classList.contains('dark');
 
-  // Color scheme based on theme - Three decades
+  // Color scheme based on theme
   const colors = {
-    y2000: {
-      primary: isDarkMode ? 'rgba(239, 68, 68, 1)' : 'rgba(220, 38, 38, 1)', // red-500 / red-600
-      primaryAlpha: isDarkMode ? 'rgba(239, 68, 68, 0.15)' : 'rgba(220, 38, 38, 0.15)',
+    frontend: {
+      line: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
+      fill: isDarkMode ? 'rgba(6, 182, 212, 0.1)' : 'rgba(14, 165, 233, 0.1)',
     },
-    y2010: {
-      primary: isDarkMode ? 'rgba(251, 191, 36, 1)' : 'rgba(245, 158, 11, 1)', // amber-400 / amber-500
-      primaryAlpha: isDarkMode ? 'rgba(251, 191, 36, 0.15)' : 'rgba(245, 158, 11, 0.15)',
+    backend: {
+      line: isDarkMode ? 'rgba(139, 92, 246, 1)' : 'rgba(124, 58, 237, 1)', // violet-500 / violet-600
+      fill: isDarkMode ? 'rgba(139, 92, 246, 0.1)' : 'rgba(124, 58, 237, 0.1)',
     },
-    y2025: {
-      primary: isDarkMode ? 'rgba(6, 182, 212, 1)' : 'rgba(14, 165, 233, 1)', // cyan-500 / sky-500
-      primaryAlpha: isDarkMode ? 'rgba(6, 182, 212, 0.2)' : 'rgba(14, 165, 233, 0.2)',
+    design: {
+      line: isDarkMode ? 'rgba(236, 72, 153, 1)' : 'rgba(219, 39, 119, 1)', // pink-500 / pink-600
+      fill: isDarkMode ? 'rgba(236, 72, 153, 0.1)' : 'rgba(219, 39, 119, 0.1)',
     },
-    gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)',
+    pm: {
+      line: isDarkMode ? 'rgba(251, 191, 36, 1)' : 'rgba(245, 158, 11, 1)', // amber-400 / amber-500
+      fill: isDarkMode ? 'rgba(251, 191, 36, 0.1)' : 'rgba(245, 158, 11, 0.1)',
+    },
+    leadership: {
+      line: isDarkMode ? 'rgba(239, 68, 68, 1)' : 'rgba(220, 38, 38, 1)', // red-500 / red-600
+      fill: isDarkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(220, 38, 38, 0.1)',
+    },
+    gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.2)' : 'rgba(107, 114, 128, 0.2)',
     textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
     pointBorder: isDarkMode ? '#fff' : '#1f2937',
-    tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.7)' : 'rgba(255, 255, 255, 0.7)',
+    tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
   };
 
-  // Skills categories
-  const labels = [
-    'Frontend', // 1
-    'JavaScript', // 2
-    'TypeScript', // 3
-    'Frameworks', // 4
-    'Backend', // 5
-    'Git/DevOps', // 6
-    'Testing', // 7
-    'Design', // 8
-    'Management', // 9
-    'Kommunikation', // 10
-  ];
-
-  // Year 2000 - Beginner (10 points)
-  const data2000 = [10, 5, 5, 5, 10, 10, 5, 60, 10, 30];
-
-  // Year 2010 - Growing (10 points)
-  const data2010 = [70, 20, 10, 40, 20, 30, 40, 80, 30, 60];
-
-  // Year 2025 - Current (10 points)
-  const data2025 = [90, 60, 40, 80, 50, 60, 70, 40, 60, 70];
-
-  const skillData = {
-    labels: labels,
+  // Skill-Entwicklung über Zeit (basierend auf Lebenslauf)
+  const skillEvolution = {
     datasets: [
       {
-        label: ' (Jahr 2000)',
-        data: data2000,
-        backgroundColor: colors.y2000.primaryAlpha,
-        borderColor: colors.y2000.primary,
-        borderWidth: 1,
-        pointBackgroundColor: colors.y2000.primary,
+        label: 'Frontend Development',
+        description: 'HTML, CSS, JavaScript, TypeScript, React, Angular',
+        data: [
+          { x: new Date('2003-01-01'), y: 10 },
+          { x: new Date('2007-01-01'), y: 30 },
+          { x: new Date('2010-01-01'), y: 50 },
+          { x: new Date('2014-01-01'), y: 80 },
+          { x: new Date('2016-01-01'), y: 85 },
+          { x: new Date('2020-01-01'), y: 85 },
+          { x: new Date('2025-01-01'), y: 90 },
+        ],
+        borderColor: colors.frontend.line,
+        backgroundColor: colors.frontend.fill,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: colors.frontend.line,
         pointBorderColor: colors.pointBorder,
-        pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.y2000.primary,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        pointBorderWidth: 2,
       },
       {
-        label: ' (Jahr 2010)',
-        data: data2010,
-        backgroundColor: colors.y2010.primaryAlpha,
-        borderColor: colors.y2010.primary,
-        borderWidth: 1,
-        pointBackgroundColor: colors.y2010.primary,
+        label: 'Backend Development',
+        description: 'PHP, Node.js, Datenbanken, APIs',
+        data: [
+          { x: new Date('2003-01-01'), y: 5 },
+          { x: new Date('2007-01-01'), y: 15 },
+          { x: new Date('2010-01-01'), y: 40 },
+          { x: new Date('2014-01-01'), y: 50 },
+          { x: new Date('2016-01-01'), y: 55 },
+          { x: new Date('2020-01-01'), y: 50 },
+          { x: new Date('2025-01-01'), y: 50 },
+        ],
+        borderColor: colors.backend.line,
+        backgroundColor: colors.backend.fill,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: colors.backend.line,
         pointBorderColor: colors.pointBorder,
-        pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.y2010.primary,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        pointBorderWidth: 2,
       },
       {
-        label: ' (Jahr 2025)',
-        data: data2025,
-        backgroundColor: colors.y2025.primaryAlpha,
-        borderColor: colors.y2025.primary,
-        borderWidth: 1,
-        pointBackgroundColor: colors.y2025.primary,
+        label: 'Design & UX',
+        description: 'Webdesign, UI/UX, Photoshop, Illustrator',
+        data: [
+          { x: new Date('2003-01-01'), y: 30 },
+          { x: new Date('2007-01-01'), y: 70 },
+          { x: new Date('2010-01-01'), y: 80 },
+          { x: new Date('2014-01-01'), y: 60 },
+          { x: new Date('2016-01-01'), y: 50 },
+          { x: new Date('2020-01-01'), y: 40 },
+          { x: new Date('2025-01-01'), y: 40 },
+        ],
+        borderColor: colors.design.line,
+        backgroundColor: colors.design.fill,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: colors.design.line,
         pointBorderColor: colors.pointBorder,
-        pointHoverBackgroundColor: colors.pointBorder,
-        pointHoverBorderColor: colors.y2025.primary,
-        pointRadius: 5,
-        pointHoverRadius: 8,
+        pointBorderWidth: 2,
+      },
+      {
+        label: 'Project Management',
+        description: 'Scrum Master, Projektleitung, Agile Methoden',
+        data: [
+          { x: new Date('2003-01-01'), y: 5 },
+          { x: new Date('2007-01-01'), y: 10 },
+          { x: new Date('2010-01-01'), y: 15 },
+          { x: new Date('2014-01-01'), y: 30 },
+          { x: new Date('2016-01-01'), y: 50 },
+          { x: new Date('2020-01-01'), y: 80 },
+          { x: new Date('2025-01-01'), y: 85 },
+        ],
+        borderColor: colors.pm.line,
+        backgroundColor: colors.pm.fill,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: colors.pm.line,
+        pointBorderColor: colors.pointBorder,
+        pointBorderWidth: 2,
+      },
+      {
+        label: 'Team Leadership',
+        description: 'Teamleitung, Kommunikation, Servant Leadership',
+        data: [
+          { x: new Date('2003-01-01'), y: 5 },
+          { x: new Date('2007-01-01'), y: 10 },
+          { x: new Date('2010-01-01'), y: 15 },
+          { x: new Date('2014-01-01'), y: 25 },
+          { x: new Date('2016-01-01'), y: 40 },
+          { x: new Date('2020-01-01'), y: 70 },
+          { x: new Date('2025-01-01'), y: 75 },
+        ],
+        borderColor: colors.leadership.line,
+        backgroundColor: colors.leadership.fill,
+        borderWidth: 2,
+        fill: true,
+        tension: 0.4,
+        pointRadius: 4,
+        pointHoverRadius: 6,
+        pointBackgroundColor: colors.leadership.line,
+        pointBorderColor: colors.pointBorder,
+        pointBorderWidth: 2,
       },
     ],
   };
@@ -119,13 +180,17 @@ export function initSkillRadar() {
 
   // Chart configuration
   const config = {
-    type: 'radar',
-    data: skillData,
+    type: 'line',
+    data: skillEvolution,
     options: {
       responsive: true,
       maintainAspectRatio: true,
+      interaction: {
+        mode: 'index',
+        intersect: false,
+      },
       animation: {
-        duration: 500,
+        duration: 1000,
         easing: 'easeInOutQuart',
         onComplete: () => {
           // Verstecke Loader nach Chart-Animation
@@ -140,7 +205,7 @@ export function initSkillRadar() {
         },
       },
       onHover: (event, activeElements) => {
-        // Play sound on node hover
+        // Play sound on hover
         if (activeElements.length > 0) {
           const currentIndex = activeElements[0].index;
           if (currentIndex !== lastHoveredIndex) {
@@ -157,33 +222,61 @@ export function initSkillRadar() {
         }
       },
       scales: {
-        r: {
-          beginAtZero: true,
-          max: 100,
-          min: 0,
-          ticks: {
-            display: false,
-            stepSize: 10,
-            backdropColor: 'transparent',
+        x: {
+          type: 'time',
+          time: {
+            unit: 'year',
+            displayFormats: {
+              year: 'yyyy',
+            },
           },
-          grid: {
-            color: colors.gridColor,
-            circular: true,
-            lineWidth: 1,
-          },
-          pointLabels: {
+          title: {
             display: true,
-            color: isDarkMode ? 'rgba(156, 163, 175, 1)' : 'rgba(107, 114, 128, 1)', // text-muted
+            text: 'Berufliche Laufbahn',
+            color: colors.textColor,
             font: {
-              size: 12, // text-xs
+              size: 14,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
               weight: 'normal',
             },
-            padding: 15,
           },
-          angleLines: {
+          grid: {
             color: colors.gridColor,
             lineWidth: 1,
+          },
+          ticks: {
+            color: colors.textColor,
+            font: {
+              size: 12,
+              family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+            },
+          },
+        },
+        y: {
+          beginAtZero: true,
+          max: 100,
+          min: 0,
+          title: {
+            display: true,
+            text: 'Erfahrungslevel & Interesse (0-100)',
+            color: colors.textColor,
+            font: {
+              size: 14,
+              family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+              weight: 'normal',
+            },
+          },
+          grid: {
+            color: colors.gridColor,
+            lineWidth: 1,
+          },
+          ticks: {
+            color: colors.textColor,
+            stepSize: 20,
+            font: {
+              size: 12,
+              family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+            },
           },
         },
       },
@@ -194,11 +287,11 @@ export function initSkillRadar() {
           labels: {
             color: colors.textColor,
             font: {
-              size: 16,
+              size: 14,
               weight: 'normal',
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
-            padding: 20,
+            padding: 15,
             usePointStyle: true,
             pointStyle: 'circle',
           },
@@ -210,29 +303,40 @@ export function initSkillRadar() {
           bodyColor: colors.textColor,
           borderColor: isDarkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(107, 114, 128, 0.5)',
           borderWidth: 1,
-          padding: 20,
-          displayColors: false,
+          padding: 16,
+          displayColors: true,
           cornerRadius: 8,
           titleFont: {
-            size: 18,
-            weight: 'normal',
+            size: 14,
+            weight: 'bold',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           bodyFont: {
-            size: 28,
+            size: 13,
             weight: 'normal',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
-          titleMarginBottom: 12,
-          bodySpacing: 8,
+          titleMarginBottom: 10,
+          bodySpacing: 6,
           callbacks: {
             title: function (context) {
-              // Show skill name
-              return context[0].label.replace(/\n/g, ' ');
+              // Zeige das Jahr
+              const date = new Date(context[0].parsed.x);
+              return date.getFullYear();
             },
             label: function (context) {
-              // Show value without percent sign
-              return context.dataset.label + ': ' + context.parsed.r;
+              const dataset = context.dataset;
+              const value = context.parsed.y;
+              const description = dataset.description || '';
+
+              // Zeige Skill-Name, Level und Beschreibung
+              return [
+                `${dataset.label}: ${value}/100`,
+                description ? `  ${description}` : '',
+              ];
+            },
+            afterBody: function () {
+              return '\nWert zeigt Erfahrungslevel und aktuelles Interesse im Skill';
             },
           },
         },
