@@ -1,8 +1,5 @@
-/* Baloo Bhaijaan 2 Variable Font */
+/* Baloo Bhaijaan 2 Variable Font
+ * Imported from @fontsource-variable for optimized font loading
+ * Font is configured in tailwind.config.js via --aw-font-sans
+ */
 @import '@fontsource-variable/baloo-bhaijaan-2/wght.css';
-
-@font-face {
-  font-family: 'Baloo Bhaijaan 2 Variable';
-  font-style: normal;
-  font-display: swap;
-}

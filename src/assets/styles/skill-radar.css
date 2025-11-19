@@ -23,7 +23,7 @@
      - tracking-wide effect achieved through font rendering */
 }
 
-/* Futuristic glow effect - Dark Mode */
+/* Futuristic glow effect - Dark Mode only */
 .dark .skill-radar-container::before {
   content: '';
   position: absolute;
@@ -36,8 +36,6 @@
   animation: radarPulse 3s ease-in-out infinite;
   z-index: -1;
 }
-
-/* Light Mode glow effect */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
