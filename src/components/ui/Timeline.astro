@@ -43,8 +43,8 @@ const {
             {title && (
               <p
                 data-animate
-                data-anim-type="typewriter"
-                data-anim-delay={index * 100}
+                data-anim-type="fade-up"
+                data-anim-delay={index * 150}
                 class={twMerge('text-xl font-semibold text-black dark:text-white', titleClass, itemClasses?.title)}
                 set:html={title}
               />
@@ -52,8 +52,8 @@ const {
             {description && (
               <p
                 data-animate
-                data-anim-type="typewriter"
-                data-anim-delay={index * 100 + 200}
+                data-anim-type="fade-up"
+                data-anim-delay={index * 150 + 100}
                 class={twMerge('mt-2 text-muted', descriptionClass, itemClasses?.description)}
                 set:html={description}
               />
