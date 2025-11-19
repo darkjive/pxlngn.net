@@ -15,11 +15,24 @@
 .skill-radar-container canvas {
   width: 100% !important;
   height: auto !important;
+  min-height: 400px;
   /* Note: Chart.js labels are canvas-rendered, so CSS classes don't apply directly.
      Label styling is configured in skill-radar.js with:
      - size: 12px (text-xs equivalent)
      - color: muted gray
      - tracking-wide effect achieved through font rendering */
+}
+
+@media (max-width: 768px) {
+  .skill-radar-container canvas {
+    min-height: 600px !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .skill-radar-container canvas {
+    min-height: 700px !important;
+  }
 }
 
 /* Futuristic glow effect - Dark Mode only */

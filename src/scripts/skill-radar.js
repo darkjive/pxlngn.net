@@ -15,6 +15,12 @@ export function initSkillRadar() {
   const canvas = document.querySelector('[data-chart-type="tech"]');
   if (!canvas) return;
 
+  // Destroy existing chart if it exists
+  const existingChart = Chart.getChart(canvas);
+  if (existingChart) {
+    existingChart.destroy();
+  }
+
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -24,6 +30,25 @@ export function initSkillRadar() {
 
   // Detect dark mode
   const isDarkMode = document.documentElement.classList.contains('dark');
+
+  // Detect mobile/tablet for responsive font sizes
+  const isMobile = window.innerWidth <= 640;
+  const isTablet = window.innerWidth <= 768 && window.innerWidth > 640;
+
+  // Responsive font sizes
+  const fontSize = {
+    title: isMobile ? 12 : isTablet ? 14 : 16,
+    tick: isMobile ? 11 : isTablet ? 13 : 16,
+    legend: isMobile ? 14 : isTablet ? 16 : 20,
+    tooltipTitle: isMobile ? 13 : isTablet ? 14 : 16,
+    tooltipBody: isMobile ? 12 : isTablet ? 13 : 16,
+  };
+
+  // Responsive spacing
+  const spacing = {
+    legendPadding: isMobile ? 12 : isTablet ? 20 : 30,
+    legendMargin: isMobile ? 10 : isTablet ? 20 : 30,
+  };
 
   // Color scheme based on theme
   const colors = {
@@ -184,7 +209,8 @@ export function initSkillRadar() {
     data: skillEvolution,
     options: {
       responsive: true,
-      maintainAspectRatio: true,
+      maintainAspectRatio: !isMobile,
+      aspectRatio: isMobile ? undefined : isTablet ? 1.5 : 2,
       interaction: {
         mode: 'index',
         intersect: false,
@@ -235,7 +261,7 @@ export function initSkillRadar() {
             text: 'Berufliche Laufbahn',
             color: colors.textColor,
             font: {
-              size: 16,
+              size: fontSize.title,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
               weight: 'normal',
             },
@@ -247,7 +273,7 @@ export function initSkillRadar() {
           ticks: {
             color: colors.textColor,
             font: {
-              size: 16,
+              size: fontSize.tick,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
           },
@@ -258,10 +284,10 @@ export function initSkillRadar() {
           min: 0,
           title: {
             display: true,
-            text: 'Erfahrungslevel & Interesse (0-100)',
+            text: isMobile ? 'Level (0-100)' : 'Erfahrungslevel & Interesse (0-100)',
             color: colors.textColor,
             font: {
-              size: 16,
+              size: fontSize.title,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
               weight: 'normal',
             },
@@ -274,7 +300,7 @@ export function initSkillRadar() {
             color: colors.textColor,
             stepSize: 20,
             font: {
-              size: 16,
+              size: fontSize.tick,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
           },
@@ -287,12 +313,11 @@ export function initSkillRadar() {
           labels: {
             color: colors.textColor,
             font: {
-              size: 20,
+              size: fontSize.legend,
               weight: 'normal',
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
-            padding: 30,
-            margin: 30,
+            padding: spacing.legendPadding,
             usePointStyle: true,
             pointStyle: 'circle',
           },
@@ -308,12 +333,12 @@ export function initSkillRadar() {
           displayColors: true,
           cornerRadius: 8,
           titleFont: {
-            size: 16,
+            size: fontSize.tooltipTitle,
             weight: 'bold',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           bodyFont: {
-            size: 16,
+            size: fontSize.tooltipBody,
             weight: 'normal',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
@@ -353,14 +378,7 @@ if (!themeObserverInitialized) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
-        // Destroy existing chart and reinitialize
-        const canvas = document.querySelector('[data-chart-type="tech"]');
-        if (canvas) {
-          const existingChart = Chart.getChart(canvas);
-          if (existingChart) {
-            existingChart.destroy();
-          }
-        }
+        // Reinitialize chart with new theme
         setTimeout(initSkillRadar, 50);
       }
     });
@@ -373,3 +391,12 @@ if (!themeObserverInitialized) {
 
   themeObserverInitialized = true;
 }
+
+// Handle window resize for responsive chart
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    initSkillRadar();
+  }, 250);
+});
