@@ -15,6 +15,8 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
+// Date-Adapter für TimeScale
+import 'chartjs-adapter-date-fns';
 
 // Registriere benötigte Chart.js Komponenten
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
