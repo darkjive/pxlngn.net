@@ -47,26 +47,26 @@ export function initSkillRadar() {
 
   // Skills categories
   const labels = [
-    'Frontend',
-    'JavaScript',
-    'TypeScript',
-    'Frameworks',
-    'Backend',
-    'Git/DevOps',
-    'Testing',
-    'Design',
-    'Management',
-    'Kommunikation',
+    'Frontend', // 1
+    'JavaScript', // 2
+    'TypeScript', // 3
+    'Frameworks', // 4
+    'Backend', // 5
+    'Git/DevOps', // 6
+    'Testing', // 7
+    'Design', // 8
+    'Management', // 9
+    'Kommunikation', // 10
   ];
 
   // Year 2000 - Beginner (10 points)
-  const data2000 = [5, 0, 0, 0, 5, 5, 0, 60, 10, 30];
+  const data2000 = [10, 0, 0, 0, 10, 10, 0, 60, 10, 30];
 
   // Year 2010 - Growing (10 points)
-  const data2010 = [70, 25, 5, 45, 45, 30, 40, 70, 35, 60];
+  const data2010 = [70, 20, 10, 40, 20, 30, 40, 80, 30, 60];
 
   // Year 2025 - Current (10 points)
-  const data2025 = [95, 75, 55, 85, 65, 80, 70, 85, 60, 75];
+  const data2025 = [90, 60, 40, 80, 50, 60, 70, 40, 60, 70];
 
   const skillData = {
     labels: labels,

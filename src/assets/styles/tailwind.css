@@ -185,10 +185,12 @@
 /* Brand Logo Glow Effect */
 .brand-logo-container {
   transition: all 0.3s ease;
+  background-color: rgba(214, 231, 255, 0.2);
 }
 
 .dark .brand-logo-container {
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  background-color: rgba(108, 167, 255, 0.2);
 }
 
 .dark .brand-logo-container:hover {
