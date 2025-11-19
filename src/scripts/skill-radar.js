@@ -89,7 +89,7 @@ export function initSkillRadar() {
           { x: new Date('2014-01-01'), y: 50 },
           { x: new Date('2016-01-01'), y: 55 },
           { x: new Date('2020-01-01'), y: 50 },
-          { x: new Date('2025-01-01'), y: 50 },
+          { x: new Date('2025-01-01'), y: 60 },
         ],
         borderColor: colors.backend.line,
         backgroundColor: colors.backend.fill,
@@ -97,10 +97,10 @@ export function initSkillRadar() {
         fill: true,
         tension: 0.4,
         pointRadius: 4,
-        pointHoverRadius: 6,
+        pointHoverRadius: 4,
         pointBackgroundColor: colors.backend.line,
         pointBorderColor: colors.pointBorder,
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
       },
       {
         label: 'Design & UX',
@@ -112,11 +112,11 @@ export function initSkillRadar() {
           { x: new Date('2014-01-01'), y: 60 },
           { x: new Date('2016-01-01'), y: 50 },
           { x: new Date('2020-01-01'), y: 40 },
-          { x: new Date('2025-01-01'), y: 40 },
+          { x: new Date('2025-01-01'), y: 70 },
         ],
         borderColor: colors.design.line,
         backgroundColor: colors.design.fill,
-        borderWidth: 2,
+        borderWidth: 1,
         fill: true,
         tension: 0.4,
         pointRadius: 4,
@@ -135,7 +135,7 @@ export function initSkillRadar() {
           { x: new Date('2014-01-01'), y: 30 },
           { x: new Date('2016-01-01'), y: 50 },
           { x: new Date('2020-01-01'), y: 80 },
-          { x: new Date('2025-01-01'), y: 85 },
+          { x: new Date('2025-01-01'), y: 40 },
         ],
         borderColor: colors.pm.line,
         backgroundColor: colors.pm.fill,
@@ -235,7 +235,7 @@ export function initSkillRadar() {
             text: 'Berufliche Laufbahn',
             color: colors.textColor,
             font: {
-              size: 14,
+              size: 16,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
               weight: 'normal',
             },
@@ -247,7 +247,7 @@ export function initSkillRadar() {
           ticks: {
             color: colors.textColor,
             font: {
-              size: 12,
+              size: 16,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
           },
@@ -261,7 +261,7 @@ export function initSkillRadar() {
             text: 'Erfahrungslevel & Interesse (0-100)',
             color: colors.textColor,
             font: {
-              size: 14,
+              size: 16,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
               weight: 'normal',
             },
@@ -274,7 +274,7 @@ export function initSkillRadar() {
             color: colors.textColor,
             stepSize: 20,
             font: {
-              size: 12,
+              size: 16,
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
           },
@@ -287,11 +287,12 @@ export function initSkillRadar() {
           labels: {
             color: colors.textColor,
             font: {
-              size: 14,
+              size: 20,
               weight: 'normal',
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
-            padding: 15,
+            padding: 30,
+            margin: 30,
             usePointStyle: true,
             pointStyle: 'circle',
           },
@@ -307,12 +308,12 @@ export function initSkillRadar() {
           displayColors: true,
           cornerRadius: 8,
           titleFont: {
-            size: 14,
+            size: 16,
             weight: 'bold',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           bodyFont: {
-            size: 13,
+            size: 16,
             weight: 'normal',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
@@ -330,10 +331,7 @@ export function initSkillRadar() {
               const description = dataset.description || '';
 
               // Zeige Skill-Name, Level und Beschreibung
-              return [
-                `${dataset.label}: ${value}/100`,
-                description ? `  ${description}` : '',
-              ];
+              return [`${dataset.label}: ${value}/100`, description ? `  ${description}` : ''];
             },
             afterBody: function () {
               return '\nWert zeigt Erfahrungslevel und aktuelles Interesse im Skill';
