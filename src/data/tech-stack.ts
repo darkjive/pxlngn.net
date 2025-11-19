@@ -44,12 +44,6 @@ export const primaryTechStack: TechImage[] = [
     href: 'https://tailwindcss.com/',
   },
   {
-    src: '~/assets/images/icons/bem-css-logo.png',
-    alt: 'BEM CSS - Strukturierte CSS-Namenskonvention',
-    title: 'BEM CSS',
-    href: 'https://getbem.com/',
-  },
-  {
     src: '~/assets/images/icons/nodejs.png',
     alt: 'Node.js - JavaScript Runtime',
     title: 'Node.js',
@@ -124,6 +118,12 @@ export const secondaryTechStack: TechImage[] = [
     alt: 'Handlebars - Template Engine',
     title: 'Handlebars',
     href: 'https://handlebarsjs.com/',
+  },
+  {
+    src: '~/assets/images/icons/bem-css-logo.png',
+    alt: 'BEM CSS - Strukturierte CSS-Namenskonvention',
+    title: 'BEM CSS',
+    href: 'https://getbem.com/',
   },
 ];
 
