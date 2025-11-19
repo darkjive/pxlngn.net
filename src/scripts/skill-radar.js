@@ -17,6 +17,8 @@ import {
 } from 'chart.js';
 // Date-Adapter für TimeScale
 import 'chartjs-adapter-date-fns';
+// Locale für deutsche Datumsformatierung
+import { de } from 'date-fns/locale';
 
 // Registriere benötigte Chart.js Komponenten
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
@@ -270,7 +272,7 @@ export function initSkillRadar() {
           },
           adapters: {
             date: {
-              locale: 'de-DE',
+              locale: de,
             },
           },
           title: {
