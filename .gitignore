@@ -24,6 +24,6 @@ pnpm-lock.yaml
 .astro
 
 # test results
-tests-results/
+test-results
 
 tmp
