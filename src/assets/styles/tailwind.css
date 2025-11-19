@@ -4,6 +4,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  /* SVG Antialiasing - Best Practices */
+  svg {
+    shape-rendering: geometricPrecision;
+  }
+
+  /* Optimize SVG text rendering */
+  svg text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Ensure images are rendered with high quality */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: auto;
+  }
+
+  /* For pixel-perfect graphics (icons, logos) use utility class .crisp */
+  .crisp {
+    image-rendering: crisp-edges;
+  }
+}
+
 @layer utilities {
   /* Custom color utilities using CSS variables from CustomStyles.astro */
   .bg-page {
@@ -268,8 +293,6 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    image-rendering: -webkit-optimize-contrast;
-    image-rendering: crisp-edges;
   }
 
   /* Ensure smooth scrolling on mobile */
