@@ -3,7 +3,40 @@
  *
  * Handles smooth scrolling for navigation links (header & footer)
  * and plays a UI sound after the scroll animation completes.
+ * Cross-browser compatible with custom easing animation.
  */
+
+/**
+ * Smooth scroll animation mit easing function
+ * Cross-browser kompatibel (funktioniert auch in Safari/Firefox)
+ */
+const smoothScrollTo = (targetElement, duration = 600) => {
+  const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+  const startPosition = window.scrollY;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+
+  // Easing function für smooth animation
+  const easeInOutCubic = (t) => {
+    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+  };
+
+  const animation = (currentTime) => {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const ease = easeInOutCubic(progress);
+
+    window.scrollTo(0, startPosition + distance * ease);
+
+    if (timeElapsed < duration) {
+      requestAnimationFrame(animation);
+    }
+  };
+
+  requestAnimationFrame(animation);
+  return duration;
+};
 
 /**
  * Initialisiert Smooth Scroll für Navigation-Links
@@ -40,14 +73,10 @@ const initSmoothScroll = () => {
         return;
       }
 
-      // Smooth Scroll zum Ziel
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'nearest',
-      });
+      // Smooth Scroll zum Ziel mit custom animation (cross-browser)
+      const duration = smoothScrollTo(targetElement, 600);
 
-      // Spiele Sound nach Scroll-Animation (ca. 600ms Verzögerung)
+      // Spiele Sound nach Scroll-Animation
       setTimeout(() => {
         // Prüfe ob Sounds aktiviert sind
         const soundsEnabled = localStorage.getItem('sounds-enabled') !== 'false';
@@ -58,7 +87,7 @@ const initSmoothScroll = () => {
             console.debug('Sound konnte nicht abgespielt werden:', err);
           });
         }
-      }, 600);
+      }, duration);
 
       // Aktualisiere URL (optional, ohne erneutes Scrollen)
       if (history.pushState) {
