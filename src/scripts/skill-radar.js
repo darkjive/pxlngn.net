@@ -15,7 +15,6 @@ import {
   Legend,
   Filler,
 } from 'chart.js';
-import 'chartjs-adapter-date-fns';
 
 // Registriere benötigte Chart.js Komponenten
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
@@ -262,8 +261,14 @@ export function initSkillRadar() {
           type: 'time',
           time: {
             unit: 'year',
+            tooltipFormat: 'yyyy',
             displayFormats: {
               year: 'yyyy',
+            },
+          },
+          adapters: {
+            date: {
+              locale: 'de-DE',
             },
           },
           title: {
