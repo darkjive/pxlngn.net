@@ -3,14 +3,27 @@
  * Zeitbasierter Line-Chart der die Skill-Entwicklung über die berufliche Laufbahn zeigt
  */
 
-/* global Chart */
+import {
+  Chart,
+  LineController,
+  LineElement,
+  PointElement,
+  LinearScale,
+  TimeScale,
+  Title,
+  Tooltip,
+  Legend,
+  Filler,
+} from 'chart.js';
+// Date-Adapter für TimeScale
+import 'chartjs-adapter-date-fns';
+// Locale für deutsche Datumsformatierung
+import { de } from 'date-fns/locale';
+
+// Registriere benötigte Chart.js Komponenten
+Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
 
 export function initSkillRadar() {
-  if (typeof Chart === 'undefined') {
-    console.warn('Chart.js not loaded yet, retrying...');
-    setTimeout(initSkillRadar, 100);
-    return;
-  }
 
   const canvas = document.querySelector('[data-chart-type="tech"]');
   if (!canvas) return;
@@ -252,8 +265,14 @@ export function initSkillRadar() {
           type: 'time',
           time: {
             unit: 'year',
+            tooltipFormat: 'yyyy',
             displayFormats: {
               year: 'yyyy',
+            },
+          },
+          adapters: {
+            date: {
+              locale: de,
             },
           },
           title: {

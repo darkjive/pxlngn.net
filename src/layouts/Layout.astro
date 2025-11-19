@@ -7,6 +7,8 @@ import Favicons from '~/components/Favicons.astro';
 import CustomStyles from '~/components/CustomStyles.astro';
 import ApplyColorMode from '~/components/common/ApplyColorMode.astro';
 import Metadata from '~/components/common/Metadata.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
+import BackgroundAnimation from '~/components/widgets/BackgroundAnimation.astro';
 import BasicScripts from '~/components/common/BasicScripts.astro';
 
 // Comment the line below to disable View Transitions
@@ -30,14 +32,22 @@ const { language, textDirection } = I18N;
     <CustomStyles />
     <ApplyColorMode />
     <Metadata {...metadata} />
+    <StructuredData />
 
     <!-- Comment the line below to disable View Transitions -->
     <ClientRouter fallback="swap" />
   </head>
 
   <body class="bg-page tracking-tight text-default antialiased">
+    <!-- Skip-Link für Accessibility -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-white"
+    >
+      Zum Hauptinhalt springen
+    </a>
     <slot />
-    <!--BackgroundAnimation /-->
     <BasicScripts />
+    <BackgroundAnimation />
   </body>
 </html>
