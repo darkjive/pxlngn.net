@@ -63,15 +63,18 @@ const initSmoothScroll = () => {
       // Nur Links mit Hash-Targets auf der gleichen Seite behandeln
       if (!targetHash) return;
 
-      e.preventDefault();
-
       // Finde Ziel-Element
       const targetElement = document.getElementById(targetHash);
 
+      // Wenn das Element nicht existiert (z.B. auf /privacy oder /terms),
+      // erlaube normale Browser-Navigation zur Startseite
       if (!targetElement) {
-        console.warn(`Target element with id "${targetHash}" not found`);
-        return;
+        console.debug(`Target element with id "${targetHash}" not found - allowing default navigation`);
+        return; // Kein preventDefault(), Browser navigiert normal
       }
+
+      // Element existiert auf dieser Seite - verwende Smooth Scroll
+      e.preventDefault();
 
       // Smooth Scroll zum Ziel mit custom animation (cross-browser)
       const duration = smoothScrollTo(targetElement, 600);

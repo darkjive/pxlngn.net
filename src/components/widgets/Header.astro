@@ -43,8 +43,26 @@ const {
 } = Astro.props;
 
 const url = new URL(Astro.url);
-// const currentPath = `/${trimSlash(url.pathname)}`;
-const currentHash = url.hash; // Enthält den #anchor-Teil der URL
+const currentPath = url.pathname; // z.B. '/', '/privacy', '/terms'
+const currentHash = url.hash; // z.B. '#hero', '#profile' oder ''
+
+// Helper function to check if a link is active
+function isLinkActive(href: string | undefined, currentPath: string, currentHash: string): boolean {
+  if (!href) return false;
+
+  // Check for hash links (e.g., '/#hero', '#profile')
+  if (href.includes('#')) {
+    const [path, hash] = href.split('#');
+    const linkPath = path === '' || path === '/' ? '/' : path;
+    const linkHash = '#' + hash;
+
+    // Active if we're on the same page and hash matches
+    return linkPath === currentPath && linkHash === currentHash;
+  }
+
+  // Check for regular path links (e.g., '/privacy', '/terms')
+  return href === currentPath;
+}
 ---
 
 <header
@@ -83,7 +101,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
       >
         {
           links.map(({ text, href, links, icon }, index) => {
-            const isActive = href === currentHash;
+            const isActive = isLinkActive(href, currentPath, currentHash);
             return (
               <li
                 class={links?.length ? 'dropdown' : ''}
@@ -108,7 +126,7 @@ const currentHash = url.hash; // Enthält den #anchor-Teil der URL
                     </a>
                     <ul class="dropdown-menu dark:md:bg-dark w-full rounded pl-4 font-medium drop-shadow-xl md:absolute md:hidden md:min-w-[200px] md:bg-white/100 md:pl-0">
                       {links.map(({ text: text2, href: href2, icon: icon2 }) => {
-                        const isSubActive = href2 === currentHash;
+                        const isSubActive = isLinkActive(href2, currentPath, currentHash);
                         return (
                           <li>
                             <a
