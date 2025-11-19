@@ -72,7 +72,7 @@ export function initSkillRadar() {
     labels: labels,
     datasets: [
       {
-        label: '2000',
+        label: ' (Jahr 2000)',
         data: data2000,
         backgroundColor: colors.y2000.primaryAlpha,
         borderColor: colors.y2000.primary,
@@ -81,11 +81,11 @@ export function initSkillRadar() {
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
         pointHoverBorderColor: colors.y2000.primary,
-        pointRadius: 4,
-        pointHoverRadius: 7,
+        pointRadius: 5,
+        pointHoverRadius: 8,
       },
       {
-        label: '2010',
+        label: ' (Jahr 2010)',
         data: data2010,
         backgroundColor: colors.y2010.primaryAlpha,
         borderColor: colors.y2010.primary,
@@ -94,11 +94,11 @@ export function initSkillRadar() {
         pointBorderColor: colors.pointBorder,
         pointHoverBackgroundColor: colors.pointBorder,
         pointHoverBorderColor: colors.y2010.primary,
-        pointRadius: 4,
-        pointHoverRadius: 7,
+        pointRadius: 5,
+        pointHoverRadius: 8,
       },
       {
-        label: '2025',
+        label: ' (Jahr 2025)',
         data: data2025,
         backgroundColor: colors.y2025.primaryAlpha,
         borderColor: colors.y2025.primary,
@@ -195,7 +195,7 @@ export function initSkillRadar() {
             color: colors.textColor,
             font: {
               size: 16,
-              weight: 'bold',
+              weight: 'normal',
               family: "'Baloo Bhaijaan 2 Variable', sans-serif",
             },
             padding: 20,
@@ -215,12 +215,12 @@ export function initSkillRadar() {
           cornerRadius: 8,
           titleFont: {
             size: 18,
-            weight: 'bold',
+            weight: 'normal',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           bodyFont: {
             size: 28,
-            weight: 'bold',
+            weight: 'normal',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           titleMarginBottom: 12,
