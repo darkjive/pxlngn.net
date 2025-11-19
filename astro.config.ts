@@ -51,9 +51,9 @@ export default defineConfig({
     compress({
       CSS: true,
       HTML: { 'html-minifier-terser': { removeAttributeQuotes: false } },
-      Image: false,
+      Image: true,
       JavaScript: true,
-      SVG: false,
+      SVG: true,
       Logger: 1,
     }),
     astrowind({ config: './src/config.yaml' }),
@@ -64,7 +64,7 @@ export default defineConfig({
     service: {
       entrypoint: 'astro/assets/services/sharp',
       config: {
-        limitInputPixels: false,
+        limitInputPixels: 50000000, // 50MP Limit für Memory-Sicherheit
       },
     },
   },
