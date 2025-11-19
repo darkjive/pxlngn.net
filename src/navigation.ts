@@ -16,7 +16,7 @@ export const headerData = {
     },
     {
       text: 'Skills',
-      href: getPermalink('/#chart'),
+      href: getPermalink('/#skills'),
       icon: '',
       links: [],
     },
@@ -45,7 +45,7 @@ export const footerData = {
     },
     {
       title: 'Skills',
-      href: getPermalink('/#chart'),
+      href: getPermalink('/#skills'),
       icon: '',
       links: [],
     },
