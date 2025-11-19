@@ -17,7 +17,7 @@ const {
   panel: panelClass = '',
   title: titleClass = '',
   description: descriptionClass = '',
-  icon: defaultIconClass = 'text-primary border-primary dark:border-primary',
+  icon: defaultIconClass = 'text-white bg-primary',
 } = classes;
 ---
 
@@ -31,8 +31,11 @@ const {
               <div class="flex items-center justify-center">
                 {(icon || defaultIcon) && (
                   <Icon
+                    data-animate
+                    data-anim-type="scale-up"
+                    data-anim-delay={index * 100 + 100}
                     name={icon || defaultIcon}
-                    class={twMerge('h-10 w-10 rounded-full border-2 p-2', defaultIconClass, itemClasses?.icon)}
+                    class={twMerge('h-10 w-10 rounded-full p-2', defaultIconClass, itemClasses?.icon)}
                   />
                 )}
               </div>
