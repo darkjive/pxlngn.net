@@ -25,7 +25,7 @@ const { language, textDirection } = I18N;
 ---
 
 <!doctype html>
-<html lang={language} dir={textDirection} class="2xl:text-[20px]">
+<html lang={language} dir={textDirection} class="overflow-x-hidden 2xl:text-[20px]">
   <head>
     <CommonMeta />
     <Favicons />
@@ -38,7 +38,7 @@ const { language, textDirection } = I18N;
     <ClientRouter fallback="swap" />
   </head>
 
-  <body class="bg-page tracking-tight text-default antialiased">
+  <body class="overflow-x-hidden bg-page tracking-tight text-default antialiased">
     <!-- Skip-Link für Accessibility -->
     <a
       href="#main-content"
