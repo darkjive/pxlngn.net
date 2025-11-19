@@ -97,6 +97,23 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 └── playwright.config.ts
 ```
 
+## Requirements
+
+### Node.js Version
+
+Das Projekt benötigt eine der folgenden Node.js-Versionen:
+- Node.js `^18.18.0`
+- Node.js `^20.9.0` (empfohlen)
+- Node.js `>=21.1.0`
+
+**Verwendung mit nvm:**
+
+```bash
+nvm use
+```
+
+Die `.nvmrc`-Datei spezifiziert automatisch die empfohlene Version (v20.9.0).
+
 ## Commands
 
 | Command           | Action                                               |
