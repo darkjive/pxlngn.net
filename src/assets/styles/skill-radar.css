@@ -31,7 +31,7 @@
 
 @media (max-width: 640px) {
   .skill-radar-container canvas {
-    min-height: 700px !important;
+    min-height: 500px !important;
   }
 }
 
