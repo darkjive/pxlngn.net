@@ -1,0 +1,66 @@
+---
+/**
+ * Structured Data (JSON-LD) für bessere SEO
+ * Definiert Person, Website und Organization Schema
+ *
+ * @see https://schema.org/Person
+ * @see https://schema.org/WebSite
+ */
+
+import { SITE } from 'astrowind:config';
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${SITE.origin}/#person`,
+      name: 'Alain Ritter',
+      jobTitle: 'Fullstack-Entwickler',
+      description:
+        'Fullstack-Entwickler mit Fokus auf moderne Webtechnologien, UX/UI-Design und agile Projektmethoden.',
+      url: SITE.origin,
+      sameAs: [
+        'https://github.com/darkjive',
+        'https://www.linkedin.com/in/alain-ritter',
+      ],
+      knowsAbout: [
+        'TypeScript',
+        'React',
+        'Node.js',
+        'Astro',
+        'TailwindCSS',
+        'Scrum',
+        'Agile Methoden',
+        'UX/UI Design',
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.origin}/#website`,
+      url: SITE.origin,
+      name: SITE.name,
+      description: SITE.description,
+      inLanguage: 'de-DE',
+      publisher: {
+        '@id': `${SITE.origin}/#person`,
+      },
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${Astro.url}#webpage`,
+      url: Astro.url.href,
+      name: SITE.name,
+      isPartOf: {
+        '@id': `${SITE.origin}/#website`,
+      },
+      about: {
+        '@id': `${SITE.origin}/#person`,
+      },
+      inLanguage: 'de-DE',
+    },
+  ],
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />

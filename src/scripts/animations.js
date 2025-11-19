@@ -10,6 +10,13 @@
 import { animate } from 'animejs';
 
 /**
+ * Prüfe ob Nutzer reduzierte Bewegung bevorzugt
+ * Respektiert Browser/OS-Einstellung für Barrierefreiheit
+ * @type {boolean}
+ */
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/**
  * Globale Animations-Konfiguration
  *
  * @property {number} duration - Standard-Dauer für Animationen in Millisekunden (600ms = 0.6s)
@@ -47,6 +54,14 @@ const animateElement = (element) => {
   // Verhindere doppelte Animationen
   if (element.dataset.animated) return;
   element.dataset.animated = 'true';
+
+  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
+  if (prefersReducedMotion) {
+    // Zeige Element sofort ohne Animation
+    element.style.opacity = '1';
+    element.style.transform = 'none';
+    return;
+  }
 
   // Lese Animation-Type und Verzögerung aus data-Attributen
   const animType = element.dataset.animType || 'default';
@@ -179,6 +194,13 @@ const animateTypewriter = (element) => {
   element.dataset.animated = 'true';
 
   const text = element.textContent;
+
+  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
+  if (prefersReducedMotion) {
+    element.style.opacity = '1';
+    return;
+  }
+
   const delay = parseInt(element.dataset.animDelay || '0');
 
   // Leere Element und mache es sichtbar
@@ -217,6 +239,13 @@ const animateDecipher = (element) => {
   element.dataset.animated = 'true';
 
   const text = element.textContent;
+
+  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
+  if (prefersReducedMotion) {
+    element.style.opacity = '1';
+    return;
+  }
+
   const delay = parseInt(element.dataset.animDelay || '0');
   const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -281,6 +310,15 @@ const animateCycleTypewriter = (element) => {
     'text-yellow-500',
     'text-primary',
   ];
+
+  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
+  if (prefersReducedMotion) {
+    // Zeige erstes Wort statisch
+    element.textContent = words[0];
+    element.className += ` ${colors[0]}`;
+    element.style.opacity = '1';
+    return;
+  }
 
   let index = 0;
 
@@ -391,6 +429,12 @@ const addImageGlitch = (img) => {
     return;
   }
 
+  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
+  if (prefersReducedMotion) {
+    img.dataset.glitchSkipped = 'true';
+    return;
+  }
+
   img.style.position = 'relative';
   img.style.display = 'block';
 
@@ -435,6 +479,12 @@ const addImageGlitch = (img) => {
     let lastFrameTime = performance.now();
 
     const glitchAnimation = (currentTime) => {
+      // Prüfe ob Animation pausiert ist (Tab im Hintergrund)
+      if (img.dataset.glitchPaused === 'true') {
+        animationFrameId = requestAnimationFrame(glitchAnimation);
+        return;
+      }
+
       // Throttle to max 60fps
       const deltaTime = currentTime - lastFrameTime;
       if (deltaTime < 16) {
@@ -639,6 +689,22 @@ if (typeof document !== 'undefined') {
   });
   document.addEventListener('astro:page-load', () => {
     initAnimations(); // Fallback für Direktnavigation
+  });
+
+  // Tab Visibility API: Pausiere Animationen wenn Tab nicht sichtbar
+  // Spart CPU/Battery und verbessert Performance
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Tab ist im Hintergrund - stoppe alle laufenden Animationen
+      document.querySelectorAll('[data-glitch-initialized]').forEach((img) => {
+        img.dataset.glitchPaused = 'true';
+      });
+    } else {
+      // Tab ist wieder sichtbar - setze Animationen fort
+      document.querySelectorAll('[data-glitch-initialized]').forEach((img) => {
+        delete img.dataset.glitchPaused;
+      });
+    }
   });
 }
 
