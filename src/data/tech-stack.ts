@@ -144,7 +144,7 @@ export const projectManagementMethods: TechImage[] = [
     src: '~/assets/images/icons/waterfall.png',
     alt: 'Waterfall: Ein sequenzieller Projektmanagement-Ansatz mit klar definierten Phasen.',
     title: 'Waterfall',
-    href: 'https://www.pmi.org/learning/library/waterfall-method-project-management-6712',
+    href: 'https://en.wikipedia.org/wiki/Waterfall_model',
   },
 ];
 
