@@ -17,7 +17,7 @@ export function initBrandTooltips() {
 
     if (!tooltip) return;
 
-    const startPress = (e) => {
+    const startPress = () => {
       longPressTriggered = false;
       pressTimer = setTimeout(() => {
         longPressTriggered = true;
