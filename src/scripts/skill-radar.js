@@ -15,6 +15,12 @@ export function initSkillRadar() {
   const canvas = document.querySelector('[data-chart-type="tech"]');
   if (!canvas) return;
 
+  // Destroy existing chart if it exists
+  const existingChart = Chart.getChart(canvas);
+  if (existingChart) {
+    existingChart.destroy();
+  }
+
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -372,14 +378,7 @@ if (!themeObserverInitialized) {
   const observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
-        // Destroy existing chart and reinitialize
-        const canvas = document.querySelector('[data-chart-type="tech"]');
-        if (canvas) {
-          const existingChart = Chart.getChart(canvas);
-          if (existingChart) {
-            existingChart.destroy();
-          }
-        }
+        // Reinitialize chart with new theme
         setTimeout(initSkillRadar, 50);
       }
     });
@@ -398,13 +397,6 @@ let resizeTimeout;
 window.addEventListener('resize', () => {
   clearTimeout(resizeTimeout);
   resizeTimeout = setTimeout(() => {
-    const canvas = document.querySelector('[data-chart-type="tech"]');
-    if (canvas) {
-      const existingChart = Chart.getChart(canvas);
-      if (existingChart) {
-        existingChart.destroy();
-      }
-    }
     initSkillRadar();
   }, 250);
 });
