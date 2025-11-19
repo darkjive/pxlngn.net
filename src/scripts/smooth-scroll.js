@@ -14,7 +14,8 @@ const initSmoothScroll = () => {
   scrollSound.volume = 0.3; // Leiser Sound (30% Lautstärke)
 
   // Finde alle Navigation-Links (Header & Footer)
-  const navLinks = document.querySelectorAll('a[href^="#"]');
+  // Unterstützt sowohl #anchor als auch /#anchor Format
+  const navLinks = document.querySelectorAll('a[href^="#"], a[href^="/#"]');
 
   navLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
@@ -23,14 +24,19 @@ const initSmoothScroll = () => {
       // Ignoriere leere oder ungültige Hashes
       if (!href || href === '#' || href === '#!') return;
 
+      // Prüfe ob der Link auf die gleiche Seite zeigt (mit oder ohne /)
+      const targetHash = href.startsWith('/#') ? href.substring(2) : href.substring(1);
+
+      // Nur Links mit Hash-Targets auf der gleichen Seite behandeln
+      if (!targetHash) return;
+
       e.preventDefault();
 
       // Finde Ziel-Element
-      const targetId = href.substring(1);
-      const targetElement = document.getElementById(targetId);
+      const targetElement = document.getElementById(targetHash);
 
       if (!targetElement) {
-        console.warn(`Target element with id "${targetId}" not found`);
+        console.warn(`Target element with id "${targetHash}" not found`);
         return;
       }
 
