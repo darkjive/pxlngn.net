@@ -2,24 +2,28 @@
 /**
  * BackgroundImage Component
  *
- * Typsichere Komponente für Hintergrund-Bilder in Widgets.
- * Ersetzt HTML-String-Props mit strukturierten Props.
+ * Responsive Hintergrund-Bilder mit Dark Mode und Device-spezifischen Varianten.
  *
  * Features:
  * - Type-Safety für alle Image-Attribute
- * - Konsistente Klassen über alle Widgets
- * - Dark-Mode Unterstützung (via dark:hidden)
+ * - Automatische Responsive-Varianten (_m für Mobile, _d für Desktop)
+ * - Dark-Mode Unterstützung (_dark Suffix)
  * - Performance-Hints (loading, fetchpriority)
+ * - Fallback auf Original-Bild wenn Varianten nicht existieren
+ *
+ * Dateinamens-Konvention:
+ * - Basis: /images/background.webp
+ * - Light Mobile: /images/background_m.webp
+ * - Light Desktop: /images/background_d.webp
+ * - Dark Mobile: /images/background_dark_m.webp
+ * - Dark Desktop: /images/background_dark_d.webp
  *
  * @example
- * <!-- In Widget-Komponente: -->
- * <slot name="bg">
- *   <BackgroundImage
- *     src="/images/background.webp"
- *     fetchpriority="high"
- *     loading="eager"
- *   />
- * </slot>
+ * <BackgroundImage
+ *   src="/images/background.webp"
+ *   fetchpriority="high"
+ *   loading="eager"
+ * />
  */
 
 interface Props {
@@ -37,8 +41,6 @@ interface Props {
   fetchpriority?: 'high' | 'low' | 'auto';
   /** Zusätzliche CSS-Klassen */
   class?: string;
-  /** Zeige Bild im Dark-Mode (default: false = nur Light-Mode) */
-  showInDarkMode?: boolean;
   /** Zeige Border (default: true) */
   showBorder?: boolean;
 }
@@ -51,22 +53,87 @@ const {
   loading = 'lazy',
   fetchpriority = 'auto',
   class: className = '',
-  showInDarkMode = false,
   showBorder = true,
 } = Astro.props;
+
+/**
+ * Generiert Bildvarianten für responsive und Dark Mode Support
+ * @param baseSrc - Basis-Bildpfad (z.B. /images/background.webp)
+ * @returns Objekt mit allen Bildvarianten
+ */
+function generateImageVariants(baseSrc: string) {
+  // Parse Pfad: /images/background.webp → { path: /images/, name: background, ext: .webp }
+  const lastSlashIndex = baseSrc.lastIndexOf('/');
+  const lastDotIndex = baseSrc.lastIndexOf('.');
+
+  const path = baseSrc.substring(0, lastSlashIndex + 1);
+  const name = baseSrc.substring(lastSlashIndex + 1, lastDotIndex);
+  const ext = baseSrc.substring(lastDotIndex);
+
+  return {
+    // Light Mode Varianten
+    lightMobile: `${path}${name}_m${ext}`,
+    lightDesktop: `${path}${name}_d${ext}`,
+
+    // Dark Mode Varianten
+    darkMobile: `${path}${name}_dark_m${ext}`,
+    darkDesktop: `${path}${name}_dark_d${ext}`,
+
+    // Fallback
+    fallback: baseSrc,
+  };
+}
+
+const variants = generateImageVariants(src);
 ---
 
-<img
-  src={src}
-  alt={alt}
-  width={width}
-  height={height}
-  loading={loading}
-  fetchpriority={fetchpriority}
-  class:list={[
-    'absolute inset-0 h-full w-full object-cover',
-    { 'dark:hidden': !showInDarkMode },
-    { 'section-border': showBorder },
-    className,
-  ]}
-/>
+<!--
+  Picture-Element mit mehreren Source-Varianten
+  Browser wählt automatisch basierend auf:
+  - prefers-color-scheme (dark/light)
+  - min-width Media Query (mobile/desktop)
+-->
+<picture class:list={['absolute inset-0 h-full w-full', { 'section-border': showBorder }, className]}>
+  <!-- Dark Mode Desktop (min-width: 768px) -->
+  <source
+    srcset={variants.darkDesktop}
+    media="(prefers-color-scheme: dark) and (min-width: 768px)"
+    width={width}
+    height={height}
+  />
+
+  <!-- Dark Mode Mobile (max-width: 767px) -->
+  <source
+    srcset={variants.darkMobile}
+    media="(prefers-color-scheme: dark) and (max-width: 767px)"
+    width={width}
+    height={height}
+  />
+
+  <!-- Light Mode Desktop (min-width: 768px) -->
+  <source
+    srcset={variants.lightDesktop}
+    media="(prefers-color-scheme: light) and (min-width: 768px)"
+    width={width}
+    height={height}
+  />
+
+  <!-- Light Mode Mobile (max-width: 767px) -->
+  <source
+    srcset={variants.lightMobile}
+    media="(prefers-color-scheme: light) and (max-width: 767px)"
+    width={width}
+    height={height}
+  />
+
+  <!-- Fallback: Original-Bild wenn keine Variante passt -->
+  <img
+    src={variants.fallback}
+    alt={alt}
+    width={width}
+    height={height}
+    loading={loading}
+    fetchpriority={fetchpriority}
+    class="h-full w-full object-cover"
+  />
+</picture>
