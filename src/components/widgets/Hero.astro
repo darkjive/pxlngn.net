@@ -22,7 +22,7 @@ const {
 ---
 
 <section class={twMerge('not-prose relative md:-mt-[80px]', className)} {...id ? { id } : {}}>
-  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+  <div class="mobile-bg-container pointer-events-none absolute inset-0" aria-hidden="true">
     <slot name="bg">
       {bg ? <Fragment set:html={bg} /> : null}
     </slot>
