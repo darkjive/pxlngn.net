@@ -64,6 +64,11 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Text shadow utility for better readability in dark mode */
+  .dark .text-shadow {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  }
 }
 
 @layer components {
@@ -193,26 +198,6 @@
   box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
 }
 
-/* Text Shadow in Dark Mode for Better Readability */
-.dark body,
-.dark p,
-.dark h1,
-.dark h2,
-.dark h3,
-.dark h4,
-.dark h5,
-.dark h6,
-.dark span,
-.dark li,
-.dark a,
-.dark div {
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-.dark .btn-primary,
-.dark .btn-secondary {
-  text-shadow: 0 0 0;
-}
-
 /* Auto-hide navigation on scroll */
 #header[data-aw-sticky-header] {
   transition: transform 0.3s ease-in-out;
@@ -274,29 +259,4 @@
     var(--aw-gradient-middle) 50%,
     var(--aw-gradient-end) 100%
   );
-}
-
-/* Fix for mobile background scroll issue */
-@media (max-width: 767px) {
-  /* Optimize rendering on mobile to prevent background scroll jumping */
-  .mobile-bg-container {
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    perspective: 1000px;
-    -webkit-perspective: 1000px;
-  }
-
-  .mobile-bg-container img {
-    will-change: transform;
-    transform: translate3d(0, 0, 0);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-
-  /* Ensure smooth scrolling on mobile */
-  section.relative {
-    -webkit-overflow-scrolling: touch;
-  }
 }
