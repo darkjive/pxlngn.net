@@ -72,21 +72,14 @@ const {
                     height={70}
                     layout="fixed"
                   />
-                  <span class="brand-tooltip pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-slate-900 px-3 py-2 text-sm text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 dark:bg-slate-100 dark:text-slate-900">
+                  <span class="brand-tooltip pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md bg-white px-3 py-2 text-sm text-black opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100 dark:bg-black dark:text-slate-100">
                     {image.alt || image.title}
-                    <span class="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></span>
+                    <span class="absolute left-1/2 top-full -translate-x-1/2 border-4 border-transparent border-t-white dark:border-t-black" />
                   </span>
                 </a>
               ) : (
                 <div class="relative" data-tooltip={image.alt || image.title}>
-                  <Image
-                    src={image.src}
-                    alt={image.alt || ''}
-                    class="max-full"
-                    width={70}
-                    height={70}
-                    layout="fixed"
-                  />
+                  <Image src={image.src} alt={image.alt || ''} class="max-full" width={70} height={70} layout="fixed" />
                 </div>
               )}
               {image.title && <span class="mt-2 text-xs tracking-wider text-muted dark:text-white">{image.title}</span>}
