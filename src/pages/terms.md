@@ -55,6 +55,8 @@ Spaceship Interior Background Noise by Suhuy -- https://freesound.org/s/715175/ 
 
 Spaceship Interior Hibernation Unit by Suhuy -- https://freesound.org/s/715177/ -- License: Creative Commons 0
 
+Cyber Tickle 1.wav by DiscordantScraps -- https://freesound.org/s/636364/ -- License: Attribution 4.0
+
 ### Framework
 
 [Astro 5.0](https://astro.build/)

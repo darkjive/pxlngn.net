@@ -10,7 +10,7 @@
  */
 const initSmoothScroll = () => {
   // Hole Sound-Element (UI-Click-Sound)
-  const scrollSound = new Audio('/audio/615543__crash_358__sci-fi-ui-button-sound-019.wav');
+  const scrollSound = new Audio('/audio/469399__pocosebas__6_boton-presionado.wav');
   scrollSound.volume = 0.3; // Leiser Sound (30% Lautstärke)
 
   // Finde alle Navigation-Links (Header & Footer)
