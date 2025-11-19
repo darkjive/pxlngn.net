@@ -341,11 +341,13 @@ import { UI } from 'astrowind:config';
   import '~/scripts/smooth-scroll.js';
   import { initSkillRadar } from '~/scripts/skill-radar.js';
   import { initGlitchProfile } from '~/scripts/glitch-profile.js';
+  import { initBrandTooltips } from '~/scripts/brand-tooltips.js';
 
   // Initialize components when DOM is ready
   function initComponents() {
     initSkillRadar();
     initGlitchProfile();
+    initBrandTooltips();
   }
 
   if (document.readyState === 'loading') {
