@@ -42,7 +42,7 @@ export function initSkillRadar() {
     gridColor: isDarkMode ? 'rgba(156, 163, 175, 0.6)' : 'rgba(107, 114, 128, 0.6)',
     textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
     pointBorder: isDarkMode ? '#fff' : '#1f2937',
-    tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.98)' : 'rgba(255, 255, 255, 0.98)',
+    tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.7)' : 'rgba(255, 255, 255, 0.7)',
   };
 
   // Skills categories
@@ -60,7 +60,7 @@ export function initSkillRadar() {
   ];
 
   // Year 2000 - Beginner (10 points)
-  const data2000 = [10, 0, 0, 0, 10, 10, 0, 60, 10, 30];
+  const data2000 = [10, 5, 5, 5, 10, 10, 5, 60, 10, 30];
 
   // Year 2010 - Growing (10 points)
   const data2010 = [70, 20, 10, 40, 20, 30, 40, 80, 30, 60];
@@ -125,7 +125,7 @@ export function initSkillRadar() {
       responsive: true,
       maintainAspectRatio: true,
       animation: {
-        duration: 2000,
+        duration: 500,
         easing: 'easeInOutQuart',
         onComplete: () => {
           // Verstecke Loader nach Chart-Animation
@@ -163,7 +163,7 @@ export function initSkillRadar() {
           min: 0,
           ticks: {
             display: false,
-            stepSize: 5,
+            stepSize: 10,
             backdropColor: 'transparent',
           },
           grid: {
@@ -211,7 +211,7 @@ export function initSkillRadar() {
           borderColor: isDarkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(107, 114, 128, 0.5)',
           borderWidth: 1,
           padding: 20,
-          displayColors: true,
+          displayColors: false,
           cornerRadius: 8,
           titleFont: {
             size: 18,
