@@ -38,10 +38,10 @@ export default defineConfig({
     compress({
       CSS: true,
       HTML: { 'html-minifier-terser': { removeAttributeQuotes: false } },
-      Image: true,
+      Image: false, // Bilder werden bereits von Astro optimiert
       JavaScript: true,
       SVG: true,
-      Logger: 1,
+      Logger: 0, // Logger deaktiviert, um Hängen zu vermeiden
     }),
     astrowind({ config: './src/config.yaml' }),
   ],
