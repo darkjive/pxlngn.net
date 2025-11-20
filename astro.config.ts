@@ -38,7 +38,7 @@ export default defineConfig({
     compress({
       CSS: true,
       HTML: { 'html-minifier-terser': { removeAttributeQuotes: false } },
-      Image: false, // Deaktiviert - lässt Astro/Sharp die Bildoptimierung übernehmen
+      Image: false, // Deaktiviert - lässt Astro die Bildoptimierung übernehmen
       JavaScript: true,
       SVG: true,
       Logger: 1,
