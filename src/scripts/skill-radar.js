@@ -24,7 +24,6 @@ import { de } from 'date-fns/locale';
 Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
 
 export function initSkillRadar() {
-
   const canvas = document.querySelector('[data-chart-type="tech"]');
   if (!canvas) return;
 

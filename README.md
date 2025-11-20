@@ -5,11 +5,13 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 ## Tech Stack
 
 ### Core
+
 - **[Astro 5.15](https://astro.build/)** - Static Site Generator
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-Safe JavaScript
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-First CSS Framework
 
 ### Libraries & Tools
+
 - **[anime.js v4](https://animejs.com)** - Animation Library für Scroll-Animationen
 - **[Chart.js](https://www.chartjs.org/)** - Skill Radar Visualisierung
 - **[Sharp](https://sharp.pixelplumbing.com/)** - High-Performance Image Processing
@@ -17,17 +19,20 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 - **[astro-icon](https://www.astroicon.dev/)** - Icon System (Tabler Icons)
 
 ### Integrations
+
 - **@astrojs/sitemap** - Automatische Sitemap-Generierung
 - **astro-compress** - Asset-Komprimierung (CSS, HTML, JS, SVG)
 - **@astrolib/seo** - SEO & Open Graph Optimierung
 - **@astrolib/analytics** - Analytics Integration
 
 ### Basis
+
 - **AstroWind Template** - Angepasstes Basis-Template
 
 ## Features
 
 ### Performance & SEO
+
 - ✅ Lighthouse Score 100 (Performance, Accessibility, Best Practices, SEO)
 - ✅ Image Optimization mit Sharp
 - ✅ Asset-Komprimierung (CSS, HTML, JS, Images, SVG)
@@ -35,6 +40,7 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 - ✅ Automatische Sitemap-Generierung
 
 ### Design & UX
+
 - ✅ Dark Mode Support mit System-Präferenz
 - ✅ Responsive Design (Mobile-First Ansatz)
 - ✅ Scroll-basierte Animationen (IntersectionObserver + anime.js)
@@ -43,12 +49,14 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 - ✅ Custom Typewriter-Animationen
 
 ### Content & Datenstruktur
+
 - ✅ Data-driven Portfolio (Skills, Resume, Projects, Certificates)
 - ✅ Skill Radar Chart mit Chart.js
 - ✅ Multi-Section Single-Page Layout
 - ✅ MDX Support für statische Seiten (Privacy, Terms)
 
 ### Entwicklung
+
 - ✅ TypeScript für Type-Safety
 - ✅ ESLint + Prettier für Code-Qualität
 - ✅ Playwright für E2E-Testing
@@ -102,6 +110,7 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 ### Node.js Version
 
 Das Projekt benötigt eine der folgenden Node.js-Versionen:
+
 - Node.js `^18.18.0`
 - Node.js `^20.9.0` (empfohlen)
 - Node.js `>=21.1.0`
@@ -167,6 +176,7 @@ Scroll-basierte Animationen mit IntersectionObserver:
 ```
 
 **Verfügbare Animations-Typen:**
+
 - `fade-up` / `fade-down` / `fade-left` / `fade-right` - Fade mit Richtung
 - `scale-up` - Skalierung von klein nach groß
 - `typewriter` - Typewriter-Effekt für Text
@@ -178,12 +188,7 @@ Scroll-basierte Animationen mit IntersectionObserver:
 Profilbild mit Glitch-Effekt (RGB-Split):
 
 ```astro
-<GlitchProfileImage
-  alt="Profilbild"
-  width={500}
-  height={500}
-  glowColor="cyan"
-/>
+<GlitchProfileImage alt="Profilbild" width={500} height={500} glowColor="cyan" />
 ```
 
 Details: [src/scripts/glitch-profile.js](src/scripts/glitch-profile.js)
@@ -215,18 +220,21 @@ Generiert optimierte statische Files im `./dist/` Verzeichnis.
 Das Projekt enthält Konfigurationsdateien für verschiedene Plattformen:
 
 #### Vercel
+
 - Config: `vercel.json`
 - Deploy: `vercel deploy` oder Git-Integration
 - Build Command: `npm run build`
 - Output Directory: `dist`
 
 #### Netlify
+
 - Config: `netlify.toml`
 - Deploy: Git-Integration oder Netlify CLI
 - Build Command: `npm run build`
 - Output Directory: `dist`
 
 #### Andere Plattformen
+
 - **IONOS Deploy & Space**: Git-Integration
 - **Cloudflare Pages**: Git-Integration
 - **GitHub Pages**: Static Site Deployment
@@ -273,9 +281,9 @@ export const projectItems: Item[] = [
     icon: 'tabler:world',
     callToAction: {
       text: 'Link',
-      href: 'https://example.com'
-    }
-  }
+      href: 'https://example.com',
+    },
+  },
 ];
 ```
 
