@@ -159,6 +159,7 @@ import { UI } from 'astrowind:config';
   import { initBrandTooltips } from '~/scripts/brand-tooltips.js';
   import { initSoundManager } from '~/scripts/sound-manager.js';
   import { initScrollHandling } from '~/scripts/scroll-handling.js';
+  import { initActiveLink } from '~/scripts/active-link.js';
 
   // Initialize components when DOM is ready
   function initComponents() {
@@ -167,6 +168,7 @@ import { UI } from 'astrowind:config';
     initBrandTooltips();
     initSoundManager();
     initScrollHandling();
+    initActiveLink();
   }
 
   if (document.readyState === 'loading') {
