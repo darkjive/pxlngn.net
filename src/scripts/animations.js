@@ -10,13 +10,6 @@
 import { animate } from 'animejs';
 
 /**
- * Prüfe ob Nutzer reduzierte Bewegung bevorzugt
- * Respektiert Browser/OS-Einstellung für Barrierefreiheit
- * @type {boolean}
- */
-const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-/**
  * Globale Animations-Konfiguration
  *
  * @property {number} duration - Standard-Dauer für Animationen in Millisekunden (600ms = 0.6s)
@@ -54,14 +47,6 @@ const animateElement = (element) => {
   // Verhindere doppelte Animationen
   if (element.dataset.animated) return;
   element.dataset.animated = 'true';
-
-  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
-  if (prefersReducedMotion) {
-    // Zeige Element sofort ohne Animation
-    element.style.opacity = '1';
-    element.style.transform = 'none';
-    return;
-  }
 
   // Lese Animation-Type und Verzögerung aus data-Attributen
   const animType = element.dataset.animType || 'default';
@@ -194,13 +179,6 @@ const animateTypewriter = (element) => {
   element.dataset.animated = 'true';
 
   const text = element.textContent;
-
-  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
-  if (prefersReducedMotion) {
-    element.style.opacity = '1';
-    return;
-  }
-
   const delay = parseInt(element.dataset.animDelay || '0');
 
   // Leere Element und mache es sichtbar
@@ -239,13 +217,6 @@ const animateDecipher = (element) => {
   element.dataset.animated = 'true';
 
   const text = element.textContent;
-
-  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
-  if (prefersReducedMotion) {
-    element.style.opacity = '1';
-    return;
-  }
-
   const delay = parseInt(element.dataset.animDelay || '0');
   const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -310,15 +281,6 @@ const animateCycleTypewriter = (element) => {
     'text-primary',
     'text-yellow-500',
   ];
-
-  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
-  if (prefersReducedMotion) {
-    // Zeige erstes Wort statisch
-    element.textContent = words[0];
-    element.className += ` ${colors[0]}`;
-    element.style.opacity = '1';
-    return;
-  }
 
   let index = 0;
 
