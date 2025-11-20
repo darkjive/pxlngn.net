@@ -35,20 +35,6 @@
   }
 }
 
-/* Futuristic glow effect - Dark Mode only */
-.dark .skill-radar-container::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  height: 80%;
-  pointer-events: none;
-  animation: radarPulse 3s ease-in-out infinite;
-  z-index: -1;
-}
-
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .skill-radar-container {
