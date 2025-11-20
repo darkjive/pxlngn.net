@@ -88,16 +88,16 @@
     },
     // Meteore - schnell von oben nach unten
     meteors: {
-      count: 15,
+      count: 6,
       width: 2,
       height: [40, 120],
       speed: [1500, 3500],
       colors: ['#60a5fa', '#3b82f6', '#2563eb', '#ffffff'],
-      delay: [0, 15000],
+      delay: [0, 20000],
     },
     // Plasma-Wesen - von oben nach unten
     plasma: {
-      count: 20,
+      count: 10,
       minSize: 30,
       maxSize: 80,
       speed: [10000, 20000],
@@ -131,6 +131,7 @@
       top: ${Math.random() * 100}%;
       left: ${Math.random() * 100}%;
       opacity: ${opacity};
+      z-index: 1;
     `;
 
     container.appendChild(star);
@@ -153,7 +154,7 @@
   /**
    * Erstellt vorbeiziehende Partikel (von oben nach unten) - Parallax-Effekt
    */
-  function createParticle(container: HTMLElement, config: any) {
+  function createParticle(container: HTMLElement, config: any, zIndex: number) {
     const particle = document.createElement('div');
     const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
     const color = config.colors[Math.floor(Math.random() * config.colors.length)];
@@ -169,6 +170,7 @@
       top: ${-5 - Math.random() * 5}%;
       left: ${Math.random() * 100}%;
       opacity: ${opacity};
+      z-index: ${zIndex};
     `;
 
     container.appendChild(particle);
@@ -227,6 +229,7 @@
         0 0 120px ${planetType.colors[1]}22;
       filter: blur(1px);
       transform: rotate(${rotation}deg);
+      z-index: 10;
     `;
 
     container.appendChild(planet);
@@ -283,6 +286,7 @@
       left: ${Math.random() * 100}%;
       opacity: 0;
       box-shadow: 0 0 10px ${color}, 0 0 20px ${color}66;
+      z-index: 8;
     `;
 
     container.appendChild(meteor);
@@ -330,6 +334,7 @@
       left: ${Math.random() * 100}%;
       opacity: 0;
       filter: blur(${4 + Math.random() * 4}px);
+      z-index: 6;
     `;
 
     container.appendChild(plasma);
@@ -399,19 +404,19 @@
     }
 
     // VORBEIZIEHENDE PARTIKEL (von oben nach unten) - Parallax-Effekt
-    // Langsame Partikel (Background)
+    // Langsame Partikel (Background) - z-index 2
     for (let i = 0; i < CONFIG.particles.count; i++) {
-      createParticle(container, CONFIG.particles);
+      createParticle(container, CONFIG.particles, 2);
     }
 
-    // Mittlere Partikel
+    // Mittlere Partikel - z-index 3
     for (let i = 0; i < CONFIG.particlesMid.count; i++) {
-      createParticle(container, CONFIG.particlesMid);
+      createParticle(container, CONFIG.particlesMid, 3);
     }
 
-    // Schnelle Partikel (Foreground)
+    // Schnelle Partikel (Foreground) - z-index 4
     for (let i = 0; i < CONFIG.particlesNear.count; i++) {
-      createParticle(container, CONFIG.particlesNear);
+      createParticle(container, CONFIG.particlesNear, 4);
     }
 
     // Riesige Planeten - MEGALOPHOBIE!
