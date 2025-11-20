@@ -32,14 +32,14 @@ const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props
       alt={alt}
       width={width}
       height={height}
-      widths={[320, 400, width]}
-      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      widths={[320, 350, 400]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 350px, 350px"
       class="glitch-profile-base"
       loading="eager"
       fetchpriority="high"
       decoding="async"
       format="webp"
-      quality={85}
+      quality={80}
     />
 
     <!-- Glitch Overlay 1 (glitch.jpg - lazy loaded) -->
@@ -49,13 +49,13 @@ const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props
       aria-hidden="true"
       width={width}
       height={height}
-      widths={[320, 400, width]}
-      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      widths={[320, 350, 400]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 350px, 350px"
       class="glitch-profile-overlay"
       loading="lazy"
       decoding="async"
       format="webp"
-      quality={80}
+      quality={75}
       data-glitch-overlay
     />
 
@@ -66,13 +66,13 @@ const { alt, width, height, class: className, glowColor = 'cyan' } = Astro.props
       aria-hidden="true"
       width={width}
       height={height}
-      widths={[320, 400, width]}
-      sizes="(max-width: 640px) 320px, (max-width: 768px) 400px, 500px"
+      widths={[320, 350, 400]}
+      sizes="(max-width: 640px) 320px, (max-width: 768px) 350px, 350px"
       class="glitch-profile-overlay"
       loading="lazy"
       decoding="async"
       format="webp"
-      quality={80}
+      quality={75}
       data-glitch-overlay
     />
   </div>
