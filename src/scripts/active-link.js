@@ -4,32 +4,50 @@
  * Verwaltet die aktive Markierung von Navigationslinks:
  * - Markiert Links basierend auf aktueller Scroll-Position
  * - Reagiert auf Hash-Änderungen in der URL
- * - Verwendet Intersection Observer für Performance
+ * - Verwendet Scroll-basierte Erkennung für Zuverlässigkeit
  *
  * Features:
  * - Automatische Markierung beim Scrollen
  * - Unterstützung für Hash-Navigation
- * - Performance-optimiert mit Intersection Observer
+ * - Performance-optimiert mit requestAnimationFrame
  */
 
 /**
  * Initialisiert das Active-Link-System
  *
  * Setup:
- * - Registriert Intersection Observer für Sections
+ * - Registriert Scroll-Event-Listener
  * - Registriert Hash-Change-Listener
  * - Initialisiert aktiven Link basierend auf URL
  *
  * @returns {void}
  */
 export function initActiveLink() {
-  // Alle Sections mit IDs finden
-  const sections = document.querySelectorAll('section[id], div[id]');
+  // Alle Navigationslinks mit Hash-Links finden
+  const navLinks = document.querySelectorAll('#header nav a[href*="#"]');
 
-  // Alle Navigationslinks finden
-  const navLinks = document.querySelectorAll('#header nav a[href]');
+  if (!navLinks.length) {
+    return;
+  }
 
-  if (!sections.length || !navLinks.length) {
+  // Sammle alle Section IDs aus den Links
+  const sectionIds = new Set();
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href) {
+      const hashMatch = href.match(/#(.+)$/);
+      if (hashMatch) {
+        sectionIds.add(hashMatch[1]);
+      }
+    }
+  });
+
+  // Finde alle entsprechenden Sections im DOM
+  const sections = Array.from(sectionIds)
+    .map(id => document.getElementById(id))
+    .filter(section => section !== null);
+
+  if (!sections.length) {
     return;
   }
 
@@ -71,48 +89,63 @@ export function initActiveLink() {
   }
 
   /**
-   * Intersection Observer Callback
-   * Wird aufgerufen wenn eine Section in/out of view kommt
+   * Findet die aktuell aktive Section basierend auf Scroll-Position
+   * Verwendet die Section, die am nächsten zur Mitte des Viewports ist
    *
-   * @param {IntersectionObserverEntry[]} entries - Observer Entries
+   * @returns {string|null} - ID der aktiven Section oder null
    */
-  function handleIntersection(entries) {
-    // Finde die Section, die am meisten im Viewport ist
-    let mostVisibleSection = null;
-    let maxRatio = 0;
+  function findActiveSection() {
+    const scrollPosition = window.scrollY;
+    const viewportMiddle = scrollPosition + window.innerHeight / 2;
 
-    entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio > maxRatio) {
-        maxRatio = entry.intersectionRatio;
-        mostVisibleSection = entry.target;
+    let closestSection = null;
+    let closestDistance = Infinity;
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = scrollPosition + rect.top;
+      const sectionBottom = sectionTop + rect.height;
+      const sectionMiddle = sectionTop + rect.height / 2;
+
+      // Berechne Distanz zur Viewport-Mitte
+      const distance = Math.abs(sectionMiddle - viewportMiddle);
+
+      // Prüfe ob Section im Viewport ist
+      const isInViewport = sectionBottom > scrollPosition && sectionTop < scrollPosition + window.innerHeight;
+
+      // Wenn Section im Viewport ist und näher zur Mitte als die bisherige
+      if (isInViewport && distance < closestDistance) {
+        closestDistance = distance;
+        closestSection = section;
       }
     });
 
-    // Wenn wir eine sichtbare Section haben, markiere den entsprechenden Link
-    if (mostVisibleSection) {
-      setActiveLink(mostVisibleSection.id);
+    return closestSection ? closestSection.id : null;
+  }
+
+  /**
+   * Update-Funktion die beim Scrollen aufgerufen wird
+   */
+  function updateActiveLink() {
+    const activeSectionId = findActiveSection();
+    if (activeSectionId) {
+      setActiveLink(activeSectionId);
     }
   }
 
   /**
-   * Intersection Observer Setup
-   *
-   * Options:
-   * - rootMargin: Trigger wenn Section 20% im Viewport ist
-   * - threshold: Array von Schwellenwerten für granulare Erkennung
+   * Scroll-Handler mit requestAnimationFrame für Performance
    */
-  const observerOptions = {
-    root: null,
-    rootMargin: '-20% 0px -70% 0px', // Top 20%, Bottom 70%
-    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
-  };
-
-  const observer = new IntersectionObserver(handleIntersection, observerOptions);
-
-  // Beobachte alle Sections
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+  let ticking = false;
+  function handleScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateActiveLink();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
 
   /**
    * Hash-Change Handler
@@ -125,15 +158,16 @@ export function initActiveLink() {
     }
   }
 
-  // Registriere Hash-Change-Listener
+  // Registriere Event-Listener
+  window.addEventListener('scroll', handleScroll, { passive: true });
   window.addEventListener('hashchange', handleHashChange);
 
-  // Initiale Aktivierung basierend auf aktuellem Hash oder erster Section
+  // Initiale Aktivierung basierend auf aktuellem Hash oder Scroll-Position
   const initialHash = window.location.hash.slice(1);
   if (initialHash) {
     setActiveLink(initialHash);
-  } else if (sections.length > 0) {
-    // Wenn kein Hash vorhanden, aktiviere die erste Section
-    setActiveLink(sections[0].id);
+  } else {
+    // Warte kurz bis Layout fertig ist, dann setze aktiven Link
+    setTimeout(updateActiveLink, 100);
   }
 }
