@@ -43,8 +43,8 @@ const smoothScrollTo = (targetElement, duration = 600) => {
  */
 const initSmoothScroll = () => {
   // Hole Sound-Element (UI-Click-Sound)
-  const scrollSound = new Audio('/audio/469399__pocosebas__6_boton-presionado.wav');
-  scrollSound.volume = 0.3; // Leiser Sound (30% Lautstärke)
+  const scrollSound = new Audio('/audio/click-sound.wav');
+  scrollSound.volume = 0.7; // Leiser Sound (70% Lautstärke)
 
   // Finde alle Navigation-Links (Header & Footer)
   // Unterstützt sowohl #anchor als auch /#anchor Format
