@@ -56,6 +56,9 @@ import { UI } from 'astrowind:config';
 
     // Links im Menü schließen das Menü (nur in mobiler Ansicht)
     attachEvent('#header nav a', 'click', function () {
+      // Nur auf Mobile (< 768px) ausführen
+      if (window.innerWidth >= 768) return;
+
       const header = document.getElementById('header');
       if (header && header.classList.contains('expanded')) {
         toggleMenu(document.querySelector('[data-aw-toggle-menu]'));
@@ -97,6 +100,9 @@ import { UI } from 'astrowind:config';
   }
 
   function toggleMenu(elem) {
+    // Nur auf Mobile (< 768px) ausführen
+    if (window.innerWidth >= 768) return;
+
     const isExpanding = !elem.classList.contains('expanded');
 
     elem.classList.toggle('expanded');
@@ -134,7 +140,10 @@ import { UI } from 'astrowind:config';
       header.classList.remove('h-screen');
       header.classList.remove('expanded');
     }
-    document.querySelector('#header nav')?.classList.add('hidden');
+    // Nur auf Mobile (< 768px) die Navigation verstecken
+    if (window.innerWidth < 768) {
+      document.querySelector('#header nav')?.classList.add('hidden');
+    }
   }
 
   // Hauptinitialisierung
