@@ -49,7 +49,10 @@ export function initScrollHandling() {
    *
    * Funktionen:
    * - Fügt 'scroll' class nach 60px hinzu (für Styling)
-   * - Mobile: Auto-Hide beim Runterscrollen
+   * - Mobile: Auto-Hide basierend auf Wisch-Richtung
+   *   - Hochwischen (nach oben wischen): Header ausblenden
+   *   - Runterwischen (nach unten wischen): Header einblenden
+   *   - Am Seitenanfang (0-60px): Header immer sichtbar
    * - Desktop: Header immer sichtbar
    *
    * @returns {void}
@@ -72,6 +75,8 @@ export function initScrollHandling() {
 
     if (isMobile) {
       // Berechne Scroll-Richtung
+      // scrollingDown = true: Seite scrollt nach unten (User wischt nach oben/hochwischen)
+      // scrollingDown = false: Seite scrollt nach oben (User wischt nach unten/runterwischen)
       const scrollingDown = currentScrollPosition > lastScrollPosition;
       const scrollDifference = Math.abs(currentScrollPosition - lastScrollPosition);
 
@@ -80,12 +85,17 @@ export function initScrollHandling() {
         return;
       }
 
-      // Beim Runterscrollen (scrolling down = nach unten wischen): Header ausblenden
-      if (scrollingDown && currentScrollPosition > scrollOffsetShow) {
+      // Am Seitenanfang: Header immer sichtbar
+      if (currentScrollPosition <= scrollOffsetShow) {
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+      // Beim Hochwischen (User wischt nach oben → Seite scrollt nach unten): Header ausblenden
+      else if (scrollingDown && currentScrollPosition > scrollOffsetShow) {
         header.classList.add('header-hidden');
         header.classList.remove('header-visible');
       }
-      // Beim Hochscrollen (scrolling up = nach oben wischen): Header einblenden
+      // Beim Runterwischen (User wischt nach unten → Seite scrollt nach oben): Header einblenden
       else if (!scrollingDown) {
         header.classList.remove('header-hidden');
         header.classList.add('header-visible');
