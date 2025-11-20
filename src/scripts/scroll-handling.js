@@ -89,6 +89,11 @@ export function initScrollHandling() {
       else if (!scrollingDown) {
         header.classList.remove('header-hidden');
         header.classList.add('header-visible');
+        // Entferne hidden-Klasse von der Nav, falls vorhanden
+        const nav = header.querySelector('nav');
+        if (nav) {
+          nav.classList.remove('hidden');
+        }
       }
 
       lastScrollPosition = currentScrollPosition;
@@ -96,6 +101,11 @@ export function initScrollHandling() {
       // Auf Desktop: Header immer sichtbar
       header.classList.remove('header-hidden');
       header.classList.add('header-visible');
+      // Entferne hidden-Klasse von der Nav auf Desktop
+      const nav = header.querySelector('nav');
+      if (nav) {
+        nav.classList.remove('hidden');
+      }
     }
   }
 
@@ -127,4 +137,7 @@ export function initScrollHandling() {
 
   // Starte Initialisierung
   initScrollEvents();
+
+  // Initial state setzen
+  applyHeaderStylesOnScroll();
 }

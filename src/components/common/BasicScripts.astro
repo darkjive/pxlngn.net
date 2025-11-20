@@ -140,10 +140,7 @@ import { UI } from 'astrowind:config';
       header.classList.remove('h-screen');
       header.classList.remove('expanded');
     }
-    // Nur auf Mobile (< 768px) die Navigation verstecken
-    if (window.innerWidth < 768) {
-      document.querySelector('#header nav')?.classList.add('hidden');
-    }
+    // Navigation-Sichtbarkeit wird durch scroll-handling.js gemanaged
   }
 
   // Hauptinitialisierung
