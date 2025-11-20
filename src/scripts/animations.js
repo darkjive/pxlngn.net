@@ -406,169 +406,6 @@ const animateCycleTypewriter = (element) => {
   animateNext();
 };
 
-/**
- * Fügt einem Bild einen Glitch-Effekt beim Laden hinzu
- *
- * Verwendung: <img data-glitch src="..." />
- *
- * Erstellt zwei Duplikat-Layers mit Farbversatz (RGB-Split-Effekt)
- * Der Effekt läuft beim Viewport-Scroll und wiederholt sich in zufälligen Intervallen
- *
- * @param {HTMLImageElement} img - Bild-Element für Glitch-Effekt
- * @returns {void}
- */
-const addImageGlitch = (img) => {
-  // Verhindere doppelte Initialisierung
-  if (img.dataset.glitchInitialized) return;
-  img.dataset.glitchInitialized = 'true';
-
-  // Performance check: Skip glitch on low-end devices
-  const isLowEndDevice = navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4;
-  if (isLowEndDevice) {
-    img.dataset.glitchSkipped = 'true';
-    return;
-  }
-
-  // Respektiere Nutzer-Präferenz für reduzierte Bewegung
-  if (prefersReducedMotion) {
-    img.dataset.glitchSkipped = 'true';
-    return;
-  }
-
-  img.style.position = 'relative';
-  img.style.display = 'block';
-
-  const glitchBefore = document.createElement('div');
-  const glitchAfter = document.createElement('div');
-
-  // Erstelle zwei Overlay-Layers mit Bild-Duplikaten
-  [glitchBefore, glitchAfter].forEach((el, i) => {
-    el.style.cssText = `
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('${img.src}');
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 10;
-      will-change: transform, opacity;
-    `;
-    // Verstärkte Blend-Modes für deutlicheren RGB-Split-Effekt
-    el.style.mixBlendMode = i === 0 ? 'screen' : 'color-dodge';
-    // Farbfilter für stärkeren Glitch-Effekt (Rot und Cyan)
-    el.style.filter = i === 0 ? 'hue-rotate(90deg) saturate(3)' : 'hue-rotate(270deg) saturate(3)';
-    img.parentElement.style.position = 'relative';
-    img.parentElement.insertBefore(el, img);
-  });
-
-  let animationFrameId = null;
-  let timeoutId = null;
-
-  /**
-   * Glitch-Animation Loop mit abnehmender Intensität
-   * Optimized: Reduced frames from 180 to 60 (1 second instead of 3)
-   */
-  const runGlitchAnimation = () => {
-    let frame = 0;
-    const maxFrames = 60; // 1 Sekunde bei 60fps (optimiert von 180)
-    let lastFrameTime = performance.now();
-
-    const glitchAnimation = (currentTime) => {
-      // Prüfe ob Animation pausiert ist (Tab im Hintergrund)
-      if (img.dataset.glitchPaused === 'true') {
-        animationFrameId = requestAnimationFrame(glitchAnimation);
-        return;
-      }
-
-      // Throttle to max 60fps
-      const deltaTime = currentTime - lastFrameTime;
-      if (deltaTime < 16) {
-        animationFrameId = requestAnimationFrame(glitchAnimation);
-        return;
-      }
-      lastFrameTime = currentTime;
-
-      if (frame < maxFrames) {
-        // Intensität nimmt über Zeit ab (1.0 → 0.0)
-        const intensity = 1 - frame / maxFrames;
-
-        // Reduzierter Offset für bessere Performance
-        const baseOffset = Math.random() * 30 + 5; // Minimum 5px, Maximum 35px (optimiert)
-        const offsetX = (Math.random() - 0.5) * baseOffset * intensity;
-        const offsetY = (Math.random() - 0.5) * baseOffset * intensity;
-
-        // Verschiebe Layers mit kombinierten Transformationen
-        glitchBefore.style.transform = `translate(${offsetX}px, ${offsetY * 0.5}px) skewX(${Math.random() * 3 - 1.5}deg)`;
-        glitchBefore.style.opacity = (Math.random() * 0.4 + 0.2) * intensity; // Min 0.2, Max 0.6 (reduziert)
-
-        glitchAfter.style.transform = `translate(${-offsetX}px, ${-offsetY}px) skewX(${Math.random() * 3 - 1.5}deg)`;
-        glitchAfter.style.opacity = (Math.random() * 0.4 + 0.2) * intensity; // Min 0.2, Max 0.6 (reduziert)
-
-        // Gelegentliche intensive Glitch-Spikes (reduzierte Häufigkeit)
-        if (Math.random() > 0.97) {
-          const spikeOffset = 60; // Reduziert von 80
-          glitchBefore.style.transform = `translate(${spikeOffset}px, 0) skewX(8deg)`;
-          glitchAfter.style.transform = `translate(${-spikeOffset}px, 0) skewX(-8deg)`;
-          glitchBefore.style.opacity = 0.7 * intensity;
-          glitchAfter.style.opacity = 0.7 * intensity;
-        }
-
-        frame++;
-        animationFrameId = requestAnimationFrame(glitchAnimation);
-      } else {
-        // Effekt beendet - verstecke Layers
-        glitchBefore.style.opacity = '0';
-        glitchAfter.style.opacity = '0';
-
-        // Plane nächste Animation in längerem Intervall (10-15 Sekunden statt 5-10)
-        const nextDelay = Math.random() * 5000 + 10000;
-        timeoutId = setTimeout(() => {
-          runGlitchAnimation();
-        }, nextDelay);
-      }
-    };
-
-    glitchAnimation(performance.now());
-  };
-
-  // IntersectionObserver für Viewport-Detection
-  const glitchObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting && !img.dataset.glitchStarted) {
-          img.dataset.glitchStarted = 'true';
-          // Starte erste Animation sofort beim Viewport-Eintritt
-          runGlitchAnimation();
-        }
-      });
-    },
-    { threshold: CONFIG.threshold, rootMargin: CONFIG.rootMargin }
-  );
-
-  // Beobachte das Bild
-  const startObserving = () => {
-    glitchObserver.observe(img);
-  };
-
-  // Starte Beobachtung wenn Bild geladen ist
-  if (img.complete) {
-    startObserving();
-  } else {
-    img.addEventListener('load', startObserving);
-  }
-
-  // Cleanup-Funktion für Speicherlecks
-  img.dataset.glitchCleanup = () => {
-    if (animationFrameId) cancelAnimationFrame(animationFrameId);
-    if (timeoutId) clearTimeout(timeoutId);
-    glitchObserver.disconnect();
-  };
-};
 
 /**
  * Erstellt IntersectionObserver für Scroll-basierte Animationen
@@ -643,11 +480,6 @@ const initAnimations = () => {
       observer.observe(el);
     });
   });
-
-  // Initialisiere Glitch-Effekte für Bilder
-  document.querySelectorAll('img[data-glitch]').forEach((img) => {
-    addImageGlitch(img);
-  });
 };
 
 /**
@@ -689,22 +521,6 @@ if (typeof document !== 'undefined') {
   });
   document.addEventListener('astro:page-load', () => {
     initAnimations(); // Fallback für Direktnavigation
-  });
-
-  // Tab Visibility API: Pausiere Animationen wenn Tab nicht sichtbar
-  // Spart CPU/Battery und verbessert Performance
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      // Tab ist im Hintergrund - stoppe alle laufenden Animationen
-      document.querySelectorAll('[data-glitch-initialized]').forEach((img) => {
-        img.dataset.glitchPaused = 'true';
-      });
-    } else {
-      // Tab ist wieder sichtbar - setze Animationen fort
-      document.querySelectorAll('[data-glitch-initialized]').forEach((img) => {
-        delete img.dataset.glitchPaused;
-      });
-    }
   });
 }
 
