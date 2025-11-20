@@ -48,12 +48,6 @@ export default defineConfig({
 
   image: {
     domains: ['cdn.pixabay.com', 'img.icons8.com'],
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: {
-        limitInputPixels: 50000000, // 50MP Limit für Memory-Sicherheit
-      },
-    },
   },
 
   markdown: {
