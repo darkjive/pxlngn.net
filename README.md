@@ -128,7 +128,7 @@ Die `.nvmrc`-Datei spezifiziert automatisch die empfohlene Version (v20.9.0).
 | Command                | Action                                               |
 | :--------------------- | :--------------------------------------------------- |
 | `npm install`          | Installiert Dependencies                             |
-| `npx @astrojs/upgrade` | # Upgrade Astro and official integrations together   |
+| `npx @astrojs/upgrade` | Upgrade Astro and official integrations together     |
 | `npm run dev`          | Startet Dev-Server auf `localhost:4321`              |
 | `npm run build`        | Baut Production Site nach `./dist/`                  |
 | `npm run preview`      | Lokale Preview des Production Builds                 |
