@@ -9,7 +9,7 @@ layout: '~/layouts/MarkdownLayout.astro'
 E-Mail:  
 𐋅𐌉@𐌓𐋄𐌋𐌍Ᏽ𐌍.𐌍𐌄𐌕
 
-## Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV):
+## Verantwortlich für den Inhalt (gem. § 55 Abs. 2 RStV)
 
 𐌀𐌋𐌀𐌉𐌍 𐌐𐌉𐌕𐌕𐌄𐌐
 
