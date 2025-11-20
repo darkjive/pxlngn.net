@@ -27,7 +27,6 @@
     "@astrolib/analytics": "^0.6.1",
     "@astrolib/seo": "^1.0.0-beta.8",
     "@fontsource-variable/baloo-bhaijaan-2": "^5.1.0",
-    "@playwright/test": "^1.49.1",
     "animejs": "^4.2.2",
     "astro": "^5.15.9",
     "astro-embed": "^0.7.4",
@@ -35,14 +34,15 @@
     "caniuse-lite": "^1.0.30001754",
     "chart.js": "^4.5.1",
     "chartjs-adapter-date-fns": "^3.0.0",
-    "date-fns": "^3.6.0",
+    "date-fns": "^4.1.0",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
-    "unpic": "^3.18.0",
-    "vite": "^6.0.3"
+    "unpic": "^4.2.2",
+    "vite": "^7.2.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.5",
+    "@playwright/test": "^1.49.1",
     "@astrojs/mdx": "^4.3.11",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/tailwind": "^6.0.2",

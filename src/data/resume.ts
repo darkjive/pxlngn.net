@@ -15,7 +15,7 @@ export const resumeItems: Item[] = [
       <li>Scrum Teams coachen, agile Prozesse mit JIRA/Confluence aufsetzen und am Laufen halten</li>
       <li>Servant Leadership - selbstorganisierte Teams fördern, kontinuierlich verbessern</li>
       <li>Incident- und Release-Management, Stakeholder auf dem Laufenden halten</li>
-      <li>QA mit Playwright automatisieren, manuelle Tests, Bugs systematisch dokumentieren</li>
+      <li>Testing - manuelle Tests, browserstack, Bugs systematisch dokumentieren</li>
     </ul>`,
     icon: 'tabler:briefcase',
     logo: {
@@ -51,7 +51,7 @@ export const resumeItems: Item[] = [
     </ul>`,
     icon: 'tabler:briefcase',
     logo: {
-      src: '~/assets/images/werbeagentur_frankfurt.png',
+      src: '~/assets/images/werbeagentur_frankfurt.webp',
       alt: 'Intercontact Logo',
     },
   },
