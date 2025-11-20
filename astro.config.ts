@@ -38,7 +38,7 @@ export default defineConfig({
     compress({
       CSS: true,
       HTML: { 'html-minifier-terser': { removeAttributeQuotes: false } },
-      Image: true,
+      Image: false, // Deaktiviert - lässt Astro die Bildoptimierung übernehmen
       JavaScript: true,
       SVG: true,
       Logger: 1,
@@ -48,12 +48,6 @@ export default defineConfig({
 
   image: {
     domains: ['cdn.pixabay.com', 'img.icons8.com'],
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-      config: {
-        limitInputPixels: 50000000, // 50MP Limit für Memory-Sicherheit
-      },
-    },
   },
 
   markdown: {
