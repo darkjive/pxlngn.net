@@ -47,30 +47,12 @@
       opacity: [0.5, 1],
       twinkle: true,
     },
-    // Vorbeiziehende Partikel (Staub/Nebel) - Parallax von oben nach unten
-    particles: {
-      count: 80,
-      minSize: 1,
-      maxSize: 3,
-      speed: [8000, 15000], // Langsam (weit weg)
-      colors: ['#ffffff', '#e0f2fe', '#bfdbfe'],
-      opacity: [0.3, 0.6],
-    },
-    particlesMid: {
-      count: 60,
-      minSize: 2,
-      maxSize: 4,
-      speed: [5000, 10000], // Mittel
-      colors: ['#ffffff', '#e0f2fe', '#fef3c7'],
-      opacity: [0.4, 0.7],
-    },
-    particlesNear: {
-      count: 40,
-      minSize: 3,
-      maxSize: 6,
-      speed: [2000, 5000], // Schnell (nah)
-      colors: ['#ffffff', '#fef3c7'],
-      opacity: [0.6, 0.9],
+    // Starfield (wie Microsoft Bildschirmschoner)
+    starfield: {
+      count: 150,
+      minSpeed: 0.5,
+      maxSpeed: 3,
+      colors: ['#ffffff', '#e0f2fe', '#bfdbfe', '#fef3c7'],
     },
     // Riesige Planeten (Megalophobie!) - von oben nach unten
     planets: {
@@ -86,13 +68,6 @@
         { colors: ['#6366f1', '#a855f7', '#4c1d95'], name: 'purple-giant' },
       ],
     },
-    // Schwarzes Loch
-    blackHole: {
-      count: 1,
-      minSize: 400,
-      maxSize: 600,
-      speed: [80000, 150000],
-    },
     // Meteore mit zufälligen Flugbahnen
     meteors: {
       count: 8,
@@ -105,10 +80,9 @@
   };
 
   /**
-   * Maus-Position für Gravitations-Effekt
+   * Aktive Planeten für Kollisionsvermeidung
    */
-  let mouseX = 0;
-  let mouseY = 0;
+  const activePlanets: Array<{ x: number; y: number; size: number; vx: number; vy: number }> = [];
 
   /**
    * Erstellt einen statischen Stern mit leichtem Twinkle-Effekt
@@ -150,108 +124,169 @@
   }
 
   /**
-   * Erstellt vorbeiziehende Partikel (von oben nach unten) - Parallax-Effekt mit Gravitation
+   * Erstellt einen Starfield-Stern (Microsoft Bildschirmschoner Style)
+   * Fliegt vom Zentrum nach außen mit wachsendem Trail
    */
-  function createParticle(container: HTMLElement, config: any, zIndex: number) {
-    const particle = document.createElement('div');
-    const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
-    const color = config.colors[Math.floor(Math.random() * config.colors.length)];
-    const opacity = config.opacity[0] + Math.random() * (config.opacity[1] - config.opacity[0]);
+  function createStarfieldStar(container: HTMLElement) {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
 
-    const startLeft = Math.random() * 100;
-    let currentX = startLeft;
-    let currentY = -5 - Math.random() * 5;
+    // Zufällige Startposition nahe Zentrum
+    const angle = Math.random() * Math.PI * 2;
+    const distance = Math.random() * 50; // Start nahe Zentrum
 
-    particle.style.cssText = `
+    let x = centerX + Math.cos(angle) * distance;
+    let y = centerY + Math.sin(angle) * distance;
+
+    // Geschwindigkeit
+    const speed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed;
+
+    const color = CONFIG.starfield.colors[Math.floor(Math.random() * CONFIG.starfield.colors.length)];
+
+    // Erstelle Line-Element für Trail-Effekt
+    const star = document.createElement('div');
+    star.style.cssText = `
       position: absolute;
-      width: ${size}px;
-      height: ${size}px;
+      width: 2px;
+      height: 2px;
       background: ${color};
       border-radius: 50%;
-      box-shadow: 0 0 ${size * 2}px ${color};
-      top: ${currentY}%;
-      left: ${startLeft}%;
-      opacity: ${opacity};
-      z-index: ${zIndex};
-      will-change: transform;
+      left: ${x}px;
+      top: ${y}px;
+      opacity: 0.8;
+      z-index: 5;
+      box-shadow: 0 0 4px ${color};
     `;
 
-    container.appendChild(particle);
+    container.appendChild(star);
 
-    const duration = config.speed[0] + Math.random() * (config.speed[1] - config.speed[0]);
-    const horizontalDrift = (Math.random() - 0.5) * 100;
-    const startTime = Date.now();
+    // Trail-Line
+    const trail = document.createElement('div');
+    trail.style.cssText = `
+      position: absolute;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, ${color});
+      left: ${x}px;
+      top: ${y}px;
+      opacity: 0.6;
+      z-index: 5;
+      transform-origin: left center;
+    `;
+    container.appendChild(trail);
 
-    // Stärke der Gravitation basierend auf Partikel-Ebene (näher = stärker)
-    const gravityStrength = zIndex * 0.02; // z-index 2 = 0.04, z-index 4 = 0.08
+    // Animation Loop
+    const animate = () => {
+      x += vx;
+      y += vy;
 
-    // Frame-Update-Funktion für Gravitations-Effekt
-    const updateFrame = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = (elapsed % duration) / duration;
+      // Berechne Trail-Länge basierend auf Distanz vom Zentrum
+      const distFromCenter = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
+      const trailLength = Math.min(distFromCenter * 0.15, 60);
 
-      // Berechne Position basierend auf Zeit
-      const baseY = progress * window.innerHeight * 1.2;
-      const baseX = progress * horizontalDrift;
+      // Update Position
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
 
-      // Berechne Gravitations-Offset basierend auf Maus-Position
-      const rect = particle.getBoundingClientRect();
-      const particleScreenX = rect.left + rect.width / 2;
-      const particleScreenY = rect.top + rect.height / 2;
+      // Update Trail
+      const trailAngle = Math.atan2(vy, vx) * (180 / Math.PI);
+      trail.style.left = `${x}px`;
+      trail.style.top = `${y}px`;
+      trail.style.width = `${trailLength}px`;
+      trail.style.transform = `rotate(${trailAngle}deg)`;
 
-      const dx = mouseX - particleScreenX;
-      const dy = mouseY - particleScreenY;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      // Gravitation nimmt mit Distanz ab (inverse square approximation)
-      const gravityRange = 300;
-      if (distance < gravityRange && distance > 0) {
-        const force = (1 - distance / gravityRange) * gravityStrength * 50;
-        const gravityX = (dx / distance) * force;
-        const gravityY = (dy / distance) * force;
-
-        particle.style.transform = `translate(${baseX + gravityX}px, ${baseY + gravityY}px)`;
-      } else {
-        particle.style.transform = `translate(${baseX}px, ${baseY}px)`;
+      // Fade out am Rand
+      const maxDist = Math.max(window.innerWidth, window.innerHeight) * 0.7;
+      if (distFromCenter > maxDist) {
+        const fadeProgress = (distFromCenter - maxDist) / (maxDist * 0.3);
+        star.style.opacity = `${Math.max(0, 0.8 - fadeProgress)}`;
+        trail.style.opacity = `${Math.max(0, 0.6 - fadeProgress)}`;
       }
 
-      // Opacity-Animation
-      if (progress < 0.1) {
-        particle.style.opacity = `${opacity * (progress / 0.1)}`;
-      } else if (progress > 0.9) {
-        particle.style.opacity = `${opacity * ((1 - progress) / 0.1)}`;
-      } else {
-        particle.style.opacity = `${opacity * 0.8}`;
+      // Reset wenn außerhalb Bildschirm
+      if (
+        x < -100 ||
+        x > window.innerWidth + 100 ||
+        y < -100 ||
+        y > window.innerHeight + 100
+      ) {
+        // Neuer Stern vom Zentrum
+        const newAngle = Math.random() * Math.PI * 2;
+        const newDistance = Math.random() * 50;
+        x = centerX + Math.cos(newAngle) * newDistance;
+        y = centerY + Math.sin(newAngle) * newDistance;
+
+        const newSpeed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
+        const newVx = Math.cos(newAngle) * newSpeed;
+        const newVy = Math.sin(newAngle) * newSpeed;
+
+        Object.assign({ vx: newVx, vy: newVy }, { vx: newVx, vy: newVy });
+
+        star.style.opacity = '0.8';
+        trail.style.opacity = '0.6';
       }
 
-      // Loop
-      if (progress >= 1) {
-        particle.style.top = `${-5 - Math.random() * 5}%`;
-        particle.style.left = `${Math.random() * 100}%`;
-        particle.style.transform = 'translate(0, 0)';
-      }
-
-      requestAnimationFrame(updateFrame);
+      requestAnimationFrame(animate);
     };
 
-    updateFrame();
+    animate();
+  }
+
+  /**
+   * Prüft ob eine Position mit existierenden Planeten kollidiert
+   */
+  function checkCollision(x: number, y: number, size: number): boolean {
+    for (const planet of activePlanets) {
+      const dx = x - planet.x;
+      const dy = y - planet.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      const minDistance = (size + planet.size) / 2 + 100; // 100px Mindestabstand
+
+      if (distance < minDistance) {
+        return true; // Kollision!
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Findet eine kollisionsfreie Startposition für einen Planeten
+   */
+  function findSafePosition(size: number): { x: number; y: number } {
+    let attempts = 0;
+    const maxAttempts = 50;
+
+    while (attempts < maxAttempts) {
+      const x = (Math.random() * 140 - 20) * (window.innerWidth / 100); // -20% bis 120%
+      const y = -(size + 100);
+
+      if (!checkCollision(x, y, size)) {
+        return { x, y };
+      }
+      attempts++;
+    }
+
+    // Fallback: Position ganz links oder rechts
+    const x = Math.random() > 0.5 ? -size - 200 : window.innerWidth + 200;
+    return { x, y: -(size + 100) };
   }
 
   /**
    * Erstellt einen riesigen Planeten - MEGALOPHOBIE!
-   * Bewegt sich langsam von oben nach unten
+   * Bewegt sich langsam von oben nach unten, KEINE Überlappung
    */
   function createPlanet(container: HTMLElement) {
     const planet = document.createElement('div');
     const size = CONFIG.planets.minSize + Math.random() * (CONFIG.planets.maxSize - CONFIG.planets.minSize);
     const planetType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
 
-    // Zufällige X-Position, teilweise außerhalb für dramatischen Effekt
-    const startX = -20 + Math.random() * 140; // -20% bis 120%
+    // Finde kollisionsfreie Startposition
+    const { x: startX, y: startY } = findSafePosition(size);
     const rotation = Math.random() * 360;
 
-    // Erstelle Gradient für den Planeten
-    const gradient = `radial-gradient(circle at 35% 35%, ${planetType.colors[0]}, ${planetType.colors[1]} 40%, ${planetType.colors[2]} 80%, #00000088)`;
+    // Realistischer Gradient OHNE Transparenz
+    const gradient = `radial-gradient(circle at 35% 35%, ${planetType.colors[0]}, ${planetType.colors[1]} 40%, ${planetType.colors[2]} 80%, ${planetType.colors[2]})`;
 
     planet.style.cssText = `
       position: absolute;
@@ -259,15 +294,13 @@
       height: ${size}px;
       background: ${gradient};
       border-radius: 50%;
-      top: -${size + 100}px;
-      left: ${startX}%;
-      opacity: 0;
+      top: ${startY}px;
+      left: ${startX}px;
+      opacity: 1;
       box-shadow:
-        inset -20px -20px 60px rgba(0,0,0,0.6),
-        0 0 80px ${planetType.colors[1]}44,
-        0 0 120px ${planetType.colors[1]}22;
-      filter: blur(1px);
-      transform: rotate(${rotation}deg);
+        inset -30px -30px 80px rgba(0,0,0,0.7),
+        0 0 100px ${planetType.colors[1]}66,
+        0 0 150px ${planetType.colors[1]}33;
       z-index: 10;
     `;
 
@@ -277,125 +310,55 @@
     const delay = Math.random() * 30000;
     const horizontalDrift = (Math.random() - 0.5) * 200;
 
-    // Langsame, majestätische Bewegung von oben nach unten - wirkt bedrohlich groß
+    // Registriere Planet für Kollisionserkennung
+    const planetData = {
+      x: startX,
+      y: startY,
+      size: size,
+      vx: horizontalDrift / duration,
+      vy: (window.innerHeight + size + 100) / duration,
+    };
+    activePlanets.push(planetData);
+
+    // Langsame, majestätische Bewegung von oben nach unten
     animate(planet, {
       translateY: [0, window.innerHeight + size + 100],
       translateX: [0, horizontalDrift],
       rotate: [rotation, rotation + (Math.random() > 0.5 ? 30 : -30)],
-      opacity: [
-        { to: 0.7, duration: 3000 },
-        { to: 0.9, duration: duration - 6000 },
-        { to: 0, duration: 3000 },
-      ],
       duration: duration,
       delay: delay,
       ease: 'linear',
       loop: true,
       onLoop: () => {
-        // Neue Position und Type
-        planet.style.left = `${-20 + Math.random() * 140}%`;
-        planet.style.top = `-${size + 100}px`;
+        // Neue kollisionsfreie Position
+        const { x: newX, y: newY } = findSafePosition(size);
+        planet.style.left = `${newX}px`;
+        planet.style.top = `${newY}px`;
+
+        // Update Planet-Daten
+        planetData.x = newX;
+        planetData.y = newY;
+
+        // Neuer Planeten-Typ
         const newType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
-        const newGradient = `radial-gradient(circle at 35% 35%, ${newType.colors[0]}, ${newType.colors[1]} 40%, ${newType.colors[2]} 80%, #00000088)`;
+        const newGradient = `radial-gradient(circle at 35% 35%, ${newType.colors[0]}, ${newType.colors[1]} 40%, ${newType.colors[2]} 80%, ${newType.colors[2]})`;
         planet.style.background = newGradient;
         planet.style.boxShadow = `
-          inset -20px -20px 60px rgba(0,0,0,0.6),
-          0 0 80px ${newType.colors[1]}44,
-          0 0 120px ${newType.colors[1]}22
+          inset -30px -30px 80px rgba(0,0,0,0.7),
+          0 0 100px ${newType.colors[1]}66,
+          0 0 150px ${newType.colors[1]}33
         `;
       },
     });
-  }
 
-  /**
-   * Erstellt ein schwarzes Loch mit Akkretionsscheibe
-   */
-  function createBlackHole(container: HTMLElement) {
-    const blackHole = document.createElement('div');
-    const size = CONFIG.blackHole.minSize + Math.random() * (CONFIG.blackHole.maxSize - CONFIG.blackHole.minSize);
-    const startX = -20 + Math.random() * 140;
-
-    blackHole.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      top: -${size + 100}px;
-      left: ${startX}%;
-      opacity: 0;
-      z-index: 10;
-    `;
-
-    // Event Horizon (schwarzer Kreis)
-    const horizon = document.createElement('div');
-    horizon.style.cssText = `
-      position: absolute;
-      width: ${size * 0.3}px;
-      height: ${size * 0.3}px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #000000;
-      border-radius: 50%;
-      box-shadow:
-        0 0 ${size * 0.15}px ${size * 0.05}px rgba(0, 0, 0, 0.9),
-        inset 0 0 ${size * 0.1}px rgba(0, 0, 0, 1);
-    `;
-
-    // Akkretionsscheibe (leuchtender Ring)
-    const accretionDisk = document.createElement('div');
-    accretionDisk.style.cssText = `
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      background: radial-gradient(
-        circle,
-        transparent 15%,
-        rgba(59, 130, 246, 0.4) 25%,
-        rgba(239, 68, 68, 0.6) 35%,
-        rgba(251, 191, 36, 0.5) 45%,
-        rgba(249, 115, 22, 0.3) 55%,
-        transparent 70%
-      );
-      border-radius: 50%;
-      filter: blur(3px);
-    `;
-
-    blackHole.appendChild(accretionDisk);
-    blackHole.appendChild(horizon);
-    container.appendChild(blackHole);
-
-    const duration = CONFIG.blackHole.speed[0] + Math.random() * (CONFIG.blackHole.speed[1] - CONFIG.blackHole.speed[0]);
-    const delay = Math.random() * 40000;
-    const horizontalDrift = (Math.random() - 0.5) * 150;
-
-    // Rotiere Akkretionsscheibe
-    animate(accretionDisk, {
-      rotate: [0, 360],
-      duration: 20000,
-      ease: 'linear',
-      loop: true,
-    });
-
-    // Bewege schwarzes Loch
-    animate(blackHole, {
-      translateY: [0, window.innerHeight + size + 100],
-      translateX: [0, horizontalDrift],
-      opacity: [
-        { to: 0.9, duration: 4000 },
-        { to: 1, duration: duration - 8000 },
-        { to: 0, duration: 4000 },
-      ],
-      duration: duration,
-      delay: delay,
-      ease: 'linear',
-      loop: true,
-      onLoop: () => {
-        blackHole.style.left = `${-20 + Math.random() * 140}%`;
-        blackHole.style.top = `-${size + 100}px`;
-      },
-    });
+    // Update Position in activePlanets während der Animation
+    const updatePosition = () => {
+      const rect = planet.getBoundingClientRect();
+      planetData.x = rect.left + rect.width / 2;
+      planetData.y = rect.top + rect.height / 2;
+      requestAnimationFrame(updatePosition);
+    };
+    updatePosition();
   }
 
   /**
@@ -460,7 +423,9 @@
   /**
    * Initialisiert die Weltraum-Animation mit allen Layern
    * - Statische Sterne im Hintergrund
-   * - Vorbeiziehende Partikel mit Parallax (oben nach unten)
+   * - Starfield-Effekt (Microsoft Bildschirmschoner Style)
+   * - Riesige Planeten ohne Überlappung
+   * - Meteore mit zufälligen Flugbahnen
    */
   function initSpaceAnimation() {
     const container = document.getElementById('space-bg');
@@ -485,30 +450,14 @@
       createStar(container, CONFIG.starsNear);
     }
 
-    // VORBEIZIEHENDE PARTIKEL (von oben nach unten) - Parallax-Effekt
-    // Langsame Partikel (Background) - z-index 2
-    for (let i = 0; i < CONFIG.particles.count; i++) {
-      createParticle(container, CONFIG.particles, 2);
+    // STARFIELD (Microsoft Bildschirmschoner Style)
+    for (let i = 0; i < CONFIG.starfield.count; i++) {
+      createStarfieldStar(container);
     }
 
-    // Mittlere Partikel - z-index 3
-    for (let i = 0; i < CONFIG.particlesMid.count; i++) {
-      createParticle(container, CONFIG.particlesMid, 3);
-    }
-
-    // Schnelle Partikel (Foreground) - z-index 4
-    for (let i = 0; i < CONFIG.particlesNear.count; i++) {
-      createParticle(container, CONFIG.particlesNear, 4);
-    }
-
-    // Riesige Planeten - MEGALOPHOBIE!
+    // Riesige Planeten - MEGALOPHOBIE! (keine Überlappung)
     for (let i = 0; i < CONFIG.planets.count; i++) {
       createPlanet(container);
-    }
-
-    // Schwarzes Loch
-    for (let i = 0; i < CONFIG.blackHole.count; i++) {
-      createBlackHole(container);
     }
 
     // Meteore mit zufälligen Flugbahnen
@@ -525,6 +474,8 @@
     if (container) {
       container.innerHTML = '';
     }
+    // Leere Planeten-Array für Kollisionserkennung
+    activePlanets.length = 0;
   }
 
   // Auto-Init
@@ -542,11 +493,5 @@
 
     // Re-Init bei Theme-Wechsel (falls nötig)
     window.addEventListener('theme-changed', initSpaceAnimation);
-
-    // Maus-Tracking für Gravitations-Effekt
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
   }
 </script>
