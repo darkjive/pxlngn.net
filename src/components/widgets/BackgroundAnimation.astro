@@ -4,8 +4,6 @@
  *
  * Erzeugt einen intensiven animierten Weltraum-Hintergrund:
  * - 3D Starfield mit Z-Tiefe (Kirupa-Style)
- * - Riesige, langsam vorbeiziehende Planeten (Megalophobie)
- * - Langsame Meteore mit Schweif
  * - Statische Hintergrundsterne mit Twinkle
  *
  * Vermittelt das Gefühl von beklemmender Weite und Isolation im Weltraum.
@@ -50,7 +48,7 @@
       colors: ['#ffffff', '#e0f2fe', '#bfdbfe', '#dbeafe', '#f0f9ff'],
       opacity: [0.15, 0.5],
       twinkle: true,
-      twinkleDuration: [5000, 12000], // Viel langsamer!
+      twinkleDuration: [5000, 12000],
     },
     starsMid: {
       count: 200,
@@ -73,40 +71,12 @@
     // 3D Starfield (Kirupa-Style)
     starfield: {
       count: 500,
-      minSpeed: 0.1, // Viel langsamer!
+      minSpeed: 0.1,
       maxSpeed: 0.5,
-      maxDepth: 2000, // Tiefe für Z-Achse
+      maxDepth: 2000,
       colors: ['#ffffff', '#e0f2fe', '#bfdbfe'],
     },
-    // Riesige Planeten (Megalophobie!) - VIEL LANGSAMER
-    planets: {
-      count: 4,
-      minSize: 300,
-      maxSize: 800,
-      speed: [180000, 360000], // 3-6 Minuten statt 1-2 Minuten!
-      types: [
-        { colors: ['#1e3a8a', '#3b82f6', '#1e40af'], name: 'gas-giant' },
-        { colors: ['#dc2626', '#f87171', '#7f1d1d'], name: 'red-planet' },
-        { colors: ['#f59e0b', '#fbbf24', '#92400e'], name: 'desert-world' },
-        { colors: ['#059669', '#10b981', '#064e3b'], name: 'toxic-world' },
-        { colors: ['#6366f1', '#a855f7', '#4c1d95'], name: 'purple-giant' },
-      ],
-    },
-    // Meteore - VIEL LANGSAMER
-    meteors: {
-      count: 8,
-      width: 2,
-      height: [40, 120],
-      speed: [8000, 15000], // 8-15 Sekunden statt 1.2-3 Sekunden!
-      colors: ['#60a5fa', '#3b82f6', '#2563eb', '#ffffff', '#f0f9ff'],
-      delay: [0, 30000],
-    },
   };
-
-  /**
-   * Aktive Planeten für Kollisionsvermeidung
-   */
-  const activePlanets: Array<{ x: number; y: number; size: number; vx: number; vy: number }> = [];
 
   /**
    * Animation-Manager für alle RAF-basierten Animationen
@@ -137,7 +107,7 @@
 
     container.appendChild(star);
 
-    // Leichtes Twinkle für Leben (optional) - VIEL LANGSAMER
+    // Leichtes Twinkle für Leben (optional)
     if (config.twinkle && Math.random() > 0.7) {
       const twinkleDuration = config.twinkleDuration[0] + Math.random() * (config.twinkleDuration[1] - config.twinkleDuration[0]);
       const startTime = Date.now() + Math.random() * 3000;
@@ -233,217 +203,6 @@
   }
 
   /**
-   * Prüft ob eine Position mit existierenden Planeten kollidiert
-   */
-  function checkCollision(x: number, y: number, size: number): boolean {
-    for (const planet of activePlanets) {
-      const dx = x - planet.x;
-      const dy = y - planet.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-      const minDistance = (size + planet.size) / 2 + 100;
-
-      if (distance < minDistance) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /**
-   * Findet eine kollisionsfreie Startposition für einen Planeten
-   */
-  function findSafePosition(size: number): { x: number; y: number } {
-    let attempts = 0;
-    const maxAttempts = 50;
-
-    while (attempts < maxAttempts) {
-      const x = (Math.random() * 140 - 20) * (window.innerWidth / 100);
-      const y = -(size + 100);
-
-      if (!checkCollision(x, y, size)) {
-        return { x, y };
-      }
-      attempts++;
-    }
-
-    const x = Math.random() > 0.5 ? -size - 200 : window.innerWidth + 200;
-    return { x, y: -(size + 100) };
-  }
-
-  /**
-   * Erstellt einen riesigen Planeten - MEGALOPHOBIE!
-   * Bewegt sich SEHR LANGSAM von oben nach unten
-   */
-  function createPlanet(container: HTMLElement) {
-    const planet = document.createElement('div');
-    const size = CONFIG.planets.minSize + Math.random() * (CONFIG.planets.maxSize - CONFIG.planets.minSize);
-    const planetType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
-
-    const { x: startX, y: startY } = findSafePosition(size);
-    const initialRotation = Math.random() * 360;
-
-    const gradient = `radial-gradient(circle at 35% 35%, ${planetType.colors[0]}, ${planetType.colors[1]} 40%, ${planetType.colors[2]} 80%, ${planetType.colors[2]})`;
-
-    planet.style.cssText = `
-      position: absolute;
-      width: ${size}px;
-      height: ${size}px;
-      background: ${gradient};
-      border-radius: 50%;
-      left: ${startX}px;
-      top: ${startY}px;
-      opacity: 1;
-      box-shadow:
-        inset -30px -30px 80px rgba(0,0,0,0.7),
-        0 0 100px ${planetType.colors[1]}66,
-        0 0 150px ${planetType.colors[1]}33;
-      z-index: 10;
-      will-change: transform;
-    `;
-
-    container.appendChild(planet);
-
-    const duration = CONFIG.planets.speed[0] + Math.random() * (CONFIG.planets.speed[1] - CONFIG.planets.speed[0]);
-    const delay = Math.random() * 60000; // Längeres Delay
-    const horizontalDrift = (Math.random() - 0.5) * 200;
-    const rotationChange = Math.random() > 0.5 ? 30 : -30;
-
-    const planetData = {
-      x: startX + size / 2,
-      y: startY + size / 2,
-      size: size,
-      vx: horizontalDrift / duration,
-      vy: (window.innerHeight + size + 100) / duration,
-    };
-    activePlanets.push(planetData);
-
-    const startTime = Date.now() + delay;
-    const totalDistance = window.innerHeight + size + 100;
-
-    const animatePlanet = () => {
-      const now = Date.now();
-      if (now < startTime) return;
-
-      const elapsed = now - startTime;
-      const progress = (elapsed % duration) / duration;
-
-      const translateY = progress * totalDistance;
-      const translateX = progress * horizontalDrift;
-      const rotation = initialRotation + progress * rotationChange;
-
-      planet.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotation}deg)`;
-
-      planetData.x = startX + translateX + size / 2;
-      planetData.y = startY + translateY + size / 2;
-
-      if (progress >= 0.999) {
-        const { x: newX, y: newY } = findSafePosition(size);
-        planet.style.left = `${newX}px`;
-        planet.style.top = `${newY}px`;
-        planet.style.transform = 'none';
-
-        planetData.x = newX + size / 2;
-        planetData.y = newY + size / 2;
-
-        const newType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
-        const newGradient = `radial-gradient(circle at 35% 35%, ${newType.colors[0]}, ${newType.colors[1]} 40%, ${newType.colors[2]} 80%, ${newType.colors[2]})`;
-        planet.style.background = newGradient;
-        planet.style.boxShadow = `
-          inset -30px -30px 80px rgba(0,0,0,0.7),
-          0 0 100px ${newType.colors[1]}66,
-          0 0 150px ${newType.colors[1]}33
-        `;
-
-        (planet as any).__startTime = Date.now();
-      }
-    };
-
-    (planet as any).__animate = animatePlanet;
-    (planet as any).__startTime = startTime;
-  }
-
-  /**
-   * Erstellt einen Meteor - VIEL LANGSAMER
-   */
-  function createMeteor(container: HTMLElement) {
-    const meteor = document.createElement('div');
-    const height = CONFIG.meteors.height[0] + Math.random() * (CONFIG.meteors.height[1] - CONFIG.meteors.height[0]);
-    const color = CONFIG.meteors.colors[Math.floor(Math.random() * CONFIG.meteors.colors.length)];
-
-    const angle = (Math.random() - 0.5) * 90;
-    const rotation = 90 + angle;
-
-    meteor.style.cssText = `
-      position: absolute;
-      width: ${CONFIG.meteors.width}px;
-      height: ${height}px;
-      background: linear-gradient(180deg, transparent, ${color});
-      border-radius: 2px;
-      top: ${-10 - Math.random() * 5}%;
-      left: ${Math.random() * 100}%;
-      opacity: 0;
-      box-shadow: 0 0 10px ${color}, 0 0 20px ${color}66;
-      z-index: 8;
-      transform: rotate(${rotation}deg);
-      will-change: transform, opacity;
-    `;
-
-    container.appendChild(meteor);
-
-    const duration = CONFIG.meteors.speed[0] + Math.random() * (CONFIG.meteors.speed[1] - CONFIG.meteors.speed[0]);
-    const delay = CONFIG.meteors.delay[0] + Math.random() * (CONFIG.meteors.delay[1] - CONFIG.meteors.delay[0]);
-
-    const horizontalDistance = Math.sin((angle * Math.PI) / 180) * window.innerHeight * 1.5;
-    const verticalDistance = window.innerHeight * 1.3;
-
-    const startTime = Date.now() + delay;
-
-    const animateMeteor = () => {
-      const now = Date.now();
-      if (now < startTime) return;
-
-      const elapsed = now - startTime;
-      const progress = (elapsed % duration) / duration;
-
-      const translateY = progress * verticalDistance;
-      const translateX = progress * horizontalDistance;
-
-      let opacity: number;
-      if (progress < 0.05) {
-        opacity = progress / 0.05;
-      } else if (progress > 0.95) {
-        opacity = (1 - progress) / 0.05;
-      } else {
-        opacity = 0.9;
-      }
-
-      meteor.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotation}deg)`;
-      meteor.style.opacity = `${opacity}`;
-
-      if (progress >= 0.999) {
-        meteor.style.top = `${-10 - Math.random() * 5}%`;
-        meteor.style.left = `${Math.random() * 100}%`;
-        meteor.style.transform = 'none';
-        meteor.style.opacity = '0';
-
-        const newAngle = (Math.random() - 0.5) * 90;
-        const newRotation = 90 + newAngle;
-
-        (meteor as any).__angle = newAngle;
-        (meteor as any).__rotation = newRotation;
-        (meteor as any).__horizontalDistance = Math.sin((newAngle * Math.PI) / 180) * window.innerHeight * 1.5;
-        (meteor as any).__startTime = Date.now();
-      }
-    };
-
-    (meteor as any).__animate = animateMeteor;
-    (meteor as any).__startTime = startTime;
-    (meteor as any).__angle = angle;
-    (meteor as any).__rotation = rotation;
-    (meteor as any).__horizontalDistance = horizontalDistance;
-  }
-
-  /**
    * Unified Animation Loop
    */
   function animationLoop() {
@@ -474,7 +233,6 @@
     }
 
     container.innerHTML = '';
-    activePlanets.length = 0;
 
     // STATISCHE STERNE (Hintergrund) - mit langsamerem Twinkle
     for (let i = 0; i < CONFIG.starsDistant.count; i++) {
@@ -489,19 +247,9 @@
       createStar(container, CONFIG.starsNear);
     }
 
-    // 3D STARFIELD (Kirupa-Style) - VIEL LANGSAMER
+    // 3D STARFIELD (Kirupa-Style)
     for (let i = 0; i < CONFIG.starfield.count; i++) {
       createStarfieldStar(container);
-    }
-
-    // Riesige Planeten - VIEL LANGSAMER
-    for (let i = 0; i < CONFIG.planets.count; i++) {
-      createPlanet(container);
-    }
-
-    // Meteore - VIEL LANGSAMER
-    for (let i = 0; i < CONFIG.meteors.count; i++) {
-      createMeteor(container);
     }
 
     animationLoop();
@@ -520,8 +268,6 @@
     if (container) {
       container.innerHTML = '';
     }
-
-    activePlanets.length = 0;
   }
 
   // Auto-Init
