@@ -191,7 +191,14 @@ export interface ItemGrid {
   items?: Array<Item>;
   columns?: number;
   defaultIcon?: string;
-  classes?: Record<string, string>;
+  classes?: {
+    container?: string;
+    panel?: string;
+    title?: string;
+    description?: string;
+    icon?: string;
+    action?: string;
+  };
 }
 
 export interface Collapse {
