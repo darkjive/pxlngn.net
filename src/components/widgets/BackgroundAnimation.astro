@@ -49,10 +49,11 @@
     },
     // Starfield (wie Microsoft Bildschirmschoner)
     starfield: {
-      count: 150,
-      minSpeed: 0.5,
-      maxSpeed: 3,
-      colors: ['#ffffff', '#e0f2fe', '#bfdbfe', '#fef3c7'],
+      count: 200,
+      minSpeed: 1,
+      maxSpeed: 5,
+      acceleration: 1.005, // Beschleunigung
+      colors: ['#ffffff', '#e0f2fe', '#bfdbfe'],
     },
     // Riesige Planeten (Megalophobie!) - von oben nach unten
     planets: {
@@ -124,113 +125,83 @@
   }
 
   /**
-   * Erstellt einen Starfield-Stern (Microsoft Bildschirmschoner Style)
-   * Fliegt vom Zentrum nach außen mit wachsendem Trail
+   * Erstellt einen Starfield-Stern (klassischer Windows Starfield Style)
+   * Punkt fliegt vom Zentrum nach außen und wird zu einer Linie
    */
   function createStarfieldStar(container: HTMLElement) {
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
 
-    // Zufällige Startposition nahe Zentrum
-    const angle = Math.random() * Math.PI * 2;
-    const distance = Math.random() * 50; // Start nahe Zentrum
+    // Zufällige Richtung
+    let angle = Math.random() * Math.PI * 2;
 
-    let x = centerX + Math.cos(angle) * distance;
-    let y = centerY + Math.sin(angle) * distance;
+    // Start sehr nah am Zentrum
+    let x = centerX + Math.cos(angle) * (Math.random() * 10);
+    let y = centerY + Math.sin(angle) * (Math.random() * 10);
 
-    // Geschwindigkeit
-    const speed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
-    const vx = Math.cos(angle) * speed;
-    const vy = Math.sin(angle) * speed;
+    // Initial Geschwindigkeit
+    let speed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
 
     const color = CONFIG.starfield.colors[Math.floor(Math.random() * CONFIG.starfield.colors.length)];
 
-    // Erstelle Line-Element für Trail-Effekt
+    // Erstelle Stern-Linie (stretched dot)
     const star = document.createElement('div');
     star.style.cssText = `
       position: absolute;
       width: 2px;
       height: 2px;
       background: ${color};
-      border-radius: 50%;
+      box-shadow: 0 0 2px ${color};
       left: ${x}px;
       top: ${y}px;
-      opacity: 0.8;
       z-index: 5;
-      box-shadow: 0 0 4px ${color};
+      transform-origin: center;
     `;
 
     container.appendChild(star);
 
-    // Trail-Line
-    const trail = document.createElement('div');
-    trail.style.cssText = `
-      position: absolute;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, ${color});
-      left: ${x}px;
-      top: ${y}px;
-      opacity: 0.6;
-      z-index: 5;
-      transform-origin: left center;
-    `;
-    container.appendChild(trail);
+    // Animation Loop mit Beschleunigung
+    const animateLoop = () => {
+      // Beschleunigung: Je weiter vom Zentrum, desto schneller
+      speed *= CONFIG.starfield.acceleration;
 
-    // Animation Loop
-    const animate = () => {
-      x += vx;
-      y += vy;
+      // Bewege Stern
+      x += Math.cos(angle) * speed;
+      y += Math.sin(angle) * speed;
 
-      // Berechne Trail-Länge basierend auf Distanz vom Zentrum
-      const distFromCenter = Math.sqrt(Math.pow(x - centerX, 2) + Math.pow(y - centerY, 2));
-      const trailLength = Math.min(distFromCenter * 0.15, 60);
+      // Berechne Länge basierend auf Geschwindigkeit (Motion Blur)
+      const length = Math.min(speed * 2, 20);
+      const width = Math.max(0.5, Math.min(speed * 0.3, 2));
 
-      // Update Position
+      // Update Star als Linie
       star.style.left = `${x}px`;
       star.style.top = `${y}px`;
+      star.style.width = `${width}px`;
+      star.style.height = `${length}px`;
+      star.style.transform = `rotate(${angle}rad)`;
 
-      // Update Trail
-      const trailAngle = Math.atan2(vy, vx) * (180 / Math.PI);
-      trail.style.left = `${x}px`;
-      trail.style.top = `${y}px`;
-      trail.style.width = `${trailLength}px`;
-      trail.style.transform = `rotate(${trailAngle}deg)`;
-
-      // Fade out am Rand
-      const maxDist = Math.max(window.innerWidth, window.innerHeight) * 0.7;
-      if (distFromCenter > maxDist) {
-        const fadeProgress = (distFromCenter - maxDist) / (maxDist * 0.3);
-        star.style.opacity = `${Math.max(0, 0.8 - fadeProgress)}`;
-        trail.style.opacity = `${Math.max(0, 0.6 - fadeProgress)}`;
-      }
+      // Opacity basierend auf Geschwindigkeit
+      const opacity = Math.min(0.8, speed / 10);
+      star.style.opacity = `${opacity}`;
 
       // Reset wenn außerhalb Bildschirm
       if (
-        x < -100 ||
-        x > window.innerWidth + 100 ||
-        y < -100 ||
-        y > window.innerHeight + 100
+        x < -50 ||
+        x > window.innerWidth + 50 ||
+        y < -50 ||
+        y > window.innerHeight + 50
       ) {
         // Neuer Stern vom Zentrum
-        const newAngle = Math.random() * Math.PI * 2;
-        const newDistance = Math.random() * 50;
-        x = centerX + Math.cos(newAngle) * newDistance;
-        y = centerY + Math.sin(newAngle) * newDistance;
-
-        const newSpeed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
-        const newVx = Math.cos(newAngle) * newSpeed;
-        const newVy = Math.sin(newAngle) * newSpeed;
-
-        Object.assign({ vx: newVx, vy: newVy }, { vx: newVx, vy: newVy });
-
-        star.style.opacity = '0.8';
-        trail.style.opacity = '0.6';
+        angle = Math.random() * Math.PI * 2;
+        x = centerX + Math.cos(angle) * (Math.random() * 10);
+        y = centerY + Math.sin(angle) * (Math.random() * 10);
+        speed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
       }
 
-      requestAnimationFrame(animate);
+      requestAnimationFrame(animateLoop);
     };
 
-    animate();
+    animateLoop();
   }
 
   /**
