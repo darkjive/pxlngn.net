@@ -1,21 +1,28 @@
 ---
 /**
- * Space Background Animation - Enhanced with Megalophobia
+ * Space Background Animation - Pure JavaScript
  *
- * Erzeugt einen intensiven animierten Weltraum-Hintergrund mit anime.js:
+ * Erzeugt einen intensiven animierten Weltraum-Hintergrund mit plain JS:
  * - Mehrere Ebenen von Sternen für Tiefeneffekt (Parallax)
  * - Riesige, langsam vorbeiziehende Planeten (Megalophobie)
  * - Schnelle Meteore mit Schweif
- * - Alien-artige Plasma-Wesen (pulsierend, verschiedene Farben)
+ * - Starfield-Effekt (Microsoft Bildschirmschoner Style)
  *
  * Vermittelt das Gefühl von beklemmender Weite und Isolation im Weltraum.
+ * Nutzt ausschließlich requestAnimationFrame für optimale Performance.
  */
 ---
 
 <div id="space-bg" class="fixed inset-0 -z-50 hidden overflow-hidden bg-gradient-to-b from-black via-slate-950 to-black dark:block"></div>
 
 <script>
-  import { animate } from 'animejs';
+  /**
+   * Easing-Funktionen für weiche Animationen
+   */
+  const easing = {
+    linear: (t: number) => t,
+    inOutSine: (t: number) => -(Math.cos(Math.PI * t) - 1) / 2,
+  };
 
   /**
    * Konfiguration für Partikeltypen mit Tiefen-Layering
@@ -86,13 +93,18 @@
   const activePlanets: Array<{ x: number; y: number; size: number; vx: number; vy: number }> = [];
 
   /**
+   * Animation-Manager für alle RAF-basierten Animationen
+   */
+  let animationId: number | null = null;
+
+  /**
    * Erstellt einen statischen Stern mit leichtem Twinkle-Effekt
    */
   function createStar(container: HTMLElement, config: typeof CONFIG.starsDistant) {
     const star = document.createElement('div');
     const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
     const color = config.colors[Math.floor(Math.random() * config.colors.length)];
-    const opacity = config.opacity[0] + Math.random() * (config.opacity[1] - config.opacity[0]);
+    const baseOpacity = config.opacity[0] + Math.random() * (config.opacity[1] - config.opacity[0]);
 
     star.style.cssText = `
       position: absolute;
@@ -103,7 +115,7 @@
       box-shadow: 0 0 ${size * 2}px ${color};
       top: ${Math.random() * 100}%;
       left: ${Math.random() * 100}%;
-      opacity: ${opacity};
+      opacity: ${baseOpacity};
       z-index: 1;
     `;
 
@@ -112,15 +124,25 @@
     // Leichtes Twinkle für Leben (optional)
     if (config.twinkle && Math.random() > 0.7) {
       const twinkleDuration = 2000 + Math.random() * 3000;
-      animate(star, {
-        opacity: [
-          { to: opacity * 1.3, duration: twinkleDuration * 0.5 },
-          { to: opacity * 0.7, duration: twinkleDuration * 0.5 },
-        ],
-        duration: twinkleDuration,
-        ease: 'inOutSine',
-        loop: true,
-      });
+      const startTime = Date.now() + Math.random() * 2000; // Zufälliger Start-Offset
+      const opacityMin = baseOpacity * 0.7;
+      const opacityMax = baseOpacity * 1.3;
+
+      const animateTwinkle = () => {
+        const elapsed = Date.now() - startTime;
+        const progress = (elapsed % twinkleDuration) / twinkleDuration;
+        const easedProgress = easing.inOutSine(progress);
+
+        // Oscillate zwischen min und max
+        const opacity = progress < 0.5
+          ? opacityMin + (opacityMax - opacityMin) * (easedProgress * 2)
+          : opacityMax - (opacityMax - opacityMin) * ((easedProgress - 0.5) * 2);
+
+        star.style.opacity = `${opacity}`;
+      };
+
+      // Registriere für Animation Loop
+      (star as any).__animate = animateTwinkle;
     }
   }
 
@@ -160,8 +182,8 @@
 
     container.appendChild(star);
 
-    // Animation Loop mit Beschleunigung
-    const animateLoop = () => {
+    // Animation mit Beschleunigung
+    const animateStarfield = () => {
       // Beschleunigung: Je weiter vom Zentrum, desto schneller
       speed *= CONFIG.starfield.acceleration;
 
@@ -197,11 +219,10 @@
         y = centerY + Math.sin(angle) * (Math.random() * 10);
         speed = CONFIG.starfield.minSpeed + Math.random() * (CONFIG.starfield.maxSpeed - CONFIG.starfield.minSpeed);
       }
-
-      requestAnimationFrame(animateLoop);
     };
 
-    animateLoop();
+    // Registriere für Animation Loop
+    (star as any).__animate = animateStarfield;
   }
 
   /**
@@ -254,7 +275,7 @@
 
     // Finde kollisionsfreie Startposition
     const { x: startX, y: startY } = findSafePosition(size);
-    const rotation = Math.random() * 360;
+    const initialRotation = Math.random() * 360;
 
     // Realistischer Gradient OHNE Transparenz
     const gradient = `radial-gradient(circle at 35% 35%, ${planetType.colors[0]}, ${planetType.colors[1]} 40%, ${planetType.colors[2]} 80%, ${planetType.colors[2]})`;
@@ -265,14 +286,15 @@
       height: ${size}px;
       background: ${gradient};
       border-radius: 50%;
-      top: ${startY}px;
       left: ${startX}px;
+      top: ${startY}px;
       opacity: 1;
       box-shadow:
         inset -30px -30px 80px rgba(0,0,0,0.7),
         0 0 100px ${planetType.colors[1]}66,
         0 0 150px ${planetType.colors[1]}33;
       z-index: 10;
+      will-change: transform;
     `;
 
     container.appendChild(planet);
@@ -280,35 +302,51 @@
     const duration = CONFIG.planets.speed[0] + Math.random() * (CONFIG.planets.speed[1] - CONFIG.planets.speed[0]);
     const delay = Math.random() * 30000;
     const horizontalDrift = (Math.random() - 0.5) * 200;
+    const rotationChange = Math.random() > 0.5 ? 30 : -30;
 
     // Registriere Planet für Kollisionserkennung
     const planetData = {
-      x: startX,
-      y: startY,
+      x: startX + size / 2,
+      y: startY + size / 2,
       size: size,
       vx: horizontalDrift / duration,
       vy: (window.innerHeight + size + 100) / duration,
     };
     activePlanets.push(planetData);
 
-    // Langsame, majestätische Bewegung von oben nach unten
-    animate(planet, {
-      translateY: [0, window.innerHeight + size + 100],
-      translateX: [0, horizontalDrift],
-      rotate: [rotation, rotation + (Math.random() > 0.5 ? 30 : -30)],
-      duration: duration,
-      delay: delay,
-      ease: 'linear',
-      loop: true,
-      onLoop: () => {
+    // Animation State
+    const startTime = Date.now() + delay;
+    const totalDistance = window.innerHeight + size + 100;
+
+    const animatePlanet = () => {
+      const now = Date.now();
+      if (now < startTime) return; // Warte auf Delay
+
+      const elapsed = now - startTime;
+      const progress = (elapsed % duration) / duration;
+
+      // Linear easing für gleichmäßige Bewegung
+      const translateY = progress * totalDistance;
+      const translateX = progress * horizontalDrift;
+      const rotation = initialRotation + progress * rotationChange;
+
+      planet.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotation}deg)`;
+
+      // Update Kollisionsdaten
+      planetData.x = startX + translateX + size / 2;
+      planetData.y = startY + translateY + size / 2;
+
+      // Loop: Reset bei Ende
+      if (progress >= 0.999) {
         // Neue kollisionsfreie Position
         const { x: newX, y: newY } = findSafePosition(size);
         planet.style.left = `${newX}px`;
         planet.style.top = `${newY}px`;
+        planet.style.transform = 'none';
 
         // Update Planet-Daten
-        planetData.x = newX;
-        planetData.y = newY;
+        planetData.x = newX + size / 2;
+        planetData.y = newY + size / 2;
 
         // Neuer Planeten-Typ
         const newType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
@@ -319,17 +357,15 @@
           0 0 100px ${newType.colors[1]}66,
           0 0 150px ${newType.colors[1]}33
         `;
-      },
-    });
 
-    // Update Position in activePlanets während der Animation
-    const updatePosition = () => {
-      const rect = planet.getBoundingClientRect();
-      planetData.x = rect.left + rect.width / 2;
-      planetData.y = rect.top + rect.height / 2;
-      requestAnimationFrame(updatePosition);
+        // Restart Animation
+        (planet as any).__startTime = Date.now();
+      }
     };
-    updatePosition();
+
+    // Registriere für Animation Loop
+    (planet as any).__animate = animatePlanet;
+    (planet as any).__startTime = startTime;
   }
 
   /**
@@ -356,6 +392,7 @@
       box-shadow: 0 0 10px ${color}, 0 0 20px ${color}66;
       z-index: 8;
       transform: rotate(${rotation}deg);
+      will-change: transform, opacity;
     `;
 
     container.appendChild(meteor);
@@ -367,28 +404,84 @@
     const horizontalDistance = Math.sin((angle * Math.PI) / 180) * window.innerHeight * 1.5;
     const verticalDistance = window.innerHeight * 1.3;
 
-    // Animation: Flug entlang der zufälligen Flugbahn
-    animate(meteor, {
-      translateY: [0, verticalDistance],
-      translateX: [0, horizontalDistance],
-      opacity: [
-        { to: 1, duration: 150 },
-        { to: 0.9, duration: duration - 300 },
-        { to: 0, duration: 150 },
-      ],
-      duration: duration,
-      delay: delay,
-      ease: 'linear',
-      loop: true,
-      onLoop: () => {
+    // Speichere Startposition
+    const startTop = meteor.style.top;
+    const startLeft = meteor.style.left;
+
+    // Animation State
+    const startTime = Date.now() + delay;
+
+    const animateMeteor = () => {
+      const now = Date.now();
+      if (now < startTime) return; // Warte auf Delay
+
+      const elapsed = now - startTime;
+      const progress = (elapsed % duration) / duration;
+
+      // Linear movement
+      const translateY = progress * verticalDistance;
+      const translateX = progress * horizontalDistance;
+
+      // Opacity fade in/out
+      let opacity: number;
+      if (progress < 0.05) {
+        // Fade in ersten 5%
+        opacity = progress / 0.05;
+      } else if (progress > 0.95) {
+        // Fade out letzten 5%
+        opacity = (1 - progress) / 0.05;
+      } else {
+        opacity = 0.9;
+      }
+
+      meteor.style.transform = `translate(${translateX}px, ${translateY}px) rotate(${rotation}deg)`;
+      meteor.style.opacity = `${opacity}`;
+
+      // Loop: Reset bei Ende
+      if (progress >= 0.999) {
         // Neue Startposition und Winkel
         meteor.style.top = `${-10 - Math.random() * 5}%`;
         meteor.style.left = `${Math.random() * 100}%`;
+        meteor.style.transform = 'none';
+        meteor.style.opacity = '0';
+
         const newAngle = (Math.random() - 0.5) * 90;
         const newRotation = 90 + newAngle;
-        meteor.style.transform = `rotate(${newRotation}deg)`;
-      },
+
+        // Update für nächsten Loop
+        (meteor as any).__angle = newAngle;
+        (meteor as any).__rotation = newRotation;
+        (meteor as any).__horizontalDistance = Math.sin((newAngle * Math.PI) / 180) * window.innerHeight * 1.5;
+        (meteor as any).__startTime = Date.now();
+      }
+    };
+
+    // Speichere Animation-Daten
+    (meteor as any).__animate = animateMeteor;
+    (meteor as any).__startTime = startTime;
+    (meteor as any).__angle = angle;
+    (meteor as any).__rotation = rotation;
+    (meteor as any).__horizontalDistance = horizontalDistance;
+  }
+
+  /**
+   * Unified Animation Loop
+   * Sammelt alle Animationen in einem einzigen RAF Loop für optimale Performance
+   */
+  function animationLoop() {
+    const container = document.getElementById('space-bg');
+    if (!container) return;
+
+    // Animiere alle Elemente die eine __animate Funktion haben
+    const elements = container.querySelectorAll('[style*="position: absolute"]');
+    elements.forEach((el) => {
+      const element = el as any;
+      if (typeof element.__animate === 'function') {
+        element.__animate();
+      }
     });
+
+    animationId = requestAnimationFrame(animationLoop);
   }
 
   /**
@@ -402,8 +495,15 @@
     const container = document.getElementById('space-bg');
     if (!container) return;
 
+    // Stoppe alte Animation
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
     // Leere Container bei Re-Init
     container.innerHTML = '';
+    activePlanets.length = 0;
 
     // STATISCHE STERNE (Hintergrund)
     // Layer 1: Weit entfernte Sterne
@@ -435,16 +535,26 @@
     for (let i = 0; i < CONFIG.meteors.count; i++) {
       createMeteor(container);
     }
+
+    // Starte Unified Animation Loop
+    animationLoop();
   }
 
   /**
    * Cleanup bei View Transitions
    */
   function cleanup() {
+    // Stoppe Animation Loop
+    if (animationId !== null) {
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
     const container = document.getElementById('space-bg');
     if (container) {
       container.innerHTML = '';
     }
+
     // Leere Planeten-Array für Kollisionserkennung
     activePlanets.length = 0;
   }
