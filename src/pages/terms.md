@@ -35,6 +35,8 @@ Soweit besondere Bedingungen für einzelne Nutzungen dieser Website von den vorg
 
 <a href="https://www.vecteezy.com/free-photos/space-background">Space Background Stock photos by Vecteezy</a>
 
+<a href="https://www.vecteezy.com/free-photos/space-background">Space Background Stock photos by Vecteezy</a>
+
 ### Sounds
 
 Sci Fi UI Button Sound 019.wav by crash_358 -- https://freesound.org/s/615543/ -- License: Creative Commons 0
