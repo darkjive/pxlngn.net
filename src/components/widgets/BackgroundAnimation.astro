@@ -1,12 +1,252 @@
 ---
-import '~/assets/styles/stars.css';
+/**
+ * Space Background Animation
+ *
+ * Erzeugt einen animierten Weltraum-Hintergrund mit anime.js:
+ * - Kleine Sterne die vorbeiziehen
+ * - Schnelle Meteore mit Schweif
+ * - Alien-artige Plasma-Wesen (pulsierend, verschiedene Farben)
+ *
+ * Gibt das Gefühl durch den Weltraum zu schweben.
+ */
 ---
 
-<Fragment>
-  <div class="bg-animation no-scrollbar -z-50 hidden dark:block">
-    <div id="pixel"></div>
-    <div id="pixels2"></div>
-    <div id="pixels3"></div>
-    <div id="pixels4"></div>
-  </div>
-</Fragment>
+<div id="space-bg" class="fixed inset-0 -z-50 hidden overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 dark:block"></div>
+
+<script>
+  import { animate } from 'animejs';
+
+  /**
+   * Konfiguration für Partikeltypen
+   */
+  const CONFIG = {
+    stars: {
+      count: 100,
+      minSize: 1,
+      maxSize: 3,
+      speed: [15000, 25000], // Langsam schwebend
+      colors: ['#ffffff', '#e0f2fe', '#bfdbfe'],
+    },
+    meteors: {
+      count: 8,
+      width: [40, 80],
+      height: 2,
+      speed: [2000, 4000], // Schnell
+      colors: ['#60a5fa', '#3b82f6', '#2563eb'],
+      delay: [0, 8000], // Gestaffelt
+    },
+    plasma: {
+      count: 12,
+      minSize: 20,
+      maxSize: 60,
+      speed: [8000, 15000],
+      colors: [
+        '#8b5cf6', // Lila
+        '#ec4899', // Pink
+        '#06b6d4', // Cyan
+        '#10b981', // Grün
+        '#f59e0b', // Orange
+      ],
+    },
+  };
+
+  /**
+   * Erstellt einen Stern
+   */
+  function createStar(container: HTMLElement) {
+    const star = document.createElement('div');
+    const size = CONFIG.stars.minSize + Math.random() * (CONFIG.stars.maxSize - CONFIG.stars.minSize);
+    const color = CONFIG.stars.colors[Math.floor(Math.random() * CONFIG.stars.colors.length)];
+
+    star.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${color};
+      border-radius: 50%;
+      box-shadow: 0 0 ${size * 2}px ${color};
+      top: ${Math.random() * 100}%;
+      left: ${Math.random() * 100}%;
+      opacity: ${0.4 + Math.random() * 0.6};
+    `;
+
+    container.appendChild(star);
+
+    // Animation: Von rechts nach links durch den Weltraum
+    const duration = CONFIG.stars.speed[0] + Math.random() * (CONFIG.stars.speed[1] - CONFIG.stars.speed[0]);
+
+    animate(star, {
+      translateX: [0, -window.innerWidth * 0.3],
+      translateY: [0, (Math.random() - 0.5) * 100],
+      opacity: [
+        { to: 1, duration: duration * 0.3 },
+        { to: 0.3, duration: duration * 0.4 },
+        { to: 0, duration: duration * 0.3 },
+      ],
+      duration: duration,
+      ease: 'linear',
+      loop: true,
+      onLoop: () => {
+        // Neue Position für nächste Iteration
+        star.style.top = `${Math.random() * 100}%`;
+        star.style.left = `${100 + Math.random() * 20}%`;
+      },
+    });
+  }
+
+  /**
+   * Erstellt einen Meteor mit Schweif
+   */
+  function createMeteor(container: HTMLElement) {
+    const meteor = document.createElement('div');
+    const width = CONFIG.meteors.width[0] + Math.random() * (CONFIG.meteors.width[1] - CONFIG.meteors.width[0]);
+    const color = CONFIG.meteors.colors[Math.floor(Math.random() * CONFIG.meteors.colors.length)];
+
+    meteor.style.cssText = `
+      position: absolute;
+      width: ${width}px;
+      height: ${CONFIG.meteors.height}px;
+      background: linear-gradient(90deg, transparent, ${color});
+      border-radius: 2px;
+      top: ${Math.random() * 80}%;
+      left: ${100 + Math.random() * 20}%;
+      opacity: 0;
+      box-shadow: 0 0 10px ${color};
+    `;
+
+    container.appendChild(meteor);
+
+    const duration = CONFIG.meteors.speed[0] + Math.random() * (CONFIG.meteors.speed[1] - CONFIG.meteors.speed[0]);
+    const delay = CONFIG.meteors.delay[0] + Math.random() * (CONFIG.meteors.delay[1] - CONFIG.meteors.delay[0]);
+
+    // Animation: Schneller Flug von rechts-oben nach links-unten
+    animate(meteor, {
+      translateX: [-window.innerWidth * 1.5],
+      translateY: [window.innerHeight * 0.3],
+      opacity: [
+        { to: 1, duration: 200 },
+        { to: 0.8, duration: duration - 400 },
+        { to: 0, duration: 200 },
+      ],
+      rotate: [-15],
+      duration: duration,
+      delay: delay,
+      ease: 'inOutQuad',
+      loop: true,
+      onLoop: () => {
+        // Neue Startposition
+        meteor.style.top = `${Math.random() * 80}%`;
+        meteor.style.left = `${100 + Math.random() * 20}%`;
+      },
+    });
+  }
+
+  /**
+   * Erstellt ein alien-artiges Plasma-Wesen
+   */
+  function createPlasma(container: HTMLElement) {
+    const plasma = document.createElement('div');
+    const size = CONFIG.plasma.minSize + Math.random() * (CONFIG.plasma.maxSize - CONFIG.plasma.minSize);
+    const color = CONFIG.plasma.colors[Math.floor(Math.random() * CONFIG.plasma.colors.length)];
+
+    plasma.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: radial-gradient(circle, ${color}88, ${color}22, transparent);
+      border-radius: 50%;
+      top: ${Math.random() * 100}%;
+      left: ${100 + Math.random() * 20}%;
+      opacity: 0;
+      filter: blur(${4 + Math.random() * 4}px);
+    `;
+
+    container.appendChild(plasma);
+
+    const duration = CONFIG.plasma.speed[0] + Math.random() * (CONFIG.plasma.speed[1] - CONFIG.plasma.speed[0]);
+    const delay = Math.random() * 5000;
+
+    // Animation: Schwebende, pulsierende Bewegung
+    animate(plasma, {
+      translateX: [-window.innerWidth * 0.8],
+      translateY: [
+        { to: (Math.random() - 0.5) * 200, duration: duration * 0.25 },
+        { to: (Math.random() - 0.5) * 200, duration: duration * 0.25 },
+        { to: (Math.random() - 0.5) * 200, duration: duration * 0.25 },
+        { to: (Math.random() - 0.5) * 200, duration: duration * 0.25 },
+      ],
+      scale: [
+        { to: 1.3, duration: duration * 0.3 },
+        { to: 0.8, duration: duration * 0.4 },
+        { to: 1, duration: duration * 0.3 },
+      ],
+      opacity: [
+        { to: 0.6, duration: 500 },
+        { to: 0.8, duration: duration - 1500 },
+        { to: 0, duration: 1000 },
+      ],
+      duration: duration,
+      delay: delay,
+      ease: 'inOutSine',
+      loop: true,
+      onLoop: () => {
+        // Neue Position und Farbe
+        plasma.style.top = `${Math.random() * 100}%`;
+        plasma.style.left = `${100 + Math.random() * 20}%`;
+        const newColor = CONFIG.plasma.colors[Math.floor(Math.random() * CONFIG.plasma.colors.length)];
+        plasma.style.background = `radial-gradient(circle, ${newColor}88, ${newColor}22, transparent)`;
+      },
+    });
+  }
+
+  /**
+   * Initialisiert die Weltraum-Animation
+   */
+  function initSpaceAnimation() {
+    const container = document.getElementById('space-bg');
+    if (!container) return;
+
+    // Leere Container bei Re-Init
+    container.innerHTML = '';
+
+    // Erstelle Partikel
+    for (let i = 0; i < CONFIG.stars.count; i++) {
+      createStar(container);
+    }
+
+    for (let i = 0; i < CONFIG.meteors.count; i++) {
+      createMeteor(container);
+    }
+
+    for (let i = 0; i < CONFIG.plasma.count; i++) {
+      createPlasma(container);
+    }
+  }
+
+  /**
+   * Cleanup bei View Transitions
+   */
+  function cleanup() {
+    const container = document.getElementById('space-bg');
+    if (container) {
+      container.innerHTML = '';
+    }
+  }
+
+  // Auto-Init
+  if (typeof document !== 'undefined') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSpaceAnimation);
+    } else {
+      initSpaceAnimation();
+    }
+
+    // Astro View Transitions Support
+    document.addEventListener('astro:before-swap', cleanup);
+    document.addEventListener('astro:after-swap', initSpaceAnimation);
+    document.addEventListener('astro:page-load', initSpaceAnimation);
+
+    // Re-Init bei Theme-Wechsel (falls nötig)
+    window.addEventListener('theme-changed', initSpaceAnimation);
+  }
+</script>
