@@ -1,62 +1,99 @@
 ---
 /**
- * Space Background Animation
+ * Space Background Animation - Enhanced with Megalophobia
  *
- * Erzeugt einen animierten Weltraum-Hintergrund mit anime.js:
- * - Kleine Sterne die vorbeiziehen
+ * Erzeugt einen intensiven animierten Weltraum-Hintergrund mit anime.js:
+ * - Mehrere Ebenen von Sternen für Tiefeneffekt (Parallax)
+ * - Riesige, langsam vorbeiziehende Planeten (Megalophobie)
  * - Schnelle Meteore mit Schweif
  * - Alien-artige Plasma-Wesen (pulsierend, verschiedene Farben)
  *
- * Gibt das Gefühl durch den Weltraum zu schweben.
+ * Vermittelt das Gefühl von beklemmender Weite und Isolation im Weltraum.
  */
 ---
 
-<div id="space-bg" class="fixed inset-0 -z-50 hidden overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 dark:block"></div>
+<div id="space-bg" class="fixed inset-0 -z-50 hidden overflow-hidden bg-gradient-to-b from-black via-slate-950 to-black dark:block"></div>
 
 <script>
   import { animate } from 'animejs';
 
   /**
-   * Konfiguration für Partikeltypen
+   * Konfiguration für Partikeltypen mit Tiefen-Layering
    */
   const CONFIG = {
-    stars: {
-      count: 100,
-      minSize: 1,
-      maxSize: 3,
-      speed: [15000, 25000], // Langsam schwebend
+    // Weit entfernte Sterne (Background Layer) - sehr langsam
+    starsDistant: {
+      count: 200,
+      minSize: 0.5,
+      maxSize: 1.5,
+      speed: [40000, 60000],
       colors: ['#ffffff', '#e0f2fe', '#bfdbfe'],
+      opacity: [0.2, 0.4],
+    },
+    // Mittlere Entfernung (Mid Layer)
+    starsMid: {
+      count: 150,
+      minSize: 1,
+      maxSize: 2.5,
+      speed: [25000, 35000],
+      colors: ['#ffffff', '#e0f2fe', '#bfdbfe', '#fef3c7'],
+      opacity: [0.4, 0.7],
+    },
+    // Nahe Sterne (Foreground Layer) - schnell
+    starsNear: {
+      count: 100,
+      minSize: 2,
+      maxSize: 4,
+      speed: [12000, 20000],
+      colors: ['#ffffff', '#e0f2fe', '#bfdbfe', '#fef3c7'],
+      opacity: [0.6, 1],
+    },
+    // Riesige Planeten (Megalophobie!)
+    planets: {
+      count: 4,
+      minSize: 300,
+      maxSize: 800,
+      speed: [60000, 120000], // Sehr langsam, majestätisch
+      types: [
+        { colors: ['#1e3a8a', '#3b82f6', '#1e40af'], name: 'gas-giant' },
+        { colors: ['#dc2626', '#f87171', '#7f1d1d'], name: 'red-planet' },
+        { colors: ['#f59e0b', '#fbbf24', '#92400e'], name: 'desert-world' },
+        { colors: ['#059669', '#10b981', '#064e3b'], name: 'toxic-world' },
+        { colors: ['#6366f1', '#a855f7', '#4c1d95'], name: 'purple-giant' },
+      ],
     },
     meteors: {
-      count: 8,
-      width: [40, 80],
+      count: 15,
+      width: [40, 120],
       height: 2,
-      speed: [2000, 4000], // Schnell
-      colors: ['#60a5fa', '#3b82f6', '#2563eb'],
-      delay: [0, 8000], // Gestaffelt
+      speed: [1500, 3500],
+      colors: ['#60a5fa', '#3b82f6', '#2563eb', '#ffffff'],
+      delay: [0, 15000],
     },
     plasma: {
-      count: 12,
-      minSize: 20,
-      maxSize: 60,
-      speed: [8000, 15000],
+      count: 20,
+      minSize: 30,
+      maxSize: 80,
+      speed: [10000, 20000],
       colors: [
         '#8b5cf6', // Lila
         '#ec4899', // Pink
         '#06b6d4', // Cyan
         '#10b981', // Grün
         '#f59e0b', // Orange
+        '#ef4444', // Rot
       ],
     },
   };
 
   /**
-   * Erstellt einen Stern
+   * Erstellt einen Stern basierend auf Layer-Konfiguration
    */
-  function createStar(container: HTMLElement) {
+  function createStar(container: HTMLElement, config: typeof CONFIG.starsDistant) {
     const star = document.createElement('div');
-    const size = CONFIG.stars.minSize + Math.random() * (CONFIG.stars.maxSize - CONFIG.stars.minSize);
-    const color = CONFIG.stars.colors[Math.floor(Math.random() * CONFIG.stars.colors.length)];
+    const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
+    const color = config.colors[Math.floor(Math.random() * config.colors.length)];
+    const opacity = config.opacity[0] + Math.random() * (config.opacity[1] - config.opacity[0]);
 
     star.style.cssText = `
       position: absolute;
@@ -67,20 +104,21 @@
       box-shadow: 0 0 ${size * 2}px ${color};
       top: ${Math.random() * 100}%;
       left: ${Math.random() * 100}%;
-      opacity: ${0.4 + Math.random() * 0.6};
+      opacity: ${opacity};
     `;
 
     container.appendChild(star);
 
     // Animation: Von rechts nach links durch den Weltraum
-    const duration = CONFIG.stars.speed[0] + Math.random() * (CONFIG.stars.speed[1] - CONFIG.stars.speed[0]);
+    const duration = config.speed[0] + Math.random() * (config.speed[1] - config.speed[0]);
+    const distance = 0.2 + Math.random() * 0.3; // Variierte Distanzen
 
     animate(star, {
-      translateX: [0, -window.innerWidth * 0.3],
-      translateY: [0, (Math.random() - 0.5) * 100],
+      translateX: [0, -window.innerWidth * distance],
+      translateY: [0, (Math.random() - 0.5) * 150],
       opacity: [
-        { to: 1, duration: duration * 0.3 },
-        { to: 0.3, duration: duration * 0.4 },
+        { to: opacity * 1.5, duration: duration * 0.3 },
+        { to: opacity * 0.5, duration: duration * 0.4 },
         { to: 0, duration: duration * 0.3 },
       ],
       duration: duration,
@@ -90,6 +128,73 @@
         // Neue Position für nächste Iteration
         star.style.top = `${Math.random() * 100}%`;
         star.style.left = `${100 + Math.random() * 20}%`;
+      },
+    });
+  }
+
+  /**
+   * Erstellt einen riesigen Planeten - MEGALOPHOBIE!
+   */
+  function createPlanet(container: HTMLElement) {
+    const planet = document.createElement('div');
+    const size = CONFIG.planets.minSize + Math.random() * (CONFIG.planets.maxSize - CONFIG.planets.minSize);
+    const planetType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
+
+    // Zufällige Y-Position, aber auch außerhalb sichtbar für dramatischen Effekt
+    const startY = -20 + Math.random() * 140; // -20% bis 120%
+    const rotation = Math.random() * 360;
+
+    // Erstelle Gradient für den Planeten
+    const gradient = `radial-gradient(circle at 35% 35%, ${planetType.colors[0]}, ${planetType.colors[1]} 40%, ${planetType.colors[2]} 80%, #00000088)`;
+
+    planet.style.cssText = `
+      position: absolute;
+      width: ${size}px;
+      height: ${size}px;
+      background: ${gradient};
+      border-radius: 50%;
+      top: ${startY}%;
+      left: 120%;
+      opacity: 0;
+      box-shadow:
+        inset -20px -20px 60px rgba(0,0,0,0.6),
+        0 0 80px ${planetType.colors[1]}44,
+        0 0 120px ${planetType.colors[1]}22;
+      filter: blur(1px);
+      transform: rotate(${rotation}deg);
+    `;
+
+    container.appendChild(planet);
+
+    const duration = CONFIG.planets.speed[0] + Math.random() * (CONFIG.planets.speed[1] - CONFIG.planets.speed[0]);
+    const delay = Math.random() * 30000;
+
+    // Langsame, majestätische Bewegung - wirkt bedrohlich groß
+    animate(planet, {
+      translateX: [-window.innerWidth * 1.5],
+      translateY: [(Math.random() - 0.5) * 100],
+      rotate: [rotation, rotation + (Math.random() > 0.5 ? 30 : -30)],
+      opacity: [
+        { to: 0.7, duration: 3000 },
+        { to: 0.9, duration: duration - 6000 },
+        { to: 0, duration: 3000 },
+      ],
+      duration: duration,
+      delay: delay,
+      ease: 'linear',
+      loop: true,
+      onLoop: () => {
+        // Neue Position und Type
+        planet.style.top = `${-20 + Math.random() * 140}%`;
+        planet.style.left = '120%';
+        const newType = CONFIG.planets.types[Math.floor(Math.random() * CONFIG.planets.types.length)];
+        const newGradient = `radial-gradient(circle at 35% 35%, ${newType.colors[0]}, ${newType.colors[1]} 40%, ${newType.colors[2]} 80%, #00000088)`;
+        planet.style.background = newGradient;
+        planet.style.boxShadow = `
+          inset -20px -20px 60px rgba(0,0,0,0.6),
+          0 0 80px ${newType.colors[1]}44,
+          0 0 120px ${newType.colors[1]}22
+        `;
       },
     });
   }
@@ -200,7 +305,7 @@
   }
 
   /**
-   * Initialisiert die Weltraum-Animation
+   * Initialisiert die Weltraum-Animation mit allen Layern
    */
   function initSpaceAnimation() {
     const container = document.getElementById('space-bg');
@@ -209,15 +314,32 @@
     // Leere Container bei Re-Init
     container.innerHTML = '';
 
-    // Erstelle Partikel
-    for (let i = 0; i < CONFIG.stars.count; i++) {
-      createStar(container);
+    // Layer 1: Weit entfernte Sterne (Background) - langsam
+    for (let i = 0; i < CONFIG.starsDistant.count; i++) {
+      createStar(container, CONFIG.starsDistant);
     }
 
+    // Layer 2: Mittlere Entfernung
+    for (let i = 0; i < CONFIG.starsMid.count; i++) {
+      createStar(container, CONFIG.starsMid);
+    }
+
+    // Layer 3: Nahe Sterne (Foreground) - schnell
+    for (let i = 0; i < CONFIG.starsNear.count; i++) {
+      createStar(container, CONFIG.starsNear);
+    }
+
+    // Riesige Planeten - MEGALOPHOBIE!
+    for (let i = 0; i < CONFIG.planets.count; i++) {
+      createPlanet(container);
+    }
+
+    // Meteore
     for (let i = 0; i < CONFIG.meteors.count; i++) {
       createMeteor(container);
     }
 
+    // Plasma-Wesen
     for (let i = 0; i < CONFIG.plasma.count; i++) {
       createPlasma(container);
     }
