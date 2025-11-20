@@ -22,15 +22,15 @@ const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)
  * @property {number} duration - Standard-Dauer für Animationen in Millisekunden (600ms = 0.6s)
  * @property {string} easing - Standard-Easing-Funktion für weiche Animationen (out-expo = schneller Start, langsamer Ende)
  * @property {number} offset - Pixel-Offset für Translate-Animationen (40px Bewegungsdistanz)
- * @property {number} threshold - Sichtbarkeits-Schwellwert für IntersectionObserver (0.15 = 15% des Elements muss sichtbar sein)
- * @property {string} rootMargin - Zusätzlicher Rand für frühere/spätere Trigger ('0px' = exakt bei Sichtbarkeit)
+ * @property {number} threshold - Sichtbarkeits-Schwellwert für IntersectionObserver (0.1 = 10% des Elements muss sichtbar sein)
+ * @property {string} rootMargin - Zusätzlicher Rand für frühere/spätere Trigger ('50px' = trigger 50px bevor Element sichtbar wird)
  */
 const CONFIG = {
   duration: 450,
   easing: 'outInCirc',
   offset: 50,
-  threshold: 0.15,
-  rootMargin: '0px',
+  threshold: 0.1,
+  rootMargin: '50px',
 };
 
 /**
@@ -547,7 +547,7 @@ const addImageGlitch = (img) => {
         }
       });
     },
-    { threshold: 0.15, rootMargin: '0px' }
+    { threshold: CONFIG.threshold, rootMargin: CONFIG.rootMargin }
   );
 
   // Beobachte das Bild
