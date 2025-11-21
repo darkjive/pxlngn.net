@@ -33,6 +33,16 @@ export function initSkillRadar() {
     existingChart.destroy();
   }
 
+  // Detect mobile/tablet for responsive sizing
+  const isMobile = window.innerWidth <= 640;
+  const isTablet = window.innerWidth <= 768 && window.innerWidth > 640;
+
+  // Set explicit canvas height BEFORE Chart.js initialization to prevent Firefox animation
+  const aspectRatio = isMobile ? 1 : isTablet ? 1.5 : 2;
+  const canvasWidth = canvas.parentElement.offsetWidth;
+  const explicitHeight = canvasWidth / aspectRatio;
+  canvas.style.height = `${explicitHeight}px`;
+
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 
@@ -42,10 +52,6 @@ export function initSkillRadar() {
 
   // Detect dark mode
   const isDarkMode = document.documentElement.classList.contains('dark');
-
-  // Detect mobile/tablet for responsive font sizes
-  const isMobile = window.innerWidth <= 640;
-  const isTablet = window.innerWidth <= 768 && window.innerWidth > 640;
 
   // Responsive font sizes
   const fontSize = {
@@ -221,8 +227,8 @@ export function initSkillRadar() {
     data: skillEvolution,
     options: {
       responsive: true,
-      maintainAspectRatio: !isMobile,
-      aspectRatio: isMobile ? undefined : isTablet ? 1.5 : 2,
+      maintainAspectRatio: true,
+      aspectRatio: isMobile ? 1 : isTablet ? 1.5 : 2,
       interaction: {
         mode: 'index',
         intersect: false,
