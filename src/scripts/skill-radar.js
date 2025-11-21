@@ -221,8 +221,8 @@ export function initSkillRadar() {
     data: skillEvolution,
     options: {
       responsive: true,
-      maintainAspectRatio: !isMobile,
-      aspectRatio: isMobile ? undefined : isTablet ? 1.5 : 2,
+      maintainAspectRatio: true,
+      aspectRatio: isMobile ? 1 : isTablet ? 1.5 : 2,
       interaction: {
         mode: 'index',
         intersect: false,
