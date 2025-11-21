@@ -227,21 +227,7 @@ export function initSkillRadar() {
         mode: 'index',
         intersect: false,
       },
-      animation: {
-        duration: 75,
-        easing: 'easeInOutQuart',
-        onComplete: () => {
-          // Verstecke Loader nach Chart-Animation
-          if (skeleton) {
-            skeleton.classList.add('loaded');
-          }
-          setTimeout(() => {
-            if (loader) {
-              loader.classList.add('loaded');
-            }
-          }, 600);
-        },
-      },
+      animation: false,
       onHover: (event, activeElements) => {
         // Play sound on hover
         if (activeElements.length > 0) {
@@ -387,6 +373,17 @@ export function initSkillRadar() {
 
   // Create chart
   new Chart(ctx, config);
+
+  // Verstecke Loader sofort (ohne Chart-Animation)
+  if (skeleton) {
+    skeleton.classList.add('loaded');
+  }
+  // Kurze Verzögerung für visuellen Effekt
+  setTimeout(() => {
+    if (loader) {
+      loader.classList.add('loaded');
+    }
+  }, 100);
 }
 
 // Global theme observer (only initialize once)
