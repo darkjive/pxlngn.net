@@ -228,7 +228,7 @@ export function initSkillRadar() {
         intersect: false,
       },
       animation: {
-        duration: 1000,
+        duration: 75,
         easing: 'easeInOutQuart',
         onComplete: () => {
           // Verstecke Loader nach Chart-Animation
