@@ -39,9 +39,11 @@ export function initSkillRadar() {
 
   // Set explicit canvas height BEFORE Chart.js initialization to prevent Firefox animation
   const aspectRatio = isMobile ? 1 : isTablet ? 1.5 : 2;
-  const canvasWidth = canvas.parentElement.offsetWidth;
+  const canvasWidth = canvas.parentElement.clientWidth;
   const explicitHeight = canvasWidth / aspectRatio;
   canvas.style.height = `${explicitHeight}px`;
+  canvas.width = canvasWidth;
+  canvas.height = explicitHeight;
 
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
