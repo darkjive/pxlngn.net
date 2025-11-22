@@ -322,6 +322,7 @@ export function initSkillRadar() {
         legend: {
           display: true,
           position: 'top',
+          align: 'start',
           labels: {
             color: colors.textColor,
             font: {
