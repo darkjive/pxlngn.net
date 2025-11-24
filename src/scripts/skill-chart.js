@@ -296,7 +296,7 @@ export function initSkillRadar() {
           min: 0,
           title: {
             display: true,
-            text: isMobile ? 'Level (0-100)' : 'Erfahrungslevel & Interesse (0-100)',
+            text: isMobile ? 'Level (0-100)' : 'Erfahrungslevel (0-100)',
             color: colors.textColor,
             font: {
               size: fontSize.title,
@@ -370,9 +370,6 @@ export function initSkillRadar() {
 
               // Zeige Skill-Name, Level und Beschreibung
               return [`${dataset.label}: ${value}/100`, description ? `  ${description}` : ''];
-            },
-            afterBody: function () {
-              return '\nWert zeigt Erfahrungslevel und aktuelles Interesse im Skill';
             },
           },
         },
