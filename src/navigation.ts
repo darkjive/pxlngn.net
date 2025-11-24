@@ -27,7 +27,11 @@ export const headerData = {
       links: [],
     },
   ],
-  actions: [{ href: 'https://github.com/darkjive/pxlngn.net' }, { href: 'mailto:hi@pxlngn.net' }],
+  actions: [
+    // GitHub Link temporär auskommentiert
+    // { href: 'https://github.com/darkjive/pxlngn.net' },
+    { href: 'mailto:hi@pxlngn.net' },
+  ],
 };
 export const footerData = {
   links: [
@@ -70,7 +74,8 @@ export const footerData = {
   ],
   socialLinks: [
     // { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
+    // GitHub Link temporär auskommentiert
+    // { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/darkjive/pxlngn.net' },
     { ariaLabel: 'E-Mail', icon: 'tabler:mail', href: 'mailto:hi@pxlngn.net' },
   ],
 };
