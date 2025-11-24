@@ -60,8 +60,8 @@ export function initSkillRadar() {
     title: isMobile ? 12 : isTablet ? 14 : 16,
     tick: isMobile ? 11 : isTablet ? 13 : 16,
     legend: isMobile ? 14 : isTablet ? 16 : 20,
-    tooltipTitle: isMobile ? 13 : isTablet ? 14 : 16,
-    tooltipBody: isMobile ? 12 : isTablet ? 13 : 16,
+    tooltipTitle: isMobile ? 12 : isTablet ? 13 : 14,
+    tooltipBody: isMobile ? 11 : isTablet ? 12 : 13,
   };
 
   // Responsive spacing
@@ -342,21 +342,21 @@ export function initSkillRadar() {
           bodyColor: colors.textColor,
           borderColor: isDarkMode ? 'rgba(156, 163, 175, 0.5)' : 'rgba(107, 114, 128, 0.5)',
           borderWidth: 1,
-          padding: 16,
+          padding: 10,
           displayColors: true,
           cornerRadius: 8,
           titleFont: {
             size: fontSize.tooltipTitle,
-            weight: 'bold',
+            weight: '600',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
           bodyFont: {
             size: fontSize.tooltipBody,
-            weight: 'normal',
+            weight: '300',
             family: "'Baloo Bhaijaan 2 Variable', sans-serif",
           },
-          titleMarginBottom: 10,
-          bodySpacing: 6,
+          titleMarginBottom: 12,
+          bodySpacing: 8,
           callbacks: {
             title: function (context) {
               // Zeige das Jahr
