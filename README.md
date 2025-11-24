@@ -6,7 +6,7 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 
 ### Core
 
-- **[Astro 5.15](https://astro.build/)** - Static Site Generator
+- **[Astro 5.16](https://astro.build/)** - Static Site Generator
 - **[TypeScript](https://www.typescriptlang.org/)** - Type-Safe JavaScript
 - **[Tailwind CSS](https://tailwindcss.com/)** - Utility-First CSS Framework
 
@@ -14,7 +14,6 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 
 - **[anime.js v4](https://animejs.com)** - Animation Library für Scroll-Animationen
 - **[Chart.js](https://www.chartjs.org/)** - Skill Radar Visualisierung
-- **[Sharp](https://sharp.pixelplumbing.com/)** - High-Performance Image Processing
 - **[Playwright](https://playwright.dev/)** - End-to-End Testing
 - **[astro-icon](https://www.astroicon.dev/)** - Icon System (Tabler Icons)
 
@@ -34,8 +33,8 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 ### Performance & SEO
 
 - ✅ Lighthouse Score 100 (Performance, Accessibility, Best Practices, SEO)
-- ✅ Image Optimization mit Sharp
-- ✅ Asset-Komprimierung (CSS, HTML, JS, Images, SVG)
+- ✅ Image Optimization mit Astro Assets
+- ✅ Asset-Komprimierung (CSS, HTML, JS, SVG)
 - ✅ SEO-optimiert mit Open Graph Tags
 - ✅ Automatische Sitemap-Generierung
 
@@ -91,12 +90,23 @@ Persönliche Portfolio-Website von Alain Ritter – Generalist aus Überzeugung.
 │   │   ├── privacy.md        # Datenschutz
 │   │   └── terms.md          # AGB
 │   ├── scripts/        # Client-Side Scripts
-│   │   └── glitch-profile.js # Glitch-Effekt Script
+│   │   ├── animations.js     # Animation System (anime.js)
+│   │   ├── glitch-profile.js # Glitch-Effekt Script
+│   │   ├── skill-chart.js    # Chart.js Radar Chart
+│   │   ├── smooth-scroll.js  # Smooth Scrolling
+│   │   ├── scroll-handling.js # Scroll Event Handler
+│   │   ├── active-link.js    # Active Navigation Link
+│   │   ├── brand-tooltips.js # Brand Hover Tooltips
+│   │   └── sound-manager.js  # Sound Effects Manager
 │   ├── utils/          # Utility Functions
-│   │   ├── animations.ts     # Animation Helpers
-│   │   ├── images.ts         # Image Processing
-│   │   ├── frontmatter.ts    # Markdown Plugins
-│   │   └── ...               # Weitere Utilities
+│   │   ├── images.ts              # Image Processing
+│   │   ├── images-optimization.ts # Image Optimization
+│   │   ├── frontmatter.ts         # Markdown Plugins
+│   │   ├── futuristic-image-loader.ts # Image Loading Effects
+│   │   ├── utils.ts               # General Utilities
+│   │   ├── directories.ts         # Directory Helpers
+│   │   ├── grid.ts                # Grid Utilities
+│   │   └── permalinks.ts          # URL Helpers
 │   └── config.yaml     # Site Configuration
 ├── vendor/             # Custom Integrations
 ├── package.json
@@ -186,11 +196,13 @@ Scroll-basierte Animationen mit IntersectionObserver:
 
 ### Glitch-Effekt
 
-Profilbild mit Glitch-Effekt (RGB-Split):
+Profilbild mit zufälligem Glitch-Overlay-Effekt:
 
 ```astro
 <GlitchProfileImage alt="Profilbild" width={500} height={500} glowColor="cyan" />
 ```
+
+Der Effekt zeigt das normale Bild als Basis und blendet zufällig eines von zwei Glitch-Overlays für 200-400ms alle 2-5 Sekunden ein. Verwendet nur einfache CSS Opacity und Transform für beste Performance.
 
 Details: [src/scripts/glitch-profile.js](src/scripts/glitch-profile.js)
 
@@ -292,8 +304,10 @@ export const projectItems: Item[] = [
 
 - **Tailwind Config**: `tailwind.config.js`
 - **Global Styles**: `src/assets/styles/`
+  - `tailwind.css` - Tailwind Basis & Custom Classes
   - `fonts.css` - Custom Fonts
   - `glitch-profile.css` - Glitch-Effekt Styles
+  - `skill-radar.css` - Radar Chart Styles
   - `stars.css` - Background Animationen
 - **Komponenten-Styles**: Inline in `.astro` Komponenten
 
