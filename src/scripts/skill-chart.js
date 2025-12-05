@@ -19,9 +19,11 @@ import {
 import 'chartjs-adapter-date-fns';
 // Locale für deutsche Datumsformatierung
 import { de } from 'date-fns/locale';
+// Annotation Plugin für Unternehmens-Bereiche
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 // Registriere benötigte Chart.js Komponenten
-Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler);
+Chart.register(LineController, LineElement, PointElement, LinearScale, TimeScale, Title, Tooltip, Legend, Filler, annotationPlugin);
 
 export function initSkillRadar() {
   const canvas = document.querySelector('[data-chart-type="tech"]');
@@ -96,6 +98,13 @@ export function initSkillRadar() {
     textColor: isDarkMode ? 'rgba(229, 231, 235, 1)' : 'rgba(31, 41, 55, 1)',
     pointBorder: isDarkMode ? '#fff' : '#1f2937',
     tooltipBg: isDarkMode ? 'rgba(17, 24, 39, 0.95)' : 'rgba(255, 255, 255, 0.95)',
+    // Unternehmens-Bereiche
+    companies: {
+      preuss: isDarkMode ? 'rgba(34, 197, 94, 0.08)' : 'rgba(34, 197, 94, 0.05)', // green
+      intercontact: isDarkMode ? 'rgba(59, 130, 246, 0.08)' : 'rgba(59, 130, 246, 0.05)', // blue
+      ion2sFrontend: isDarkMode ? 'rgba(168, 85, 247, 0.08)' : 'rgba(168, 85, 247, 0.05)', // purple
+      ion2sPm: isDarkMode ? 'rgba(249, 115, 22, 0.08)' : 'rgba(249, 115, 22, 0.05)', // orange
+    },
   };
 
   // Skill-Entwicklung über Zeit (basierend auf Lebenslauf)
@@ -319,6 +328,98 @@ export function initSkillRadar() {
         },
       },
       plugins: {
+        annotation: {
+          annotations: {
+            // PREUSS MEDIENSERVICE e.K. (2003 - 2009)
+            preussBox: {
+              type: 'box',
+              xMin: new Date('2003-01-01').getTime(),
+              xMax: new Date('2009-12-31').getTime(),
+              yMin: 0,
+              yMax: 100,
+              backgroundColor: colors.companies.preuss,
+              borderWidth: 0,
+              label: {
+                display: true,
+                content: isMobile ? 'PREUSS' : 'PREUSS MEDIENSERVICE',
+                position: 'start',
+                color: colors.textColor,
+                font: {
+                  size: isMobile ? 9 : isTablet ? 10 : 11,
+                  weight: 'bold',
+                  family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+                },
+                yAdjust: isMobile ? 8 : 10,
+              },
+            },
+            // Intercontact Werbegesellschaft mbH (2010 - 2012)
+            intercontactBox: {
+              type: 'box',
+              xMin: new Date('2010-01-01').getTime(),
+              xMax: new Date('2012-12-31').getTime(),
+              yMin: 0,
+              yMax: 100,
+              backgroundColor: colors.companies.intercontact,
+              borderWidth: 0,
+              label: {
+                display: true,
+                content: isMobile ? 'INTERCON.' : 'INTERCONTACT',
+                position: 'start',
+                color: colors.textColor,
+                font: {
+                  size: isMobile ? 9 : isTablet ? 10 : 11,
+                  weight: 'bold',
+                  family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+                },
+                yAdjust: isMobile ? 8 : 10,
+              },
+            },
+            // ion2s GmbH - Frontend Developer (2012 - 2016)
+            ion2sFrontendBox: {
+              type: 'box',
+              xMin: new Date('2012-01-01').getTime(),
+              xMax: new Date('2016-12-31').getTime(),
+              yMin: 0,
+              yMax: 100,
+              backgroundColor: colors.companies.ion2sFrontend,
+              borderWidth: 0,
+              label: {
+                display: true,
+                content: isMobile ? 'ion2s FE' : 'ion2s Frontend Dev',
+                position: 'start',
+                color: colors.textColor,
+                font: {
+                  size: isMobile ? 9 : isTablet ? 10 : 11,
+                  weight: 'bold',
+                  family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+                },
+                yAdjust: isMobile ? 8 : 10,
+              },
+            },
+            // ion2s GmbH - Projektmanager/Scrum Master (2016 - 2025)
+            ion2sPmBox: {
+              type: 'box',
+              xMin: new Date('2016-01-01').getTime(),
+              xMax: new Date('2025-12-31').getTime(),
+              yMin: 0,
+              yMax: 100,
+              backgroundColor: colors.companies.ion2sPm,
+              borderWidth: 0,
+              label: {
+                display: true,
+                content: isMobile ? 'ion2s PM' : 'ion2s Projekt-/Scrum Master',
+                position: 'start',
+                color: colors.textColor,
+                font: {
+                  size: isMobile ? 9 : isTablet ? 10 : 11,
+                  weight: 'bold',
+                  family: "'Baloo Bhaijaan 2 Variable', sans-serif",
+                },
+                yAdjust: isMobile ? 8 : 10,
+              },
+            },
+          },
+        },
         legend: {
           display: true,
           position: 'bottom',
