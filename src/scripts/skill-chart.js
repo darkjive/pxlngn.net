@@ -142,7 +142,7 @@ export function initSkillRadar() {
         fill: true,
         tension: 0.4,
         pointRadius: 4,
-        pointHoverRadius: 4,
+        pointHoverRadius: 6,
         pointBackgroundColor: colors.backend.line,
         pointBorderColor: colors.pointBorder,
         pointBorderWidth: 1,
