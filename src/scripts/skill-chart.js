@@ -103,7 +103,7 @@ export function initSkillRadar() {
     datasets: [
       {
         label: 'Frontend Development',
-        description: 'HTML, CSS, JavaScript, TypeScript, React, Angular',
+        description: 'HTML, CSS, JavaScript, Angular, AstroJS, TypeScript, React, VueJS',
         data: [
           { x: new Date('2003-01-01'), y: 10 },
           { x: new Date('2007-01-01'), y: 30 },
@@ -115,14 +115,14 @@ export function initSkillRadar() {
         ],
         borderColor: colors.frontend.line,
         backgroundColor: colors.frontend.fill,
-        borderWidth: 2,
+        borderWidth: 1,
         fill: true,
         tension: 0.4,
         pointRadius: 4,
         pointHoverRadius: 6,
         pointBackgroundColor: colors.frontend.line,
         pointBorderColor: colors.pointBorder,
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
       },
       {
         label: 'Backend Development',
@@ -138,7 +138,7 @@ export function initSkillRadar() {
         ],
         borderColor: colors.backend.line,
         backgroundColor: colors.backend.fill,
-        borderWidth: 2,
+        borderWidth: 1,
         fill: true,
         tension: 0.4,
         pointRadius: 4,
@@ -149,7 +149,7 @@ export function initSkillRadar() {
       },
       {
         label: 'Design & UX',
-        description: 'Webdesign, UI/UX, Photoshop, Illustrator',
+        description: 'Webdesign, UI/UX, Photoshop, Illustrator, Figma',
         data: [
           { x: new Date('2003-01-01'), y: 30 },
           { x: new Date('2007-01-01'), y: 70 },
@@ -168,7 +168,7 @@ export function initSkillRadar() {
         pointHoverRadius: 6,
         pointBackgroundColor: colors.design.line,
         pointBorderColor: colors.pointBorder,
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
       },
       {
         label: 'Project Management',
@@ -184,14 +184,14 @@ export function initSkillRadar() {
         ],
         borderColor: colors.pm.line,
         backgroundColor: colors.pm.fill,
-        borderWidth: 2,
+        borderWidth: 1,
         fill: true,
         tension: 0.4,
         pointRadius: 4,
         pointHoverRadius: 6,
         pointBackgroundColor: colors.pm.line,
         pointBorderColor: colors.pointBorder,
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
       },
       {
         label: 'Team Leadership',
@@ -207,14 +207,14 @@ export function initSkillRadar() {
         ],
         borderColor: colors.leadership.line,
         backgroundColor: colors.leadership.fill,
-        borderWidth: 2,
+        borderWidth: 1,
         fill: true,
         tension: 0.4,
         pointRadius: 4,
         pointHoverRadius: 6,
         pointBackgroundColor: colors.leadership.line,
         pointBorderColor: colors.pointBorder,
-        pointBorderWidth: 2,
+        pointBorderWidth: 1,
       },
     ],
   };
@@ -321,7 +321,7 @@ export function initSkillRadar() {
       plugins: {
         legend: {
           display: true,
-          position: 'top',
+          position: 'bottom',
           align: 'start',
           labels: {
             color: colors.textColor,
